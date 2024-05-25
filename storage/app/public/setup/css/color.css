@@ -1,0 +1,73 @@
+:root {  
+/*  --main-primary: #6683A9;*/
+  --main-primary: #46344E;
+  --main-primary-2: #33ADE9;
+
+  --primary-1: var(--main-primary);  
+  --primary-2: #F44336;  
+  --primary-3: #3D3D3D;  
+  --primary-4: #D9D9D9;  
+    
+  --secondary-1: #1B1919;  
+  --secondary-2: #202020;    
+  --secondary-3: #232323;    
+  --yellow: #ffcc5c;
+  
+  --body: #f8f8f8;  
+  --white: #FFFFFF;  
+  --red: #FF3C14;  
+
+  --primary-text: var(--main-primary);    
+  --success: #4A6B2F;  
+  --warning: #9C7942;  
+
+  --font-family: 'Poppins', sans-serif;
+
+  --font-width-5: 500;
+  --font-width-6: 600;
+  --font-width-7: 700;
+
+  --font-size-12: 12px;  
+  --font-size-13: 13px;  
+  --font-size-14: 14px;  
+  --font-size-16: 16px;  
+}
+
+.font-w-5{
+  font-weight: var(--font-width-5);
+}
+.font-w-6{
+  font-weight: var(--font-width-6);
+}
+.font-w-7{
+  font-weight: var(--font-width-7);
+}
+
+.text-red{
+  color: var(--red) !important;
+}
+.text-success{
+  color: var(--success) !important;
+}
+.text-warning{
+  color: var(--warning) !important;
+}
+.text-primary{
+  color: var(--primary-text) !important;
+}
+.text-primary-2{
+  color: var(--primary-2) !important;
+}
+
+.text-light-gray{
+  color: var(--light-gray) !important;
+}
+.text-dark-1{
+  color: var(--dark-1) !important;
+}
+.text-dark-2{
+  color: var(--dark-2) !important;
+}
+.text-light-gray-2{
+  color: var(--light-gray-2) !important;
+}

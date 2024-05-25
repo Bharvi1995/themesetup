@@ -1,0 +1,3108 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-BlackItalic.eot");
+    src: url("./fonts/Nunito-BlackItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-BlackItalic.woff") format("woff"), url("./fonts/Nunito-BlackItalic.ttf") format("truetype"), url("./fonts/Nunito-BlackItalic.svg#Nunito-BlackItalic") format("svg");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-Bold.eot");
+    src: url("./fonts/Nunito-Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-Bold.woff") format("woff"), url("./fonts/Nunito-Bold.ttf") format("truetype"), url("./fonts/Nunito-Bold.svg#Nunito-Bold") format("svg");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-Black.eot");
+    src: url("./fonts/Nunito-Black.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-Black.woff") format("woff"), url("./fonts/Nunito-Black.ttf") format("truetype"), url("./fonts/Nunito-Black.svg#Nunito-Black") format("svg");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-BoldItalic.eot");
+    src: url("./fonts/Nunito-BoldItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-BoldItalic.woff") format("woff"), url("./fonts/Nunito-BoldItalic.ttf") format("truetype"), url("./fonts/Nunito-BoldItalic.svg#Nunito-BoldItalic") format("svg");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-ExtraBoldItalic.eot");
+    src: url("./fonts/Nunito-ExtraBoldItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-ExtraBoldItalic.woff") format("woff"), url("./fonts/Nunito-ExtraBoldItalic.ttf") format("truetype"), url("./fonts/Nunito-ExtraBoldItalic.svg#Nunito-ExtraBoldItalic") format("svg");
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-ExtraBold.eot");
+    src: url("./fonts/Nunito-ExtraBold.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-ExtraBold.woff") format("woff"), url("./fonts/Nunito-ExtraBold.ttf") format("truetype"), url("./fonts/Nunito-ExtraBold.svg#Nunito-ExtraBold") format("svg");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-ExtraLight.eot");
+    src: url("./fonts/Nunito-ExtraLight.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-ExtraLight.woff") format("woff"), url("./fonts/Nunito-ExtraLight.ttf") format("truetype"), url("./fonts/Nunito-ExtraLight.svg#Nunito-ExtraLight") format("svg");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-Italic.eot");
+    src: url("./fonts/Nunito-Italic.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-Italic.woff") format("woff"), url("./fonts/Nunito-Italic.ttf") format("truetype"), url("./fonts/Nunito-Italic.svg#Nunito-Italic") format("svg");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-Light.eot");
+    src: url("./fonts/Nunito-Light.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-Light.woff") format("woff"), url("./fonts/Nunito-Light.ttf") format("truetype"), url("./fonts/Nunito-Light.svg#Nunito-Light") format("svg");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-ExtraLightItalic.eot");
+    src: url("./fonts/Nunito-ExtraLightItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-ExtraLightItalic.woff") format("woff"), url("./fonts/Nunito-ExtraLightItalic.ttf") format("truetype"), url("./fonts/Nunito-ExtraLightItalic.svg#Nunito-ExtraLightItalic") format("svg");
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-LightItalic.eot");
+    src: url("./fonts/Nunito-LightItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-LightItalic.woff") format("woff"), url("./fonts/Nunito-LightItalic.ttf") format("truetype"), url("./fonts/Nunito-LightItalic.svg#Nunito-LightItalic") format("svg");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-SemiBold.eot");
+    src: url("./fonts/Nunito-SemiBold.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-SemiBold.woff") format("woff"), url("./fonts/Nunito-SemiBold.ttf") format("truetype"), url("./fonts/Nunito-SemiBold.svg#Nunito-SemiBold") format("svg");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-Regular.eot");
+    src: url("./fonts/Nunito-Regular.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-Regular.woff") format("woff"), url("./fonts/Nunito-Regular.ttf") format("truetype"), url("./fonts/Nunito-Regular.svg#Nunito-Regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url("./fonts/Nunito-SemiBoldItalic.eot");
+    src: url("./fonts/Nunito-SemiBoldItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/Nunito-SemiBoldItalic.woff") format("woff"), url("./fonts/Nunito-SemiBoldItalic.ttf") format("truetype"), url("./fonts/Nunito-SemiBoldItalic.svg#Nunito-SemiBoldItalic") format("svg");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+* {
+    font-family: 'Nunito';
+}
+
+.fs-13 {
+    font-size: 13px;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-15 {
+    font-size: 15px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-17 {
+    font-size: 17px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-19 {
+    font-size: 19px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-21 {
+    font-size: 21px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-23 {
+    font-size: 23px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-25 {
+    font-size: 25px;
+}
+
+.fs-26 {
+    font-size: 26px;
+}
+
+.width-40 {
+    width: 40%;
+}
+
+.width-60 {
+    width: 220px;
+}
+
+.width-70 {
+    width: 70%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.width-100 {
+    width: 80%;
+}
+
+.object-none {
+    -o-object-fit: none;
+    object-fit: none;
+}
+
+.object-contain {
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+.fc-black {
+    color: #000;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+a {
+    text-decoration: unset;
+}
+
+a:hover {
+    text-decoration: unset;
+}
+
+.jc-space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.mb-5 {
+    margin-bottom: 34px !important;
+}
+
+.box-shadow-blue {
+    -webkit-box-shadow: 0px 6px 20px 0px rgba(31, 84, 195, 0.15);
+    box-shadow: 0px 6px 20px 0px rgba(31, 84, 195, 0.15);
+}
+
+body {
+    letter-spacing: 0.8px;
+    font-size: 14px;
+    background-image: url(/storage/themeAdmin/assets/images/body_bg.png);
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+}
+
+.custom-column-16 {
+    width: 16%;
+}
+
+@media (min-width: 1200px) {
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1260px;
+    }
+    .content {
+        padding: 30px;
+    }
+}
+
+.bg-color1 {
+    background-color: #546d85;
+}
+
+.bg-color2 {
+    background-color: #fde428;
+}
+
+.bg-color3 {
+    background-color: #000000;
+}
+
+.bg-color4 {
+    background-color: #32cd32;
+}
+
+.bg-color5 {
+    background-color: #f30000;
+}
+
+#header .navbar {
+    background-color: #002e5b;
+    height: 78px;
+    padding: 0px;
+}
+
+#header .navbar .logo a img {
+    width: 190px;
+}
+
+.card-img {
+    width: 30px;
+}
+
+#footer {
+    background-color: #002e5b;
+    padding: 26px 46px;
+    width: 100%;
+}
+
+#footer .footer-content {
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#footer .footer-content h3 {
+    font-size: 14px;
+    margin-bottom: 0px;
+    color: #fff;
+}
+
+#footer .footer-content p {
+    font-size: 12px;
+    margin-bottom: 0px;
+    color: #fff;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 14px;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    background-color: transparent;
+    height: 6px;
+    border-radius: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #002e5b;
+    border-radius: 14px;
+}
+
+.heading-all-tag h1::before,
+.heading-all-tag h2::before,
+.heading-all-tag h3::before,
+.heading-all-tag h4::before,
+.heading-all-tag h5::before,
+.heading-all-tag h6::before {
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+}
+
+.datepicker {
+    width: 280px;
+}
+
+.datepicker table {
+    width: 100%;
+}
+
+.datepicker td,
+.datepicker th {
+    padding: 6px;
+    font-size: 14px;
+}
+
+.progress-circle.p77 .value-bar {
+    -webkit-transform: rotate(277deg);
+    transform: rotate(277deg);
+}
+
+.main-progress .progress {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    background: none;
+    margin: 0 auto;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    position: relative;
+}
+
+.main-progress .progress:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 12px solid #efefef;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main-progress .progress > span {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.main-progress .progress .progress-left {
+    left: 0;
+}
+
+.main-progress .progress .progress-bar {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: 12px;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+    border-color: #002e5b;
+}
+
+.main-progress .progress .progress-left .progress-bar {
+    left: 100%;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-left: 0;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+}
+
+.main-progress .progress .progress-right {
+    right: 0;
+}
+
+.main-progress .progress .progress-right .progress-bar {
+    left: -100%;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-right: 0;
+    -webkit-transform-origin: center right;
+    transform-origin: center right;
+}
+
+.main-progress .progress .progress-value {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 50%;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 20px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-weight: 300;
+}
+
+.main-progress .progress .progress-value span {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* This for loop creates the necessary css animation names
+Due to the split circle of progress-left and progress right, we must use the animations on each side.
+*/
+.progress[data-percentage="1"] .progress-right .progress-bar {
+    -webkit-animation: loading-1 0.5s linear forwards;
+    animation: loading-1 0.5s linear forwards;
+}
+
+.progress[data-percentage="1"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="2"] .progress-right .progress-bar {
+    -webkit-animation: loading-2 0.5s linear forwards;
+    animation: loading-2 0.5s linear forwards;
+}
+
+.progress[data-percentage="2"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="3"] .progress-right .progress-bar {
+    -webkit-animation: loading-3 0.5s linear forwards;
+    animation: loading-3 0.5s linear forwards;
+}
+
+.progress[data-percentage="3"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="4"] .progress-right .progress-bar {
+    -webkit-animation: loading-4 0.5s linear forwards;
+    animation: loading-4 0.5s linear forwards;
+}
+
+.progress[data-percentage="4"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="5"] .progress-right .progress-bar {
+    -webkit-animation: loading-5 0.5s linear forwards;
+    animation: loading-5 0.5s linear forwards;
+}
+
+.progress[data-percentage="5"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="6"] .progress-right .progress-bar {
+    -webkit-animation: loading-6 0.5s linear forwards;
+    animation: loading-6 0.5s linear forwards;
+}
+
+.progress[data-percentage="6"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="7"] .progress-right .progress-bar {
+    -webkit-animation: loading-7 0.5s linear forwards;
+    animation: loading-7 0.5s linear forwards;
+}
+
+.progress[data-percentage="7"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="8"] .progress-right .progress-bar {
+    -webkit-animation: loading-8 0.5s linear forwards;
+    animation: loading-8 0.5s linear forwards;
+}
+
+.progress[data-percentage="8"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="9"] .progress-right .progress-bar {
+    -webkit-animation: loading-9 0.5s linear forwards;
+    animation: loading-9 0.5s linear forwards;
+}
+
+.progress[data-percentage="9"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="10"] .progress-right .progress-bar {
+    -webkit-animation: loading-10 0.5s linear forwards;
+    animation: loading-10 0.5s linear forwards;
+}
+
+.progress[data-percentage="10"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="11"] .progress-right .progress-bar {
+    -webkit-animation: loading-11 0.5s linear forwards;
+    animation: loading-11 0.5s linear forwards;
+}
+
+.progress[data-percentage="11"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="12"] .progress-right .progress-bar {
+    -webkit-animation: loading-12 0.5s linear forwards;
+    animation: loading-12 0.5s linear forwards;
+}
+
+.progress[data-percentage="12"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="13"] .progress-right .progress-bar {
+    -webkit-animation: loading-13 0.5s linear forwards;
+    animation: loading-13 0.5s linear forwards;
+}
+
+.progress[data-percentage="13"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="14"] .progress-right .progress-bar {
+    -webkit-animation: loading-14 0.5s linear forwards;
+    animation: loading-14 0.5s linear forwards;
+}
+
+.progress[data-percentage="14"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="15"] .progress-right .progress-bar {
+    -webkit-animation: loading-15 0.5s linear forwards;
+    animation: loading-15 0.5s linear forwards;
+}
+
+.progress[data-percentage="15"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="16"] .progress-right .progress-bar {
+    -webkit-animation: loading-16 0.5s linear forwards;
+    animation: loading-16 0.5s linear forwards;
+}
+
+.progress[data-percentage="16"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="17"] .progress-right .progress-bar {
+    -webkit-animation: loading-17 0.5s linear forwards;
+    animation: loading-17 0.5s linear forwards;
+}
+
+.progress[data-percentage="17"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="18"] .progress-right .progress-bar {
+    -webkit-animation: loading-18 0.5s linear forwards;
+    animation: loading-18 0.5s linear forwards;
+}
+
+.progress[data-percentage="18"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="19"] .progress-right .progress-bar {
+    -webkit-animation: loading-19 0.5s linear forwards;
+    animation: loading-19 0.5s linear forwards;
+}
+
+.progress[data-percentage="19"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="20"] .progress-right .progress-bar {
+    -webkit-animation: loading-20 0.5s linear forwards;
+    animation: loading-20 0.5s linear forwards;
+}
+
+.progress[data-percentage="20"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="21"] .progress-right .progress-bar {
+    -webkit-animation: loading-21 0.5s linear forwards;
+    animation: loading-21 0.5s linear forwards;
+}
+
+.progress[data-percentage="21"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="22"] .progress-right .progress-bar {
+    -webkit-animation: loading-22 0.5s linear forwards;
+    animation: loading-22 0.5s linear forwards;
+}
+
+.progress[data-percentage="22"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="23"] .progress-right .progress-bar {
+    -webkit-animation: loading-23 0.5s linear forwards;
+    animation: loading-23 0.5s linear forwards;
+}
+
+.progress[data-percentage="23"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="24"] .progress-right .progress-bar {
+    -webkit-animation: loading-24 0.5s linear forwards;
+    animation: loading-24 0.5s linear forwards;
+}
+
+.progress[data-percentage="24"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="25"] .progress-right .progress-bar {
+    -webkit-animation: loading-25 0.5s linear forwards;
+    animation: loading-25 0.5s linear forwards;
+}
+
+.progress[data-percentage="25"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="26"] .progress-right .progress-bar {
+    -webkit-animation: loading-26 0.5s linear forwards;
+    animation: loading-26 0.5s linear forwards;
+}
+
+.progress[data-percentage="26"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="27"] .progress-right .progress-bar {
+    -webkit-animation: loading-27 0.5s linear forwards;
+    animation: loading-27 0.5s linear forwards;
+}
+
+.progress[data-percentage="27"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="28"] .progress-right .progress-bar {
+    -webkit-animation: loading-28 0.5s linear forwards;
+    animation: loading-28 0.5s linear forwards;
+}
+
+.progress[data-percentage="28"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="29"] .progress-right .progress-bar {
+    -webkit-animation: loading-29 0.5s linear forwards;
+    animation: loading-29 0.5s linear forwards;
+}
+
+.progress[data-percentage="29"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="30"] .progress-right .progress-bar {
+    -webkit-animation: loading-30 0.5s linear forwards;
+    animation: loading-30 0.5s linear forwards;
+}
+
+.progress[data-percentage="30"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="31"] .progress-right .progress-bar {
+    -webkit-animation: loading-31 0.5s linear forwards;
+    animation: loading-31 0.5s linear forwards;
+}
+
+.progress[data-percentage="31"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="32"] .progress-right .progress-bar {
+    -webkit-animation: loading-32 0.5s linear forwards;
+    animation: loading-32 0.5s linear forwards;
+}
+
+.progress[data-percentage="32"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="33"] .progress-right .progress-bar {
+    -webkit-animation: loading-33 0.5s linear forwards;
+    animation: loading-33 0.5s linear forwards;
+}
+
+.progress[data-percentage="33"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="34"] .progress-right .progress-bar {
+    -webkit-animation: loading-34 0.5s linear forwards;
+    animation: loading-34 0.5s linear forwards;
+}
+
+.progress[data-percentage="34"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="35"] .progress-right .progress-bar {
+    -webkit-animation: loading-35 0.5s linear forwards;
+    animation: loading-35 0.5s linear forwards;
+}
+
+.progress[data-percentage="35"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="36"] .progress-right .progress-bar {
+    -webkit-animation: loading-36 0.5s linear forwards;
+    animation: loading-36 0.5s linear forwards;
+}
+
+.progress[data-percentage="36"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="37"] .progress-right .progress-bar {
+    -webkit-animation: loading-37 0.5s linear forwards;
+    animation: loading-37 0.5s linear forwards;
+}
+
+.progress[data-percentage="37"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="38"] .progress-right .progress-bar {
+    -webkit-animation: loading-38 0.5s linear forwards;
+    animation: loading-38 0.5s linear forwards;
+}
+
+.progress[data-percentage="38"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="39"] .progress-right .progress-bar {
+    -webkit-animation: loading-39 0.5s linear forwards;
+    animation: loading-39 0.5s linear forwards;
+}
+
+.progress[data-percentage="39"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="40"] .progress-right .progress-bar {
+    -webkit-animation: loading-40 0.5s linear forwards;
+    animation: loading-40 0.5s linear forwards;
+}
+
+.progress[data-percentage="40"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="41"] .progress-right .progress-bar {
+    -webkit-animation: loading-41 0.5s linear forwards;
+    animation: loading-41 0.5s linear forwards;
+}
+
+.progress[data-percentage="41"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="42"] .progress-right .progress-bar {
+    -webkit-animation: loading-42 0.5s linear forwards;
+    animation: loading-42 0.5s linear forwards;
+}
+
+.progress[data-percentage="42"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="43"] .progress-right .progress-bar {
+    -webkit-animation: loading-43 0.5s linear forwards;
+    animation: loading-43 0.5s linear forwards;
+}
+
+.progress[data-percentage="43"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="44"] .progress-right .progress-bar {
+    -webkit-animation: loading-44 0.5s linear forwards;
+    animation: loading-44 0.5s linear forwards;
+}
+
+.progress[data-percentage="44"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="45"] .progress-right .progress-bar {
+    -webkit-animation: loading-45 0.5s linear forwards;
+    animation: loading-45 0.5s linear forwards;
+}
+
+.progress[data-percentage="45"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="46"] .progress-right .progress-bar {
+    -webkit-animation: loading-46 0.5s linear forwards;
+    animation: loading-46 0.5s linear forwards;
+}
+
+.progress[data-percentage="46"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="47"] .progress-right .progress-bar {
+    -webkit-animation: loading-47 0.5s linear forwards;
+    animation: loading-47 0.5s linear forwards;
+}
+
+.progress[data-percentage="47"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="48"] .progress-right .progress-bar {
+    -webkit-animation: loading-48 0.5s linear forwards;
+    animation: loading-48 0.5s linear forwards;
+}
+
+.progress[data-percentage="48"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="49"] .progress-right .progress-bar {
+    -webkit-animation: loading-49 0.5s linear forwards;
+    animation: loading-49 0.5s linear forwards;
+}
+
+.progress[data-percentage="49"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="50"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="50"] .progress-left .progress-bar {
+    -webkit-animation: 0;
+    animation: 0;
+}
+
+.progress[data-percentage="51"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="51"] .progress-left .progress-bar {
+    -webkit-animation: loading-1 0.5s linear forwards 0.5s;
+    animation: loading-1 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="52"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="52"] .progress-left .progress-bar {
+    -webkit-animation: loading-2 0.5s linear forwards 0.5s;
+    animation: loading-2 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="53"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="53"] .progress-left .progress-bar {
+    -webkit-animation: loading-3 0.5s linear forwards 0.5s;
+    animation: loading-3 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="54"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="54"] .progress-left .progress-bar {
+    -webkit-animation: loading-4 0.5s linear forwards 0.5s;
+    animation: loading-4 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="55"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="55"] .progress-left .progress-bar {
+    -webkit-animation: loading-5 0.5s linear forwards 0.5s;
+    animation: loading-5 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="56"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="56"] .progress-left .progress-bar {
+    -webkit-animation: loading-6 0.5s linear forwards 0.5s;
+    animation: loading-6 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="57"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="57"] .progress-left .progress-bar {
+    -webkit-animation: loading-7 0.5s linear forwards 0.5s;
+    animation: loading-7 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="58"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="58"] .progress-left .progress-bar {
+    -webkit-animation: loading-8 0.5s linear forwards 0.5s;
+    animation: loading-8 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="59"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="59"] .progress-left .progress-bar {
+    -webkit-animation: loading-9 0.5s linear forwards 0.5s;
+    animation: loading-9 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="60"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="60"] .progress-left .progress-bar {
+    -webkit-animation: loading-10 0.5s linear forwards 0.5s;
+    animation: loading-10 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="61"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="61"] .progress-left .progress-bar {
+    -webkit-animation: loading-11 0.5s linear forwards 0.5s;
+    animation: loading-11 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="62"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="62"] .progress-left .progress-bar {
+    -webkit-animation: loading-12 0.5s linear forwards 0.5s;
+    animation: loading-12 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="63"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="63"] .progress-left .progress-bar {
+    -webkit-animation: loading-13 0.5s linear forwards 0.5s;
+    animation: loading-13 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="64"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="64"] .progress-left .progress-bar {
+    -webkit-animation: loading-14 0.5s linear forwards 0.5s;
+    animation: loading-14 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="65"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="65"] .progress-left .progress-bar {
+    -webkit-animation: loading-15 0.5s linear forwards 0.5s;
+    animation: loading-15 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="66"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="66"] .progress-left .progress-bar {
+    -webkit-animation: loading-16 0.5s linear forwards 0.5s;
+    animation: loading-16 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="67"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="67"] .progress-left .progress-bar {
+    -webkit-animation: loading-17 0.5s linear forwards 0.5s;
+    animation: loading-17 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="68"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="68"] .progress-left .progress-bar {
+    -webkit-animation: loading-18 0.5s linear forwards 0.5s;
+    animation: loading-18 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="69"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="69"] .progress-left .progress-bar {
+    -webkit-animation: loading-19 0.5s linear forwards 0.5s;
+    animation: loading-19 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="70"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="70"] .progress-left .progress-bar {
+    -webkit-animation: loading-20 0.5s linear forwards 0.5s;
+    animation: loading-20 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="71"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="71"] .progress-left .progress-bar {
+    -webkit-animation: loading-21 0.5s linear forwards 0.5s;
+    animation: loading-21 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="72"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="72"] .progress-left .progress-bar {
+    -webkit-animation: loading-22 0.5s linear forwards 0.5s;
+    animation: loading-22 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="73"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="73"] .progress-left .progress-bar {
+    -webkit-animation: loading-23 0.5s linear forwards 0.5s;
+    animation: loading-23 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="74"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="74"] .progress-left .progress-bar {
+    -webkit-animation: loading-24 0.5s linear forwards 0.5s;
+    animation: loading-24 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="75"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="75"] .progress-left .progress-bar {
+    -webkit-animation: loading-25 0.5s linear forwards 0.5s;
+    animation: loading-25 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="76"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="76"] .progress-left .progress-bar {
+    -webkit-animation: loading-26 0.5s linear forwards 0.5s;
+    animation: loading-26 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="77"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="77"] .progress-left .progress-bar {
+    -webkit-animation: loading-27 0.5s linear forwards 0.5s;
+    animation: loading-27 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="78"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="78"] .progress-left .progress-bar {
+    -webkit-animation: loading-28 0.5s linear forwards 0.5s;
+    animation: loading-28 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="79"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="79"] .progress-left .progress-bar {
+    -webkit-animation: loading-29 0.5s linear forwards 0.5s;
+    animation: loading-29 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="80"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="80"] .progress-left .progress-bar {
+    -webkit-animation: loading-30 0.5s linear forwards 0.5s;
+    animation: loading-30 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="81"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="81"] .progress-left .progress-bar {
+    -webkit-animation: loading-31 0.5s linear forwards 0.5s;
+    animation: loading-31 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="82"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="82"] .progress-left .progress-bar {
+    -webkit-animation: loading-32 0.5s linear forwards 0.5s;
+    animation: loading-32 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="83"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="83"] .progress-left .progress-bar {
+    -webkit-animation: loading-33 0.5s linear forwards 0.5s;
+    animation: loading-33 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="84"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="84"] .progress-left .progress-bar {
+    -webkit-animation: loading-34 0.5s linear forwards 0.5s;
+    animation: loading-34 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="85"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="85"] .progress-left .progress-bar {
+    -webkit-animation: loading-35 0.5s linear forwards 0.5s;
+    animation: loading-35 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="86"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="86"] .progress-left .progress-bar {
+    -webkit-animation: loading-36 0.5s linear forwards 0.5s;
+    animation: loading-36 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="87"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="87"] .progress-left .progress-bar {
+    -webkit-animation: loading-37 0.5s linear forwards 0.5s;
+    animation: loading-37 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="88"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="88"] .progress-left .progress-bar {
+    -webkit-animation: loading-38 0.5s linear forwards 0.5s;
+    animation: loading-38 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="89"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="89"] .progress-left .progress-bar {
+    -webkit-animation: loading-39 0.5s linear forwards 0.5s;
+    animation: loading-39 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="90"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="90"] .progress-left .progress-bar {
+    -webkit-animation: loading-40 0.5s linear forwards 0.5s;
+    animation: loading-40 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="91"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="91"] .progress-left .progress-bar {
+    -webkit-animation: loading-41 0.5s linear forwards 0.5s;
+    animation: loading-41 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="92"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="92"] .progress-left .progress-bar {
+    -webkit-animation: loading-42 0.5s linear forwards 0.5s;
+    animation: loading-42 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="93"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="93"] .progress-left .progress-bar {
+    -webkit-animation: loading-43 0.5s linear forwards 0.5s;
+    animation: loading-43 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="94"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="94"] .progress-left .progress-bar {
+    -webkit-animation: loading-44 0.5s linear forwards 0.5s;
+    animation: loading-44 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="95"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="95"] .progress-left .progress-bar {
+    -webkit-animation: loading-45 0.5s linear forwards 0.5s;
+    animation: loading-45 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="96"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="96"] .progress-left .progress-bar {
+    -webkit-animation: loading-46 0.5s linear forwards 0.5s;
+    animation: loading-46 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="97"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="97"] .progress-left .progress-bar {
+    -webkit-animation: loading-47 0.5s linear forwards 0.5s;
+    animation: loading-47 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="98"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="98"] .progress-left .progress-bar {
+    -webkit-animation: loading-48 0.5s linear forwards 0.5s;
+    animation: loading-48 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="99"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="99"] .progress-left .progress-bar {
+    -webkit-animation: loading-49 0.5s linear forwards 0.5s;
+    animation: loading-49 0.5s linear forwards 0.5s;
+}
+
+.progress[data-percentage="100"] .progress-right .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards;
+    animation: loading-50 0.5s linear forwards;
+}
+
+.progress[data-percentage="100"] .progress-left .progress-bar {
+    -webkit-animation: loading-50 0.5s linear forwards 0.5s;
+    animation: loading-50 0.5s linear forwards 0.5s;
+}
+
+@-webkit-keyframes loading-1 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(3.6);
+        transform: rotate(3.6deg);
+    }
+}
+
+@keyframes loading-1 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(3.6);
+        transform: rotate(3.6deg);
+    }
+}
+
+@-webkit-keyframes loading-2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(7.2);
+        transform: rotate(7.2deg);
+    }
+}
+
+@keyframes loading-2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(7.2);
+        transform: rotate(7.2deg);
+    }
+}
+
+@-webkit-keyframes loading-3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(10.8);
+        transform: rotate(10.8deg);
+    }
+}
+
+@keyframes loading-3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(10.8);
+        transform: rotate(10.8deg);
+    }
+}
+
+@-webkit-keyframes loading-4 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(14.4);
+        transform: rotate(14.4deg);
+    }
+}
+
+@keyframes loading-4 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(14.4);
+        transform: rotate(14.4deg);
+    }
+}
+
+@-webkit-keyframes loading-5 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(18);
+        transform: rotate(18deg);
+    }
+}
+
+@keyframes loading-5 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(18);
+        transform: rotate(18deg);
+    }
+}
+
+@-webkit-keyframes loading-6 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(21.6);
+        transform: rotate(21.6deg);
+    }
+}
+
+@keyframes loading-6 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(21.6);
+        transform: rotate(21.6deg);
+    }
+}
+
+@-webkit-keyframes loading-7 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(25.2);
+        transform: rotate(25.2deg);
+    }
+}
+
+@keyframes loading-7 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(25.2);
+        transform: rotate(25.2deg);
+    }
+}
+
+@-webkit-keyframes loading-8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(28.8);
+        transform: rotate(28.8deg);
+    }
+}
+
+@keyframes loading-8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(28.8);
+        transform: rotate(28.8deg);
+    }
+}
+
+@-webkit-keyframes loading-9 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(32.4);
+        transform: rotate(32.4deg);
+    }
+}
+
+@keyframes loading-9 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(32.4);
+        transform: rotate(32.4deg);
+    }
+}
+
+@-webkit-keyframes loading-10 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(36);
+        transform: rotate(36deg);
+    }
+}
+
+@keyframes loading-10 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(36);
+        transform: rotate(36deg);
+    }
+}
+
+@-webkit-keyframes loading-11 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(39.6);
+        transform: rotate(39.6deg);
+    }
+}
+
+@keyframes loading-11 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(39.6);
+        transform: rotate(39.6deg);
+    }
+}
+
+@-webkit-keyframes loading-12 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(43.2);
+        transform: rotate(43.2deg);
+    }
+}
+
+@keyframes loading-12 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(43.2);
+        transform: rotate(43.2deg);
+    }
+}
+
+@-webkit-keyframes loading-13 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(46.8);
+        transform: rotate(46.8deg);
+    }
+}
+
+@keyframes loading-13 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(46.8);
+        transform: rotate(46.8deg);
+    }
+}
+
+@-webkit-keyframes loading-14 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(50.4);
+        transform: rotate(50.4deg);
+    }
+}
+
+@keyframes loading-14 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(50.4);
+        transform: rotate(50.4deg);
+    }
+}
+
+@-webkit-keyframes loading-15 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(54);
+        transform: rotate(54deg);
+    }
+}
+
+@keyframes loading-15 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(54);
+        transform: rotate(54deg);
+    }
+}
+
+@-webkit-keyframes loading-16 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(57.6);
+        transform: rotate(57.6deg);
+    }
+}
+
+@keyframes loading-16 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(57.6);
+        transform: rotate(57.6deg);
+    }
+}
+
+@-webkit-keyframes loading-17 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(61.2);
+        transform: rotate(61.2deg);
+    }
+}
+
+@keyframes loading-17 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(61.2);
+        transform: rotate(61.2deg);
+    }
+}
+
+@-webkit-keyframes loading-18 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(64.8);
+        transform: rotate(64.8deg);
+    }
+}
+
+@keyframes loading-18 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(64.8);
+        transform: rotate(64.8deg);
+    }
+}
+
+@-webkit-keyframes loading-19 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(68.4);
+        transform: rotate(68.4deg);
+    }
+}
+
+@keyframes loading-19 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(68.4);
+        transform: rotate(68.4deg);
+    }
+}
+
+@-webkit-keyframes loading-20 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(72);
+        transform: rotate(72deg);
+    }
+}
+
+@keyframes loading-20 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(72);
+        transform: rotate(72deg);
+    }
+}
+
+@-webkit-keyframes loading-21 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(75.6);
+        transform: rotate(75.6deg);
+    }
+}
+
+@keyframes loading-21 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(75.6);
+        transform: rotate(75.6deg);
+    }
+}
+
+@-webkit-keyframes loading-22 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(79.2);
+        transform: rotate(79.2deg);
+    }
+}
+
+@keyframes loading-22 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(79.2);
+        transform: rotate(79.2deg);
+    }
+}
+
+@-webkit-keyframes loading-23 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(82.8);
+        transform: rotate(82.8deg);
+    }
+}
+
+@keyframes loading-23 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(82.8);
+        transform: rotate(82.8deg);
+    }
+}
+
+@-webkit-keyframes loading-24 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(86.4);
+        transform: rotate(86.4deg);
+    }
+}
+
+@keyframes loading-24 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(86.4);
+        transform: rotate(86.4deg);
+    }
+}
+
+@-webkit-keyframes loading-25 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(90);
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes loading-25 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(90);
+        transform: rotate(90deg);
+    }
+}
+
+@-webkit-keyframes loading-26 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(93.6);
+        transform: rotate(93.6deg);
+    }
+}
+
+@keyframes loading-26 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(93.6);
+        transform: rotate(93.6deg);
+    }
+}
+
+@-webkit-keyframes loading-27 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(97.2);
+        transform: rotate(97.2deg);
+    }
+}
+
+@keyframes loading-27 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(97.2);
+        transform: rotate(97.2deg);
+    }
+}
+
+@-webkit-keyframes loading-28 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(100.8);
+        transform: rotate(100.8deg);
+    }
+}
+
+@keyframes loading-28 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(100.8);
+        transform: rotate(100.8deg);
+    }
+}
+
+@-webkit-keyframes loading-29 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(104.4);
+        transform: rotate(104.4deg);
+    }
+}
+
+@keyframes loading-29 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(104.4);
+        transform: rotate(104.4deg);
+    }
+}
+
+@-webkit-keyframes loading-30 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(108);
+        transform: rotate(108deg);
+    }
+}
+
+@keyframes loading-30 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(108);
+        transform: rotate(108deg);
+    }
+}
+
+@-webkit-keyframes loading-31 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(111.6);
+        transform: rotate(111.6deg);
+    }
+}
+
+@keyframes loading-31 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(111.6);
+        transform: rotate(111.6deg);
+    }
+}
+
+@-webkit-keyframes loading-32 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(115.2);
+        transform: rotate(115.2deg);
+    }
+}
+
+@keyframes loading-32 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(115.2);
+        transform: rotate(115.2deg);
+    }
+}
+
+@-webkit-keyframes loading-33 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(118.8);
+        transform: rotate(118.8deg);
+    }
+}
+
+@keyframes loading-33 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(118.8);
+        transform: rotate(118.8deg);
+    }
+}
+
+@-webkit-keyframes loading-34 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(122.4);
+        transform: rotate(122.4deg);
+    }
+}
+
+@keyframes loading-34 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(122.4);
+        transform: rotate(122.4deg);
+    }
+}
+
+@-webkit-keyframes loading-35 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(126);
+        transform: rotate(126deg);
+    }
+}
+
+@keyframes loading-35 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(126);
+        transform: rotate(126deg);
+    }
+}
+
+@-webkit-keyframes loading-36 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(129.6);
+        transform: rotate(129.6deg);
+    }
+}
+
+@keyframes loading-36 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(129.6);
+        transform: rotate(129.6deg);
+    }
+}
+
+@-webkit-keyframes loading-37 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(133.2);
+        transform: rotate(133.2deg);
+    }
+}
+
+@keyframes loading-37 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(133.2);
+        transform: rotate(133.2deg);
+    }
+}
+
+@-webkit-keyframes loading-38 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(136.8);
+        transform: rotate(136.8deg);
+    }
+}
+
+@keyframes loading-38 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(136.8);
+        transform: rotate(136.8deg);
+    }
+}
+
+@-webkit-keyframes loading-39 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(140.4);
+        transform: rotate(140.4deg);
+    }
+}
+
+@keyframes loading-39 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(140.4);
+        transform: rotate(140.4deg);
+    }
+}
+
+@-webkit-keyframes loading-40 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(144);
+        transform: rotate(144deg);
+    }
+}
+
+@keyframes loading-40 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(144);
+        transform: rotate(144deg);
+    }
+}
+
+@-webkit-keyframes loading-41 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(147.6);
+        transform: rotate(147.6deg);
+    }
+}
+
+@keyframes loading-41 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(147.6);
+        transform: rotate(147.6deg);
+    }
+}
+
+@-webkit-keyframes loading-42 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(151.2);
+        transform: rotate(151.2deg);
+    }
+}
+
+@keyframes loading-42 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(151.2);
+        transform: rotate(151.2deg);
+    }
+}
+
+@-webkit-keyframes loading-43 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(154.8);
+        transform: rotate(154.8deg);
+    }
+}
+
+@keyframes loading-43 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(154.8);
+        transform: rotate(154.8deg);
+    }
+}
+
+@-webkit-keyframes loading-44 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(158.4);
+        transform: rotate(158.4deg);
+    }
+}
+
+@keyframes loading-44 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(158.4);
+        transform: rotate(158.4deg);
+    }
+}
+
+@-webkit-keyframes loading-45 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(162);
+        transform: rotate(162deg);
+    }
+}
+
+@keyframes loading-45 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(162);
+        transform: rotate(162deg);
+    }
+}
+
+@-webkit-keyframes loading-46 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(165.6);
+        transform: rotate(165.6deg);
+    }
+}
+
+@keyframes loading-46 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(165.6);
+        transform: rotate(165.6deg);
+    }
+}
+
+@-webkit-keyframes loading-47 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(169.2);
+        transform: rotate(169.2deg);
+    }
+}
+
+@keyframes loading-47 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(169.2);
+        transform: rotate(169.2deg);
+    }
+}
+
+@-webkit-keyframes loading-48 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(172.8);
+        transform: rotate(172.8deg);
+    }
+}
+
+@keyframes loading-48 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(172.8);
+        transform: rotate(172.8deg);
+    }
+}
+
+@-webkit-keyframes loading-49 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(176.4);
+        transform: rotate(176.4deg);
+    }
+}
+
+@keyframes loading-49 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(176.4);
+        transform: rotate(176.4deg);
+    }
+}
+
+@-webkit-keyframes loading-50 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(180);
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes loading-50 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(180);
+        transform: rotate(180deg);
+    }
+}
+
+.required.fa-asterisk {
+    color: #FF0000;
+    font-size: 5px;
+    position: relative;
+    bottom: 6px;
+}
+
+#header {
+    background: #002e5b;
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 78px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#header:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+#header .sidemenu {
+    float: right;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-right: 48px;
+}
+
+#header .sidemenu .notification-icon {
+    position: relative;
+    margin-bottom: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+#header .sidemenu .notification-icon svg {
+    font-size: 26px;
+    color: #fff;
+}
+
+#header .sidemenu .notification-icon .notification-count {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background-color: #fff;
+    color: #004D6E;
+    font-size: 12px;
+    text-align: center;
+    right: -8px;
+    -webkit-box-shadow: 0px 6px 14px #00000045 !important;
+    box-shadow: 0px 6px 14px #00000045 !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    top: -8px;
+}
+
+#header .sidemenu .notification-icon .dropdown {
+    padding: 24px 10px;
+}
+
+#header .sidemenu .notification-icon .dropdown ul {
+    padding: 0px;
+    width: 220px;
+}
+
+#header .sidemenu .notification-icon .dropdown ul li {
+    width: 220px;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #002e5b96;
+    white-space: break-spaces;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#header .sidemenu .notification-icon .dropdown ul li:hover {
+    background-color: #002e5b;
+    color: #fff;
+}
+
+#header .sidemenu .notification-icon .dropdown ul .view-all-btn {
+    padding: 0px;
+    word-spacing: unset;
+    white-space: normal;
+    border: none;
+}
+
+#header .sidemenu .notification-icon .dropdown ul .view-all-btn a {
+    background-color: #002e5b;
+    color: #fff;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+    text-align: center;
+}
+
+#header .sidemenu .profile-details {
+    margin: 0px 6px 0px 10px;
+    padding: 0px;
+}
+
+#header .sidemenu .profile-details .user-profile-main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#header .sidemenu .profile-details .dropdown .profile-name {
+    padding: 28px 0px;
+    margin-right: 16px;
+}
+
+#header .sidemenu .profile-details .dropdown a {
+    padding: 10px 14px;
+    font-size: 15px;
+    text-align: center;
+}
+
+#header .sidemenu .profile-details .dropdown a:hover {
+    margin-top: 0px;
+}
+
+#header .sidemenu .profile-details .dropdown ul {
+    padding: 0px 0px;
+}
+
+#header .sidemenu .profile-details .dropdown ul .profile-wrap {
+    background-color: #fde428;
+    text-align: center;
+    padding: 12px;
+    color: #002e5b;
+}
+
+#header .sidemenu .profile-details .dropdown ul .profile-wrap .profile-img-bottom img {
+    width: 40px;
+}
+
+#header .sidemenu .profile-details .dropdown ul .profile-wrap .profile-details-wrap h3 {
+    font-size: 16px;
+    margin: 4px 0px;
+}
+
+#header .sidemenu .profile-details .dropdown ul .profile-wrap .profile-details-wrap p {
+    margin-bottom: 10px;
+}
+
+#header .sidemenu .profile-details .dropdown ul .profile-wrap .profile-details-wrap a {
+    padding: 0px;
+    min-width: 130px;
+}
+
+#header .sidemenu .profile-details .dropdown ul .profile-wrap .profile-details-wrap a:hover {
+    background-color: transparent;
+    color: #002e5b;
+}
+
+#header .sidemenu .profile-img img {
+    width: 52px;
+}
+
+#header .logo {
+    float: left;
+}
+
+#header .logo a {
+    display: block;
+}
+
+#header .logo a img {
+    width: 190px;
+}
+
+#header nav > ul {
+    float: left;
+    margin: 0px;
+    padding-left: 0px;
+}
+
+#header nav li {
+    list-style: none;
+    float: left;
+}
+
+#header nav .dropdown {
+    position: relative;
+}
+
+#header nav li a {
+    float: left;
+    padding: 28px 10px;
+    color: #fff;
+    font-size: 14px;
+}
+
+#header nav li a:hover {
+    color: #FDE428;
+}
+
+#header nav li ul {
+    display: none;
+}
+
+#header nav li:hover ul {
+    display: inline;
+}
+
+#header nav li li {
+    float: none;
+}
+
+#header nav .dropdown ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #fff;
+    padding: 12px 0;
+    border-radius: 4px;
+    border-bottom: 3px solid #002e5b;
+    -webkit-box-shadow: 0px 10px 20px #2c1c1c38;
+    box-shadow: 0px 10px 20px #2c1c1c38;
+    z-index: 99;
+}
+
+#header nav .dropdown li {
+    white-space: nowrap;
+}
+
+#header nav .dropdown li a {
+    padding: 10px 35px;
+    font-size: 14px;
+    min-width: 200px;
+}
+
+#header nav .dropdown li a svg {
+    margin-right: 10px;
+}
+
+#header nav .dropdown li a:hover {
+    background-color: #002e5b;
+    color: #fff;
+}
+
+#header nav .mega-dropdown {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    overflow: hidden;
+    padding: 20px 35px;
+    border-bottom: 3px solid #34495e;
+}
+
+#header nav li li a {
+    float: none;
+    color: #333;
+    display: block;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+#header nav li li a:hover {
+    background: #bdc3c7;
+    background: #fafbfb;
+}
+
+#header .mega-col {
+    width: 25%;
+    float: left;
+}
+
+#menu-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -12px;
+    margin-right: 30px;
+    display: none;
+}
+
+#menu-icon span {
+    border: 2px solid #fff;
+    width: 30px;
+    margin-bottom: 5px;
+    display: block;
+    -webkit-transition: all 0.2s;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+#header .active {
+    color: #FDE428;
+}
+
+.dataTables_length,
+.dataTables_filter {
+    padding-top: 4px;
+    padding-right: 4px;
+}
+
+.dataTables_length label,
+.dataTables_filter label {
+    font-size: 14px;
+}
+
+.submit-buttons-commmon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.main-select-phone {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.delete_modal .modal-header {
+    border: none;
+}
+
+.delete_modal .modal-body .delete-text {
+    font-size: 20px;
+    color: #002e5b;
+}
+
+.delete_modal .modal-footer {
+    border: none;
+}
+
+.scrollTop {
+    position: fixed;
+    right: 4%;
+    bottom: 10px;
+    background-color: #fde428;
+    padding: 2px 14px;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 10px 20px #2c1c1c38;
+    box-shadow: 0px 10px 20px #2c1c1c38;
+}
+
+.scrollTop:hover {
+    background-color: #002e5b;
+}
+
+.scrollTop:hover a {
+    color: #fff;
+}
+
+.scrollTop a {
+    font-size: 32px;
+    color: #002e5b;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+/*# sourceMappingURL=common.css.map */
+
+.form-control{
+    text-transform: unset !important;
+}
+
+.container .select2 {
+    width: 100% !important;
+    /* force fluid responsive */
+}
+
+.container .select2-container .select2-selection--single {
+    height: 56px;
+    position: relative;
+}
+
+.container .select2-container .select2-selection--single .select2-selection__rendered {
+    line-height: 56px;
+}
+
+.container .select2-container .select2-selection--single .select2-selection__arrow {
+    top: 16px;
+    right: 8px;
+}
+
+.container .select2-container .select2-selection--single .select2-container--default .select2-results > .select2-results__options {
+    -webkit-overflow-scrolling: touch;
+    /* use momentum scrolling */
+}
+
+.common-section .select2-container--default .select2-selection--single {
+    background-color: #f5f7f9;
+    border: 1px solid #f5f7f9;
+    border-radius: 4px;
+    height: 46px;
+    outline: none;
+}
+
+.common-section .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 46px;
+}
+
+.common-section .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 46px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+}
+
+.select2-container .select2-dropdown {
+    border: 1px solid #f5f7f9;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #f5f7f9;
+    outline: none;
+}
+/*# sourceMappingURL=common.css.map */
+
+#tabpanelMain{
+    box-shadow: 0px 8px 34px 0px rgb(0 0 0 / 14%);
+    background-color: #fff;
+    border-radius: 8px;
+}
+#tabpanelMain nav > .nav.nav-tabs{
+    background:#002e5b;
+    border-radius:8px;
+}
+#tabpanelMain .nav-tabs a:first-child{
+    border-radius: 8px 0px 0px 0px;
+}
+#tabpanelMain .nav-tabs a:last-child{
+    border-radius: 0px 8px 0px 0px;
+}
+#tabpanelMain nav > div a.nav-item.nav-link,
+#tabpanelMain nav > div a.nav-item.nav-link.active
+{
+    width: 20%;
+    border: none;
+    padding: 18px 0px;
+    color:#fff;
+    background:#002e5b;
+    position: relative;
+    font-weight: bold;
+}
+
+#tabpanelMain nav > div a.nav-item.nav-link.active:after
+{
+    content: "";
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 15px solid transparent;
+    border-top-color: #FDE428 ;
+}
+
+#tabpanelMain .tab-content{
+    border-top:5px solid #FDE428;
+    padding:30px 25px;
+}
+
+#tabpanelMain nav > div a.nav-item.nav-link:hover,
+#tabpanelMain nav > div a.nav-item.nav-link:focus
+{
+    border: none;
+    background: #FDE428;
+    color:#002e5b;
+}
+
+#header .sidemenu .notification-icon .notification-count{
+    right: 0px;
+    top: 15px;
+    background-color: #fde538;
+}
+
+#header .sidemenu .notification-icon .dropdown ul li{
+    white-space: unset;
+    padding: 0px;
+}
+#header .sidemenu .notification-icon .dropdown ul li a:hover,
+#header .sidemenu .notification-icon .dropdown ul li:hover > a p{
+    color: #fff !important;
+}
+#header .sidemenu .notification-icon .dropdown ul li a{
+    padding: 10px;
+}
+
+#header nav .dropdown ul ul{
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 232px;
+}
+#header nav .dropdown ul li{
+    position: relative;
+}
+#header nav .dropdown ul li:hover > ul{
+    display: block;
+}
+.txHeader{
+    background-color: #002e5b;
+    color: #fff;
+    padding: 15px;
+}
+.mr-45 {
+    margin-right: 45px;
+}

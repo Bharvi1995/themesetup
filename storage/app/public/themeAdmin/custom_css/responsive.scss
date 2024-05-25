@@ -1,0 +1,472 @@
+/*  Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px){
+    h2 {
+        font-size: 22px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+    .main-progress {
+        margin-bottom: 24px;
+    }
+    .d-flex{
+        flex-direction: column;
+    }
+    .common-section {
+        padding: 0px;
+        padding-bottom: 20px;
+        margin-bottom: 36px;
+    }
+    .btn {
+        font-size: 14px;
+        padding: 6px 11px;
+    }
+    .custom-column-16 {
+        width: 46%;
+        margin-bottom: 22px;
+    }
+    .heading-title {
+        margin: 12px 14px;
+    }
+    #section_progress.mb-5{
+        margin-bottom: 0px !important;
+    }
+   .total-transactions-chart{
+       margin-bottom: 24px;
+   }
+   .daily-week-month-buttons {
+    flex-direction: column;
+    }
+   .daily-week-month-buttons .left-text{
+    margin-bottom: 14px;
+    }
+    .all-time-transaction-chart {
+        border-right: none;
+        margin-bottom: 10px;
+    }
+    .all-time-transaction-chart ul li {
+        float: left;
+        width: 50%;
+    }
+    .myChartDiv {
+        padding-left: 0px;
+        #myChart{
+            width: 100% !important;
+        }
+    }
+    .notification-listing ul li .activity-details h3 {
+        font-size: 14px;
+    }
+    .notification-listing ul li .activity-details p {
+        font-size: 12px;
+    }
+    .notification-listing ul li .activity-icon {
+        height: auto;
+        width: auto;
+        margin-right: 20px;
+        padding: 14px;
+    }
+    .notification-listing ul li::before {
+        left: 24px;
+    }
+    .notification-listing ul li {
+        margin-bottom: 30px;
+    }
+    #tickets_email_section .heading-title,
+    #notification_warnings_section .heading-title,
+    #refund_chargebacks_section .heading-title{
+        padding: 0px 15px;
+    }
+    #section_pagelink.mb-5{
+        margin-bottom:0px !important;
+    } 
+    #header {
+        display: flow-root;
+        height: auto;
+    }
+    #header nav li {
+        list-style: none;
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    #header nav > ul {
+        position: unset;
+        width: 100%;
+    }
+    #header nav li a {
+        padding: 14px 15px;
+        float: none;
+    }
+    #header nav li:hover ul {
+        width: 100%;
+        margin-top: 12px;
+    }
+    #header .sidemenu {
+        float: none;
+        padding-right: 0px;
+        justify-content: center;
+    }
+    .admin-edit-main .form-group {
+        margin-bottom: 0px;
+    }
+    .res-mt{
+        margin-top: 24px;
+    }
+    #header .sidemenu .profile-details .dropdown .profile-name {
+        padding: 12px 10px;
+        margin-right: 16px;
+    }
+    #header nav .dropdown li a {
+        min-width: auto;
+    }
+    .responsive-custom-width{
+        width: 365px;
+    }
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+        justify-content: end  !important;
+    }
+    .res-p-14{
+        padding: 14px;
+    }
+    .res-status-main{
+        padding: 20px;
+    }
+    .res-common-my{
+        margin: 40px 0px;
+    }
+    .res-status-main{
+        .btn {
+            font-size: 14px;
+            padding: 6px 8px;
+        }
+    }
+}
+
+@media (min-width: 375px) and (max-width: 425px){
+    .btn {
+        font-size: 14px;
+        padding: 6px 11px;
+    }
+    .all-time-transaction-chart ul li .mian-color-circle {
+        height: 26px;
+        width: 26px;
+    }
+    .all-time-transaction-chart ul li .mian-color-circle .color {
+        height: 16px;
+        width: 16px;
+    }
+    .all-time-transaction-chart ul li .chart-details .status {
+        font-size: 13px;
+    }
+    .all-time-transaction-chart ul li .chart-details .percentage {
+        font-size: 14px;
+    }
+    .common-tickets-listing .right-text p {
+        font-size: 14px;
+    }
+    .border-table-type table {
+        margin-bottom: 6px;
+    }
+    
+}
+@media (min-width: 320px) and (max-width: 374px){
+    .main-progress .progress {
+        width: 100px;
+        height: 100px;
+    }
+    .main-progress .progress-wrap .progress-main-value {
+        font-size: 14px;
+        height: 40px;
+        width: 40px;
+    }
+    .all-time-transaction-chart ul li {
+        float: none;
+        width: auto;
+    }
+    .all-time-transaction-chart {
+        display: flex;
+        justify-content: center;
+    }
+    .daily-week-month-buttons .right-buttons .btn {
+        font-size: 12px;
+        padding: 4px 4px;
+    }
+    .common-section-wrap .bottom-text p {
+        font-size: 16px;
+    }
+    #header{
+        margin-bottom: 14px;
+    }
+    .responsive-custom-width {
+        width: 266px;
+    }
+    
+
+}
+/*  Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .all-time-transaction-chart ul li {
+        float: left;
+        width: 33%;
+    }
+}
+/* Medium devices (tablets, 768px and up)  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .main-progress {
+        margin-bottom: 24px;
+    }
+    .d-flex{
+        flex-direction: column;
+    }
+    .common-section {
+        margin-bottom: 36px;
+    }
+    .all-time-transaction-chart {
+        border-right: none;
+        margin-bottom: 10px;
+    }
+    .all-time-transaction-chart ul li {
+        float: left;
+        width: 100%;
+    }
+    .common-section-wrap .bottom-text p {
+        text-align: center;
+    }
+    .myChartDiv {
+        padding-left: 0px;
+        #myChart{
+            width: 100% !important;
+        }
+    }
+    .total-transactions-chart{
+        margin-bottom: 24px;
+    }
+    #tickets_email_section .heading-title,
+    #notification_warnings_section .heading-title,
+    #refund_chargebacks_section .heading-title{
+        padding: 0px 15px;
+    }
+    #header{
+        margin-bottom: 14px;
+    }
+   
+}
+// between Galaxy Fold to Galaxy
+@media only screen and (min-device-width: 311px) and (max-device-width: 319px){
+    .main-progress .progress {
+        width: 90px;
+        height: 90px;
+    }
+}
+// Galaxy Fold device css start
+@media only screen and (min-device-width: 280px) and (max-device-width: 310px){
+    .main-progress .progress {
+        width: 90px;
+        height: 90px;
+    }
+    .main-progress .progress-wrap .progress-main-value {
+        height: 40px;
+        width: 40px;
+        font-size: 14px;
+    }
+    .main-progress .top-name h3 {
+        font-size: 14px;
+        text-align: center;
+    }
+    .total-transactions-chart-details .top-deatils-transaction .side-transaction-name h4 {
+        word-break: break-all;
+        font-size: 13px;
+    }
+    .common-section-wrap .bottom-text p {
+        font-size: 14px;
+        text-align: center;
+    }
+    .daily-week-month-buttons{
+        .right-buttons{
+            display: flex;
+             flex-direction: column;
+             .btn {
+                margin-bottom: 12px;
+            }
+        }
+    }
+    .all-time-transaction-chart ul li {
+        float: none;
+        width: 100%;
+    }
+    .all-time-transaction-chart {
+        display: flex;
+        justify-content: center;
+    }
+    .notification-listing ul li .activity-details h3 {
+        font-size: 12px;
+    }
+}
+
+// Galaxy Fold device css end
+
+@media only screen and (max-width: 991px){
+
+}
+@media only screen and (min-width:992px){
+
+}
+
+// For ipad pro
+@media only screen 
+ and (min-device-width: 1024px) 
+ and (max-device-width: 1366px) 
+ and (-webkit-min-device-pixel-ratio: 2) {
+    .d-flex{
+        flex-direction: column;
+    }
+    .total-transactions-chart{
+        margin-bottom: 24px;
+    }
+    .main-progress {
+        margin-bottom: 24px;
+    }
+    .common-section {
+        margin-bottom: 36px;
+    }
+    .all-time-transaction-chart {
+        border-right: none;
+        margin-bottom: 10px;
+    }
+    .all-time-transaction-chart ul li {
+        float: left;
+        width: 50%;
+    }
+    .common-section-wrap .bottom-text p {
+        text-align: center;
+    }
+    #header{
+        margin-bottom: 14px;
+    }
+
+  
+}
+@media only screen 
+ and (min-device-width: 1024px) 
+ and (max-device-width: 1366px) 
+ and (-webkit-min-device-pixel-ratio: 2) 
+ and (orientation: landscape){
+   
+    
+ }
+ @media (min-width: 1200px){
+    .content {
+        padding: 30px;
+    }
+    }
+    
+    @media only screen and (max-width: 1170px) {
+      nav > ul > li > a {
+        padding: 35px 15px;
+      }
+    }
+    @media only screen and (min-width: 1440px) {
+      nav {
+        display: block !important;
+        width: 100%;
+      }
+      
+    }
+    @media only screen and (max-width: 1024px) {
+      #header {
+        display: flow-root;
+        height: auto;
+    }
+    #header nav li {
+        list-style: none;
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    #header nav > ul {
+        position: unset;
+        width: 100%;
+    }
+    #header nav li a {
+        padding: 14px 15px;
+        float: none;
+    }
+    #header nav li:hover ul {
+        width: 100%;
+        margin-top: 12px;
+    }
+    #header .sidemenu {
+        float: none;
+        padding-right: 0px;
+        justify-content: center;
+    }
+      nav {
+        display: none;
+        width: 100%;
+        clear: both;
+        float: none;
+        max-height: 400px;
+        overflow-y: scroll;
+      }
+      #menu-icon {
+        display: inline;
+        top: 45px;
+        cursor: pointer;
+      }
+      #menu-icon.active .first {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        margin-top: 10px;
+      }
+      #menu-icon.active .second {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        position: relative;
+        top: -9px;
+      }
+      #menu-icon.active .third {
+        display: none;
+      }
+      .search {
+        float: none;
+      }
+      .search input {
+        width: 100%;
+      }
+      nav {
+        padding: 10px;
+      }
+      nav ul {
+        float: none;
+      }
+      nav li {
+        float: none;
+      }
+      nav ul li a {
+        float: none;
+        padding: 8px;
+        display: block;
+      }
+      #header nav ul ul {
+        position: static;
+        background: none;
+        border: none;
+        padding: 0;
+      }
+      #header nav a {
+        color: #fff;
+        padding: 8px;
+      }
+      #header nav a:hover {
+        background: #fff;
+        color: #333;
+        border-radius: 3px;
+      }
+      .mega-col {
+        width: 100%;
+      }
+    }
+
+
+

@@ -1,0 +1,48 @@
+body{
+	background: linear-gradient(to right, #34383e 0%, #ffd956 100%);
+}
+.sign-in-page{
+	position: relative;
+}
+.sign-in-detail{
+	background-image: url('../images/auth-bg2.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 15px !important;
+	min-height: calc(100vh - 60px);
+	height: auto;
+	position: relative;
+	overflow: hidden;
+}
+.sign-in-detail-form{
+	min-height: calc(100vh - 180px);
+	display: table;
+}
+.sign-in-detail-form .form{
+	display: table-cell;
+	vertical-align: middle;
+}
+.sign-in-detail-form-txt{
+	min-height: calc(100vh - 180px);
+	display: table;
+}
+.sign-in-detail-form-txt .txt{
+	display: table-cell;
+	vertical-align: middle;
+}
+.sign-in-detail-form-txt h2,
+.sign-in-detail-form-txt h4{
+	font-weight: bold;
+}	
+
+label{
+	color: #fff;
+	margin-bottom: 0px;
+}
+.form-control{
+    border: 1px solid #F5BE16;
+    background-color: #FFF;
+}
