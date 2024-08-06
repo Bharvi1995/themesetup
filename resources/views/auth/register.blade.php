@@ -565,7 +565,7 @@
                            </label>
                         </div> -->
                         <div class="text-center">
-                           <button class="btn bg-gradient-dark w-100 my-4 mb-2" data-sitekey="{{ config('app.captch_sitekey') }}" data-callback="onSubmit" data-action="submit">Sign up</button>
+                           <button class="btn bg-gradient-dark w-100 my-4 mb-2 g-recaptcha" data-sitekey="{{ config('app.captch_sitekey') }}" data-callback="onSubmit" data-action="submit">Sign up</button>
                         </div>
                         <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{route('login')}}" class="text-dark font-weight-bolder">Sign in</a></p>
                      </form>
@@ -637,6 +637,7 @@
     <script src="{{ storage_asset('softtheme/js/plugins/smooth-scrollbar.min.js')}}"></script>
     <script src="{{ storage_asset('softtheme/js/soft-ui-dashboard.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/fontawesome.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
             document.getElementById("signup-form").submit();

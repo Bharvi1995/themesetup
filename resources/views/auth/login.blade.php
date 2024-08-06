@@ -118,7 +118,7 @@
     <script src="{{ storage_asset('softtheme/js/plugins/smooth-scrollbar.min.js')}}"></script>
     <script src="{{ storage_asset('softtheme/js/soft-ui-dashboard.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/fontawesome.min.js"></script>
-    <!-- for demo purpose -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         $('#pwd-show').on('click', function () {
             var pwd = $('#password').attr('type');
