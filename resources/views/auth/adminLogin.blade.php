@@ -66,7 +66,8 @@
                                 @endif
                               </div>
                               <div class="text-center">
-                                 <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                                 <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0 g-recaptcha" data-sitekey="{{ config('app.captch_sitekey') }}"
+                                            data-callback="onSubmit" data-action="submit">Sign in</button>
                               </div>
                            </form>
                         </div>
@@ -89,9 +90,10 @@
          <div class="row">
             <div class="col-8 mx-auto text-center mt-1">
                <p class="mb-0 text-secondary">
-                  Copyright © <script>
-                     document.write(new Date().getFullYear())
-                  </script> Soft by Creative Tim.
+                 © <script>
+                    document.write(new Date().getFullYear())
+                    </script>,
+                    {{ config('app.name') }} Solution Team LTD.
                </p>
             </div>
          </div>
@@ -106,6 +108,7 @@
     <script src="{{ storage_asset('softtheme/js/plugins/smooth-scrollbar.min.js')}}"></script>
     <script src="{{ storage_asset('softtheme/js/soft-ui-dashboard.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/fontawesome.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <!-- for demo purpose -->
     <script>
         $('#pwd-show').on('click', function () {

@@ -565,7 +565,7 @@
                            </label>
                         </div> -->
                         <div class="text-center">
-                           <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+                           <button class="btn bg-gradient-dark w-100 my-4 mb-2" data-sitekey="{{ config('app.captch_sitekey') }}" data-callback="onSubmit" data-action="submit">Sign up</button>
                         </div>
                         <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{route('login')}}" class="text-dark font-weight-bolder">Sign in</a></p>
                      </form>
@@ -619,9 +619,10 @@
          <div class="row">
             <div class="col-8 mx-auto text-center mt-1">
                <p class="mb-0 text-secondary">
-                  Copyright © <script>
-                     document.write(new Date().getFullYear())
-                  </script> Soft by Creative Tim.
+                  © <script>
+                    document.write(new Date().getFullYear())
+                    </script>,
+                    {{ config('app.name') }} Solution Team LTD.
                </p>
             </div>
          </div>

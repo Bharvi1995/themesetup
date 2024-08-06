@@ -78,7 +78,7 @@
                         <div class="card-footer text-center pt-0 px-lg-2 px-1">
                            <p class="mb-4 text-sm mx-auto">
                               Don't have an account?
-                              <a href="{{route('register')}}" class="text-info text-gradient font-weight-bold">Sign up</a>
+                              <a href="{{route('register')}}" class="text-info text-gradient font-weight-bold g-recaptcha" data-sitekey="{{ config('app.captch_sitekey') }}" data-callback="onSubmit" data-action="submit">Sign up</a>
                            </p>
                         </div>
                      </div>
@@ -100,9 +100,10 @@
          <div class="row">
             <div class="col-8 mx-auto text-center mt-1">
                <p class="mb-0 text-secondary">
-                  Copyright © <script>
-                     document.write(new Date().getFullYear())
-                  </script> Soft by Creative Tim.
+                  © <script>
+                    document.write(new Date().getFullYear())
+                    </script>,
+                    {{ config('app.name') }} Solution Team LTD.
                </p>
             </div>
          </div>
