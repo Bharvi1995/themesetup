@@ -67,47 +67,6 @@ class ApiController extends Controller
      */// ===============================================
     public function store(Request $request)
     {
-        $privateKeyResource = openssl_pkey_new([
-            'private_key_bits' => 2048,
-            'private_key_type' => OPENSSL_KEYTYPE_RSA,
-        ]);
-        $privateKey = "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsBimrHtu4rdMxqnPSKL31Jp2f+DdA3bp1VGt6MJTn3TFhRk1hlkkmBMO/ha8y/th37XYQZPiauRgH+QT2eCEhhjG4Jc5Ne7C611g647CRtFZFAGakzKMh6SVjm+cS9cZTzek2UUPyucfTTX6a/bNHUc6uhu9bUC6P8xJIPmALbwCYKYjzYcfObTP7RuJvzKMJJCcjXFBYZFvhDgRroh1RKePVR+JmDByeydZHdVIibxnvdOa+707HYuPEvznUMLWVnpSE2SDQH/72zDPZ37325MMNrF35ZD/ag+MQfhg32ku3NAw8BSgM4fbe51eEF1mrLM4RmSBXMLDAQvCXH9D7AgMBAAECggEAKb7VHdG/QHHubn8O3FFGx9c3KTrzLaqhNRfnfR+NAzeKZDDLVoNB/Rfq6O9oNNfjcDcQD6pxKhsA2e50ZduBLsGCD04dYnBB0xWvM5tNng5FYTlXr2Z5sCEEEcgjq1Y5atztW2EdPCoZdA26S6KFfyk7Ht9f9qjeo9A4/48jf6JqaYXWCusvVD9Fx63X5nQ3tye1L9M80qX9Pok8sb6COGGmFxuOA8StGjCeMO5jOEEauEpf2jSolHfvDYRM7s89VRuLCPC1wjHGRtlDBgM2yX1YQhVM04QUDEoWKtJqIaEk04tWPvljsJ0nbXshodL828GrYZjrO6phr2pRCpOqAQKBgQDcTSro3QfXFCWQCQzmTJEkiTQJGvU/nwRxENEsuM+bE1M71nl/RP4OnrMX6Z8fuEmwtl6+fnsQDSnFzGgksLBjbY+qhwnwIsLY40+bS/MtO7pjgplmDyUtGTDV5dAuo2hr9IdyBLikOOEtD5P0pUQf3yJzsAxyyGqIB9D9pJMngwKBgQDH5kpZw+rF+/n1N/aDy3jRwui1FzRiA4CgkUrTqJkDKSwvlKvLMDTuFT6HOhfN3XTx1Av7XXvtMjse6Zsp8yT0VwvSOaDaWlAiltebqBfibRATUa5JKEzb5GFvNmNm8HbryiPyIWnVDSofqKcaSqmGTuWqrr5val6rI2QIwpH/KQKBgQCB2qKeXBrQ9jkl64/E+ADdzlnzvAYvmCXgF4+UkuMcf4miTcuT7zDpoTXjtHttEQ2usfCqzJbxYTDsPI5ugg+Wq+/xDmQXPgYoHeTAn0YZtYkqOsL825SIPr8AddP+iad1as+jr5C+jCB+lR4bKIc9WiNOmcjcp7HTuPfBao6qzQKBgCbEjMrX6iI3egSKs+5febEEoejs9SXFFB8Pznk6C2LHi2A27xJa6Qj7acMECzXLqzBzNVesi6o2wax/Fa6PDy2r7Aj7UCzIsx3iLzJq6Sbqi+GTR7+8ZxuGMTdGTwTZwdZ8v3fn7wR4pyC4rp+0tyfrCTOO7DPjZzS9ilsAkRvxAoGBALtcjYF3D1SHpnAE4LSH6WzDKfvr80KUD+K/WZE/lWOaipcgB4C7rX92Tb2jJR88BV6Nd9SAbAo9+T7dx4e+XF0qy1TX4CRWK4J5x2Kw/dceoPCz3ckjXLU7R00vKgIK5+hWTgStaxxG2Ba/S14bHk+/0E9o9WtBCRAIvSwV0Pvh";
-        // dd($privateKeyResource);
-        openssl_pkey_export($privateKeyResource, $privateKey);
-        $publicKeyDetails = openssl_pkey_get_details($privateKeyResource);
-        $publicKey = $publicKeyDetails['key'];
-        // dd($publicKeyDetails);
-        // file_put_contents('private_key.pem', $privateKey);
-        // file_put_contents('public_key.pem', $publicKey);
-
-        // Step 2: Encrypt Data with the Public Key
-        $dataToEncrypt = '{
-            "customer": {
-                "firstname": "firstname",
-                "lastname": "lastname",
-                "mobile": "+2348158200000",
-                "country": "NG",
-                "email": "email@pay.dev"
-            },
-            "order": {
-                "amount": 3,
-                "reference": "326236111",
-                "description": "Pay",
-                "currency": "USD"
-            },
-            "payment": {
-                "RedirectUrl": "https://www.hi.com"
-            }
-        }';
-        // $publicKey = file_get_contents('public_key.pem');
-
-        $publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArAYpqx7buK3TMapz0ii99Sadn/g3QN26dVRrejCU590xYUZNYZZJJgTDv4WvMv7Yd+12EGT4mrkYB/kE9nghIYYxuCXOTXuwutdYOuOwkbRWRQBmpMyjIeklY5vnEvXGU83pNlFD8rnH001+mv2zR1HOrobvW1Auj/MSSD5gC28AmCmI82HHzm0z+0bib8yjCSQnI1xQWGRb4Q4Ea6IdUSnj1UfiZgwcnsnWR3VSIm8Z73Tmvu9Ox2LjxL851DC1lZ6UhNkg0B/+9swz2d+99uTDDaxd+WQ/2oPjEH4YN9pLtzQMPAUoDOH23udXhBdZqyzOEZkgVzCwwELwlx/Q+wIDAQAB";
-        openssl_public_encrypt($dataToEncrypt, $encryptedData, $publicKey);
-        $encryptedDataBase64 = base64_encode($encryptedData);
-        dd($encryptedDataBase64);
-        echo "Encrypted Data: " . $encryptedDataBase64 . PHP_EOL;
-
-
         $this->validateBasicAuth($request);
         // $input = $request->only(['user_first_name', 'user_last_name', 'user_email', 'user_phone_no', 'user_amount', 'user_currency', 'user_address', 'user_country', 'user_state', 'user_city', 'user_zip', 'user_order_ref', 'user_redirect_url', 'user_webhook_url','user','user_card_no','user_ccexpiry_month','user_ccexpiry_year','user_cvv_number']);
         $requestData = $request->only(['payment', 'order', 'customer', 'user']);

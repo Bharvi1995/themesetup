@@ -10,7 +10,8 @@ use App\Traits\StoreTransaction;
 use App\TransactionSession;
 use App\Transaction;
 use Illuminate\Support\Facades\Http;
-
+use phpseclib3\Crypt\RSA;
+use phpseclib3\Math\BigInteger;
 class Linqpay extends Controller
 {
     use StoreTransaction;
@@ -51,6 +52,10 @@ class Linqpay extends Controller
                "RedirectUrl" => "https://webhook.site/bd34da35-baa7-4ef9-929b-1e91fc0dddf1" 
             ] 
         ]; 
+        $data = json_encode($arrCreateOrder);
+        $public_xml = "NDA5NiE8UlNBS2V5VmFsdWU+PE1vZHVsdXM+dG9HNUdUWUlHZDNNVVZqblZuNUx4aW92M0I4L0h5eG5KTTMxc2R2bi9qb21xcnhQQ3NWdU9zNWM0eHZEcVF3VHNrejc1VWRrWW5iZUJWM1dxTE1sUm5qRFRhbkxRblM1eTJaY2RjVFNFaldyRFBuamZmY2ZOejFsWGdUOVo2K24xcU5ReTJsOG4zMjZianJBdWhsVVljQUZyNXo5RUMzUzVoMnpsZ0xKNjlnamJ5U2dvMXF2TnY2UE9pSHZjZXpiOUs4QVJ5MDY5VEFUWDI1aHhYaG9RaFpXVUJqSVJSWm1PZ1lZUGlvbWh3bjJuUlFCSzNOZkRWWFJlWGdLWXhiMnRadTNOSUh2ME5idTVhbzlKd2xIWUtPM1o2enlLZ3BLY2NwRUJzZWR3blZKYmpkSm5CSm1KbkdrVjlNSzlvZVBicEw1QnB0VnFoR3JJeDA0a000bWFnenhpaDhCOXNCeDUySWhaOEt4eHB2OFRaYUFNaTE3VzRKSHdzaytjd1M0dVIxK3FDWWMxN0RHNEFtbGMwWE5CK1ZYZUk3bU9yaHJ0YXlGc0s4clY5OEh2ZnNKb00yVjRWbDF2ZDJqUHdyaHBGb1RCR0RyS1MvK2pPcVJZdkVtUGVSdVRtVVV6Z0MvdzhNbVVCZDVPRWxpYWxPb0ZtV2t6dzE5WHVUM2t4d0Vmay9ieHpCcFdtMmsxdFVaMGI2ZHB6b2V1NFNLdTdtR3ZFNFdLMzJkRnVCMUE3dml6OHZMRko5WkY4OFBaalRNekNsaDEza0dTeG12djNGSE9hbTBDKzZxNFErM0EvbDdwNHpiVkIrSUJkRmlIVDV6ZktxUmc2UDFNeW5WaDZJYXBQNzFDWk5QVDRlMVAwN2dzTFgzNVRiU0FWU2diQ2ZtUnpXSnRwRHlUS0U9PC9Nb2R1bHVzPjxFeHBvbmVudD5BUUFCPC9FeHBvbmVudD48L1JTQUtleVZhbHVlPg==";
+        $encrypted_data = $this->encrypt($data, $public_xml);
+        dd($encrypted_data);
         curl_setopt_array($curl, array(
           CURLOPT_URL => self::BASE_URL.'data/encrypt',
           CURLOPT_RETURNTRANSFER => true,
@@ -184,6 +189,68 @@ class Linqpay extends Controller
             $input['reason'] = 'Transaction declined.';
         }
         return $input;
+    }
+
+    public function base64url_decode($data) {
+        return base64_decode(strtr($data, '-_', '+/'));
+    }
+
+    public function getXmlComponent($xmlstring, $field) {
+        try {
+            $xml = new SimpleXMLElement($xmlstring);
+            $namespaces = $xml->getNamespaces(true);
+            $xml->registerXPathNamespace('ns', $namespaces['']);
+            $elements = $xml->xpath("//ns:$field");
+            if ($elements) {
+                return (string)$elements[0];
+            } else {
+                echo "Element $field not found.\n";
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage() . "\n";
+        }
+        return "";
+    }
+
+    public function encrypt($data, $public_xml) {
+        try {
+            if (!$data) {
+                throw new Exception("Data sent for encryption is empty");
+            }
+
+            // Decode the Base64 string
+            $decoded_bytes = base64_decode($public_xml);
+            $decoded_string = utf8_encode($decoded_bytes);
+            $public_xml_key = explode('!', $decoded_string)[1];
+
+            $modulus = $this->getXmlComponent($public_xml_key, "Modulus");
+            $exponent = $this->getXmlComponent($public_xml_key, "Exponent");
+
+            $modulus_bytes = base64_decode($modulus);
+            $exponent_bytes = base64_decode($exponent);
+
+            // Convert modulus and exponent to hexadecimal
+            $modulus_hex = bin2hex($modulus_bytes);
+            $exponent_hex = bin2hex($exponent_bytes);
+
+            $rsa = RSA::load([
+                'n' => new BigInteger($modulus_hex, 16),
+                'e' => new BigInteger($exponent_hex, 16)
+            ]);
+
+            // Encrypt data
+            $rsa = $rsa->withPadding(RSA::ENCRYPTION_PKCS1);
+            $encrypted = $rsa->encrypt($data);
+
+            // Convert to base 64 string
+            $encrypted_base64 = base64_encode($encrypted);
+            echo $encrypted_base64 . "\n";
+
+            return $encrypted;
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage() . "\n";
+            return "";
+        }
     }
 
     public function redirect(Request $request, $session_id) {
