@@ -29,7 +29,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="{{ $pageActive == 'dashboard' ? 'active' : '' }} nav-item">
-                <a href="{!! url('superintendent/dashboard') !!}" class="d-flex align-items-center">
+                <a href="{!! url('paylaksa/dashboard') !!}" class="d-flex align-items-center">
                     <div class="svg-icon">
                         <svg width="20" height="20" viewBox="0 0 17 17" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +92,7 @@
                         @endif
                         @if (auth()->guard('admin')->user()->can(['users-admin-list']))
                             <li class="{{ $pageActive == 'admin-user' ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{!! url('superintendent/admin-user') !!}">
+                                <a class="d-flex align-items-center" href="{!! url('paylaksa/admin-user') !!}">
                                     <i class="fa fa-circle"></i>
                                     <span class="menu-title text-truncate" data-i18n="Admin User List">Admin User
                                         List</span>
@@ -101,7 +101,7 @@
                         @endif
                         @if (auth()->guard('admin')->user()->can(['users-agents-list']))
                             <li class="{{ $pageActive == 'agents' ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{!! url('superintendent/agents') !!}">
+                                <a class="d-flex align-items-center" href="{!! url('paylaksa/agents') !!}">
                                     <i class="fa fa-circle"></i>
                                     <span class="menu-title text-truncate" data-i18n="Referral Partners List">Referral
                                         Partners List</span>
@@ -111,7 +111,7 @@
                         
                         @if (auth()->guard('admin')->user()->can(['view-merchant']))
                             <li class="{{ $pageActive == 'users-management' ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{!! url('superintendent/users-management') !!}">
+                                <a class="d-flex align-items-center" href="{!! url('paylaksa/users-management') !!}">
                                     <i class="fa fa-circle"></i>
                                     <span class="menu-title text-truncate" data-i18n="Merchant List">Merchant
                                         List</span>
@@ -175,7 +175,7 @@
                         @endif
                         @if (auth()->guard('admin')->user()->can(['list-mid']))
                             <li class="{{ $pageActive == 'mid-feature-management' ? 'active' : '' }}"><a
-                                    class="d-flex align-items-center" href="{!! url('superintendent/mid-feature-management') !!}">
+                                    class="d-flex align-items-center" href="{!! url('paylaksa/mid-feature-management') !!}">
                                     <i class="fa fa-circle"></i>
                                     <span class="menu-title text-truncate" data-i18n="MIDs List">MIDs List</span>
                                 </a>
@@ -461,20 +461,20 @@
                     </a>
                     <ul class="menu-content">
                         <li class="{{ $pageActive == 'transactions' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center" href="{!! url('superintendent/transactions') !!}">
+                            <a class="d-flex align-items-center" href="{!! url('paylaksa/transactions') !!}">
                                 <i class="fa fa-circle"></i>
                                 <span class="menu-title text-truncate" data-i18n="All transactions">All
                                     transactions</span>
                             </a>
                         </li>
                         <li class="{{ $pageActive == 'refund' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center" href="{!! url('superintendent/refund') !!}">
+                            <a class="d-flex align-items-center" href="{!! url('paylaksa/refund') !!}">
                                 <i class="fa fa-circle"></i>
                                 <span class="menu-title text-truncate" data-i18n="Refunds">Refunds</span>
                             </a>
                         </li>
                         <li class="{{ $pageActive == 'chargebacks' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center" href="{!! url('superintendent/chargebacks') !!}">
+                            <a class="d-flex align-items-center" href="{!! url('paylaksa/chargebacks') !!}">
                                 <i class="fa fa-circle"></i>
                                 <span class="menu-title text-truncate" data-i18n="Chargebacks">Chargebacks</span>
                             </a>
@@ -492,7 +492,7 @@
                             </a>
                         </li>
                         <li class="{{ $pageActive == 'test-transactions' ? 'active' : '' }}">
-                            <a class="d-flex align-items-center" href="{!! url('superintendent/test-transactions') !!}">
+                            <a class="d-flex align-items-center" href="{!! url('paylaksa/test-transactions') !!}">
                                 <i class="fa fa-circle"></i>
                                 <span class="menu-title text-truncate" data-i18n="Test transactions">Test
                                     transactions</span>
@@ -555,7 +555,7 @@
                         @endif
                         @if (auth()->guard('admin')->user()->can(['list-transaction-summary-report']))
                             <li class="{{ $pageActive == 'card-summary-report' ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{!! url('superintendent/card-summary-report') !!}">
+                                <a class="d-flex align-items-center" href="{!! url('paylaksa/card-summary-report') !!}">
                                     <i class="fa fa-circle"></i>
                                     <span class="menu-title text-truncate" data-i18n="Card type Summary">Card type
                                         Summary</span>
@@ -564,7 +564,7 @@
                         @endif
                         @if (auth()->guard('admin')->user()->can(['list-mid-summary-report']))
                             <li class="{{ $pageActive == 'mid-summary-report' ? 'active' : '' }}">
-                                <a class="d-flex align-items-center" href="{!! url('superintendent/mid-summary-report') !!}">
+                                <a class="d-flex align-items-center" href="{!! url('paylaksa/mid-summary-report') !!}">
                                     <i class="fa fa-circle"></i>
                                     <span class="menu-title text-truncate" data-i18n="MID type Summary Report">MID
                                         type Summary Report</span>

@@ -45,7 +45,7 @@ class TicketCreate extends Notification
         return (new MailMessage)
             ->line('New Ticket has been raised.')
             ->line('Ticket Title:' . $this->ticket->title)
-            ->action('View', url('/admin/ticket/' . $this->ticket->id));
+            ->action('View', url('/paylaksa/ticket/' . $this->ticket->id));
     }
 
     /**
@@ -59,7 +59,7 @@ class TicketCreate extends Notification
         return [
             'data' => [
                 'ticket' => $this->ticket,
-                'url' => '/admin/ticket/' . $this->ticket->id,
+                'url' => '/paylaksa/ticket/' . $this->ticket->id,
                 'icon' => 'mdi-ticket',
                 'icon_bg' => 'bg-danger'
             ]
@@ -70,7 +70,7 @@ class TicketCreate extends Notification
     {
         return [
             'ticket' => $this->ticket,
-            'url' => '/admin/ticket/' . $this->ticket->id,
+            'url' => '/paylaksa/ticket/' . $this->ticket->id,
             'icon' => 'mdi-ticket',
             'icon_bg' => 'bg-danger'
         ];

@@ -167,19 +167,19 @@ a {
 }
 
 .hover-ch {
-    fill: #9B786F;
+    fill: #112143;
 }
 
 .navigation li:hover > a .hover-ch {
-    fill: #9B786F;
+    fill: #112143;
 }
 
 .hover-ch-s {
-    stroke: #9B786F;
+    stroke: #112143;
 }
 
 .navigation li:hover > a .hover-ch-s {
-    stroke: #9B786F;
+    stroke: #112143;
 }
 
 .main-menu.menu-dark .navigation li a > * {
@@ -663,7 +663,7 @@ body.menu-expanded .navbar-header,
     .select2-results__option--highlighted[aria-selected],
 .select2-container--classic .select2-results__option--highlighted,
 .select2-container--default .select2-results__option--highlighted {
-    background: #9B786F !important;
+    background: #112143 !important;
 }
 
 .dark-layout
@@ -868,12 +868,12 @@ body.menu-expanded .navbar-header,
 }
 
 .transaction-summary-tbl .nav-tabs .nav-link.active {
-    background: #9B786F;
+    background: #112143;
     color: var(--white) !important;
 }
 
 .merchantTxnCard {
-    background: #9B786F;
+    background: #112143;
     border-radius: 0.5rem;
     padding: 30px 0px 0px 0px;
     box-shadow: 0px 2px 5px 0px #05309533;
@@ -964,7 +964,7 @@ body.menu-expanded .navbar-header,
   width: 95px;
   height: 95px;
   border: 15px solid #dddddd;
-  border-top-color: #9B786F;
+  border-top-color: #112143;
 /*  border-radius: 50%;*/
   animation: loading 1s ease infinite;
 }
@@ -982,12 +982,12 @@ body.menu-expanded .navbar-header,
 /* * Typewritter effect */
 #loading p {
   max-width: 100px;
-/*  color: #9B786F;*/
-  color: #9B786F;
+/*  color: #112143;*/
+  color: #112143;
   font-family: monospace;
   overflow: hidden;
   /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid #9B786F;
+  border-right: .15em solid #112143;
   /* The typwriter cursor */
   white-space: nowrap;
   /* Keeps the content on a single line */
@@ -1019,7 +1019,7 @@ body.menu-expanded .navbar-header,
     }
 
     50% {
-        border-color: #9B786F;
+        border-color: #112143;
     }
 }
 

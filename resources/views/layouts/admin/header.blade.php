@@ -78,7 +78,7 @@
                         </svg>
                         Edit Profile
                     </a>
-                    <a class="dropdown-item" href="{!! URL::route('superintendent/logout') !!}">
+                    <a class="dropdown-item" href="{!! URL::route('paylaksa/logout') !!}">
                         <i class="fa fa-sign-out text-dark-1"></i>
                         Logout
                     </a>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('dashboardPage') }}">Dashboard</a> / <a href="{{ url('admin/ip-whitelist') }}"> IP Whitelist</a> / Add
+    <a href="{{ route('dashboardPage') }}">Dashboard</a> / <a href="{{ url('paylaksa/ip-whitelist') }}"> IP Whitelist</a> / Add
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
                     <div class="header-title">
                         <h4 class="card-title">Add IP</h4>
                     </div>
-                    <a href="{{ url('admin/ip-whitelist') }}" class="btn btn-primary btn-sm">Back</a>
+                    <a href="{{ url('paylaksa/ip-whitelist') }}" class="btn btn-primary btn-sm">Back</a>
                 </div>
                 {!! Form::open(['route' => 'store.ip', 'files' => true, 'class'=>'form-dark']) !!}
                 <div class="card-body">

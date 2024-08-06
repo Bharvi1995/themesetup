@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('admin/roles') }}">Role</a> / Create
+    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('paylaksa/roles') }}">Role</a> / Create
 @endsection
 
 @section('customeStyle')
@@ -24,7 +24,7 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Admin Roles</h4>
                     </div>
-                    <a href="{{ url('admin/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
+                    <a href="{{ url('paylaksa/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::open(['route' => 'roles.store', 'method' => 'POST', 'class' => 'form-dark', 'id' => 'role-form']) !!}
@@ -106,7 +106,7 @@
 
                         <div class="col-lg-12 mt-2">
                             <button type="submit" class="btn btn-primary ">Submit</button>
-                            <a href="{{ url('admin/roles') }}" class="btn btn-danger ">Cancel</a>
+                            <a href="{{ url('paylaksa/roles') }}" class="btn btn-danger ">Cancel</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

@@ -7,11 +7,11 @@
         if($('#saleAnalytics').length) {
             var saleAnalyticsoptions = {
                 series: [{
-                    name: 'Stock',
+                    name: 'Successful',
                     color: '#0D99FF',
                     data: [31, 40, 28, 51, 42, 109, 100]
                 }, {
-                    name: 'Order',
+                    name: 'Declined',
                     color: '#a9b4cc',
                     data: [11, 32, 45, 32, 34, 52, 41]
                 }],

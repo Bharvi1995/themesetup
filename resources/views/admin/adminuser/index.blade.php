@@ -78,12 +78,12 @@
                                         fill="#FFFFFF" />
                                 </svg>
                             </button>
-                            <a href="{!! url('admin/admin-user') !!}" class="btn btn-danger btn-sm"
+                            <a href="{!! url('paylaksa/admin-user') !!}" class="btn btn-danger btn-sm"
                                 style="border-radius: 0px 5px 5px 0px !important;">Reset</a>
                         </div>
 
                         @if (auth()->guard('admin')->user()->can(['create-admin']))
-                            <a href="{{ url('admin/admin-user/create') }}" class="btn btn-primary btn-sm"> Create
+                            <a href="{{ url('paylaksa/admin-user/create') }}" class="btn btn-primary btn-sm"> Create
                                 Admin</a>
                         @endif
                     </div>

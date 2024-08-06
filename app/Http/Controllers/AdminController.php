@@ -445,10 +445,10 @@ class AdminController extends Controller
             if (!empty($check->email_changes)) {
                 \DB::table('admins')->where('id', $request->id)->update(['email' => $check->email_changes, 'token' => '', "email_changes" => '']);
                 \Session::put('success', 'Your new email has been changed successfully.');
-                return redirect()->to('admin/profile');
+                return redirect()->to('paylaksa/profile');
             } else {
                 \Session::put('error', 'Email already changed');
-                return redirect()->to('admin/profile');
+                return redirect()->to('paylaksa/profile');
             }
         } else {
             return redirect()->to('login')->with('error', "Don't find your record.");

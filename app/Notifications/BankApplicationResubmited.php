@@ -14,7 +14,7 @@ class BankApplicationResubmited extends Notification
 {
     use Queueable;
     public $content;
-    const url = 'admin/applications-bank/pending';
+    const url = 'paylaksa/applications-bank/pending';
     const icon = 'ft-layers';
     const color = 'success';
     /**

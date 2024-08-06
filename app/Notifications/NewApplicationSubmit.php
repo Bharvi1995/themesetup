@@ -14,7 +14,7 @@ class NewApplicationSubmit extends Notification
 {
     use Queueable;
     public $application;
-    const url = '/admin/inprogress-applications';
+    const url = '/paylaksa/inprogress-applications';
     const icon = 'ft-layers';
     const color = 'success';
     /**
@@ -51,7 +51,7 @@ class NewApplicationSubmit extends Notification
             ->subject('New Application Submitted')
             ->markdown(
                 'emails.notifications.new_application_admin',
-                ['url' => url('/admin/applications-list/view/' . $this->application->id), 'skype' => $this->application->skype_id, 'email' => $this->application->user->email]
+                ['url' => url('/paylaksa/applications-list/view/' . $this->application->id), 'skype' => $this->application->skype_id, 'email' => $this->application->user->email]
             );
     }
 

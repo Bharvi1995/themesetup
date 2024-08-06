@@ -89,7 +89,7 @@ class TicketReplyController extends Controller
             $input['user_type'] = 'user';
 
             $input['title'] = 'Reply';
-            $input['title'] = 'Reply From <a href="'.config('app.url').'/admin/ticket/'.$input['ticket_id'].'" target="_blank">'.config('app.url').'/admin/ticket/'.$input['ticket_id'].'</a>';
+            $input['title'] = 'Reply From <a href="'.config('app.url').'/paylaksa/ticket/'.$input['ticket_id'].'" target="_blank">'.config('app.url').'/paylaksa/ticket/'.$input['ticket_id'].'</a>';
 
             $department = Ticket::where('id',$input['ticket_id'])->pluck('department')->first();
 
@@ -110,7 +110,7 @@ class TicketReplyController extends Controller
                 'type'=>'admin',
                 'title'=>$ticket->title .' - Ticket Reply',
                 'body'=>'Ticket Reply by '.$user->name,
-                'url'=>'/admin/ticket/'.$ticket->id,
+                'url'=>'/paylaksa/ticket/'.$ticket->id,
                 'is_read'=>'0'
             ];
 

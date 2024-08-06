@@ -27,7 +27,7 @@ Route::group(['middleware' => ['api', 'cors']], function () {
 	Route::post('seamlesstest/transaction', 'API\TestDirectApiController@store')->name('test.transaction');
 
 	// api v2
-	Route::post('seamless/transaction', 'API\ApiController@store')->name('transaction');
+	Route::post('payment/order/create', 'API\ApiController@store')->name('transaction');
 
 	// api v2 test
 	// Route::post('v2/test/transaction', 'API\TestApiController@store')->name('v2.test-transaction');
@@ -39,7 +39,7 @@ Route::group(['middleware' => ['api', 'cors']], function () {
 	// Route::post('test/hosted/transaction', 'API\TestHostedAPIController@store')->name('test-hostedAPI.store');
 
 	// get transaction detail
-	Route::post('transaction/details', 'API\DirectApiController@getTransaction')->name('get-transaction-details');
+	Route::post('payment/order/details', 'API\DirectApiController@getTransaction')->name('get-transaction-details');
 
 	//Refund API
 	// Route::post('refund', 'API\DirectApiController@refund')->name('refund');

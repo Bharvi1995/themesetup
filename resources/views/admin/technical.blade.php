@@ -53,7 +53,7 @@
                         @if (auth()->guard('admin')->user()->can(['view-required-fields']))
                             <div class="col-md-12 mb-2">
                                 <strong class="mt-2">Required Fields</strong>
-                                <a class="btn btn-primary btn-sm pull-right" href="{!! url('admin/required_fields') !!}">Go <i
+                                <a class="btn btn-primary btn-sm pull-right" href="{!! url('paylaksa/required_fields') !!}">Go <i
                                         class="fa fa-angle-right ml-1"></i></a>
                             </div>
                         @endif

@@ -81,7 +81,7 @@
                             <button type="button" class="btn btn-info bell-link btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#searchModal"> <i class="fa fa-search-plus"></i> Advanced
                                 Search</button>
-                            <a href="{{ url('admin/merchant-stores') }}" class="btn btn-primary btn-sm">Reset</a>
+                            <a href="{{ url('paylaksa/merchant-stores') }}" class="btn btn-primary btn-sm">Reset</a>
                         </div>
                         @if (auth()->guard('admin')->user()->can(['merchant-store-excel-export']))
                             <a href="{{ route('user-stores-csv-export') }}" class="btn btn-info btn-sm" id="ExcelLink">

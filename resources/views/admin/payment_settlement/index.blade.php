@@ -21,7 +21,7 @@
                             data-bs-target="#searchModal"> <i class="fa fa-search-plus"></i>
                             Advanced
                             Search</button>
-                        <a href="{!! url('admin/admin-user') !!}" class="btn btn-primary btn-sm">Reset</a>
+                        <a href="{!! url('paylaksa/admin-user') !!}" class="btn btn-primary btn-sm">Reset</a>
                     </div>
                 </div>
                 <div class="card-body p-0">

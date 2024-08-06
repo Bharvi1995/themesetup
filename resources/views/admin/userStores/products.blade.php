@@ -75,7 +75,7 @@
                             <button type="button" class="btn btn-info bell-link btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#searchModal"> <i class="fa fa-search-plus"></i> Advanced
                                 Search</button>
-                            <a href="{{ url('admin/merchant-stores-products/' . $id) }}"
+                            <a href="{{ url('paylaksa/merchant-stores-products/' . $id) }}"
                                 class="btn btn-primary btn-sm">Reset</a>
                         </div>
                         <a href="{{ route('user-stores-product-csv-export', $id) . '?' . http_build_query($_GET) }}"

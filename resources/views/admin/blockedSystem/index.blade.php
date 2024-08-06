@@ -173,7 +173,7 @@
                                 data-bs-target="#searchModal"> <i class="fa fa-search-plus"></i>
                                 Advanced
                                 Search</button>
-                            <a href="{!! url('admin/blocked-system') !!}" class="btn btn-primary btn-sm">Reset</a>
+                            <a href="{!! url('paylaksa/blocked-system') !!}" class="btn btn-primary btn-sm">Reset</a>
                         </div>
 
                         <?php

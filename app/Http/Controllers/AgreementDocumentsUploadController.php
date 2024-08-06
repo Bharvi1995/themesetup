@@ -147,7 +147,7 @@ class AgreementDocumentsUploadController extends Controller
                             'type' => 'admin',
                             'title' => 'RP Agreement Submitted',
                             'body' => $agent->name . ' agreement have been submitted.',
-                            'url' => '/admin/agents',
+                            'url' => '/paylaksa/agents',
                             'is_read' => '0'
                         ];
 

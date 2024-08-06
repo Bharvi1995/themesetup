@@ -248,7 +248,7 @@
 
                 console.log(hostedFormData);
                 $.ajax({
-                    url: "/superintendent/asp-iframe",
+                    url: "/paylaksa/asp-iframe",
                     type: 'POST',
                     data: hostedFormData,
                     processData: false,

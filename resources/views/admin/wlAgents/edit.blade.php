@@ -273,7 +273,7 @@
 
                         <div class="col-lg-12 form-group mt-2">
                             <button type="submit" class="btn btn-primary ">Submit</button>
-                            <a href="{{ url('admin/wl-agents') }}" class="btn btn-danger "></i>Cancel</a>
+                            <a href="{{ url('paylaksa/wl-agents') }}" class="btn btn-danger "></i>Cancel</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

@@ -81,18 +81,18 @@ Route::post('testpay-mobile-no-store', 'Auth\LoginController@addMobileNo')->name
 /*********************User Register Module End *************************************/
 
 /*********************Admin Routes Module End *************************************/
-Route::get('superintendent/login', 'Auth\AdminAuthController@getLogin')->name('superintendent/login');
-Route::post('superintendent/login', 'Auth\AdminAuthController@postLogin')->name('superintendent/login');
-// Route::get('superintendent/testpay-otp', 'Auth\AdminAuthController@otpform')->name('admin.testpay-otp');
-// Route::get('superintendent/resend-otp', 'Auth\AdminAuthController@resendotp')->name('admin.resend-otp');
-// Route::post('superintendent/testpay-otp-store', 'Auth\AdminAuthController@checkotp')->name('admin.testpay-otp-store');
-Route::post('superintendent/testpay-mobile-no-store', 'Auth\AdminAuthController@addMobileNo')->name('admin.testpay-mobile-no-store');
-Route::get('superintendent/logout', 'Auth\AdminAuthController@logout')->name('superintendent/logout');
+Route::get('paylaksa/login', 'Auth\AdminAuthController@getLogin')->name('paylaksa/login');
+Route::post('paylaksa/login', 'Auth\AdminAuthController@postLogin')->name('paylaksa/login');
+// Route::get('paylaksa/testpay-otp', 'Auth\AdminAuthController@otpform')->name('admin.testpay-otp');
+// Route::get('paylaksa/resend-otp', 'Auth\AdminAuthController@resendotp')->name('admin.resend-otp');
+// Route::post('paylaksa/testpay-otp-store', 'Auth\AdminAuthController@checkotp')->name('admin.testpay-otp-store');
+Route::post('paylaksa/testpay-mobile-no-store', 'Auth\AdminAuthController@addMobileNo')->name('admin.testpay-mobile-no-store');
+Route::get('paylaksa/logout', 'Auth\AdminAuthController@logout')->name('paylaksa/logout');
 
-Route::get('superintendent/password/reset', 'Auth\AdminAuthController@adminForgetPassword')->name('admin-password-reset');
-Route::post('superintendent/password/email', 'Auth\AdminAuthController@adminForgetEmail')->name('admin-password-email');
-Route::get('superintendent/password/reset/{id}', 'Auth\AdminAuthController@adminForgetPasswordForm')->name('admin-password-reset-form');
-Route::post('superintendent/password/resetForm', 'Auth\AdminAuthController@adminForgetPasswordFormPost')->name('admin-password-resetForm');
+Route::get('paylaksa/password/reset', 'Auth\AdminAuthController@adminForgetPassword')->name('admin-password-reset');
+Route::post('paylaksa/password/email', 'Auth\AdminAuthController@adminForgetEmail')->name('admin-password-email');
+Route::get('paylaksa/password/reset/{id}', 'Auth\AdminAuthController@adminForgetPasswordForm')->name('admin-password-reset-form');
+Route::post('paylaksa/password/resetForm', 'Auth\AdminAuthController@adminForgetPasswordFormPost')->name('admin-password-resetForm');
 Route::get('admin-email-activate', 'AdminController@verifyAdminChangeEmail')->name('admin-email-activate');
 // Merchant dashboard login from admin side.
 Route::get('/userLogin', 'AdminController@userLoginByAdmin')->name('userLogin');
@@ -889,3 +889,8 @@ Route::post("securepay/webhook/{id}", "Repo\PaymentGateway\SecurePay@webhook")->
 Route::get("prismpay/form/{id}", "Repo\PaymentGateway\PrismPay@prismpayForm")->name("prismpay.form-request");
 Route::post('prisampay/data', 'Repo\PaymentGateway\PrismPay@getPrisampayData')->name('prisampay.data');
 Route::post('prisampay/fail', 'Repo\PaymentGateway\PrismPay@prisampayFail')->name('prisampay.fail');
+
+
+// * Chargemoney MID urls
+Route::get("chargemoney/redirect/{id}", "Repo\PaymentGateway\Chargemoney@redirect")->name("chargemoney.redirect");
+Route::post("chargemoney/callback/{id}", "Repo\PaymentGateway\Chargemoney@callback")->name("chargemoney.callback");

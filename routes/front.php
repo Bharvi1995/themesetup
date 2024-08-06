@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'notification_read_user'], function () {
 
     Route::get('pagenotfound', ['as' => 'notfound', 'uses' => 'HomeController@pagenotfound']);
-    Route::group(['middleware' => 'checkUserProfile'], function () {
+    // Route::group(['middleware' => 'checkUserProfile'], function () {
         Route::get('/home', 'HomeController@home')->name('dashboardPage');
         Route::get('get-user-dashbaord-data', 'HomeController@getDashboardData')->name('get-user-dashbaord-data');
         Route::get('statistics/reports', 'HomeController@transactionSummary')->name('transaction-summary');
@@ -19,14 +19,14 @@ Route::group(['middleware' => 'notification_read_user'], function () {
         // Route::post('get-transaction-break-up', 'HomeController@getTransactionBreakUp')->name('get-transaction-break-up');
 
         /************************Merchant Payout Route Start ***************************************/
-        Route::get('payout', 'PayoutScheduleController@getPayoutReport')->name('payout-reports');
+        // Route::get('payout', 'PayoutScheduleController@getPayoutReport')->name('payout-reports');
         // Route::get('payout-schedule', 'PayoutScheduleController@getPayoutSchedule')->name('payout-schedule');
-        Route::get('payout/pdf/{id}', 'PayoutScheduleController@generatePDF')->name('payout_report.pdf');
-        Route::get('payout/{id}', 'PayoutScheduleController@show')->name('payout_report.show');
+        // Route::get('payout/pdf/{id}', 'PayoutScheduleController@generatePDF')->name('payout_report.pdf');
+        // Route::get('payout/{id}', 'PayoutScheduleController@show')->name('payout_report.show');
         /************************Merchant Payout Route End ***************************************/
 
         /************************Merchant Risk and compliance***************************************/
-        Route::get('risk-compliance-report', 'ReportController@riskComplianceReport')->name('risk-compliance-report');
+        // Route::get('risk-compliance-report', 'ReportController@riskComplianceReport')->name('risk-compliance-report');
         /************************Merchant Risk and compliance***************************************/
 
         /******************************** MID Details Start **********************************************/
@@ -35,15 +35,15 @@ Route::group(['middleware' => 'notification_read_user'], function () {
         /******************************** MID Details End **********************************************/
 
         /******************************** Summary Report Start **********************************************/
-        Route::get('summary-reports', 'HomeController@summaryReport')->name('summary-reports');
-        Route::get('user-card-summary-report', 'HomeController@cardSummaryReport')->name('user-card-summary-report');
-        Route::get('user-payment-status-summary-report', 'HomeController@paymentStatusSummaryReport')->name('user-payment-status-summary-report');
-        Route::get('user-mid-summary-report', 'HomeController@usermidSummaryReport')->name('user-mid-summary-report');
-        Route::get('user-summary-report-on-country', 'HomeController@usermidSummaryReportOnCountry')->name('user-summary-report-on-country');
-        Route::get('user-transactions-reason-report', 'HomeController@reasonReport')->name('user-transactions-reason-report');
-        Route::get('user-countrywise-transactions-report', 'HomeController@merchantCountrywiseTransactionReport')->name('user-countrywise-transactions-report');
+        // Route::get('summary-reports', 'HomeController@summaryReport')->name('summary-reports');
+        // Route::get('user-card-summary-report', 'HomeController@cardSummaryReport')->name('user-card-summary-report');
+        // Route::get('user-payment-status-summary-report', 'HomeController@paymentStatusSummaryReport')->name('user-payment-status-summary-report');
+        // Route::get('user-mid-summary-report', 'HomeController@usermidSummaryReport')->name('user-mid-summary-report');
+        // Route::get('user-summary-report-on-country', 'HomeController@usermidSummaryReportOnCountry')->name('user-summary-report-on-country');
+        // Route::get('user-transactions-reason-report', 'HomeController@reasonReport')->name('user-transactions-reason-report');
+        // Route::get('user-countrywise-transactions-report', 'HomeController@merchantCountrywiseTransactionReport')->name('user-countrywise-transactions-report');
         /******************************** Summary Report End **********************************************/
-    });
+    // });
 
 
 
@@ -55,7 +55,8 @@ Route::group(['middleware' => 'notification_read_user'], function () {
     //****************** send firebase device token to database End *************************//
 
     //****************** Merchant Profile modules Start *************************//
-    Route::get('setting', 'HomeController@profile')->name('setting');
+    Route::get('edit/profile', 'HomeController@profile')->name('setting');
+    Route::get('password', 'HomeController@updatePasswordIndex')->name('update.passwordindex');
     // Route::get('user-bank-details', 'HomeController@userBankdetails')->name('user.bank.details');
     // Route::get('user-rates-fee', 'HomeController@userRatesFee')->name('user.rates.fee');
     // Route::post('update-user-bank-details', 'HomeController@updateUserBankDetail')->name('update.user.bank.details');
@@ -66,10 +67,10 @@ Route::group(['middleware' => 'notification_read_user'], function () {
     //****************** Merchant Profile modules End *************************//
 
     //****************** Merchant Tickets modules Start *************************//
-    Route::get('helpdesk', 'TicketController@index')->name('ticket');
-    Route::get('get-ticket', 'TicketController@getTickets')->name('get-ticket');
-    Route::get('generate/helpdesk', 'TicketController@create')->name('ticket.create');
-    Route::post('helpdesk/store', 'TicketController@store')->name('ticket.store');
+    // Route::get('helpdesk', 'TicketController@index')->name('ticket');
+    // Route::get('get-ticket', 'TicketController@getTickets')->name('get-ticket');
+    // Route::get('generate/helpdesk', 'TicketController@create')->name('ticket.create');
+    // Route::post('helpdesk/store', 'TicketController@store')->name('ticket.store');
     // Route::get('ticket/{id}', 'TicketController@show')->name('ticket.show');
     // Route::delete('ticket/{id}', 'TicketController@destroy')->name('ticket.destroy');
 
@@ -84,10 +85,10 @@ Route::group(['middleware' => 'notification_read_user'], function () {
 
     //****************** Merchant Application modules Start *************************//
     // Application controller
-    // Route::get('initiate/verification', 'ApplicationController@index')->name('start-my-application');
-    // Route::post('initiate/verification/store', 'ApplicationController@startApplicationStore')->name('start-my-application-store');
-    Route::get('verification', 'ApplicationController@status')->name('my-application');
-    Route::get('edit/verification/{id}', 'ApplicationController@applicationsEdit')->name('edit-my-application');
+    Route::get('initiate/kyc', 'ApplicationController@index')->name('start-my-application');
+    Route::post('initiate/kyc/store', 'ApplicationController@startApplicationStore')->name('start-my-application-store');
+    Route::get('kyc', 'ApplicationController@status')->name('my-application');
+    Route::get('edit/kyc/{id}', 'ApplicationController@applicationsEdit')->name('edit-my-application');
     // Route::put('verification/update/{id}', 'ApplicationController@applicationsUpdate')->name('applications-update');
     Route::get('downloadDocumentsUploadeUser', 'ApplicationController@downloadDocumentsUploade')->name('downloadDocumentsUploadeUser');
     
@@ -174,11 +175,13 @@ Route::group(['middleware' => 'notification_read_user'], function () {
         Route::delete('deleteWebsiteUrl/{id}', 'UserAPIController@deleteWebsiteUrl')->name('deleteWebsiteUrl');
         /******************************* User API Module Start **************************************/
 
-        Route::get("settlement_payout/report", "PaymentSettlementController@index")->name("merchant.settlement_report");
+        // Route::get("settlement_payout/report", "PaymentSettlementController@index")->name("merchant.settlement_report");
 
         // Route::get('wordpress/woocommerce-plugin', 'WPPluginController@index')->name('wpPlugin.index');
         // Route::post('wordpress/woocommerce-plugin/download', 'WPPluginController@download')->name('wpPlugin.download');
 
         Route::post('update/password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('change-user-pass');
+
+        // Route::get('my-application', 'ApplicationController@status')->name('my-application');
     });
 });

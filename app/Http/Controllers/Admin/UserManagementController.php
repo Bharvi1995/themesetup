@@ -171,7 +171,7 @@ class UserManagementController extends AdminController
             notificationMsg('error', 'Something went wrong, please try again.');
         }
 
-        return redirect('admin/sub-user/' . $user->main_user_id);
+        return redirect('paylaksa/sub-user/' . $user->main_user_id);
     }
 
     public function subUserListUpdate(Request $request, $id)

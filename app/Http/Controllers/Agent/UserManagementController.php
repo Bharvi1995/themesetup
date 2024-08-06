@@ -392,7 +392,7 @@ class UserManagementController extends Controller
                 'type' => 'admin',
                 'title' => 'Application Created',
                 'body' => 'You have received a new application from RP.',
-                'url' => '/admin/applications-list/view/' . $application->id,
+                'url' => '/paylaksa/applications-list/view/' . $application->id,
                 'is_read' => '0'
             ];
 

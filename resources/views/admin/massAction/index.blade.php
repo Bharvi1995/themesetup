@@ -70,7 +70,7 @@
                         <div class="col-lg-12 mt-1">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">Submit</button>
-                                <a href="{{ url('admin/technical') }}" class="btn btn-danger">Cancel</a>
+                                <a href="{{ url('paylaksa/technical') }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                     </div>

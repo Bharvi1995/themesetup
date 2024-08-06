@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ config('app.name') }} | Checkout Form Response </title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ storage_asset('setup/images/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ storage_asset('softtheme/img/favicon.ico') }}">
     <link href="{{ storage_asset('theme/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ storage_asset('themeAdmin/css/typography.css') }}">
     <link href="{{ storage_asset('themeAdmin/css/custom.css') }}" rel="stylesheet">

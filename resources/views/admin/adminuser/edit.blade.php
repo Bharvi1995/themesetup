@@ -134,7 +134,7 @@
                         <div class="col-lg-12 mt-3">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <!-- <a href="#" class="yellow-btn mr-3"><i class="fas fa-save me-2"></i>Submit</a> -->
-                            <a href="{{ url('admin/admin-user') }}" class="btn btn-danger"></i>Cancel</a>
+                            <a href="{{ url('paylaksa/admin-user') }}" class="btn btn-danger"></i>Cancel</a>
                         </div>
                     </div>
                 </div>

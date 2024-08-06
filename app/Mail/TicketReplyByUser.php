@@ -19,7 +19,7 @@ class TicketReplyByUser extends Mailable {
      */
     private $ticket;
     private $user;
-    const url = '/admin/ticket';
+    const url = '/paylaksa/ticket';
     public function __construct($ticket,$user) {
         $this->ticket = $ticket;
         $this->user = $user;

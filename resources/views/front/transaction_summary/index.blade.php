@@ -1,60 +1,33 @@
 @extends('layouts.user.default')
 
 @section('title')
-    Statistics Reports
+    Summary
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('dashboardPage') }}">Dashboard</a> / Statistics Reports
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('dashboardPage') }}">Dashboard</a></li>
+      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Summary</li>
+   </ol>
+   <h6 class="font-weight-bolder mb-0">Summary</h6>
+</nav>
+
 @endsection
 
 @section('customeStyle')
 @endsection
 
 @section('content')
-
-<div class="page-body">
-  <div class="container-xl">
-    <div class="row row-deck row-cards">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            
-            <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
-              <li class="nav-item">
-                <a href="#SUCCESSFUL" class="nav-link active" data-bs-toggle="tab">Successful</a>
-              </li>
-              <li class="nav-item">
-                <a href="#DECLINED" class="nav-link" data-bs-toggle="tab">Declined</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#CHARGEBACKS" data-bs-toggle="tab">
-                    Chargebacks
-                </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#REFUND" data-bs-toggle="tab">
-                      Refund
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#SUSPICIOUS" data-bs-toggle="tab">
-                      Dispute
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#RETRIEVAL" data-bs-toggle="tab">
-                      Retrieval
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#BLOCK" data-bs-toggle="tab">
-                      Block
-                  </a>
-              </li>
-            </ul>
-            <div class="card-actions">
-                <button class="btn btn-primary btn-sm searchModelOpen" data-bs-toggle="modal" data-bs-target="#searchModal"> Advance Search &nbsp;
+<div class="col-xxl-8">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+                <h5 class="card-title">All Type of Summary</h5>
+            </div>
+            <div class="card-header-toolbar align-items-center">
+                <div class="btn-group mr-2">
+                    <button class="btn btn-primary btn-sm searchModelOpen" data-bs-toggle="modal" data-bs-target="#searchModal"> More Filter &nbsp;
                     <svg width="13" height="10" viewBox="0 0 18 15" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -62,290 +35,445 @@
                             fill="#FFFFFF" />
                     </svg>
                 </button>
-                <a href="{{route('transaction-summary')}}" class="btn btn-danger btn-sm">Reset</a>
+                <a href="{{ route('transaction-summary') }}" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px !important;">Clear</a>
+                </div>
             </div>
-          </div>
-          
-          <div class="card-body">
-            <div class="tab-content">
-              <div class="tab-pane active show" id="SUCCESSFUL">
-                <h4>Successful Reports</h4>
-                <div class="table-responsive custom-table">
-                  <table class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <!-- <th>Currency</th> -->
-                              <th>Amount</th>
-                              <th>Percentage</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @if(count($TransactionSummary) > 0)
-                          @foreach($TransactionSummary as $ts)
-                          <tr>
-                              <!-- <td>{{ $ts['currency'] }}</td> -->
-                              <td>{{ $ts['success_amount'] ." " .$ts['currency']}} </td>
-                              <td>{{ round($ts['success_percentage'],2) }}%</td>
-                              <td>{{ $ts['success_count'] }}</td>
-                          </tr>
-                          @endforeach
-                          @else
-                          <tr>
-                              <td class="text-center text-white" colspan="4">No record found.</td>
-                          </tr>
-                          @endif
-                      </tbody>
-                  </table>
-                  </div>
-              </div>
-              <div class="tab-pane" id="DECLINED">
-                <h4>Declined Reports</h4>
-                <div class="table-responsive custom-table">
-                  <table class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <!-- <th>Currency</th> -->
-                              <th>Amount</th>
-                              <th>Percentage</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @if(count($TransactionSummary) > 0)
-                          @foreach($TransactionSummary as $ts)
-                          <tr>
-                              <!-- <td>{{ $ts['currency'] }}</td> -->
-                               <td>{{ $ts['declined_amount'] ." " .$ts['currency']}} </td>
-                              <!-- <td>{{ number_format($ts['declined_amount'],2,".",",") }}</td> -->
-                              <td>{{ round($ts['declined_percentage'],2) }}%</td>
-                              <td>{{ $ts['declined_count'] }}</td>
-                          </tr>
-                          @endforeach
-                          @else
-                          <tr>
-                              <td class="text-center text-white" colspan="4">No record found.</td>
-                          </tr>
-                          @endif
-                      </tbody>
-                  </table>
-                  </div>
-              </div>
-              <div class="tab-pane" id="CHARGEBACKS">
-                <h4>Chargeback Reports</h4>
-                <div class="table-responsive custom-table">
-                  <table class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <!-- <th>Currency</th> -->
-                              <th>Amount</th>
-                              <th>Percentage</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @if(count($TransactionSummary) > 0)
-                          @foreach($TransactionSummary as $ts)
-                          <tr>
-                              <!-- <td>{{ $ts['currency'] }}</td> -->
-                              <td>{{ number_format($ts['chargebacks_amount'],2,".",",") ." ".$ts['currency']}}</td>
-                              <td>{{ round($ts['chargebacks_percentage'],2) }}%</td>
-                              <td>{{ $ts['chargebacks_count'] }}</td>
-                          </tr>
-                          @endforeach
-                          @else
-                          <tr>
-                              <td class="text-center text-white" colspan="4">No record found.</td>
-                          </tr>
-                          @endif
-                      </tbody>
-                  </table>
-                  </div>
-              </div>
-              <div class="tab-pane" id="REFUND">
-                <h4>Refund Reports</h4>
-                  <div class="table-responsive custom-table">
-                  <table class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <!-- <th>Currency</th> -->
-                              <th>Amount</th>
-                              <th>Percentage</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @if(count($TransactionSummary) > 0)
-                          @foreach($TransactionSummary as $ts)
-                          <tr>
-                              <!-- <td>{{ $ts['currency'] }}</td> -->
-                              <td>{{ number_format($ts['refund_amount'],2,".",",") ." ". $ts['currency']}}</td>
-                              <td>{{ round($ts['refund_percentage'],2) }}%</td>
-                              <td>{{ $ts['refund_count'] }}</td>
-                          </tr>
-                          @endforeach
-                          @else
-                          <tr>
-                              <td class="text-center text-white" colspan="4">No record found.</td>
-                          </tr>
-                          @endif
-                      </tbody>
-                  </table>
-                  </div>
-              </div>
-              <div class="tab-pane" id="SUSPICIOUS">
-                  <h4>Dispute Reports</h4>
-                  <div class="table-responsive custom-table">
-                  <table class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <!-- <th>Currency</th> -->
-                              <th>Amount</th>
-                              <th>Percentage</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @if(count($TransactionSummary) > 0)
-                          @foreach($TransactionSummary as $ts)
-                          <tr>
-                              <!-- <td>{{ $ts['currency'] }}</td> -->
-                              <td>{{ number_format($ts['flagged_amount'],2,".",",")." ".$ts['currency'] }}</td>
-                              <td>{{ round($ts['flagged_percentage'],2) }}%</td>
-                              <td>{{ $ts['flagged_count'] }}</td>
-                          </tr>
-                          @endforeach
-                          @else
-                          <tr>
-                              <td class="text-center text-white" colspan="4">No record found.</td>
-                          </tr>
-                          @endif
-                      </tbody>
-                  </table>
-                  </div>
-              </div>
-              <div class="tab-pane" id="RETRIEVAL">
-                  <h4>Retrieval Reports</h4>
-                  <div class="table-responsive custom-table">
-                  <table class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <!-- <th>Currency</th> -->
-                              <th>Amount</th>
-                              <th>Percentage</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @if(count($TransactionSummary) > 0)
-                          @foreach($TransactionSummary as $ts)
-                          <tr>
-                              <!-- <td>{{ $ts['currency'] }}</td> -->
-                              <td>{{ number_format($ts['retrieval_amount'],2,".",",")." ".$ts['currency'] }}</td>
-                              <td>{{ round($ts['retrieval_percentage'],2) }}%</td>
-                              <td>{{ $ts['retrieval_count'] }}</td>
-                          </tr>
-                          @endforeach
-                          @else
-                          <tr>
-                              <td class="text-center text-white" colspan="4">No record found.</td>
-                          </tr>
-                          @endif
-                      </tbody>
-                  </table>
-                  </div>
-              </div>
-              <div class="tab-pane" id="BLOCK">
-                  <h4>Block Reports</h4>
-                  <div class="table-responsive custom-table">
-                  <table class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <!-- <th>Currency</th> -->
-                              <th>Amount</th>
-                              <th>Percentage</th>
-                              <th>Count</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @if(count($TransactionSummary) > 0)
-                          @foreach($TransactionSummary as $ts)
-                          <tr>
-                              <!-- <td>{{ $ts['currency'] }}</td> -->
-                              <td>{{ number_format($ts['block_amount'],2,".",",")." ".$ts['currency'] }}</td>
-                              <td>{{ round($ts['block_percentage'],2) }}%</td>
-                              <td>{{ $ts['block_count'] }}</td>
-                          </tr>
-                          @endforeach
-                          @else
-                          <tr>
-                              <td class="text-center text-white" colspan="4">No record found.</td>
-                          </tr>
-                          @endif
-                      </tbody>
-                  </table>
-                  </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+        @php
+            $successArr = [];
+            $successArrCurrency = [];
+            
+            $declinedArr = [];
+            $declinedArrCurrency = [];
+            
+            $refundArr = [];
+            $refundArrCurrency = [];
 
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form method="" id="search-form" class="form-dark">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel">Advanced Search</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="basic-form">
-                            <div class="form-row row">
-                                <div class="form-group col-md-12">
-                                    <label for="text">Start Date</label>
-                                    <div class="date-input">
-                                        <input class="form-control" type="text" name="start_date"
-                                            placeholder="Start Date" id="start_date"
-                                            value="{{ isset($_GET['start_date']) && $_GET['start_date'] != '' ? $_GET['start_date'] : '' }}"
-                                            autocomplete="off">
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label for="text">End Date</label>
-                                    <div class="date-input">
-                                        <input class="form-control" type="text" name="end_date" placeholder="End Date"
-                                            id="end_date"
-                                            value="{{ isset($_GET['end_date']) && $_GET['end_date'] != '' ? $_GET['end_date'] : '' }}"
-                                            autocomplete="off">
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label for="text">Currency</label>
-                                    <select class="form-control select2" name="currency" id="currency">
-                                        <option selected disabled> -- Select Currency -- </option>
-                                        @foreach (config('currency.three_letter') as $key => $currency)
-                                            <option value="{{ $currency }}"
-                                                {{ isset($_GET['currency']) && $_GET['currency'] == $key ? 'selected' : '' }}>
-                                                {{ $currency }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+            $chargebackArr = [];
+            $chargebackArrCurrency = [];
+
+            if(count($TransactionSummary) > 0)
+            {
+                foreach($TransactionSummary as $ts)
+                {
+                    array_push($successArr, round($ts['success_amount'], 2));
+                    array_push($successArrCurrency, $ts['currency']);
+
+                    if(round($ts['declined_amount'], 2) > 0){
+                        array_push($declinedArr, round($ts['declined_amount'], 2));
+                        array_push($declinedArrCurrency, $ts['currency']);
+                    }
+
+                    if(round($ts['refund_amount'], 2)){
+                        array_push($refundArr, round($ts['refund_amount'], 2));
+                        array_push($refundArrCurrency, $ts['currency']);
+                    }
+
+                    if(round($ts['chargebacks_amount'], 2)){
+                        array_push($chargebackArr, round($ts['chargebacks_amount'], 2));
+                        array_push($chargebackArrCurrency, $ts['currency']);
+                    }
+                }
+            }
+        @endphp
+        <div class="card-body">
+            <div class="row">
+                @if(count($successArr) > 0)
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Success</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- <div id="radialBarChart"></div> -->
+                            <div class="table-responsive p-0">
+                               <table class="table align-items-center justify-content-center mb-0">
+                                  <thead>
+                                     <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Value</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Count</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completion</th>
+                                        <th></th>
+                                     </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($TransactionSummary as $ts)
+                                     <tr>
+                                        <td  class="align-middle text-center text-sm">
+                                           <p class="text-sm font-weight-bold mb-0">{{ round($ts['success_amount'], 2) . $ts['currency'] }}</p>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <span class="text-xs font-weight-bold">{{ round($ts['success_count'], 2) }}</span>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <div class="d-flex align-items-center justify-content-center">
+                                              <span class="me-2 text-xs font-weight-bold">{{ round($ts['success_percentage'],2) }}%</span>
+                                              <div>
+                                                 <div class="progress">
+                                                    <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['success_percentage'] }}%;"></div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </td>
+                                        <td class="align-middle">
+                                           <button class="btn btn-link text-secondary mb-0">
+                                           <i class="fa fa-ellipsis-v text-xs"></i>
+                                           </button>
+                                        </td>
+                                     </tr>
+                                     @endforeach
+                                  </tbody>
+                               </table>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="resetForm"></i>Clear</button>
-                        <button type="submit" class="btn btn-success" id="extraSearch123">Search</button>
+                </div>
+                @endif
+                @if(count($declinedArr) > 0)
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Failed</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- <div id="radialBarFailedChart"></div> -->
+                            <div class="table-responsive p-0">
+                               <table class="table align-items-center justify-content-center mb-0">
+                                  <thead>
+                                     <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Value</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Count</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completion</th>
+                                        <th></th>
+                                     </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($TransactionSummary as $ts)
+                                     <tr>
+                                        <td  class="align-middle text-center text-sm">
+                                           <p class="text-sm font-weight-bold mb-0">{{ round($ts['declined_amount'], 2) . $ts['currency'] }}</p>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <span class="text-xs font-weight-bold">{{ round($ts['declined_count'], 2) }}</span>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <div class="d-flex align-items-center justify-content-center">
+                                              <span class="me-2 text-xs font-weight-bold">{{ round($ts['declined_percentage'],2) }}%</span>
+                                              <div>
+                                                 <div class="progress">
+                                                    <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['declined_percentage'] }}%;"></div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </td>
+                                        <td class="align-middle">
+                                           <button class="btn btn-link text-secondary mb-0">
+                                           <i class="fa fa-ellipsis-v text-xs"></i>
+                                           </button>
+                                        </td>
+                                     </tr>
+                                     @endforeach
+                                  </tbody>
+                               </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
+                @endif
+            </div>
+
+            <div class="row">
+                @if(count($refundArr) > 0)
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Refund</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- <div id="radialBarRefundChart"></div> -->
+                            <div class="table-responsive p-0">
+                               <table class="table align-items-center justify-content-center mb-0">
+                                  <thead>
+                                     <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Value</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Count</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completion</th>
+                                        <th></th>
+                                     </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($TransactionSummary as $ts)
+                                     <tr>
+                                        <td  class="align-middle text-center text-sm">
+                                           <p class="text-sm font-weight-bold mb-0">{{ round($ts['refund_amount'], 2) . $ts['currency'] }}</p>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <span class="text-xs font-weight-bold">{{ round($ts['refund_count'], 2) }}</span>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <div class="d-flex align-items-center justify-content-center">
+                                              <span class="me-2 text-xs font-weight-bold">{{ round($ts['refund_percentage'],2) }}%</span>
+                                              <div>
+                                                 <div class="progress">
+                                                    <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['refund_percentage'] }}%;"></div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </td>
+                                        <td class="align-middle">
+                                           <button class="btn btn-link text-secondary mb-0">
+                                           <i class="fa fa-ellipsis-v text-xs"></i>
+                                           </button>
+                                        </td>
+                                     </tr>
+                                     @endforeach
+                                  </tbody>
+                               </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+                @if(count($chargebackArr) > 0)
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Chargebacks</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- <div id="radialBarChargebacksChart"></div> -->
+                            <div class="table-responsive p-0">
+                               <table class="table align-items-center justify-content-center mb-0">
+                                  <thead>
+                                     <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Value</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Count</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completion</th>
+                                        <th></th>
+                                     </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($TransactionSummary as $ts)
+                                     <tr>
+                                        <td  class="align-middle text-center text-sm">
+                                           <p class="text-sm font-weight-bold mb-0">{{ round($ts['chargeback_amount'], 2) . $ts['currency'] }}</p>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <span class="text-xs font-weight-bold">{{ round($ts['chargeback_count'], 2) }}</span>
+                                        </td>
+                                        <td  class="align-middle text-center text-sm">
+                                           <div class="d-flex align-items-center justify-content-center">
+                                              <span class="me-2 text-xs font-weight-bold">{{ round($ts['chargeback_percentage'],2) }}%</span>
+                                              <div>
+                                                 <div class="progress">
+                                                    <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['chargeback_percentage'] }}%;"></div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                        </td>
+                                        <td class="align-middle">
+                                           <button class="btn btn-link text-secondary mb-0">
+                                           <i class="fa fa-ellipsis-v text-xs"></i>
+                                           </button>
+                                        </td>
+                                     </tr>
+                                     @endforeach
+                                  </tbody>
+                               </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+            </div>
         </div>
     </div>
-@endsection
+</div>
 
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <form method="GET" id="search-form" class="form-dark">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Advanced Search</h4>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="basic-form">
+                        <div class="form-row row">
+                            <div class="form-group col-md-12">
+                                <label for="text">Start Date</label>
+                                <input class="form-control" type="text" name="start_date" placeholder="Start Date"
+                                    id="start_date"
+                                    value="{{ isset($_GET['start_date']) && $_GET['start_date'] != '' ? $_GET['start_date'] : '' }}"
+                                    autocomplete="off">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="text">End Date</label>
+                                <input class="form-control" type="text" name="end_date" placeholder="End Date"
+                                    id="end_date"
+                                    value="{{ isset($_GET['end_date']) && $_GET['end_date'] != '' ? $_GET['end_date'] : '' }}"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="resetForm"></i>Clear</button>
+                    <button type="submit" class="btn btn-success" id="extraSearch123">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
 @section('customScript')
+<script type="text/javascript">
+    var successArr = @json($successArr);
+    var successArrCurrency = @json($successArrCurrency);
+    var chartElement = document.querySelector("#radialBarChart");
+    
+    if(chartElement){
+        var radialBarChartoptions = {
+            series: successArr,
+            chart: {
+                height: 343,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return successArr.reduce((a, b) => a + b, 0).toFixed(2); // Sum of success percentages
+                            }
+                        }
+                    }
+                }
+            },
+            labels: successArrCurrency,
+        };
+        var chart = new ApexCharts(document.querySelector("#radialBarChart"), radialBarChartoptions);
+        chart.render();
+    }
+
+    var declinedArr = @json($declinedArr);
+    var declinedArrCurrency = @json($declinedArrCurrency);
+    
+    var chartElementFailed = document.querySelector("#radialBarFailedChart");
+    if(chartElementFailed){
+        var radialFailedBarChartoptions = {
+            series: declinedArr,
+            chart: {
+                height: 343,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return declinedArr.reduce((a, b) => a + b, 0).toFixed(2); // Sum of success percentages
+                            }
+                        }
+                    }
+                }
+            },
+            labels: declinedArrCurrency,
+        };
+        var chartFailed = new ApexCharts(document.querySelector("#radialBarFailedChart"), radialFailedBarChartoptions);
+        chartFailed.render();
+    }
+
+
+    
+    var refundArr = @json($refundArr);
+    var refundArrCurrency = @json($refundArrCurrency);
+    var chartElementRefund = document.querySelector("#radialBarRefundChart");
+    if(chartElementRefund){
+        var radialRefundBarChartoptions = {
+            series: refundArr,
+            chart: {
+                height: 343,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return refundArr.reduce((a, b) => a + b, 0).toFixed(2); // Sum of success percentages
+                            }
+                        }
+                    }
+                }
+            },
+            labels: refundArrCurrency,
+        };
+        var chartRefund = new ApexCharts(document.querySelector("#radialBarRefundChart"), radialRefundBarChartoptions);
+        chartRefund.render();
+    }
+
+    var chargebackArr = @json($chargebackArr);
+    var chargebackArrCurrency = @json($chargebackArrCurrency);
+    var chartElementChargeback = document.querySelector("#radialBarChargebacksChart");
+    if(chartElementChargeback){
+        var radialBarChargebacksChart = {
+            series: chargebackArr,
+            chart: {
+                height: 343,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return chargebackArr.reduce((a, b) => a + b, 0).toFixed(2); // Sum of success percentages
+                            }
+                        }
+                    }
+                }
+            },
+            labels: chargebackArrCurrency,
+        };
+        var chartChargebacks = new ApexCharts(document.querySelector("#radialBarChargebacksChart"), radialBarChargebacksChart);
+        chartChargebacks.render();
+    }
+
+    
+</script>
 @endsection

@@ -35,76 +35,56 @@
     <?php $isEdit = true; ?>
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
-            <div class="card">
-                <div class="card-header">
+            <div class="panel">
+                <div class="panel-header">
                     <div class="header-title">
-                        <h4 class="card-title">My KYC</h4>
+                        <h4 class="panel-title">My KYC</h4>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="basic-form">
+                <div class="panel-body">
+                    
                         <form action="{{ route('start-my-application-store') }}" method="post"
                             enctype="multipart/form-data" id="application-form" class="form form-dark">
                             @csrf
-                            <div class="form-row row">
-                                <div class="form-group col-md-4">
-                                    <label for="business_contact_first_name">First Name<span
-                                            class="text-danger">*</span></label>
-                                    <div class="input-div">
-                                        <input type="text" id="business_contact_first_name" class="form-control"
-                                            name="business_contact_first_name" placeholder="Enter here..."
-                                            value="{{ isset($data->business_contact_first_name) ? $data->business_contact_first_name : Input::old('business_contact_first_name') }}">
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="business_contact_first_name" class="form-label">First Name<span class="text-danger">*</span></label>
+                                    <input type="text" id="business_contact_first_name" class="form-control" name="business_contact_first_name" placeholder="Enter here..." value="{{ isset($data->business_contact_first_name) ? $data->business_contact_first_name : Input::old('business_contact_first_name') }}">
                                     @if ($errors->has('business_contact_first_name'))
                                         <span class="text-danger help-block form-error">
                                             {{ $errors->first('business_contact_first_name') }}
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Last Name<span class="text-danger">*</span></label>
-                                    <div class="input-div">
+                                <div class="col-md-4">
+                                    <label class="form-label">Last Name<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="business_contact_last_name"
                                             name="business_contact_last_name" placeholder="Enter here..."
                                             value="{{ isset($data->business_contact_last_name) ? $data->business_contact_last_name : Input::old('business_contact_last_name') }}">
-                                    </div>
                                     @if ($errors->has('business_contact_last_name'))
                                         <span class="text-danger help-block form-error">
                                             {{ $errors->first('business_contact_last_name') }}
                                         </span>
                                     @endif
                                 </div>
-
-                                <div class="form-group col-md-4">
-                                    <label for="skype_id">Contact Details<span class="text-danger">*</span>
-                                        <small>(skype/telegram/etc)</small> </label>
-                                    <div class="input-div">
-                                        <input type="text" id="skype_id" class="form-control" name="skype_id"
-                                            placeholder="Enter here..."
-                                            value="{{ isset($data->skype_id) ? $data->skype_id : Input::old('skype_id') }}">
-                                    </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="skype_id">Contact Details<span class="text-danger">*</span></label>
+                                    <input type="text" id="skype_id" class="form-control" name="skype_id" placeholder="Enter here..." value="{{ isset($data->skype_id) ? $data->skype_id : Input::old('skype_id') }}">
                                     @if ($errors->has('skype_id'))
                                         <span class="text-danger help-block form-error">
                                             {{ $errors->first('skype_id') }}
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group col-md-4">
+
+                                <div class="col-md-4">
                                     <div class="input-div">
                                         <div class="row">
                                             <div class="col-md-4 pr-0">
-                                                <label>
-                                                    Country Code<span class="text-danger">*</span>
+                                                <label class="form-label"> Country Code<span class="text-danger">*</span>
                                                 </label>
-                                                <select class="form-control select2" name="country_code">
-                                                    <option value="44"
-                                                        {{ old('country_code') == '44' ? 'selected' : '' }}>
-                                                        UK
-                                                        (+44)</option>
-                                                    <option value="1"
-                                                        {{ old('country_code') == '1' ? 'selected' : '' }}>
-                                                        USA (+1)
-                                                    </option>
+                                                <select class="form-control" name="country_code">
+                                                    <option value="">-Country Code-</option>
                                                     <option data-countryCode="DZ"
                                                         {{ old('country_code') == '213' ? 'selected' : '' }}
                                                         value="213">Algeria
@@ -908,6 +888,14 @@
                                                         {{ old('country_code') == '598' ? 'selected' : '' }}
                                                         value="598">Uruguay
                                                         (+598)</option>
+                                                    <option value="44"
+                                                        {{ old('country_code') == '44' ? 'selected' : '' }}>
+                                                        UK
+                                                        (+44)</option>
+                                                    <option value="1"
+                                                        {{ old('country_code') == '1' ? 'selected' : '' }}>
+                                                        USA (+1)
+                                                    </option>
                                                     <option data-countryCode="UZ"
                                                         {{ old('country_code') == '998' ? 'selected' : '' }}
                                                         value="998">
@@ -959,8 +947,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-8">
-                                                <label for="phone_no">
-                                                    Phone Number<span class="text-danger">*</span>
+                                                <label for="phone_no" class="form-label">Phone Number<span class="text-danger">*</span>
                                                 </label>
                                                 <input type="text" id="phone_no" class="form-control"
                                                     name="phone_no" placeholder="Enter here..."
@@ -975,8 +962,9 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="category_id">Industry Type<span class="text-danger">*</span></label>
+
+                                <div class="col-md-4">
+                                    <label for="category_id" class="form-label">Industry Type<span class="text-danger">*</span></label>
                                     @if ($isEdit)
                                         <input type="hidden" class="oldIndustryType"
                                             value="{{ $data->category_id }}" />
@@ -985,59 +973,30 @@
                                             value="{{ old('category_id') }}" />
                                     @endif
 
-                                    <div class="input-div">
-                                        <select name="category_id" id="category_id" class="form-control select2"
-                                            data-width="100%" onchange="otherIndustryType(this.value)">
-                                            <option value="" selected disabled>Select</option>
-                                            @foreach ($category as $key => $value)
-                                                <option value="{{ $key }}"
-                                                    {{ old('category_id') == $key ? 'selected' : '' }}
-                                                    {{ isset($data->category_id) ? ($data->category_id == $key ? 'selected' : '') : '' }}>
-                                                    {{ $value }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <select name="category_id" id="category_id" class="form-control"
+                                        data-width="100%" onchange="otherIndustryType(this.value)">
+                                        <option value="" selected disabled>Select</option>
+                                        @foreach ($category as $key => $value)
+                                            <option value="{{ $key }}"
+                                                {{ old('category_id') == $key ? 'selected' : '' }}
+                                                {{ isset($data->category_id) ? ($data->category_id == $key ? 'selected' : '') : '' }}>
+                                                {{ $value }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('category_id'))
                                         <span class="text-danger help-block form-error">
                                             {{ $errors->first('category_id') }}
                                         </span>
                                     @endif
+                                </div>
 
-                                    <div class="form-group mt-2 d-none showOtherIndustryInput">
-                                        <label for="category_id">Miscellaneous<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control showOtherIndustryInputBox"
-                                            placeholder="Enter here.." name="other_industry_type"
-                                            @if ($isEdit) value="{{ $data->other_industry_type }}" @else
-                                        value="{{ old('other_industry_type') }}" @endif />
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group col-md-4">
-                                    <label for="business_name">Company Name<span class="text-danger">*</span></label>
-                                    <div class="input-div">
-                                        {!! Form::text('business_name', $data->business_name, [
+                                <div class="col-md-4">
+                                    <label for="website_url" class="form-label">Your Website URL<span class="text-danger">*</span></label>
+                                    {!! Form::text('website_url', $data->website_url, [
                                             'placeholder' => 'Enter here...',
                                             'class' => 'form-control',
-                                            'id' => 'business_name',
-                                        ]) !!}
-                                    </div>
-                                    @if ($errors->has('business_name'))
-                                        <span class="text-danger help-block form-error">
-                                            {{ $errors->first('business_name') }}
-                                        </span>
-                                    @endif
-                                </div>
-                               <div class="form-group col-md-4">
-                                    <label for="website_url">Your Website URL<span class="text-danger">*</span>
-                                        <small>https://google.com</small> </label>
-                                    <div class="input-div">
-                                        {!! Form::text('website_url', $data->website_url, [
-                                            'placeholder' => 'Enter here...',
-                                            'class' => 'form-control',
-                                            'id' => 'website_url',
-                                        ]) !!}
-                                    </div>
+                                            'id' => 'website_url']) !!}
                                     @if ($errors->has('website_url'))
                                         <span class="text-danger help-block form-error">
                                             {{ $errors->first('website_url') }}
@@ -1045,96 +1004,268 @@
                                     @endif
                                 </div>
 
-                            
-                                <div class="form-group col-md-4">
-                                    <label for="company_license">Licence Status<span class="text-danger">*</span></label>
-                                    <div class="input-div">
-                                        @if ($isEdit)
-                                            <input type="hidden" class="company_licenseOldValue"
-                                                value="{{ old('company_license') == '0' ? old('company_license') : $data->company_license }}" />
-                                        @else
-                                            <input type="hidden" class="company_licenseOldValue"
-                                                value="{{ old('company_license') }}" />
-                                        @endif
-                                        <select name="company_license" id="company_license" class="form-control select2"
-                                            data-width="100%" onchange="getLicenseStatus(this.value)">
-                                            <option value="" selected disabled>Select</option>
-                                            <option value="0"
-                                                {{ isset($data->company_license) ? ($data->company_license == 0 ? 'selected' : '') : '' }}
-                                                {{ old('company_license') == '0' ? 'selected' : '' }}>Yes</option>
-                                            <option value="1"
-                                                {{ isset($data->company_license) ? ($data->company_license == 1 ? 'selected' : '') : '' }}
-                                                {{ old('company_license') == '1' ? 'selected' : '' }}>No</option>
-                                            <option value="2"
-                                                {{ isset($data->company_license) ? ($data->company_license == 2 ? 'selected' : '') : '' }}
-                                                {{ old('company_license') == '2' ? 'selected' : '' }}>NA</option>
-                                        </select>
-                                    </div>
-                                    @if ($errors->has('company_license'))
-                                        <span class="text-danger help-block form-error">
-                                            {{ $errors->first('company_license') }}
-                                        </span>
-                                    @endif
-                                    
-                                </div>
-                                <div class="form-group col-md-4 d-none toggleLicenceDocs">
-                                    <label>Upload your licence.<span class="text-danger">*</span></label>
+                                <div class="col-md-4">
+                                    <label class="form-label">Certificate of Incorporation <span class="text-danger">*</span></label>
                                     <div class="row">
-                                        <div
-                                            class="{{ $isEdit && $data->licence_document ? 'col-md-10' : 'col-md-12' }} ">
+                                        <div class="col-9 col-md-9">
                                             <div class="custom-file">
-                                                <input type="file" class="form-control" name="licence_document">
+                                                <input type="file" class="form-control" id="validationCustomFile2"
+                                                    name="company_incorporation_certificate">
+                                                @if ($errors->has('company_incorporation_certificate'))
+                                                    <span class="text-danger help-block form-error">
+                                                        {{ $errors->first('company_incorporation_certificate') }}
+                                                    </span>
+                                                @endif
                                             </div>
                                         </div>
-                                        @if ($isEdit)
-                                            @if ($data->licence_document)
-                                                <input type="hidden" class="getLicenseDocumentValidation"
-                                                    value="false" />
-                                                <div class="col-md-2">
-                                                    <a href="{{ getS3Url($data->licence_document) }}"
-                                                        target="_blank" class="btn btn-primary btn-icon"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                </div>
-                                            @else
-                                                <input type="hidden" class="getLicenseDocumentValidation"
-                                                    value="true" />
-                                            @endif
+                                        @if (isset($data->company_incorporation_certificate))
+                                            <div class="col-2 col-md-3">
+                                                <a href="{{ getS3Url($data->company_incorporation_certificate) }}"
+                                                    target="_blank" class="btn btn-primary btn-sm">View</a>
+                                            </div>
                                         @endif
                                     </div>
-                                    @if ($errors->has('licence_document'))
-                                        <span class="text-danger help-block form-error">
-                                            {{ $errors->first('licence_document') }}
-                                        </span>
-                                    @endif
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Domain Ownership <span class="text-danger">*</span></label>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Articles of Association <span class="text-danger">*</span></label>
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-9">
                                             <div class="custom-file">
-                                                <input type="file" class="form-control" name="domain_ownership">
+                                                <input type="file" class="form-control extra-document"
+                                                    name="aoa_document">
                                             </div>
-                                            @if ($errors->has('domain_ownership'))
+                                            @if ($errors->has('aoa_document'))
                                                 <span class="text-danger help-block form-error">
-                                                    {{ $errors->first('domain_ownership') }}
+                                                    {{ $errors->first('aoa_document') }}
                                                 </span>
                                             @endif
                                         </div>
-                                        @if (isset($data->domain_ownership))
+                                        @if (isset($data->aoa_document))
+                                            <div class="col-md-3">
+                                                <a href="{{ getS3Url($data->aoa_document) }}" target="_blank"
+                                                    class="btn btn-primary btn-sm">View</a>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">Bank statement for the company (last 3 Months)</label>
+                                    <div class="row">
+                                        <div class="col-9 col-md-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" id="validationCustomFile4"
+                                                    name="latest_bank_account_statement[]">
+                                            </div>
+                                            <div class="dynamicBankStatementFields"></div>
+                                            @if ($errors->has('latest_bank_account_statement.*'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('latest_bank_account_statement.*') }}
+                                                </span>
+                                            @endif
+                                            @if ($errors->has('latest_bank_account_statement'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('latest_bank_account_statement') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        @if (isset($data->latest_bank_account_statement))
+                                            @foreach (json_decode($data->latest_bank_account_statement) as $key => $value)
+                                                <div class="col-md-12 mt-2">
+                                                    <p class="pull-left mb-0">File - {{ $key + 1 }}</p>
+                                                    <a href="{{ getS3Url($value) }}" target="_blank"
+                                                        class="btn btn-primary btn-sm pull-right mr-4">View</a>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Utility Bill for director<span class="text-danger">*</span></label>
+                                    <div class="row mb-2">
+                                        <div class="col-9 col-md-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" id="validationCustomFile5"
+                                                    name="utility_bill[]">
+                                            </div>
+                                            <div class="dynamicUtilityBillFields"></div>
+                                            @if ($errors->has('utility_bill'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('utility_bill') }}
+                                                </span>
+                                            @endif
+                                            @if ($errors->has('utility_bill.*'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('utility_bill.*') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        @if (isset($data->utility_bill))
+                                            @foreach (json_decode($data->utility_bill) as $key => $value)
+                                                <div class="col-md-12 mt-2">
+                                                    <p class="pull-left mb-0">File - {{ $key + 1 }}</p>
+                                                    <a href="{{ getS3Url($value) }}" target="_blank"
+                                                        class="btn btn-primary btn-sm pull-right mr-4">View</a>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Processing History (Last 6 Months)</label>
+                                    <div class="row mb-2">
+                                        <div class="col-9 col-md-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" id="validationCustomFile8"
+                                                    name="previous_processing_statement[]" multiple>
+                                            </div>
+
+                                            <div class="row">
+                                                @if (isset($data->previous_processing_statement) && $data->previous_processing_statement != null)
+                                                    @php
+                                                        $previous_processing_statement_files = json_decode($data->previous_processing_statement);
+                                                    @endphp
+                                                    @php
+                                                        $count = 1;
+                                                    @endphp
+                                                    @foreach ($previous_processing_statement_files as $key => $value)
+                                                        <div class="col-md-12 mt-2">
+                                                            <p class="pull-left mb-0">File - {{ $count }}</p>
+                                                            <a href="{{ getS3Url($value) }}" target="_blank"
+                                                                class="btn btn-primary btn-sm pull-right mr-4">View</a>
+                                                            @php
+                                                                $count++;
+                                                            @endphp
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Chargeback History (Last 6 Months)</label>
+                                    <div class="row mb-2">
+                                        <div class="col-9 col-md-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" id="validationCustomFile8"
+                                                    name="previous_processing_statement[]" multiple>
+                                            </div>
+
+                                            <div class="row">
+                                                @if (isset($data->previous_processing_statement) && $data->previous_processing_statement != null)
+                                                    @php
+                                                        $previous_processing_statement_files = json_decode($data->previous_processing_statement);
+                                                    @endphp
+                                                    @php
+                                                        $count = 1;
+                                                    @endphp
+                                                    @foreach ($previous_processing_statement_files as $key => $value)
+                                                        <div class="col-md-12 mt-2">
+                                                            <p class="pull-left mb-0">File - {{ $count }}</p>
+                                                            <a href="{{ getS3Url($value) }}" target="_blank"
+                                                                class="btn btn-primary btn-sm pull-right mr-4">View</a>
+                                                            @php
+                                                                $count++;
+                                                            @endphp
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Passport Of Director<span class="text-danger">*</span></label>
+                                    <div class="row mb-2">
+                                        <div class="col-9 col-md-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" id="validationCustomFile1"
+                                                    name="passport[]">
+                                            </div>
+                                            <div class="dynamicPassportFields"></div>
+                                            @if ($errors->has('passport'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('passport') }}
+                                                </span>
+                                            @endif
+                                            @if ($errors->has('passport.*'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('passport.*') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        @if (isset($data->passport))
+                                            @foreach (json_decode($data->passport) as $key => $value)
+                                                <div class="col-md-12 mt-2">
+                                                    <p class="pull-left mb-0">File - {{ $key + 1 }}</p>
+                                                    <a href="{{ getS3Url($value) }}" target="_blank"
+                                                        class="btn btn-primary btn-sm pull-right mr-4">View</a>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Social Security Number </label>
+                                    <div class="row mb-2" >
+                                        <div class="col-md-10">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" name="cancelled_cheque">
+                                            </div>
+                                            @if ($errors->has('cancelled_cheque'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('cancelled_cheque') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                        @if (isset($data->cancelled_cheque))
                                             <div class="col-md-2">
-                                                <a href="{{ getS3Url($data->domain_ownership) }}" target="_blank"
+                                                <a href="{{ getS3Url($data->cancelled_cheque) }}" target="_blank"
                                                     class="btn btn-primary btn-icon"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             </div>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-12 mt-2 text-right">
-                                    <a href="{{route('my-application')}}" class="btn btn-danger">Cancel</a>
-                                    <button name="action" type="submit" id="submitbutton" class="btn btn-warning"
-                                        value="saveDraft">Save Draft</button>
-                                    <button name="action" type="submit" id="submit_button" class="btn btn-primary"
-                                        value="save">Submit</button>
-                                    
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Cancelled cheque </label>
+                                    <div class="row mb-2">
+                                        <div class="col-md-10">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" name="cancelled_cheque">
+                                            </div>
+                                            @if ($errors->has('cancelled_cheque'))
+                                                <span class="text-danger help-block form-error">
+                                                    {{ $errors->first('cancelled_cheque') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                        @if (isset($data->cancelled_cheque))
+                                            <div class="col-md-2">
+                                                <a href="{{ getS3Url($data->cancelled_cheque) }}" target="_blank"
+                                                    class="btn btn-primary btn-icon"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12 mt-2 text-right">
+                                <a href="{{route('my-application')}}" class="btn btn-danger">Cancel</a>
+                                <button name="action" type="submit" id="submit_button" class="btn btn-primary" value="save">Submit</button>
                             </div>
                         </form>
                     </div>

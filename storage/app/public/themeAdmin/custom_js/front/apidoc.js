@@ -12,8 +12,8 @@ $("body").on("click", ".plus", function () {
             '][ip_address]" type="text">\
             </td>\
             <td class="text-center">\
-                <button type="button" class="btn btn-primary btn-sm plus"> <i class="fa fa-plus"></i> </button>\
-                <button type="button" class="btn btn-danger btn-sm minus"> <i class="fa fa-minus"></i> </button>\
+                <button type="button" class="btn btn-primary btn-sm plus"> Plus </button>\
+                <button type="button" class="btn btn-danger btn-sm minus"> Minus </button>\
             </td>\
         </tr>'
     );

@@ -112,7 +112,7 @@
                                 data-bs-target="#Send_email"><i class="fa fa-envelope"></i> Send Mail </a>
                         @endif
                         @if (auth()->guard('admin')->user()->can(['users-bank-create']))
-                            <a href="{{ url('admin/banks/create') }}" class="btn btn-danger btn-sm"> Create Bank User</a>
+                            <a href="{{ url('paylaksa/banks/create') }}" class="btn btn-danger btn-sm"> Create Bank User</a>
                         @endif
                     </div>
                 </div>

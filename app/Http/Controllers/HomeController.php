@@ -99,7 +99,9 @@ class HomeController extends Controller
                         
                         sum(if(t.status = '1' and t.refund = '1' and t.refund_remove='0', amount, 0)) as refundV,
                         sum(if(t.status = '1' and t.refund = '1' and t.refund_remove='0', 1, 0)) as refundC,
-                        round((100*sum(if(t.status = '1' and t.refund = '1' and t.refund_remove='0', 1, 0)))/sum(if(t.status = '1', 1, 0)) ,2) as refundP",
+                        round((100*sum(if(t.status = '1' and t.refund = '1' and t.refund_remove='0', 1, 0)))/sum(if(t.status = '1', 1, 0)) ,2) as refundP,
+                        round((100*sum(if(t.status = '5', 1, 0)))/sum(if(t.status = '1', 1, 0)) ,2) as blockP",
+
 
 
             )
@@ -107,7 +109,6 @@ class HomeController extends Controller
             ->whereNotIn('t.payment_gateway_id', $payment_gateway_id)
             ->where('t.deleted_at', NULL)
             ->first();
-
         $transactionWeek = DB::table("transactions as t")
             ->selectRaw(
                 "
@@ -140,8 +141,10 @@ class HomeController extends Controller
 
         $transactionsLine = DB::table("transactions as t")->select([
             DB::raw('DATE_FORMAT(DATE(transaction_date), "%d-%b") AS date'),
+            DB::raw("sum(if(t.status = '1', amount, 0.00)) as successfullV"),
             DB::raw("sum(if(t.status = '1', 1, 0)) as successTransactions"),
             DB::raw("sum(if(t.status = '0', 1, 0)) as declinedTransactions"),
+            DB::raw("sum(if(t.status = '0' , amount,0.00 )) as declinedV")
         ])
             ->where('t.transaction_date', '>=', $start_date)
             ->where('t.transaction_date', '<=', $end_date)
@@ -267,7 +270,7 @@ class HomeController extends Controller
         $payment_gateway_id = (env('PAYMENT_GATEWAY_ID')) ? explode(",", env('PAYMENT_GATEWAY_ID')) : [];
         $input['user_id'] = $user_id;
         $TransactionSummary = $this->Transaction->getTransactionSummaryRP($input, 1);
-
+        // dd($TransactionSummary);
         return view('front.transaction_summary.index', compact('TransactionSummary'));
     }
 
@@ -305,6 +308,10 @@ class HomeController extends Controller
         $data = $this->user::where('id', Auth::user()->id)->first();
 
         return view('front.profile', compact('data'));
+    }
+
+    public function updatePasswordIndex(){
+        return view('front.password');
     }
 
     public function securitySettings()

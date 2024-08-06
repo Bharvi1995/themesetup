@@ -121,7 +121,7 @@ class TicketController extends HomeController
             //     'type' => 'admin',
             //     'title' => $ticket->title . ' - Ticket Create',
             //     'body' => 'Ticket Created by ' . $user->name,
-            //     'url' => '/admin/ticket/' . $ticket->id,
+            //     'url' => '/paylaksa/ticket/' . $ticket->id,
             //     'is_read' => '0'
             // ];
 
@@ -166,7 +166,7 @@ class TicketController extends HomeController
                         'type' => 'admin',
                         'title' => $ticket->title . ' - Ticket Closed',
                         'body' => 'Ticket Closed by ' . $user->name,
-                        'url' => '/admin/ticket/' . $ticket->id,
+                        'url' => '/paylaksa/ticket/' . $ticket->id,
                         'is_read' => '0'
                     ];
                     $realNotification = addNotification($notification);
@@ -201,7 +201,7 @@ class TicketController extends HomeController
                     'type' => 'admin',
                     'title' => $ticket->title . ' - Ticket reopened',
                     'body' => 'Ticket Reopened by ' . $user->name,
-                    'url' => '/admin/ticket/' . $ticket->id,
+                    'url' => '/paylaksa/ticket/' . $ticket->id,
                     'is_read' => '0'
                 ];
                 $realNotification = addNotification($notification);

@@ -61,7 +61,7 @@
 
                         <div class="col-lg-12 mt-1">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{ url('admin/agreement_content') }}" class="btn btn-danger">Cancel</a>
+                            <a href="{{ url('paylaksa/agreement_content') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

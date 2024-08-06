@@ -113,7 +113,7 @@
                                 style="border-radius: 0px 5px 5px 0px !important;">Reset</a>
                         </div>
                         @if (auth()->guard('admin')->user()->can(['create-wl-rp']))
-                            <a href="{{ url('admin/wl-agents/create') }}" class="btn btn-primary btn-sm"> Create White
+                            <a href="{{ url('paylaksa/wl-agents/create') }}" class="btn btn-primary btn-sm"> Create White
                                 Label RP</a>
                         @endif
 

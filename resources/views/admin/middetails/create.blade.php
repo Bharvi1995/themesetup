@@ -377,7 +377,7 @@
                         </div>
                         <div class="form-group col-lg-12 mt-1">
                             <button type="button" class="btn btn-primary midFormSubmitBtn">Submit</button>
-                            <a href="{{ url('admin/mid-feature-management') }}" class="btn btn-danger">Cancel</a>
+                            <a href="{{ url('paylaksa/mid-feature-management') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

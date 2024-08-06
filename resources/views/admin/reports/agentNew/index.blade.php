@@ -11,7 +11,7 @@
     <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                <li class="breadcrumb-item"><a href="{!! url('admin/dashboard') !!}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{!! url('paylaksa/dashboard') !!}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Show Agent Reports</li>
             </ol>
         </nav>
@@ -74,7 +74,7 @@
                 </div>
                 <hr>
                 <button class="btn btn-sm btn-success" type="submit">Submit</button>
-                <a class="btn btn-sm btn-danger" href="{{ url('admin/agent-reports') }}">Reset</a>
+                <a class="btn btn-sm btn-danger" href="{{ url('paylaksa/agent-reports') }}">Reset</a>
             </form>
         </div>
     </div>

@@ -134,7 +134,7 @@
                         <div class="col-lg-12 mt-3">
                             <button type="submit" class="btn btn-primary ">Submit</button>
 
-                            <a href="{{ url('admin/admin-user') }}" class="btn btn-danger ">Cancel</a>
+                            <a href="{{ url('paylaksa/admin-user') }}" class="btn btn-danger ">Cancel</a>
                         </div>
                     </div>
                 </div>

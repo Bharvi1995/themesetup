@@ -5,32 +5,35 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('dashboardPage') }}">Dashboard</a> / <a href="{{ route('whitelist-ip') }}"> IP Whitelist</a> / Add
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('dashboardPage') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('whitelist-ip') }}">IP Support</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Add IP</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Add IP</h6>
+    </nav>
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
-            <h4 class="mt-50">Add IP</h4>
-        </div>
-        <div class="col-md-6 text-right">
-            <a href="{{ route('whitelist-ip') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i></a>
-        </div>
-        <div class="col-xl-12 col-xxl-12">
-            <div class="card mt-2">
-                <div class="card-header">
+<div class="row">
+   <div class="col-12">
+    <div class="col-xxl-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>Add IP</h5>
+            </div>
 
-                </div>
+            <div class="card-body">
                 {!! Form::open(['route' => 'generate-apy-key', 'files' => true, 'class' => 'form-dark']) !!}
-                <div class="card-body">
                     <div class="basic-form">
                         <div class="table-responsive custom-table">
-                            <table class="table table-borderless table-striped">
+                            <table class="table table-borderless">
                                 <thead>
                                     <tr class="table-active">
                                         <!-- <th>Website URL</th> -->
                                         <th>IP Address</th>
-                                        <th style="width: 150px;">Add More</th>
+                                        <th style="width: 150px;">Add</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tab_logic">
@@ -51,15 +54,12 @@
                                                 </td>
                                                 <td class="text-center">
                                                     @if ($key == 0)
-                                                        <button type="button" class="btn btn-primary plus"> <i
-                                                                class="fa fa-plus"></i>
+                                                        <button type="button" class="btn btn-primary plus"> Plus
                                                         </button>
                                                     @else
-                                                        <button type="button" class="btn btn-primary plus"> <i
-                                                                class="fa fa-plus"></i>
+                                                        <button type="button" class="btn btn-primary plus"> Plus
                                                         </button>
-                                                        <button type="button" class="btn btn-danger minus"> <i
-                                                                class="fa fa-minus"></i>
+                                                        <button type="button" class="btn btn-danger minus"> Minus
                                                         </button>
                                                     @endif
                                                 </td>
@@ -79,8 +79,7 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-primary plus btn-sm"> <i
-                                                        class="fa fa-plus"></i>
+                                                <button type="button" class="btn btn-primary plus"> Plus
                                                 </button>
                                             </td>
                                         </tr>
@@ -90,7 +89,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                </div>
+                <!-- </div> -->
                 {!! Form::close() !!}
             </div>
         </div>

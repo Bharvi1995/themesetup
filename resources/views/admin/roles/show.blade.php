@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('admin/roles') }}">Role</a> / Show
+    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('paylaksa/roles') }}">Role</a> / Show
 @endsection
 
 @section('customeStyle')
@@ -19,7 +19,7 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Admin Roles Details</h4>
                     </div>
-                    <a href="{{ url('admin/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
+                    <a href="{{ url('paylaksa/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     <div class="row">

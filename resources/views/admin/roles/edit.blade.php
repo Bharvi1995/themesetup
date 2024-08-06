@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('admin/roles') }}">Role</a> / Edit
+    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('paylaksa/roles') }}">Role</a> / Edit
 @endsection
 
 @section('customeStyle')
@@ -23,7 +23,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Edit Roles</h4>
 
-                    <a href="{{ url('admin/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
+                    <a href="{{ url('paylaksa/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::model($role, [
@@ -114,7 +114,7 @@
 
                         <div class="col-lg-12 mt-2">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{ url('admin/roles') }}" class="btn btn-danger">Cancel</a>
+                            <a href="{{ url('paylaksa/roles') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

@@ -39,7 +39,7 @@ class AdminAuthController extends AdminController
      *
      * @var string
      */
-    protected $redirectTo = '/superintendent/login';
+    protected $redirectTo = '/paylaksa/login';
 
     /**
      * Create a new controller instance.
@@ -168,7 +168,7 @@ class AdminAuthController extends AdminController
         auth()->guard('admin')->logout();
         // Session::flush();        
         // Session::put('success','you are logout Successfully');
-        return redirect()->to('/superintendent/login');
+        return redirect()->to('/paylaksa/login');
     }
 
     public function resendotp()
@@ -410,10 +410,10 @@ class AdminAuthController extends AdminController
             //Delete the token
             DB::table('admin_password_resets')->where('email', $user->email)->delete();
             Session::put('success', 'Your Password Reset Successfully');
-            return redirect()->to('/admin/login');
+            return redirect()->to('/paylaksa/login');
         } catch (Exception $e) {
             Session::put('error', 'Something went Wrong!');
-            return redirect()->to('/admin/login');
+            return redirect()->to('/paylaksa/login');
         }
     }
 }

@@ -151,7 +151,7 @@
                                 data-bs-target="#Send_email"><i class="fa fa-envelope"></i> Send Mail </a>
                         @endif
                         @if (auth()->guard('admin')->user()->can(['create-agent']))
-                            <a href="{{ url('admin/agents/create') }}" class="btn btn-danger btn-sm"> Create Referral
+                            <a href="{{ url('paylaksa/agents/create') }}" class="btn btn-danger btn-sm"> Create Referral
                                 Partner</a>
                         @endif
 

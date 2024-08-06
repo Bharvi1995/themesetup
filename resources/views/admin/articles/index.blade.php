@@ -50,7 +50,7 @@
                                             data-bs-target="#delete_modal" data-bs-toggle="modal"
                                             data-url="{!! URL::route('article.destroy', $article->id) !!}" data-id="{{ $article->id }}"><i
                                                 class="fa fa-trash"></i></button>
-                                        <a href="{{ url('admin/article/view/' . $article->slug) }}"
+                                        <a href="{{ url('paylaksa/article/view/' . $article->slug) }}"
                                             class="btn btn-yellow"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>

@@ -10,7 +10,7 @@
         <div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                    <li class="breadcrumb-item"><a href="{!! url('admin/dashboard') !!}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{!! url('paylaksa/dashboard') !!}">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="{!! route('admin.new.agent-payout-generate') !!}">Generated Agent Reports</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Upload Report File</li>
                 </ol>

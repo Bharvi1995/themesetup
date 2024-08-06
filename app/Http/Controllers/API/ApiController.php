@@ -50,15 +50,8 @@ class ApiController extends Controller
             $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
             abort(ApiResponse::unauthorised($input));
         }
-        $credentials = base64_decode(substr($authorization, 6));
-        $arrCredentials = explode(':', $credentials);
-        if(count($arrCredentials) != 2){
-            $input['status'] = '6';
-            $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
-            abort(ApiResponse::unauthorised($input));
-        }
-        list($username, $password) = explode(':', $credentials, 2);
-        $user = User::where('email', $username)->where("api_key",$password)->first();
+        $apikey = substr($authorization, 6);
+        $user = User::where("api_key",$apikey)->where("is_active","1")->whereNull("deleted_at")->first();
         if (!$user) {
             $input['status'] = '6';
             $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
@@ -74,9 +67,111 @@ class ApiController extends Controller
      */// ===============================================
     public function store(Request $request)
     {
+        $privateKeyResource = openssl_pkey_new([
+            'private_key_bits' => 2048,
+            'private_key_type' => OPENSSL_KEYTYPE_RSA,
+        ]);
+        $privateKey = "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsBimrHtu4rdMxqnPSKL31Jp2f+DdA3bp1VGt6MJTn3TFhRk1hlkkmBMO/ha8y/th37XYQZPiauRgH+QT2eCEhhjG4Jc5Ne7C611g647CRtFZFAGakzKMh6SVjm+cS9cZTzek2UUPyucfTTX6a/bNHUc6uhu9bUC6P8xJIPmALbwCYKYjzYcfObTP7RuJvzKMJJCcjXFBYZFvhDgRroh1RKePVR+JmDByeydZHdVIibxnvdOa+707HYuPEvznUMLWVnpSE2SDQH/72zDPZ37325MMNrF35ZD/ag+MQfhg32ku3NAw8BSgM4fbe51eEF1mrLM4RmSBXMLDAQvCXH9D7AgMBAAECggEAKb7VHdG/QHHubn8O3FFGx9c3KTrzLaqhNRfnfR+NAzeKZDDLVoNB/Rfq6O9oNNfjcDcQD6pxKhsA2e50ZduBLsGCD04dYnBB0xWvM5tNng5FYTlXr2Z5sCEEEcgjq1Y5atztW2EdPCoZdA26S6KFfyk7Ht9f9qjeo9A4/48jf6JqaYXWCusvVD9Fx63X5nQ3tye1L9M80qX9Pok8sb6COGGmFxuOA8StGjCeMO5jOEEauEpf2jSolHfvDYRM7s89VRuLCPC1wjHGRtlDBgM2yX1YQhVM04QUDEoWKtJqIaEk04tWPvljsJ0nbXshodL828GrYZjrO6phr2pRCpOqAQKBgQDcTSro3QfXFCWQCQzmTJEkiTQJGvU/nwRxENEsuM+bE1M71nl/RP4OnrMX6Z8fuEmwtl6+fnsQDSnFzGgksLBjbY+qhwnwIsLY40+bS/MtO7pjgplmDyUtGTDV5dAuo2hr9IdyBLikOOEtD5P0pUQf3yJzsAxyyGqIB9D9pJMngwKBgQDH5kpZw+rF+/n1N/aDy3jRwui1FzRiA4CgkUrTqJkDKSwvlKvLMDTuFT6HOhfN3XTx1Av7XXvtMjse6Zsp8yT0VwvSOaDaWlAiltebqBfibRATUa5JKEzb5GFvNmNm8HbryiPyIWnVDSofqKcaSqmGTuWqrr5val6rI2QIwpH/KQKBgQCB2qKeXBrQ9jkl64/E+ADdzlnzvAYvmCXgF4+UkuMcf4miTcuT7zDpoTXjtHttEQ2usfCqzJbxYTDsPI5ugg+Wq+/xDmQXPgYoHeTAn0YZtYkqOsL825SIPr8AddP+iad1as+jr5C+jCB+lR4bKIc9WiNOmcjcp7HTuPfBao6qzQKBgCbEjMrX6iI3egSKs+5febEEoejs9SXFFB8Pznk6C2LHi2A27xJa6Qj7acMECzXLqzBzNVesi6o2wax/Fa6PDy2r7Aj7UCzIsx3iLzJq6Sbqi+GTR7+8ZxuGMTdGTwTZwdZ8v3fn7wR4pyC4rp+0tyfrCTOO7DPjZzS9ilsAkRvxAoGBALtcjYF3D1SHpnAE4LSH6WzDKfvr80KUD+K/WZE/lWOaipcgB4C7rX92Tb2jJR88BV6Nd9SAbAo9+T7dx4e+XF0qy1TX4CRWK4J5x2Kw/dceoPCz3ckjXLU7R00vKgIK5+hWTgStaxxG2Ba/S14bHk+/0E9o9WtBCRAIvSwV0Pvh";
+        // dd($privateKeyResource);
+        openssl_pkey_export($privateKeyResource, $privateKey);
+        $publicKeyDetails = openssl_pkey_get_details($privateKeyResource);
+        $publicKey = $publicKeyDetails['key'];
+        // dd($publicKeyDetails);
+        // file_put_contents('private_key.pem', $privateKey);
+        // file_put_contents('public_key.pem', $publicKey);
+
+        // Step 2: Encrypt Data with the Public Key
+        $dataToEncrypt = '{
+            "customer": {
+                "firstname": "firstname",
+                "lastname": "lastname",
+                "mobile": "+2348158200000",
+                "country": "NG",
+                "email": "email@pay.dev"
+            },
+            "order": {
+                "amount": 3,
+                "reference": "326236111",
+                "description": "Pay",
+                "currency": "USD"
+            },
+            "payment": {
+                "RedirectUrl": "https://www.hi.com"
+            }
+        }';
+        // $publicKey = file_get_contents('public_key.pem');
+
+        $publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArAYpqx7buK3TMapz0ii99Sadn/g3QN26dVRrejCU590xYUZNYZZJJgTDv4WvMv7Yd+12EGT4mrkYB/kE9nghIYYxuCXOTXuwutdYOuOwkbRWRQBmpMyjIeklY5vnEvXGU83pNlFD8rnH001+mv2zR1HOrobvW1Auj/MSSD5gC28AmCmI82HHzm0z+0bib8yjCSQnI1xQWGRb4Q4Ea6IdUSnj1UfiZgwcnsnWR3VSIm8Z73Tmvu9Ox2LjxL851DC1lZ6UhNkg0B/+9swz2d+99uTDDaxd+WQ/2oPjEH4YN9pLtzQMPAUoDOH23udXhBdZqyzOEZkgVzCwwELwlx/Q+wIDAQAB";
+        openssl_public_encrypt($dataToEncrypt, $encryptedData, $publicKey);
+        $encryptedDataBase64 = base64_encode($encryptedData);
+        dd($encryptedDataBase64);
+        echo "Encrypted Data: " . $encryptedDataBase64 . PHP_EOL;
+
+
         $this->validateBasicAuth($request);
-        $input = $request->only(['user_first_name', 'user_last_name', 'user_email', 'user_phone_no', 'user_amount', 'user_currency', 'user_address', 'user_country', 'user_state', 'user_city', 'user_zip', 'user_order_ref', 'user_redirect_url', 'user_webhook_url','user','user_card_no','user_ccexpiry_month','user_ccexpiry_year','user_cvv_number']);
-        
+        // $input = $request->only(['user_first_name', 'user_last_name', 'user_email', 'user_phone_no', 'user_amount', 'user_currency', 'user_address', 'user_country', 'user_state', 'user_city', 'user_zip', 'user_order_ref', 'user_redirect_url', 'user_webhook_url','user','user_card_no','user_ccexpiry_month','user_ccexpiry_year','user_cvv_number']);
+        $requestData = $request->only(['payment', 'order', 'customer', 'user']);
+        $input["user"] = $requestData['user'];
+        if(isset($requestData["customer"])){
+            if(isset($requestData["customer"]["user_first_name"])){
+                $input["user_first_name"] = $requestData["customer"]["user_first_name"];
+            }
+            if(isset($requestData["customer"]["user_last_name"])){
+                $input["user_last_name"] = $requestData["customer"]["user_last_name"];
+            }
+            if(isset($requestData["customer"]["user_phone_no"])){
+                $input["user_phone_no"] = $requestData["customer"]["user_phone_no"];
+            }
+            if(isset($requestData["customer"]["user_email"])){
+                $input["user_email"] = $requestData["customer"]["user_email"];
+            }
+            if(isset($requestData["customer"]["user_address"])){
+                $input["user_address"] = $requestData["customer"]["user_address"];
+            }
+            if(isset($requestData["customer"]["user_country"])){
+                $input["user_country"] = $requestData["customer"]["user_country"];
+            }
+            if(isset($requestData["customer"]["user_state"])){
+                $input["user_state"] = $requestData["customer"]["user_state"];
+            }
+            if(isset($requestData["customer"]["user_city"])){
+                $input["user_city"] = $requestData["customer"]["user_city"];
+            }
+            if(isset($requestData["customer"]["user_zip"])){
+                $input["user_zip"] = $requestData["customer"]["user_zip"];
+            }
+        }
+        if(isset($requestData["order"])){
+            if(isset($requestData["order"]["user_amount"])){
+                $input["user_amount"] = $requestData["order"]["user_amount"];
+            }
+            if(isset($requestData["order"]["user_currency"])){
+                $input["user_currency"] = $requestData["order"]["user_currency"];
+            }
+            if(isset($requestData["order"]["user_order_ref"])){
+                $input["user_order_ref"] = $requestData["order"]["user_order_ref"];
+            }
+        }
+        if(isset($requestData["payment"])){
+            if(isset($requestData["payment"]['user_card_no'])){
+                $input["user_card_no"] = $requestData["payment"]['user_card_no'];
+            }
+            if(isset($requestData["payment"]['user_ccexpiry_month'])){
+                $input["user_ccexpiry_month"] = $requestData["payment"]['user_ccexpiry_month'];
+            }
+            if(isset($requestData["payment"]['user_ccexpiry_year'])){
+                $input["user_ccexpiry_year"] = $requestData["payment"]['user_ccexpiry_year'];
+            }
+            if(isset($requestData["payment"]['user_cvv_number'])){
+                $input["user_cvv_number"] = $requestData["payment"]['user_cvv_number'];
+            }
+            if(isset($requestData["payment"]['user_redirect_url'])){
+                $input["user_redirect_url"] = $requestData["payment"]['user_redirect_url'];
+            }
+            if(isset($requestData["payment"]['user_webhook_url'])){
+                $input["user_webhook_url"] = $requestData["payment"]['user_webhook_url'];
+            }
+        }
         // if merchant on test mode
         if (in_array($input["user"]->mid, [1, 2])) {
             $input['status'] = '6';
@@ -106,6 +201,10 @@ class ApiController extends Controller
             'user_order_ref' => 'nullable|max:100',
             'user_redirect_url' => 'required|url',
             'user_webhook_url' => 'nullable|url',
+            'user_card_no' => 'required',
+            'user_ccexpiry_month' => 'required',
+            'user_ccexpiry_year' => 'required',
+            'user_cvv_number' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -143,8 +242,8 @@ class ApiController extends Controller
             return ApiResponse::blocked($input);
         }
         // order and session id
-        $input['session_id'] = time(). strtoupper(\Str::random(2)).'ITP';
-        $input['order_id'] = time(). strtoupper( \Str::random(2)).'ITP';
+        $input['session_id'] = 'PLAKSA'.time(). strtoupper(\Str::random(2));
+        $input['order_id'] = time(). strtoupper( \Str::random(5)).'PL';
 
         // user IP and domain and request from API
         $input['request_from_ip'] = $request->ip();
@@ -179,7 +278,7 @@ class ApiController extends Controller
         }
         $user = $input["user"];
         unset($input["user"]);
-        if (empty($data)) {
+        // if (empty($data)) {
             // mid default currency
             
             if (isset($input['user_card_no']) && !empty($input['user_card_no'])) {
@@ -283,7 +382,6 @@ class ApiController extends Controller
             // if ($gateway_curl_response['status'] == '7') {
             //     return redirect()->away($gateway_curl_response['payment_link']);
             // }
-
             $input['status'] = $gateway_curl_response['status'];
             $input['reason'] = $gateway_curl_response['reason'];
             $store_tx_try = $this->tx_try->storeData($input);
@@ -304,11 +402,11 @@ class ApiController extends Controller
             } else {
                 return ApiResponse::fail($input);
             }
-        }
-        $input['status'] = '7';
-        $input['payment_link'] = route('api.v2.card', $input['order_id']);
-        $input['reason'] = "Please redirect to the specified 'payment_link' to complete the transaction processing.";
-        return ApiResponse::redirect($input);
+        // }
+        // $input['status'] = '7';
+        // $input['payment_link'] = route('api.v2.card', $input['order_id']);
+        // $input['reason'] = "Please redirect to the specified 'payment_link' to complete the transaction processing.";
+        // return ApiResponse::redirect($input);
     }
 
     // ================================================

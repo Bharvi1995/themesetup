@@ -15,7 +15,7 @@
             <h4 class="text-black fs-20 mb-3">Summary Report</h4>
         </div>
         <div class="col-sm-6">
-            <a href="{!! url('admin/card-summary-report') !!}">
+            <a href="{!! url('paylaksa/card-summary-report') !!}">
                 <div class="card avtivity-card">
                     <div class="card-body p-0">
                         <div class="media align-items-center">
@@ -35,7 +35,7 @@
             </a>
         </div>
         <div class="col-sm-6">
-            <a href="{!! url('admin/payment-status-summary-report') !!}">
+            <a href="{!! url('paylaksa/payment-status-summary-report') !!}">
                 <div class="card avtivity-card">
                     <div class="card-body p-0">
                         <div class="media align-items-center">
@@ -55,7 +55,7 @@
             </a>
         </div>
         <div class="col-sm-6">
-            <a href="{!! url('admin/mid-summary-report') !!}">
+            <a href="{!! url('paylaksa/mid-summary-report') !!}">
                 <div class="card avtivity-card">
                     <div class="card-body p-0">
                         <div class="media align-items-center">

@@ -14,7 +14,7 @@ class ApplicationResubmit extends Notification
 {
     use Queueable;
     public $application;
-    const url = '/admin/inprogress-applications';
+    const url = '/paylaksa/inprogress-applications';
     const icon = 'ft-layers';
     const color = 'success';
     /**
@@ -53,7 +53,7 @@ class ApplicationResubmit extends Notification
             ->line('New user has just registered on the website.')
             ->line('Pending Approval - There is an on site work for you to approve. (Please go down to select Approve or Reject)')
             // ->line($this->application->reason_reassign)
-            ->action('Application', url('/admin/applications-list/view/' . $this->application->id))
+            ->action('Application', url('/paylaksa/applications-list/view/' . $this->application->id))
             ->line("Please ignore, if it's already done.");
     }
 

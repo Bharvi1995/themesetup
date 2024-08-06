@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ storage_asset('setup/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ storage_asset('softtheme/img/favicon.ico') }}" />
     <link rel="stylesheet" type="text/css" href="{{ storage_asset('setup/css/bootstrap.css') }}">
     <title>{{ config('app.name') }} | Show Report</title>
     <style>

@@ -54,7 +54,7 @@
                         <h4 class="card-title">MIDs List</h4>
                     </div>
                     @if (auth()->guard('admin')->user()->can(['create-mid']))
-                        <a href="{{ url('superintendent/mid-feature-management/create') }}" class="btn btn-success">Create MID
+                        <a href="{{ url('paylaksa/mid-feature-management/create') }}" class="btn btn-success">Create MID
                         </a>
                     @endif
                 </div>

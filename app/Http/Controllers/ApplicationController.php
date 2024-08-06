@@ -207,7 +207,6 @@ class ApplicationController extends Controller
             $userID = \Auth::user()->main_user_id;
         else
             $userID = \Auth::user()->id;
-
         $data = $this->application->FindDataFromUser($userID);
         $isResume = 0;
         if ($data) {
@@ -230,8 +229,6 @@ class ApplicationController extends Controller
                 $isResume = 1;
             }
         }
-        // dd(Auth::user()->application);
-
         if(isset(Auth::user()->application)  &&  (Auth::user()->application->status == 4 || Auth::user()->application->status == 5 || Auth::user()->application->status == 6 || Auth::user()->application->status == 10 || Auth::user()->application->status == 11)){
             return redirect()->route('dashboardPage');
         }else{

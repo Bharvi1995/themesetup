@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('dashboardPage') }}">Dashboard</a> / <a href="{{ url('admin/block-system') }}"> Block Card/Email</a> /
+    <a href="{{ route('dashboardPage') }}">Dashboard</a> / <a href="{{ url('paylaksa/block-system') }}"> Block Card/Email</a> /
     Add
 @endsection
 
@@ -17,7 +17,7 @@
                     <div class="header-title">
                         <h4 class="card-title">Add Block Card/Email</h4>
                     </div>
-                    <a href="{{ url('admin/block-system') }}" class="btn btn-primary d-none d-md-block btn-sm"><i
+                    <a href="{{ url('paylaksa/block-system') }}" class="btn btn-primary d-none d-md-block btn-sm"><i
                             class="fa fa-arrow-left"></i></a>
                 </div>
                 {!! Form::open(['route' => 'store.block-system', 'files' => true, 'class'=>'form-dark']) !!}

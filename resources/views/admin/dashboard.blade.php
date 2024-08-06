@@ -95,7 +95,7 @@
                                     <h5 class="card-title">Recent Transactions</h5>
                                 </div>
                                 <div class="card-header-toolbar d-flex align-items-center">
-                                    <a href="{!! url('admin/transactions') !!}" class="btn btn-sm btn-primary">View All</a>
+                                    <a href="{!! url('paylaksa/transactions') !!}" class="btn btn-sm btn-primary">View All</a>
                                 </div>
                             </div>
                             <div class="card-body p-0 p-0">

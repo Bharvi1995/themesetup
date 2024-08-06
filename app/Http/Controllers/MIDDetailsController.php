@@ -67,7 +67,7 @@ class MIDDetailsController extends HomeController
                 'type' => 'admin',
                 'title' => 'Fee Schedule Decline',
                 'body' => $application->business_name . ' has declined the fee schedule.',
-                'url' => '/admin/applications-list/view/' . $application->id,
+                'url' => '/paylaksa/applications-list/view/' . $application->id,
                 'is_read' => '0'
             ];
 
@@ -81,7 +81,7 @@ class MIDDetailsController extends HomeController
                 'type' => 'admin',
                 'title' => 'Fee Schedule Accepted',
                 'body' => $application->business_name . ' has accepted the fee schedule.',
-                'url' => '/admin/applications-list/view/' . $application->id,
+                'url' => '/paylaksa/applications-list/view/' . $application->id,
                 'is_read' => '0'
             ];
 

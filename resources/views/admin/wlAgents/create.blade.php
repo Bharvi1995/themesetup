@@ -268,7 +268,7 @@
                         </div>
                         <div class="col-lg-12 mt-2 form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{ url('admin/wl-agents') }}" class="btn btn-danger">Cancel</a>
+                            <a href="{{ url('paylaksa/wl-agents') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

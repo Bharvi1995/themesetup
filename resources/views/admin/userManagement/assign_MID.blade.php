@@ -318,7 +318,7 @@
                                             </div>
                                             <div class="form-group col-md-12 mt-3">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                                <a href="{{ url('admin/users-management') }}"
+                                                <a href="{{ url('paylaksa/users-management') }}"
                                                     class="btn btn-danger">Cancel</a>
                                             </div>
                                         </div>

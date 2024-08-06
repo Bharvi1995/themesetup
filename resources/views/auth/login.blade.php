@@ -1,106 +1,123 @@
 <!DOCTYPE html>
 <html class="loading dark-layout" lang="en" data-textdirection="ltr">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     @if(config('app.env') == 'production')
-        <link rel="shortcut icon" type="image/x-icon" href="{{ storage_asset('setup/images/favicon.ico') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ storage_asset('softtheme/img/favicon.ico') }}">
     @endif
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ storage_asset('setup/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ storage_asset('setup/css/bootstrap-extended.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ storage_asset('setup/css/auth.css') }}">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="{{ storage_asset('softtheme/css/nucleo-icons.css')}}" rel="stylesheet" />
+    <link href="{{ storage_asset('softtheme/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link href="{{ storage_asset('softtheme/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ storage_asset('softtheme/css/soft-ui-dashboard.min.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css"/>
 </head>
-<!-- oncontextmenu="return false" -->
-<body >
-    <div id="loading">
-        <p class="mt-1">Loading...</p>
-    </div>
-    <!-- BEGIN: Content-->
-    <div class="app-content content">
-        <div class="container">
-            <div class="row m-0">
-                <div class="col-md-4 col-xl-4 col-xxl-4 offset-md-4 offset-xl-4 offset-xxl-4 content-body">
-                    <div class="row content-box-form">
-                        <div class="col-md-12 text-center mb-2">
-                            <img src="{{ storage_asset('setup/images/Logo.png') }}" width="260px">
+<body class="light-theme">
+   <main class="main-content  mt-0">
+      <section>
+         <div class="page-header min-vh-75">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
+                     <div class="card card-plain mt-8">
+                        <div class="card-header pb-0 text-left bg-transparent">
+                           <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
+                           <p class="mb-0">Enter your email and password to sign in</p>
                         </div>
-                        @if(\Session::get('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <div class="alert-body">
-                                {{ \Session::get('success') }}
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endif
-                        {{ \Session::forget('success') }}
-                        @if(\Session::get('error'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <div class="alert-body">
-                                {{ \Session::get('error') }}
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endif
-                        {{ \Session::forget('error') }}
-                        <div class="col-md-12 form-contant-right">
-                            <h3 class="text-center">Sign In</h3>
-                            <!-- <p class="text-center">To Continue to Merchant dashboard.</p> -->
-                            <form action="{{ URL::route('login') }}" id="login-form" method="post">
-                                {!! csrf_field() !!}
-                                
-                                <div class="form-group mt-1">
-                                    <label class="form-label">Email address</label>
-                                    <input type="text" class="form-control" placeholder="E-mail" name="email" autofocus="" tabindex="1">
+                        <div class="card-body">
+                            @if(\Session::get('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <div class="alert-body">
+                                    {{ \Session::get('success') }}
                                 </div>
-                                @if ($errors->has('email'))
-                                    <div class="error-input">
-                                        {{ $errors->first('email') }}
-                                    </div>
-                                @endif                                        
-
-                                <div class="form-group mt-1">
-                                    <label class="form-label">Password</label>
-                                    <div class="input-group rounded-input form-password-toggle">
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" tabindex="2">
-                                        <span id="pwd-show" class="input-group-text cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye font-small-4"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
-                                    </div>                  
-                                </div>                     
-                                @if ($errors->has('password'))
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                            </div>
+                            @endif
+                            {{ \Session::forget('success') }}
+                            @if(\Session::get('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert-body">
+                                    {{ \Session::get('error') }}
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                            </div>
+                            @endif
+                            {{ \Session::forget('error') }}
+                        
+                           <form action="{{ URL::route('login') }}" id="login-form" method="post">
+                            {!! csrf_field() !!}
+                                <label>Email</label>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Email" name="email" aria-label="Email" aria-describedby="email-addon">
+                                    @if ($errors->has('email'))
+                                        <div class="error-input">
+                                            {{ $errors->first('email') }}
+                                        </div>
+                                    @endif
+                                </div>
+                              <label>Password</label>
+                              <div class="mb-3">
+                                 <input type="password" class="form-control" name="password" id="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                                 @if ($errors->has('password'))
                                     <div class="error-input">
                                         {{ $errors->first('password') }}
                                     </div>
                                 @endif
-
-                                <div class="row">
-                                    
-                                    <div class="col-md-12 mt-1">         
-                                        <button class="btn btn-danger w-100" tabindex="4" data-callback="onSubmit" data-action="submit">Sign In</button>
-                                    </div>
-                                </div>
-                            </form>
+                              </div>
+                              <div class="form-check text-center form-switch">
+                                <p class="mb-4 text-sm mx-auto text-right" >
+                                    <a href="{{route('password.request')}}" class="text-info text-gradient font-weight-bold">Forgot Password?</a>
+                                </p>
+                              </div>
+                              <div class="text-center">
+                                 <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                              </div>
+                           </form>
                         </div>
-                        <div class="col-md-12 mt-1 text-center">
-                            <a href="{{ route('password.request') }}" class="text-primary">Forgot Password?</a>
+                        <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                           <p class="mb-4 text-sm mx-auto">
+                              Don't have an account?
+                              <a href="{{route('register')}}" class="text-info text-gradient font-weight-bold">Sign up</a>
+                           </p>
                         </div>
-                        <div class="col-md-12 mt-2">
-                            <p class="text-center">Don't have an account? <a href="{{route('register')}}" class="text-primary"> Sign Up </a> </p>
-                        </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
+                        <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('storage/softtheme/img/curved-images/curved6.jpg')"></div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-    <!-- END: Content-->
+         </div>
+      </section>
+   </main>
+   <footer class="footer py-5">
+      <div class="container">
+         <div class="row">
+         </div>
+         <div class="row">
+            <div class="col-8 mx-auto text-center mt-1">
+               <p class="mb-0 text-secondary">
+                  Copyright © <script>
+                     document.write(new Date().getFullYear())
+                  </script> Soft by Creative Tim.
+               </p>
+            </div>
+         </div>
+      </div>
+   </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js'></script>    
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script src="{{ storage_asset('themesetup/assets/vendor/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/core/popper.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/plugins/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/plugins/smooth-scrollbar.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/soft-ui-dashboard.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/fontawesome.min.js"></script>
+    <!-- for demo purpose -->
     <script>
         $('#pwd-show').on('click', function () {
             var pwd = $('#password').attr('type');
@@ -124,26 +141,9 @@
             document.getElementById("login-form").submit();
         }
     </script>
-    <script> 
-        // document.addEventListener('contextmenu', event=> event.preventDefault()); 
-        // document.onkeydown = function(e) { 
-        //     if(event.keyCode == 123) { 
-        //         return false; 
-        //     } 
-        //     if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){ 
-        //         return false; 
-        //     } 
-        //     if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){ 
-        //         return false; 
-        //     }
-        //     if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
-        //         return false;
-        //     }
-        //     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){ 
-        //         return false; 
-        //     } 
-        // } 
-      </script> 
+    <!-- for demo purpose -->
 </body>
+
+
 <!-- END: Body-->
 </html>
