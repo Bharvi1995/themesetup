@@ -45,30 +45,46 @@
         .text-white {
             color: #fff;
         }
+
+        .container {
+            padding-top: 10rem;
+        }
+        .page-background {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .select {
+            margin-bottom: 1rem;
+        }
+
+        .logo{
+            max-width: 200px !important;
+        }
     </style>
 </head>
 
-<body>
-    <div class="container" style="padding-top: 10rem;">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center text-white">
-                <img src="{{ storage_asset('setup/images/Logo.png') }}" class="mb-2" />
-
-                <h3 class="mt-4 mb-1">Welcome to {{ config('app.name') }} Simulator API</h3>
-                <p>Select the response which you want to receive.</p>
+<body class="bg-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <img src="{{ storage_asset('setup/images/Logo.png') }}" class="logo" class="mb-2" alt="Logo" />
+                <!-- <p>Select the status which you want to receive.</p> -->
             </div>
-            <div class="col-md-4 col-md-offset-4 text-center page-background">
-                Select response
-                <br />
-                Amount: <strong>{{ $request_data['user_amount']. ' ' .$request_data['user_currency'] }}</strong><br />
-
-                <form action="{{ route('test-stripe-submit',$session_id) }}" method="post" style="margin-top: 0.5em;">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 text-center page-background">
+                <h3 class="mt-4 mb-1">{{ config('app.name') }} Simulator Page</h3>
+                <h5 class="mb-1">Select Status</h5>
+                <p>Amount: <strong>{{ $request_data['user_amount'] . ' ' . $request_data['user_currency'] }}</strong></p>
+                <form action="{{ route('test-stripe-submit', $session_id) }}" method="post">
                     @csrf
-                    <select name="status" class="select form-control">
+                    <select name="status" class="form-select select">
                         <option value="1">Success</option>
                         <option value="0">Declined</option>
                     </select>
-                    <button type="submit" class="btn btn-md btn-block btn-primary">Continue</button>
+                    <button type="submit" class="btn btn-primary btn-block w-100">Continue</button>
                 </form>
             </div>
         </div>

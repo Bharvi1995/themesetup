@@ -189,11 +189,11 @@ Route::post('checkout/submit-details/{token}', 'API\IframeController@submit')->n
 
 /********************* Gateway route Start *************************************/
 // test gateway
-Route::get('payment/testgateway/{session_id}', 'Repo\PaymentGateway\TestGateway@stripeForm')->name('test-stripe');
-Route::post('payment/submittestgateway/{session_id}', 'Repo\PaymentGateway\TestGateway@test3DSFormSubmit')->name('test-stripe-submit');
+Route::get('order/testgateway/{session_id}', 'Repo\PaymentGateway\TestGateway@stripeForm')->name('test-stripe');
+Route::post('order/submittestgateway/{session_id}', 'Repo\PaymentGateway\TestGateway@test3DSFormSubmit')->name('test-stripe-submit');
 
 // stripe live gateway
-Route::get('payment/stripe/return/{session_id}', 'Repo\PaymentGateway\Stripe@return')->name('stripe.return');
+Route::get('order/stripe/return/{session_id}', 'Repo\PaymentGateway\Stripe@return')->name('stripe.return');
 
 //Dixonpay gateway
 Route::any('dixonpayvisa/return/{id}', 'Repo\PaymentGateway\Dixonpayvisa@return')->name("dixonpayvisa.return");
