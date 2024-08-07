@@ -42,7 +42,7 @@ class PreArbitrationNoticeMail extends Mailable
                 	'currency' => $this->details['currency'],
                     'amount' => $this->details['amount']
                 ]
-            )->cc(['sales@testpay.com']);
+            )->cc(['info.paylaksa@gmail.com']);
 
             if(!empty($this->details['file'])){
                 $data = $data->attach(asset($this->details['file']),['as'=>'DISPUTED_TRANSACTION_testpay.pdf']);

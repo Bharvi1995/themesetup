@@ -8,7 +8,8 @@
 
     <style>
         .custom-btn {
-            background-color: #9B786F;
+/*            background-color: #9B786F;*/
+            background-image: linear-gradient(310deg, #2152ff, #21d4fd);
             padding: 10px 30px;
             border-radius: 6px;
             line-height: 60px;
@@ -24,7 +25,7 @@
             margin: 0px;
             line-height: 26px;
             margin-bottom: 10px !important;
-            color: #5a5a5a !important;
+            color: #cb0c9f !important;
         }
 
         a {
@@ -44,14 +45,14 @@
             </tr>
 
             <tr>
-                <td style="background: #FFFFFF; border-radius: 5px; padding: 30px;color:#5a5a5a; border-bottom: 1px solid #9B786F;">
-                    <div style="padding-bottom: 30px;color: #5a5a5a;">
+                <td style="background: #FFFFFF; border-radius: 5px; padding: 30px;color:#cb0c9f; border-bottom: 1px solid #9B786F;">
+                    <div style="padding-bottom: 30px;color: #cb0c9f;">
                         {{ Illuminate\Mail\Markdown::parse($slot) }}
 
                         {{ $subcopy ?? '' }}
                     </div>
 
-                    <p style="margin-bottom: 0px;color: #5a5a5a;">
+                    <p style="margin-bottom: 0px;color: #cb0c9f;">
                         Best Regards,<br>
                         <span style="color: #9B786F;">The {{ config('app.name') }}</span> Team
                     </p>

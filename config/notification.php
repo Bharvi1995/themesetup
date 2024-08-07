@@ -1,7 +1,7 @@
 <?php
 return [
 
-	'default_email' => 'sales@testpay.com',
+	'default_email' => 'info.paylaksa@gmail.com',
 
 	'default_admin_id' => 27,
 

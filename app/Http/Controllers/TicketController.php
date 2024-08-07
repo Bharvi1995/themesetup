@@ -112,7 +112,7 @@ class TicketController extends HomeController
             $input['status'] =  '0';
 
             $ticket = $this->ticket->storeData($input);
-            Mail::to('sales@testpay.com')->send(new \App\Mail\TicketCreate($ticket, auth()->user()));
+            Mail::to('info.paylaksa@gmail.com')->send(new \App\Mail\TicketCreate($ticket, auth()->user()));
             // Mail::to($user->email)->queue(new \App\Mail\TicketCreateUser($ticket));
 
             // $notification = [
@@ -159,7 +159,7 @@ class TicketController extends HomeController
             if ($this->ticket->updateStatus($id, '3')) {
                 try {
                     $ticket = Ticket::find($id);
-                    Mail::to('sales@testpay.com')->send(new \App\Mail\TicketCloseByUser($ticket));
+                    Mail::to('info.paylaksa@gmail.com')->send(new \App\Mail\TicketCloseByUser($ticket));
                     $notification = [
                         'user_id' => '1',
                         'sendor_id' => $userID,

@@ -8,7 +8,7 @@
                             <tr>
                                 <td>
                                     <a href="{{ $url }}" class="" target="_blank" style="font-family: 'Poppins', sans-serif;
-                                        background-color: #6683A9;
+                                        background-image: linear-gradient(310deg, #2152ff, #21d4fd);
                                         padding: 10px 30px;
                                         border-radius: 6px;
                                         line-height: 60px;

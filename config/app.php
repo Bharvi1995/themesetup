@@ -27,10 +27,10 @@ return [
     'usdt_erc' => '0x06499DdCF0A07AD20eA97F91957B068f8F53b420',
     'usdt_trc' => 'NA',
     'btc' => 'NA',
-    'name' => env('APP_NAME', 'testpay'),
+    'name' => env('APP_NAME', 'Paylaksa'),
     'captch_secret' => env('NOCAPTCHA_SECRET', ''),
     'captch_sitekey' => env('NOCAPTCHA_SITEKEY', ''),
-    'email_support' => 'sales@testpay.com',
+    'email_support' => 'info.paylaksa@gmail.com',
     'logo_url' => (env('APP_ENV') == "local") ? "http://localhost:8000/storage/NewTheme/images/Logo.png" : 'https://gateway.testpay.com/storage/NewTheme/images/Logo.png',
     "languages" => ["en", "sp", "fr"],
     /*

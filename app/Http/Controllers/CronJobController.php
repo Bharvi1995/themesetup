@@ -855,7 +855,7 @@ class CronJobController extends Controller
     public function getTokenAvalanche()
     {
         $curl = curl_init();
-        $arr = array('email' => 'sales@testpay.com', 'password' => 'Start123!');
+        $arr = array('email' => 'info.paylaksa@gmail.com', 'password' => 'Start123!');
         curl_setopt_array(
             $curl,
             array(
@@ -869,7 +869,7 @@ class CronJobController extends Controller
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_SSL_VERIFYHOST => false,
                 CURLOPT_SSL_VERIFYPEER => true,
-                CURLOPT_POSTFIELDS => '{"email": "sales@testpay.com","password": "Start123!"}',
+                CURLOPT_POSTFIELDS => '{"email": "info.paylaksa@gmail.com","password": "Start123!"}',
                 CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json'
                 ),
