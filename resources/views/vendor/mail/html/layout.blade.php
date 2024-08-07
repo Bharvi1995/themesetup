@@ -45,7 +45,7 @@
             </tr>
 
             <tr>
-                <td style="background: #FFFFFF; border-radius: 5px; padding: 30px;color:#cb0c9f; border-bottom: 1px solid #9B786F;">
+                <td style="background: #FFFFFF; border-radius: 5px; padding: 30px; border-bottom: 1px solid #9B786F;">
                     <div style="padding-bottom: 30px;color: #cb0c9f;">
                         {{ Illuminate\Mail\Markdown::parse($slot) }}
 
@@ -54,15 +54,15 @@
 
                     <p style="margin-bottom: 0px;color: #cb0c9f;">
                         Best Regards,<br>
-                        <span style="color: #9B786F;">The {{ config('app.name') }}</span> Team
+                        <span style="color: #cb0c9f;">The {{ config('app.name') }}</span> Team
                     </p>
                 </td>
             </tr>
         </table>
-        <table style="width: 100%; padding: 0px 60px 60px 60px; color: #9B786F; text-align: center;">
+        <table style="width: 100%; padding: 0px 60px 60px 60px; color: #cb0c9f; text-align: center;">
             <tr>
                 <td style="width: 100%;">
-                    If you have any queries, please feel free to reach out to us:  &nbsp; Email: <a href="#" style="color: #9B786F;">{{ config('app.email_support') }}</a>
+                    If you have any queries, please feel free to reach out to us:  &nbsp; Email: <a href="#" style="color: #cb0c9f;">{{ config('app.email_support') }}</a>
                     </p>
                 </td>
             </tr>
