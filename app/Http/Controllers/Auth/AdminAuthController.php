@@ -108,37 +108,46 @@ class AdminAuthController extends AdminController
      */
     public function postLogin(Request $request)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-            'g-recaptcha-response' => 'required'
-        ]);
+        if(config('app.env') == 'production'){
+            $this->validate($request, [
+                'email' => 'required|email',
+                'password' => 'required',
+                'g-recaptcha-response' => 'required'
+            ]);
+        }else{
+            $this->validate($request, [
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
+        }
+        
+        if(config('app.env') == 'production'){
+            $request_url = 'https://www.google.com/recaptcha/api/siteverify';
 
-        $request_url = 'https://www.google.com/recaptcha/api/siteverify';
+            $request_data = [
+                'secret' => config('app.captch_secret'),
+                'response' => $request['g-recaptcha-response']
+            ];
 
-        $request_data = [
-            'secret' => config('app.captch_secret'),
-            'response' => $request['g-recaptcha-response']
-        ];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $request_url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $request_url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            $response_body = curl_exec($ch);
 
-        $response_body = curl_exec($ch);
+            curl_close($ch);
 
-        curl_close($ch);
+            $response_data = json_decode($response_body, true);
 
-        $response_data = json_decode($response_body, true);
+            if ($response_data['success'] == false) {
+                \Session::put('error', 'Recaptcha verification failed.');
 
-        if ($response_data['success'] == false) {
-            \Session::put('error', 'Recaptcha verification failed.');
-
-            return redirect()->back();
+                return redirect()->back();
+            }
         }
 
         $userData = Admin::where('email', $request->input('email'))->first();

@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-
+use phpseclib3\Crypt\RSA;
+use phpseclib3\Math\BigInteger;
 function notificationMsg($type, $message)
 {
     Session::put($type, $message);
@@ -3544,5 +3545,88 @@ function getPhoneCode(string $countryCode): string
         return $phoneCodes[$countryCode];
     } else {
         return "+61";
+    }
+}
+
+function getXmlComponent($xmlstring, $field)
+{
+    try {
+        // Load XML
+        $xml = new SimpleXMLElement($xmlstring);
+        // Register namespaces if any
+        $namespaces = $xml->getNamespaces(true);
+        foreach ($namespaces as $prefix => $namespace) {
+            if ($prefix === '') {
+                $prefix = 'default';
+            }
+            $xml->registerXPathNamespace($prefix, $namespace);
+        }
+        // Construct the correct XPath query
+        $result = null;
+        if (!empty($namespaces)) {
+            foreach ($namespaces as $prefix => $namespace) {
+                $prefix = $prefix ?: 'default';
+                $result = $xml->xpath("//$prefix:$field");
+                if ($result) {
+                    break;
+                }
+            }
+        } else {
+            $result = $xml->xpath("//$field");
+        }
+        // Check if the element was found
+        if ($result && count($result) > 0) {
+            return (string)$result[0];
+        } else {
+            echo "Element $field not found.\n";
+            return "";
+        }
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage() . "\n";
+        return "";
+    }
+}
+
+function encryptData($data, $public_xml)
+{
+    try {
+        if (!$data) {
+            throw new Exception("Data sent for encryption is empty");
+        }
+
+        // Decode the Base64 string
+        $decoded_bytes = base64_decode($public_xml);
+        $decoded_string = mb_convert_encoding($decoded_bytes, 'UTF-8');
+        $public_xml_key = explode('!', $decoded_string)[1];
+
+        // echo $public_xml_key;
+
+        $modulus = getXmlComponent($public_xml_key, "Modulus");
+        $exponent = getXmlComponent($public_xml_key, "Exponent");
+
+        $modulus_bytes = base64_decode($modulus);
+        $exponent_bytes = base64_decode($exponent);
+
+        // Create an RSA public key from Modulus and Exponent
+        $rsa = RSA::loadFormat('raw', [
+            'n' => new BigInteger($modulus_bytes, 256),
+            'e' => new BigInteger($exponent_bytes, 256)
+        ]);
+
+        // echo "Trying to encrypt data" . "\n";
+
+        // Encrypt data
+        $rsa = $rsa->withPadding(RSA::ENCRYPTION_PKCS1);
+        $encrypted = $rsa->encrypt($data);
+
+        // Convert to base 64 string
+        $encrypted_base64 = base64_encode($encrypted);
+        // echo "base 64 value" . "\n";
+        // echo $encrypted_base64 . "\n";
+
+        return $encrypted_base64;
+    } catch (Exception $e) {
+        // echo "Error: " . $e->getMessage() . "\n";
+        return "No encrypted ata";
     }
 }

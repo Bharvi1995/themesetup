@@ -24,7 +24,7 @@ Route::group(['middleware' => ['api', 'cors']], function () {
 	// Route::post('transaction', 'API\DirectApiController@store')->name('transaction');
 
 	// test api
-	Route::post('seamlesstest/transaction', 'API\TestDirectApiController@store')->name('test.transaction');
+	Route::post('testpayment/order/create', 'API\TestDirectApiController@store')->name('test.transaction');
 
 	// api v2
 	Route::post('payment/order/create', 'API\ApiController@store')->name('transaction');

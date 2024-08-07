@@ -36,7 +36,7 @@ class TestGateway extends Controller
         $this->updateGatewayResponseData($input, $input);
 
         // redirect 3ds page
-        if ($input['user_card_no'] == '4000000000003220') {
+        if ($input['user_card_no'] == '4000056655665556') {
             return [
                 'status' => '7',
                 'reason' => "Please redirect to the specified 'payment_link' to complete the transaction processing.",
@@ -44,14 +44,14 @@ class TestGateway extends Controller
                 'gateway_id' => $input['gateway_id'],
             ];
         // success
-        } elseif ($input['user_card_no'] == '4111111111111111') {
+        } elseif ($input['user_card_no'] == '4000002500001001') {
             return [
                 'status' => '1',
                 'reason' => 'Your payment has been successfully completed.',
                 'order_id' => $input['order_id'],
                 'gateway_id' => $input['gateway_id'],
             ];
-        } elseif ($input['user_card_no'] == '4871049999999910') {
+        } elseif ($input['user_card_no'] == '4000000320000021') {
             return [
                 'status' => '0',
                 'reason' => 'Insufficient fund.',

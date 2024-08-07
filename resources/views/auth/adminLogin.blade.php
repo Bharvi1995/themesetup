@@ -16,7 +16,7 @@
 <body class="light-theme">
    <main class="main-content  mt-0">
       <section>
-         <div class="page-header min-vh-75">
+         <div class="page-header min-vh-85">
             <div class="container">
                <div class="row">
                   <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
@@ -66,8 +66,11 @@
                                 @endif
                               </div>
                               <div class="text-center">
-                                 <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0 g-recaptcha" data-sitekey="{{ config('app.captch_sitekey') }}"
-                                            data-callback="onSubmit" data-action="submit">Sign in</button>
+                                    @if(config('app.env') == 'production')
+                                        <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0 g-recaptcha" data-sitekey="{{ config('app.captch_sitekey') }}" data-callback="onSubmit" data-action="submit">Sign in</button>
+                                    @else
+                                        <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                                    @endif
                               </div>
                            </form>
                         </div>

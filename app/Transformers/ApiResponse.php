@@ -486,11 +486,13 @@ class ApiResponse
     */// ===============================================
     public static function getTransactionDetails($input)
     {
-        return [
+        $orderDetails = [
             'order_id' => $input['order_id'] ?? null,
             'transaction_ref' => $input['user_order_ref'] ?? null,
             'user_amount' => $input['user_amount'] ?? null,
-            'user_currency' => $input['user_currency'] ?? null,
+            'user_currency' => $input['user_currency'] ?? null
+        ];
+        $userDetails = [
             'user_first_name' => $input['user_first_name'] ?? null,
             'user_last_name' => $input['user_last_name'] ?? null,
             'user_email' => $input['user_email'] ?? null,
@@ -499,24 +501,43 @@ class ApiResponse
             'user_zip' => $input['user_zip'] ?? null,
             'user_city' => $input['user_city'] ?? null,
             'user_state' => $input['user_state'] ?? null,
-            'user_country' => $input['user_country'] ?? null,
-            
-            // 'card' => [
-            //     'card_no' => isset($input['card_no']) && !empty($input['card_no']) ? cardMasking($input["card_no"]) : null,
-            //     'ccExpiryMonth' => $input['ccExpiryMonth'] ?? null,
-            //     'ccExpiryYear' => $input['ccExpiryYear'] ?? null,
-            //     'cvvNumber' => $input['cvvNumber'] ?? null,
-            // ],
+            'user_country' => $input['user_country'] ?? null
         ];
+        $data = ["orderDetails" => $orderDetails,"clientDetails" => $userDetails];
+        return $data;
+        // return [
+        //     'order_id' => $input['order_id'] ?? null,
+        //     'transaction_ref' => $input['user_order_ref'] ?? null,
+        //     'user_amount' => $input['user_amount'] ?? null,
+        //     'user_currency' => $input['user_currency'] ?? null,
+        //     'user_first_name' => $input['user_first_name'] ?? null,
+        //     'user_last_name' => $input['user_last_name'] ?? null,
+        //     'user_email' => $input['user_email'] ?? null,
+        //     'user_phone_no' => $input['user_phone_no'] ?? null,
+        //     'user_address' => $input['user_address'] ?? null,
+        //     'user_zip' => $input['user_zip'] ?? null,
+        //     'user_city' => $input['user_city'] ?? null,
+        //     'user_state' => $input['user_state'] ?? null,
+        //     'user_country' => $input['user_country'] ?? null,
+            
+        //     // 'card' => [
+        //     //     'card_no' => isset($input['card_no']) && !empty($input['card_no']) ? cardMasking($input["card_no"]) : null,
+        //     //     'ccExpiryMonth' => $input['ccExpiryMonth'] ?? null,
+        //     //     'ccExpiryYear' => $input['ccExpiryYear'] ?? null,
+        //     //     'cvvNumber' => $input['cvvNumber'] ?? null,
+        //     // ],
+        // ];
     }
 
     public static function getTransactionDetailsOriginal($input)
     {
-        return [
+        $orderDetails = [
             'order_id' => $input['order_id'] ?? null,
             'transaction_ref' => $input['customer_order_id'] ?? null,
             'user_amount' => $input['amount'] ?? null,
-            'user_currency' => $input['currency'] ?? null,
+            'user_currency' => $input['currency'] ?? null
+        ];
+        $userDetails = [
             'user_first_name' => $input['first_name'] ?? null,
             'user_last_name' => $input['last_name'] ?? null,
             'user_email' => $input['email'] ?? null,
@@ -525,14 +546,30 @@ class ApiResponse
             'user_zip' => $input['zip'] ?? null,
             'user_city' => $input['city'] ?? null,
             'user_state' => $input['state'] ?? null,
-            'user_country' => $input['country'] ?? null,
-            
-            // 'card' => [
-            //     'card_no' => isset($input['card_no']) && !empty($input['card_no']) ? cardMasking($input["card_no"]) : null,
-            //     'ccExpiryMonth' => $input['ccExpiryMonth'] ?? null,
-            //     'ccExpiryYear' => $input['ccExpiryYear'] ?? null,
-            //     'cvvNumber' => $input['cvvNumber'] ?? null,
-            // ],
+            'user_country' => $input['country'] ?? null
         ];
+        $data = ["orderDetails" => $orderDetails,"clientDetails" => $userDetails];
+        // return [
+        //     'order_id' => $input['order_id'] ?? null,
+        //     'transaction_ref' => $input['customer_order_id'] ?? null,
+        //     'user_amount' => $input['amount'] ?? null,
+        //     'user_currency' => $input['currency'] ?? null,
+        //     'user_first_name' => $input['first_name'] ?? null,
+        //     'user_last_name' => $input['last_name'] ?? null,
+        //     'user_email' => $input['email'] ?? null,
+        //     'user_phone_no' => $input['phone_no'] ?? null,
+        //     'user_address' => $input['address'] ?? null,
+        //     'user_zip' => $input['zip'] ?? null,
+        //     'user_city' => $input['city'] ?? null,
+        //     'user_state' => $input['state'] ?? null,
+        //     'user_country' => $input['country'] ?? null,
+            
+        //     // 'card' => [
+        //     //     'card_no' => isset($input['card_no']) && !empty($input['card_no']) ? cardMasking($input["card_no"]) : null,
+        //     //     'ccExpiryMonth' => $input['ccExpiryMonth'] ?? null,
+        //     //     'ccExpiryYear' => $input['ccExpiryYear'] ?? null,
+        //     //     'cvvNumber' => $input['cvvNumber'] ?? null,
+        //     // ],
+        // ];
     }
 }

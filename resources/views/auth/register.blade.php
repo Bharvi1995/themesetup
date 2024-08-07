@@ -15,12 +15,17 @@
     <link href="{{ storage_asset('softtheme/css/nucleo-svg.css')}}" rel="stylesheet" />
     <link id="pagestyle" href="{{ storage_asset('softtheme/css/soft-ui-dashboard.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css"/>
+    <style type="text/css">
+        .navbar-brand-img{
+            max-width: 200px !important;
+        }
+    </style>
 </head>
 <body class="light-theme">
     <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
     <div class="container">
-      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="pages/dashboard.html">
-      PayLaksa
+      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{{ route('register') }}">
+        <img src="{{ storage_asset('softtheme/img/Logo.png')}}" class="navbar-brand-img h-100" alt="main_logo">
       </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon mt-2">
@@ -32,7 +37,7 @@
    </div>
 </nav>
 <main class="main-content  mt-0">
-   <section class="min-vh-100 mb-8">
+   <section class="min-vh-100">
       <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('storage/softtheme/img/curved-images/curved14.jpg');">
          <span class="mask bg-gradient-dark opacity-6"></span>
          <div class="container">
@@ -565,7 +570,11 @@
                            </label>
                         </div> -->
                         <div class="text-center">
-                           <button class="btn bg-gradient-dark w-100 my-4 mb-2 g-recaptcha" data-sitekey="{{ config('app.captch_sitekey') }}" data-callback="onSubmit" data-action="submit">Sign up</button>
+                           @if(config('app.env') == 'production')
+                                <button class="btn bg-gradient-dark w-100 my-4 mb-2 g-recaptcha" data-sitekey="{{ config('app.captch_sitekey') }}" data-callback="onSubmit" data-action="submit">Sign up</button>
+                           @else
+                                <button class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+                           @endif
                         </div>
                         <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{route('login')}}" class="text-dark font-weight-bolder">Sign in</a></p>
                      </form>

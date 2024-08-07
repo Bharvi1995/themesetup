@@ -894,3 +894,6 @@ Route::post('prisampay/fail', 'Repo\PaymentGateway\PrismPay@prisampayFail')->nam
 // * Chargemoney MID urls
 Route::get("chargemoney/redirect/{id}", "Repo\PaymentGateway\Chargemoney@redirect")->name("chargemoney.redirect");
 Route::post("chargemoney/callback/{id}", "Repo\PaymentGateway\Chargemoney@callback")->name("chargemoney.callback");
+
+Route::get("uselinq/return/{id}", "Repo\PaymentGateway\Linqpay@return")->name("linqpay.return");
+

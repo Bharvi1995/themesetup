@@ -39,9 +39,8 @@ class TestDirectApiController extends Controller
             $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
             abort(ApiResponse::unauthorised($input));
         }
-        $credentials = base64_decode(substr($authorization, 6));
-        list($username, $password) = explode(':', $credentials, 2);
-        $user = User::where('email', $username)->where("api_key",$password)->first();
+        $apikey = substr($authorization, 6);
+        $user = User::where("api_key",$apikey)->where("is_active","1")->whereNull("deleted_at")->first();
         if (!$user) {
             $input['status'] = '6';
             $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
@@ -52,10 +51,74 @@ class TestDirectApiController extends Controller
 
     public function store(Request $request)
     {
+        
+
         $this->validateBasicAuth($request);
         // only accept parameters that are available
         // $request_only = config('required_field.fields');
-        $input = $request->only(['user_first_name', 'user_last_name', 'user_email', 'user_phone_no', 'user_amount', 'user_currency', 'user_address', 'user_country', 'user_state', 'user_city', 'user_zip', 'user_order_ref', 'user_redirect_url', 'user_webhook_url','user','user_card_no','user_ccexpiry_month','user_ccexpiry_year','user_cvv_number']);
+        // $input = $request->only(['user_first_name', 'user_last_name', 'user_email', 'user_phone_no', 'user_amount', 'user_currency', 'user_address', 'user_country', 'user_state', 'user_city', 'user_zip', 'user_order_ref', 'user_redirect_url', 'user_webhook_url','user','user_card_no','user_ccexpiry_month','user_ccexpiry_year','user_cvv_number']);
+        $requestData = $request->only(['payment', 'order', 'customer', 'user']);
+        $input["user"] = $requestData['user'];
+        if(isset($requestData["customer"])){
+            if(isset($requestData["customer"]["user_first_name"])){
+                $input["user_first_name"] = $requestData["customer"]["user_first_name"];
+            }
+            if(isset($requestData["customer"]["user_last_name"])){
+                $input["user_last_name"] = $requestData["customer"]["user_last_name"];
+            }
+            if(isset($requestData["customer"]["user_phone_no"])){
+                $input["user_phone_no"] = $requestData["customer"]["user_phone_no"];
+            }
+            if(isset($requestData["customer"]["user_email"])){
+                $input["user_email"] = $requestData["customer"]["user_email"];
+            }
+            if(isset($requestData["customer"]["user_address"])){
+                $input["user_address"] = $requestData["customer"]["user_address"];
+            }
+            if(isset($requestData["customer"]["user_country"])){
+                $input["user_country"] = $requestData["customer"]["user_country"];
+            }
+            if(isset($requestData["customer"]["user_state"])){
+                $input["user_state"] = $requestData["customer"]["user_state"];
+            }
+            if(isset($requestData["customer"]["user_city"])){
+                $input["user_city"] = $requestData["customer"]["user_city"];
+            }
+            if(isset($requestData["customer"]["user_zip"])){
+                $input["user_zip"] = $requestData["customer"]["user_zip"];
+            }
+        }
+        if(isset($requestData["order"])){
+            if(isset($requestData["order"]["user_amount"])){
+                $input["user_amount"] = $requestData["order"]["user_amount"];
+            }
+            if(isset($requestData["order"]["user_currency"])){
+                $input["user_currency"] = $requestData["order"]["user_currency"];
+            }
+            if(isset($requestData["order"]["user_order_ref"])){
+                $input["user_order_ref"] = $requestData["order"]["user_order_ref"];
+            }
+        }
+        if(isset($requestData["payment"])){
+            if(isset($requestData["payment"]['user_card_no'])){
+                $input["user_card_no"] = $requestData["payment"]['user_card_no'];
+            }
+            if(isset($requestData["payment"]['user_ccexpiry_month'])){
+                $input["user_ccexpiry_month"] = $requestData["payment"]['user_ccexpiry_month'];
+            }
+            if(isset($requestData["payment"]['user_ccexpiry_year'])){
+                $input["user_ccexpiry_year"] = $requestData["payment"]['user_ccexpiry_year'];
+            }
+            if(isset($requestData["payment"]['user_cvv_number'])){
+                $input["user_cvv_number"] = $requestData["payment"]['user_cvv_number'];
+            }
+            if(isset($requestData["payment"]['user_redirect_url'])){
+                $input["user_redirect_url"] = $requestData["payment"]['user_redirect_url'];
+            }
+            if(isset($requestData["payment"]['user_webhook_url'])){
+                $input["user_webhook_url"] = $requestData["payment"]['user_webhook_url'];
+            }
+        }
         // user IP and domain and request from API
         $input['payment_type'] = 'card';
         $input['request_from_ip'] = $request->ip();
@@ -63,7 +126,6 @@ class TestDirectApiController extends Controller
         $input['is_request_from_vt'] = 'TESTAPI';
         $input['user_id'] = $input["user"]->id;
         $input['payment_gateway_id'] = 1;
-
         // check only user assigned gateway is active
         $check_assign_mid = checkAssignMID($input["user"]->mid);
 
@@ -88,6 +150,10 @@ class TestDirectApiController extends Controller
             'user_order_ref' => 'nullable|max:100',
             'user_redirect_url' => 'required|url',
             'user_webhook_url' => 'nullable|url',
+            'user_card_no' => 'required',
+            'user_ccexpiry_month' => 'required',
+            'user_ccexpiry_year' => 'required',
+            'user_cvv_number' => 'required',
         ]);
 
         if ($validator->fails()) {

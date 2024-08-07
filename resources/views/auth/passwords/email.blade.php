@@ -16,7 +16,7 @@
 <body class="light-theme">
    <main class="main-content  mt-0">
       <section>
-         <div class="page-header min-vh-75">
+         <div class="page-header min-vh-85">
             <div class="container">
                <div class="row">
                   <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
