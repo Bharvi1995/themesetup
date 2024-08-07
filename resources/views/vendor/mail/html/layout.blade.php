@@ -15,7 +15,7 @@
             line-height: 60px;
             color: #FFFFFF;
             font-weight: bold;
-            border: 1px solid #9B786F;
+            border: 1px solid #2152ff;
             font-family: 'Poppins', sans-serif;
             box-sizing: border-box;
             text-decoration: none;
@@ -25,7 +25,7 @@
             margin: 0px;
             line-height: 26px;
             margin-bottom: 10px !important;
-            color: #cb0c9f !important;
+/*            color: #cb0c9f !important;*/
         }
 
         a {
