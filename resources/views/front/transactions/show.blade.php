@@ -172,147 +172,141 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 col-xl-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="header-title">
-                        <h4 class="card-title">Details of Transaction</h4>
-                    </div>
-                   <!--  <div>
-                        <h4 class="card-title">Order No / {{ $data->order_id }}</h4>
-                    </div> -->
+<div class="row">
+    
+    <div class="col-lg-6 col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="header-title">
+                    <h4 class="card-title">Order Details</h4>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="table-responsive custom-table">
-                                <table class="table table-borderless table-striped">
-                                    <tr>
-                                        <td><strong>Order Id</strong></td>
-                                        <td>{{ $data->order_id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 180px;"><strong>First Name</strong></td>
-                                        <td>{{ $data->first_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Last Name</strong></td>
-                                        <td>{{ $data->last_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Address</strong></td>
-                                        <td>{{ $data->address }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Country</strong></td>
-                                        <td>{{ $data->country }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>State</strong></td>
-                                        <td>{{ $data->state }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>City</strong></td>
-                                        <td>{{ $data->city }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Zip Code</strong></td>
-                                        <td>{{ $data->zip }}</td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <td><strong>IP Address</strong></td>
-                                        <td>{{ $data->ip_address }}</td>
-                                    </tr> -->
-                                    
-                                    
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="table-responsive custom-table">
-                                <table class="table table-borderless table-striped">
-                                    <tr>
-                                        <td><strong>Transaction Ref</strong></td>
-                                        <td>{{ $data->customer_order_id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Email</strong></td>
-                                        <td>{{ $data->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Phone No.</strong></td>
-                                        <td>{{ $data->phone_no }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Date</strong></td>
-                                        <td>{{ convertDateToLocal($data->created_at, 'd-m-Y  H:i:s') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 180px;"><strong>Amount</strong></td>
-                                        <td> {{ $data->amount." ".$data->currency }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Card Number</strong></td>
-                                        <td>{{ $data->card_no }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Status</strong></td>
-                                        <td>
-                                            @if ($data->status == '1')
-                                                <label class="light badge badge-success">Success</label>
-                                            @elseif($data->status == '2')
-                                                <label class="light badge badge-warning">Pending</label>
-                                            @elseif($data->status == '3')
-                                                <label class="light badge badge-yellow">Cancelled</label>
-                                            @elseif($data->status == '4')
-                                                <label class="light badge badge-primary">To Be Confirm</label>
-                                            @else
-                                                <label class="light badge badge-danger">Declined</label>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Reason</strong></td>
-                                        <td>{{ $data->reason }}</td>
-                                    </tr>
-                                    @if ($data->chargebacks == '1')
-                                        <tr>
-                                            <td><strong>Chargebacks</strong></td>
-                                            <td><label class="badge badge-success">YES</label> ({{date("d-m-Y H:i:s",strtotime($data->chargebacks_date))}}) </td>
-                                        </tr>
-                                    @endif
-                                    @if ($data->is_flagged == '1')
-                                        <tr>
-                                            <td><strong>Dispute</strong></td>
-                                            <td><label class="badge badge-success">YES</label>({{date("d-m-Y H:i:s",strtotime($data->flagged_date))}})</td>
-                                        </tr>
-                                    @endif
-                                    @if ($data->is_retrieval == '1')
-                                        <tr>
-                                            <td><strong>Retrieval</strong></td>
-                                            <td><label class="badge badge-success">YES</label> ({{date("d-m-Y H:i:s",strtotime($data->retrieval_date))}})</td>
-                                        </tr>
-                                    @endif
-                                    @if ($data->refund == '1')
-                                        <tr>
-                                            <td><strong>Refund</strong></td>
-                                            <td><label class="badge badge-success">YES</label>({{date("d-m-Y H:i:s",strtotime($data->refund_date))}})</td>
-                                        </tr>
-                                        @if ($data->refund_reason != '')
-                                            <tr>
-                                                <td><strong>Refund Reason</strong></td>
-                                                <td>{{ $data->refund_reason }}</td>
-                                            </tr>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- <div class="col-md-6"> -->
+                        <div class="table-responsive custom-table">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td><strong>Order Id</strong></td>
+                                    <td>{{ $data->order_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Transaction Ref</strong></td>
+                                    <td>{{ $data->customer_order_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 180px;"><strong>Amount</strong></td>
+                                    <td> {{ $data->amount." ".$data->currency }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Card Number</strong></td>
+                                    <td>{{ $data->card_no }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Status</strong></td>
+                                    <td>
+                                        @if ($data->status == '1')
+                                            <label class="badge bg-gradient-success">Success</label>
+                                        @elseif($data->status == '2')
+                                            <label class="badge bg-gradient-warning">Pending</label>
+                                        @elseif($data->status == '3')
+                                            <label class="badge bg-gradient-yellow">Cancelled</label>
+                                        @elseif($data->status == '4')
+                                            <label class="badge bg-gradient-primary">To Be Confirm</label>
+                                        @else
+                                            <label class="badge bg-gradient-danger">Declined</label>
                                         @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Reason</strong></td>
+                                    <td>{{ $data->reason }}</td>
+                                </tr>
+                                 @if ($data->chargebacks == '1')
+                                    <tr>
+                                        <td><strong>Chargebacks</strong></td>
+                                        <td><label class="badge badge-success">YES</label> ({{date("d-m-Y H:i:s",strtotime($data->chargebacks_date))}}) </td>
+                                    </tr>
+                                @endif
+                                @if ($data->is_flagged == '1')
+                                    <tr>
+                                        <td><strong>Dispute</strong></td>
+                                        <td><label class="badge badge-success">YES</label>({{date("d-m-Y H:i:s",strtotime($data->flagged_date))}})</td>
+                                    </tr>
+                                @endif
+                               @if ($data->refund == '1')
+                                    <tr>
+                                        <td><strong>Refund</strong></td>
+                                        <td><label class="badge badge-success">YES</label>({{date("d-m-Y H:i:s",strtotime($data->refund_date))}})</td>
+                                    </tr>
+                                    @if ($data->refund_reason != '')
+                                        <tr>
+                                            <td><strong>Refund Reason</strong></td>
+                                            <td>{{ $data->refund_reason }}</td>
+                                        </tr>
                                     @endif
-                                </table>
-                            </div>
+                                @endif
+                            </table>
                         </div>
-                        
-                    </div>
+                    <!-- </div>                         -->
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="col-lg-6 col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="header-title">
+                    <h4 class="card-title">Personal Details</h4>
+                </div>
+               <!--  <div>
+                    <h4 class="card-title">Order No / {{ $data->order_id }}</h4>
+                </div> -->
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="table-responsive custom-table">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td style="width: 180px;"><strong>First Name</strong></td>
+                                <td>{{ $data->first_name }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Last Name</strong></td>
+                                <td>{{ $data->last_name }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Address</strong></td>
+                                <td>{{ $data->address }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Country</strong></td>
+                                <td>{{ $data->country }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>State</strong></td>
+                                <td>{{ $data->state }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>City</strong></td>
+                                <td>{{ $data->city }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Zip Code</strong></td>
+                                <td>{{ $data->zip }}</td>
+                            </tr>
+                            <!-- <tr>
+                                <td><strong>IP Address</strong></td>
+                                <td>{{ $data->ip_address }}</td>
+                            </tr> -->
+                            
+                            
+                        </table>
+                    </div>                       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

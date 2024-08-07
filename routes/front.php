@@ -102,7 +102,7 @@ Route::group(['middleware' => 'notification_read_user'], function () {
         // Route::get('articles/view/{slug}', 'ArticleController@view');
 
         // Admin route
-        Route::get('save-local-timezone', 'AdminController@saveLocalTimezone');
+        // Route::get('save-local-timezone', 'AdminController@saveLocalTimezone');
     });
 
     //****************** Merchant Application modules End *************************//
