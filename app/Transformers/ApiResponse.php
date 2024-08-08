@@ -549,6 +549,7 @@ class ApiResponse
             'user_country' => $input['country'] ?? null
         ];
         $data = ["orderDetails" => $orderDetails,"clientDetails" => $userDetails];
+        return $data;
         // return [
         //     'order_id' => $input['order_id'] ?? null,
         //     'transaction_ref' => $input['customer_order_id'] ?? null,

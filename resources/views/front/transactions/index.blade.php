@@ -25,6 +25,11 @@
                     </div>
                     <div class="card-header-toolbar align-items-center">
                         <div class="btn-group mr-2">
+                            <form action="{{ route('transactions.exportAllTransactions', request()->all()) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-outline-primary mr-2" id="ExcelLink">
+                                    Export Excel</button>
+                            </form>
                             <button class="btn btn-primary btn-sm searchModelOpen" data-bs-toggle="modal" data-bs-target="#searchModal"> More Filter &nbsp;
                             <svg width="13" height="10" viewBox="0 0 18 15" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

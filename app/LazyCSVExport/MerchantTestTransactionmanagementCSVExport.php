@@ -33,7 +33,7 @@ class MerchantTestTransactionmanagementCSVExport
             'Card Type',
             'Amount',
             'Currency',
-            'Card No.',
+            // 'Card No.',
             // 'Expiry Month',
             // 'Expiry Year',
             'Status',
@@ -223,6 +223,6 @@ class MerchantTestTransactionmanagementCSVExport
             });
 
             fclose($file);
-        }, 'Test_Payments_'.date('d_m_Y').'.csv');     
+        }, 'Test_Collection_'.date('d_m_Y').'.csv');     
     }
 }

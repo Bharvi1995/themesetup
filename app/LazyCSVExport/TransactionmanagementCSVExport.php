@@ -45,8 +45,8 @@ class TransactionmanagementCSVExport
             'Refund Date',
             'Dispute',
             'Dispute Date',
-            'Retrieval',
-            'Retrieval Date',
+            // 'Retrieval',
+            // 'Retrieval Date',
             // 'Created Date',
             'Transaction Date'
         ];
@@ -113,11 +113,11 @@ class TransactionmanagementCSVExport
                         ELSE ""
                         END) AS Suspicious'),
                 DB::raw("(DATE_FORMAT(transactions.flagged_date, '%d-%m-%Y %h:%i:%s')) AS flagged_date"),
-                DB::raw('(CASE
-                        WHEN transactions.is_retrieval = "1" THEN "Yes"
-                        ELSE ""
-                        END) AS Retrieval'),
-                DB::raw("(DATE_FORMAT(transactions.retrieval_date, '%d-%m-%Y %h:%i:%s')) AS retrieval_date"),
+                // DB::raw('(CASE
+                //         WHEN transactions.is_retrieval = "1" THEN "Yes"
+                //         ELSE ""
+                //         END) AS Retrieval'),
+                // DB::raw("(DATE_FORMAT(transactions.retrieval_date, '%d-%m-%Y %h:%i:%s')) AS retrieval_date"),
                 'transactions.transaction_date'
             )
                 ->join('middetails', 'middetails.id', 'transactions.payment_gateway_id');
@@ -247,6 +247,6 @@ class TransactionmanagementCSVExport
                 });
 
             fclose($file);
-        }, 'Payments_' . date('d_m_Y') . '.csv');
+        }, 'Collection_' . date('d_m_Y') . '.csv');
     }
 }

@@ -154,7 +154,7 @@ $settingsPermission = 1;
                    <div class="numbers">
                       <p class="text-sm mb-0 text-capitalize font-weight-bold">Declined</p>
                       <h5 class="font-weight-bolder mb-0">
-                         {{$transaction->declinedV}}
+                         $ {{$transaction->declinedV}}
                          <span class="text-success text-sm font-weight-bolder">{{round($transaction->declinedP,2)}}%</span>
                       </h5>
                    </div>
@@ -174,7 +174,7 @@ $settingsPermission = 1;
                    <div class="numbers">
                       <p class="text-sm mb-0 text-capitalize font-weight-bold">Refund</p>
                       <h5 class="font-weight-bolder mb-0">
-                         {{$transaction->refundV}}
+                         $ {{$transaction->refundV}}
                          <span class="text-success text-sm font-weight-bolder">{{round($transaction->refundP,2)}}%</span>
                       </h5>
                    </div>
@@ -194,7 +194,7 @@ $settingsPermission = 1;
                    <div class="numbers">
                       <p class="text-sm mb-0 text-capitalize font-weight-bold">Chargebacks</p>
                       <h5 class="font-weight-bolder mb-0">
-                         {{$transaction->chargebackV}}
+                         $ {{$transaction->chargebackV}}
                          <span class="text-success text-sm font-weight-bolder">{{round($transaction->chargebackP,2)}}%</span>
                       </h5>
                    </div>

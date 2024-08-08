@@ -13,8 +13,8 @@ Route::group(['middleware' => 'notification_read_user'], function () {
     Route::get('pagenotfound', ['as' => 'notfound', 'uses' => 'HomeController@pagenotfound']);
     // Route::group(['middleware' => 'checkUserProfile'], function () {
         Route::get('/home', 'HomeController@home')->name('dashboardPage');
-        Route::get('get-user-dashbaord-data', 'HomeController@getDashboardData')->name('get-user-dashbaord-data');
-        Route::get('statistics/reports', 'HomeController@transactionSummary')->name('transaction-summary');
+        // Route::get('get-user-dashbaord-data', 'HomeController@getDashboardData')->name('get-user-dashbaord-data');
+        Route::get('summary', 'HomeController@transactionSummary')->name('transaction-summary');
         // Route::get('transaction-volume', 'HomeController@transactionSummaryReport')->name('transaction-volume');
         // Route::post('get-transaction-break-up', 'HomeController@getTransactionBreakUp')->name('get-transaction-break-up');
 
@@ -111,7 +111,7 @@ Route::group(['middleware' => 'notification_read_user'], function () {
     Route::group(['middleware' => 'authcheck'], function () {
 
         Route::group(['middleware' => 'trim'], function () {
-            Route::get('payin', 'TransactionsController@index')->name('gettransactions');
+            Route::get('collection', 'TransactionsController@index')->name('gettransactions');
             //Refund
             // Route::get('refunds', 'TransactionsController@refunds')->name('refunds');
             // //Chargebacks
@@ -121,12 +121,12 @@ Route::group(['middleware' => 'notification_read_user'], function () {
             // // Retrieval
             // Route::get('retrieval', 'TransactionsController@retrieval')->name('retrieval');
             //Test Transactions
-            Route::get('test/payin', 'TransactionsController@testTransactions')->name('getTestTransactions');
+            Route::get('test/collection', 'TransactionsController@testTransactions')->name('getTestTransactions');
         });
 
         //****************** Merchant Transactions modules Start *************************//
 
-        Route::post('payin/export', '\App\LazyCSVExport\TransactionmanagementCSVExport@download')->name('transactions.exportAllTransactions');
+        Route::post('collection/export', '\App\LazyCSVExport\TransactionmanagementCSVExport@download')->name('transactions.exportAllTransactions');
 
         // Route::post('merchant-refunds-export', '\App\LazyCSVExport\MerchantRefundsTransactionmanagementCSVExport@download')->name('refunds.export');
 

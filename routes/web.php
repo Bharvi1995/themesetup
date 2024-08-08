@@ -650,7 +650,7 @@ Route::get("virtualpay/redirect/{id}", "Repo\PaymentGateway\VirtualPay@redirect"
 
 // Cron job route only
 // currency rates table
-Route::get('get/currency-rates', 'CronJobController@getCurrencyRate')->name('cronjob.getCurrencyRate');
+Route::get('currency-update', 'CronJobController@getCurrencyRate')->name('cronjob.getCurrencyRate');
 Route::get('restore-session-transaction', 'CronJobController@restoreSessionTransaction')->name('cronjob.restoreSessionTransaction');
 Route::get('cronjob-opay', 'CronJobController@opayPendingTransactionStatusChange')->name('cronjob-opay');
 Route::get('cronjob-chakra', 'CronJobController@chakraPendingTransactionStatusChange')->name('cronjob-chakra');

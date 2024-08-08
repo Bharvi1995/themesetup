@@ -1,126 +1,126 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html class="loading dark-layout" lang="en" data-textdirection="ltr">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name') }} | Agent Reset Password</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ storage_asset('softtheme/img/favicon.ico') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- BEGIN: Theme CSS-->
-
-    <link rel="stylesheet" type="text/css" href="{{ storage_asset('setup/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ storage_asset('setup/css/bootstrap-extended.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ storage_asset('setup/css/auth.css') }}">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    @if(config('app.env') == 'production')
+        <link rel="shortcut icon" type="image/x-icon" href="{{ storage_asset('softtheme/img/favicon.ico') }}">
+    @endif
+    <title>Update Password</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="{{ storage_asset('softtheme/css/nucleo-icons.css')}}" rel="stylesheet" />
+    <link href="{{ storage_asset('softtheme/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link href="{{ storage_asset('softtheme/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ storage_asset('softtheme/css/soft-ui-dashboard.min.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css"/>
 </head>
-
-<body>
-    <!-- loader Start -->
-    <div id="loading">
-        <p class="mt-1">Loading...</p>
-    </div>
-    <!-- loader END -->
-    <!-- BEGIN: Content-->
-    <div class="app-content content">
-        <div class="container">
-            <div class="row m-0">
-                <div class="col-md-4 col-xl-4 col-xxl-4 offset-md-4 offset-xl-4 offset-xxl-4 content-body">
-                    <div class="row content-box-form">
-                        <div class="col-md-12 text-center mb-2">
-                            <img src="{{ storage_asset('setup/images/Logo.png') }}" width="260px">
+<body class="light-theme">
+   <main class="main-content  mt-0">
+      <section>
+         <div class="page-header min-vh-85">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
+                     <div class="card card-plain mt-8">
+                        <div class="card-header pb-0 text-left bg-transparent">
+                           <h3 class="font-weight-bolder text-info text-gradient">Update Password</h3>
+                           <p class="mb-0">Enter your password to Reset Password</p>
                         </div>
-                        <div class="col-md-12 form-contant-right">
-                            <h3>Reset Password</h3>
-                            <form action="{{ route('rp-password-resetForm') }}" method="post" id="form"
-                                class="mt-1">
+                        <div class="card-body">
+                            @if(\Session::get('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <div class="alert-body">
+                                    {{ \Session::get('success') }}
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                            </div>
+                            @endif
+                            {{ \Session::forget('success') }}
+                            @if(\Session::get('status'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <div class="alert-body">
+                                    {{ \Session::get('status') }}
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                            </div>
+                            @endif
+                            {{ \Session::forget('status') }}
+                            @if(\Session::get('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert-body">
+                                    {{ \Session::get('error') }}
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                            </div>
+                            @endif
+                            {{ \Session::forget('error') }}
+                        
+                            <form action="{{ route('rp-password-resetForm') }}" method="post" id="form" class="mt-1">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="token" value="{{ $token }}">
-
-                                @if (session('status'))
-                                    <div class="wd-100p alert alert-success fade show" role="alert">
-                                        {{ session('status') }}
-                                        <button type="button" class="btn-close" data-dismiss="alert"
-                                            aria-label="Close">
-
-                                        </button>
-                                    </div>
+                                <label>Password</label>
+                                <input type="password" class="form-control" placeholder="Enter here" name="password"
+                                        autocomplete="off">
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">
+                                        {{ $errors->first('password') }}
+                                    </span>
                                 @endif
 
-                                <div class="form-group mb-2">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control" placeholder="Enter here" name="email"
-                                        value="{{ request()->get('email') }}" readonly>
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">
-                                            {{ $errors->first('email') }}
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Enter here" name="password"
-                                        autocomplete="off">
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">
-                                            {{ $errors->first('password') }}
-                                        </span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group mb-2">
-                                    <label>Confirm Password</label>
-                                    <input type="password" class="form-control" placeholder="Enter here"
-                                        name="password_confirmation" autocomplete="off">
-                                    @if ($errors->has('password_confirmation'))
-                                        <span class="text-danger">
-                                            {{ $errors->first('password_confirmation') }}
-                                        </span>
-                                    @endif
-                                </div>
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" placeholder="Enter here" name="password_confirmation" autocomplete="off">
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="text-danger">
+                                        {{ $errors->first('password_confirmation') }}
+                                    </span>
+                                @endif
 
                                 <div class="text-center">
-                                    <button class="btn btn-danger w-100 g-recaptcha mt-2"
-                                        data-sitekey="{{ config('app.captch_sitekey') }}" data-callback='onSubmit'
-                                        data-action='submit'>Reset Password</button>
+                                    <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Update Password</button>
                                 </div>
-                            </form>
+                           </form>
                         </div>
-
-                        <div class="col-md-12 mt-2">
-                            <p class="text-center">Back To <a href="{{ route('rp/login') }}" class="text-primary"> Sign
-                                    In
-                                </a> </p>
+                        <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                           <p class="mb-4 text-sm mx-auto">
+                              Remember the password?
+                              <a href="{{route('rp/login')}}" class="text-info text-gradient font-weight-bold">Login</a>
+                           </p>
                         </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
+                        <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../../storage/softtheme/img/curved-images/curved6.jpg')"></div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-    <!-- END: Content-->
+         </div>
+      </section>
+   </main>
+   <footer class="footer py-5">
+      <div class="container">
+         <div class="row">
+         </div>
+         <div class="row">
+            <div class="col-8 mx-auto text-center mt-1">
+               <p class="mb-0 text-secondary">
+                  © <script>
+                    document.write(new Date().getFullYear())
+                    </script>,
+                    {{ config('app.name') }} Solution Team LTD.
+               </p>
+            </div>
+         </div>
+      </div>
+   </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js'></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
 
-    <script src="{{ storage_asset('setup/vendors/js/forms/select/select2.full.min.js') }}"></script>
-    <script src="{{ storage_asset('setup/js/form-select2.js') }}"></script>
-
-    <script>
-        jQuery(document).ready(function() {
-            jQuery("#load").fadeOut();
-            jQuery("#loading").delay().fadeOut("");
-        });
-
-        function onSubmit(token) {
-            document.getElementById("form").submit();
-        }
-    </script>
+    <script src="{{ storage_asset('themesetup/assets/vendor/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/core/popper.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/plugins/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/plugins/smooth-scrollbar.min.js')}}"></script>
+    <script src="{{ storage_asset('softtheme/js/soft-ui-dashboard.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/fontawesome.min.js"></script>
 </body>
-
 </html>

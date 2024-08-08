@@ -17,6 +17,7 @@
     <link id="pagestyle" href="{{ storage_asset('softtheme/css/soft-ui-dashboard.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ storage_asset('softtheme/css/toastr.min.css') }}">
+    <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     @yield('customeStyle')
     <style type="text/css">
         .navbar-vertical.navbar-expand-xs .navbar-collapse {
@@ -74,7 +75,8 @@
     <script src="{{ storage_asset('themesetup/assets/vendor/js/apexcharts.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <script src="{{ storage_asset('themesetup/assets/vendor/js/moment.min.js')}}"></script>
-    <script src="{{ storage_asset('themesetup/assets/vendor/js/daterangepicker.js')}}"></script>
+    <!-- <script src="{{ storage_asset('themesetup/assets/vendor/js/daterangepicker.js')}}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
    <!--  <script src="{{ storage_asset('themesetup/assets/vendor/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ storage_asset('themesetup/assets/vendor/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ storage_asset('themesetup/assets/vendor/js/jquery.overlayScrollbars.min.js')}}"></script>
@@ -101,6 +103,18 @@
         if (rtlReady !== undefined) {
             localStorage.setItem('layoutDirection', 'ltr');
         }
+
+        $(function () { 
+            $("#end_date").datepicker({  
+                autoclose: true,  
+                todayHighlight: true, 
+            }).datepicker(); 
+
+            $("#start_date").datepicker({  
+                autoclose: true,  
+                todayHighlight: true, 
+            }).datepicker(); 
+        }); 
     </script>
     @include('layouts.user.alert')
     @include('layouts.user.deleteModal')

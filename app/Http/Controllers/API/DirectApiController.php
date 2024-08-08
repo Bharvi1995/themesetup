@@ -176,15 +176,8 @@ class DirectApiController extends Controller
             $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
             abort(ApiResponse::unauthorised($input));
         }
-        $credentials = base64_decode(substr($authorization, 6));
-        $arrCredentials = explode(':', $credentials);
-        if(count($arrCredentials) != 2){
-            $input['status'] = '6';
-            $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
-            abort(ApiResponse::unauthorised($input));
-        }
-        list($username, $password) = explode(':', $credentials, 2);
-        $user = User::where('email', $username)->where("api_key",$password)->first();
+        $apikey = substr($authorization, 6);
+        $user = User::where("api_key",$apikey)->where("is_active","1")->whereNull("deleted_at")->first();
         if (!$user) {
             $input['status'] = '6';
             $input['reason'] = 'The request lacks valid authentication credentials. Please check the provided header parameters.';
