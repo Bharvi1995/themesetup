@@ -9,7 +9,7 @@ return [
     'minimum_settlement_amount' => '5000',
     'pre_arbitration_clause_fee' => '5000 USD',
     'payment_frequency' => 'Weekly payment with 2 weeks arrears',
-    'currency_converter_access_key' => '3c28ce7143fd847281b070c3d77c463c',
+    'currency_converter_access_key' => '82f2dd7ab3a816d41172bcaa72a58af2',
     'pre_arbitration_clause_fee_value' => '2500',
     'visa_setup_fee' => '2500',
     'server_ip' => "3.15.226.97",
