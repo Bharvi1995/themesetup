@@ -1,8 +1,14 @@
-<footer class="footer footer-static footer-light text-center">
-    <p class="clearfix mb-0">
-        <span class="d-block d-md-inline-block mt-25 text-primary">
-            Copyright &copy; {{ date('Y') }} {{ config('app.name') }} Solution Team LTD.
-        </span>
-    </p>
-</footer>
-<button class="btn btn-primary btn-icon scroll-top" type="button"><i class="fa fa-arrow-up"></i></button>
+<footer class="footer pt-3  ">
+    <div class="container-fluid">
+       <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-12 mb-lg-0 mb-4">
+             <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                   document.write(new Date().getFullYear())
+                </script>,
+                 {{ config('app.name') }} Solution Team LTD.
+             </div>
+          </div>
+       </div>
+    </div>
+ </footer>

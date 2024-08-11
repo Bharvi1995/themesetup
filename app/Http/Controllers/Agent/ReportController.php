@@ -415,7 +415,6 @@ class ReportController extends AgentUserBaseController
         // $merchant_transactions = $this->transaction->getMerchantTransactionReport($input);
 
         $transactions_summary = $this->transaction->getTransactionSummaryForRPMerchants($input);
-
         $payment_gateway_id = \DB::table('middetails')->get();
 
         $companyName = \DB::table('applications')->join('users','users.id','applications.user_id')->where('agent_id', auth()->guard('agentUser')->user()->id)->pluck('business_name','user_id')->toArray();
@@ -482,7 +481,6 @@ class ReportController extends AgentUserBaseController
         }
         $userIds = User::where('agent_id', auth()->guard('agentUser')->user()->id)->pluck('id');
         $companyName = Application::select('user_id', 'business_name')->whereIn('user_id', $userIds)->get();
-
         return view("agent.report.commision_report", compact('companyName', 'TransactionSummary', 'arr_t_data'));
     }
 

@@ -40,7 +40,7 @@ class MerchantTransactionController extends AgentUserBaseController
         }
 
         if (isset($input['type']) && $input['type'] == 'xlsx') {
-            return Excel::download(new MerchantsTransactionExport, 'Payments_Excel_' . date('d-m-Y') . '.xlsx');
+            return Excel::download(new MerchantsTransactionExport, 'Collection_data_' . date('d-m-Y') . '.xlsx');
         }
         if (isset($input['noList'])) {
             $noList = $input['noList'];

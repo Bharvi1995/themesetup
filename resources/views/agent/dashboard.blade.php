@@ -15,197 +15,353 @@
 @endsection
 @section('content')
     <div class="row">
-        <div class="col-md-12 mt-2 mb-2">
-            <div class="row">
-                @if (Auth::guard('agentUser')->user()->main_agent_id == 0)
-                    @if (auth()->guard('agentUser')->user()->referral_code != null ||
-                            auth()->guard('agentUser')->user()->referral_code != '')
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="bg-white merchantTxnCard">
-                                <div class="rounded">
-                                    <div class="row">
-                                        <div class="col-md-12 mb-2 text-center">
-                                            <h4>Your Invitation Link</h4>
-                                            <p class="mb-1">Your unique invitation link for merchant sign-up</p>
-
-                                            <span class="badge badge-primary px-3 py-1" id="Copy"
-                                                data-link="{{ config('app.url') }}/register?RP={{ auth()->guard('agentUser')->user()->referral_code }}">{{ config('app.url') }}/register?RP={{ auth()->guard('agentUser')->user()->referral_code }}</span>
-                                        </div>
-                                        <!-- <div class="col-md-12 mt-2 mb-2 text-center">
-                                            <span class="btn btn-danger btn-sm" id="Copy"
-                                                style="cursor: pointer;">Copy</span>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                @endif
-            </div>
-        </div>
         <div class="col-lg-12">
             <div class="row">
-                <div class="col-sm-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex align-items-center">
-                        <div class="subheader">Successful</div>
-                      </div>
-                      <div class="d-flex align-items-baseline">
-                        <div class="h2 mb-0 me-2">$ {{ $transaction->successfullV }}</div>
-                        <div class="me-auto">
-                          <span class="text-success d-inline-flex align-items-center lh-1">
-                            {{ round($transaction->successfullP,2) }} %
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
-                          </span>
+                <div class="col-md-6">
+                  <div class="card mt-2">
+                      <div class="card-header">
+                            <h5>Transactions Overview</h5>
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="font-weight-medium">
-                          Total Count: {{ $transaction->successfullC }}
+                        <div class="card-body">
+                          <div id="pieChart"></div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-                <div class="col-sm-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex align-items-center">
-                        <div class="subheader">Declined</div>
+                <div class="col-md-6">
+                  <div class="card chart-card-1">
+                      <div class="card-header">
+                          <h5>Percentage Overview</h5>
                       </div>
-                      <div class="d-flex align-items-baseline">
-                        <div class="h2 mb-0 me-2">$ {{$transaction->declinedV}}</div>
-                        <div class="me-auto">
-                          <span class="text-danger d-inline-flex align-items-center lh-1">
-                            {{round($transaction->declinedP,2)}} %
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
-                          </span>
-                        </div>
+                      <div class="card-body">
+                          <div class="mt-2">
+                              <div id="progress1"></div>
+                          </div>
+                          <div class="mt-2">
+                              <div id="progress2"></div>
+                          </div>
+                          <div class="mt-2">
+                              <div id="progress3"></div>
+                          </div>
+                          <div class="mt-2">
+                              <div id="progress4"></div>
+                          </div>
                       </div>
-                      <div class="col">
-                        <div class="font-weight-medium">
-                          Total Count: {{$transaction->declinedC}}
-                        </div>
-                      </div>
-                    </div>
-                    <div id="chart-revenue-bg" class="chart-sm"></div>
                   </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex align-items-center">
-                        <div class="subheader">Refund</div>
-                      </div>
-                      <div class="d-flex align-items-baseline">
-                        <div class="h2 mb-0 me-2">$  {{ $transaction->refundV }}</div>
-                        <div class="me-auto">
-                          <span class="text-warning d-inline-flex align-items-center lh-1">
-                            {{ round($transaction->refundP,2) }} %  
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l14 0"></path><path d="M5 12l6 6"></path><path d="M5 12l6 -6"></path></svg>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="font-weight-medium">
-                          Total Count:  {{ $transaction->refundC }}
-                        </div>
-                      </div>
-                      <div id="chart-new-clients" class="chart-sm"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex align-items-center">
-                        <div class="subheader">Chargebacks</div>
-                      </div>
-                      <div class="d-flex align-items-baseline">
-                        <div class="h2 mb-0 me-2">$  {{ $transaction->chargebackV }}</div>
-                        <div class="me-auto">
-                          <span class="text-warning d-inline-flex align-items-center lh-1">
-                            {{ round($transaction->chargebackP,2) }} %  
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l14 0"></path><path d="M5 12l6 6"></path><path d="M5 12l6 -6"></path></svg>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="font-weight-medium">
-                          Total Count:  {{ $transaction->chargebackC }}
-                        </div>
-                      </div>
-                      <div id="chart-new-clients" class="chart-sm"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex align-items-center">
-                        <div class="subheader">Dispute</div>
-                      </div>
-                      <div class="d-flex align-items-baseline">
-                        <div class="h2 mb-0 me-2">$  {{ $transaction->suspiciousV }}</div>
-                        <div class="me-auto">
-                          <span class="text-primary d-inline-flex align-items-center lh-1">
-                            {{ round($transaction->suspiciousP,2) }} %  
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l14 0"></path><path d="M5 12l6 6"></path><path d="M5 12l6 -6"></path></svg>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="font-weight-medium">
-                          Total Count:  {{ $transaction->suspiciousC }}
-                        </div>
-                      </div>
-                      <div id="chart-new-clients" class="chart-sm"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex align-items-center">
-                        <div class="subheader">Retrieval</div>
-                      </div>
-                      <div class="d-flex align-items-baseline">
-                        <div class="h2 mb-0 me-2">$  {{ $transaction->retrievalV }}</div>
-                        <div class="me-auto">
-                          <span class="text-info d-inline-flex align-items-center lh-1">
-                            {{ round($transaction->retrievalP,2) }} %  
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l14 0"></path><path d="M5 12l6 6"></path><path d="M5 12l6 -6"></path></svg>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="font-weight-medium">
-                          Total Count:  {{ $transaction->retrievalC }}
-                        </div>
-                      </div>
-                      <div id="chart-new-clients" class="chart-sm"></div>
-                    </div>
-                  </div>
-                </div>
+              </div>
             </div>
         </div>
     </div>    
 @endsection
 @section('customScript')
+<script type="text/javascript" src="{{ storage_asset('softtheme/js/plugins/chartjs.min.js')}}"></script>
     <script>
-        function Clipboard_CopyTo(value) {
-            var tempInput = document.createElement("input");
-            tempInput.value = value;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
+         document.addEventListener('DOMContentLoaded', function () {
+    var options = {
+        chart: {
+            type: 'pie'
+        },
+        series: [
+            {{ $transaction->successfullV }},
+            {{ $transaction->declinedV }},
+            {{ $transaction->refundV }},
+            {{ $transaction->chargebackV }}
+        ],
+        labels: ['Success', 'Declined', 'Refund', 'Chargeback'],
+        fill: {
+            type: 'gradient',
+        },
+        colors: ['#775DD0', '#FEB019', '#FF4560', '#775DD0'],
+        gradient: {
+            shade: 'dark',
+            type: 'horizontal',
+            shadeIntensity: 0.5,
+            gradientToColors: ['#6078ea', '#6094ea', '#F86624', '#AA00FF'],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100]
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val + " $"; // Adjust "units" to whatever your amounts represent
+                }
+            }
+        },
+        dataLabels: {
+            formatter: function (val, opts) {
+                return opts.w.globals.series[opts.seriesIndex] + " $"; // Display the actual amount in data labels
+            }
         }
-        document.querySelector('#Copy').onclick = function() {
-            var code = $('#Copy').attr("data-link");
-            Clipboard_CopyTo(code);
-            toastr.success("Referral link copied successfully!");
+    }
+
+    var chart = new ApexCharts(document.querySelector("#pieChart"), options);
+
+    chart.render();
+});
+
+
+      var optionsProgress1 = {
+      chart: {
+        height: 70,
+        type: "bar",
+        stacked: true,
+        sparkline: {
+          enabled: true
         }
-    </script>
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          barHeight: "20%",
+          colors: {
+            backgroundBarColors: ["#40475D"]
+          }
+        }
+      },
+      stroke: {
+        width: 0
+      },
+      series: [
+        {
+          name: "Successful",
+          data: [<?php echo $transaction->successfullP; ?>]
+        }
+      ],
+      title: {
+        floating: true,
+        offsetX: -10,
+        offsetY: 5,
+        text: "Successful"
+      },
+      subtitle: {
+        floating: true,
+        align: "right",
+        offsetY: 0,
+        text: "<?php echo $transaction->successfullP; ?>%",
+        style: {
+          fontSize: "20px"
+        }
+      },
+      tooltip: {
+        enabled: false
+      },
+      xaxis: {
+        categories: ["Successful"]
+      },
+      yaxis: {
+        max: 100
+      },
+      fill: {
+        opacity: 1
+      }
+    };
+
+    var chartProgress1 = new ApexCharts(
+      document.querySelector("#progress1"),
+      optionsProgress1
+    );
+    chartProgress1.render();
+
+    var optionsProgress2 = {
+      chart: {
+        height: 70,
+        type: "bar",
+        stacked: true,
+        sparkline: {
+          enabled: true
+        }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          barHeight: "20%",
+          colors: {
+            backgroundBarColors: ["#40475D"]
+          }
+        }
+      },
+      colors: ["#17ead9"],
+      stroke: {
+        width: 0
+      },
+      series: [
+        {
+          name: "Failed",
+          data: [<?php echo $transaction->declinedP; ?>]
+        }
+      ],
+      title: {
+        floating: true,
+        offsetX: -10,
+        offsetY: 5,
+        text: "Failed"
+      },
+      subtitle: {
+        floating: true,
+        align: "right",
+        offsetY: 0,
+        text: "<?php echo $transaction->declinedP; ?>%",
+        style: {
+          fontSize: "20px"
+        }
+      },
+      tooltip: {
+        enabled: false
+      },
+      xaxis: {
+        categories: ["Failed"]
+      },
+      yaxis: {
+        max: 100
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          inverseColors: false,
+          gradientToColors: ["#6078ea"]
+        }
+      }
+    };
+
+    var chartProgress2 = new ApexCharts(
+      document.querySelector("#progress2"),
+      optionsProgress2
+    );
+    chartProgress2.render();
+
+    var optionsProgress3 = {
+      chart: {
+        height: 70,
+        type: "bar",
+        stacked: true,
+        sparkline: {
+          enabled: true
+        }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          barHeight: "20%",
+          colors: {
+            backgroundBarColors: ["#40475D"]
+          }
+        }
+      },
+      colors: ["#f02fc2"],
+      stroke: {
+        width: 0
+      },
+      series: [
+        {
+          name: "Refund",
+          data: [<?php echo $transaction->refundP; ?>]
+        }
+      ],
+      fill: {
+        type: "gradient",
+        gradient: {
+          gradientToColors: ["#6094ea"]
+        }
+      },
+      title: {
+        floating: true,
+        offsetX: -10,
+        offsetY: 5,
+        text: "Refund"
+      },
+      subtitle: {
+        floating: true,
+        align: "right",
+        offsetY: 0,
+        text: "<?php echo $transaction->refundP; ?>%",
+        style: {
+          fontSize: "20px"
+        }
+      },
+      tooltip: {
+        enabled: false
+      },
+      xaxis: {
+        categories: ["Refund"]
+      },
+      yaxis: {
+        max: 100
+      }
+    };
+
+    var chartProgress3 = new ApexCharts(
+      document.querySelector("#progress3"),
+      optionsProgress3
+    );
+    chartProgress3.render();
+
+    var optionsProgress4 = {
+      chart: {
+        height: 70,
+        type: "bar",
+        stacked: true,
+        sparkline: {
+          enabled: true
+        }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          barHeight: "20%",
+          colors: {
+            backgroundBarColors: ["#40475D"]
+          }
+        }
+      },
+      colors: ["#f02fc2"],
+      stroke: {
+        width: 0
+      },
+      series: [
+        {
+          name: "Chargeback",
+          data: [<?php echo $transaction->chargebackP; ?>]
+        }
+      ],
+      fill: {
+        type: "gradient",
+        gradient: {
+          gradientToColors: ["#6094ea"]
+        }
+      },
+      title: {
+        floating: true,
+        offsetX: -10,
+        offsetY: 5,
+        text: "Chargeback"
+      },
+      subtitle: {
+        floating: true,
+        align: "right",
+        offsetY: 0,
+        text: "<?php echo $transaction->chargebackP; ?>%",
+        style: {
+          fontSize: "20px"
+        }
+      },
+      tooltip: {
+        enabled: false
+      },
+      xaxis: {
+        categories: ["Chargeback"]
+      },
+      yaxis: {
+        max: 100
+      }
+    };
+
+    var chartProgress4 = new ApexCharts(
+      document.querySelector("#progress4"),
+      optionsProgress4
+    );
+    chartProgress4.render();
+
+    
+</script>
 @endsection

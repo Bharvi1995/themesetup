@@ -215,7 +215,7 @@
                                               <span class="me-2 text-xs font-weight-bold">{{ round($ts['refund_percentage'],2) }}%</span>
                                               <div>
                                                  <div class="progress">
-                                                    <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['refund_percentage'] }}%;"></div>
+                                                    <div class="progress-bar bg-gradient-secondary" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['refund_percentage'] }}%;"></div>
                                                  </div>
                                               </div>
                                            </div>
@@ -267,7 +267,7 @@
                                               <span class="me-2 text-xs font-weight-bold">{{ round($ts['chargeback_percentage'],2) }}%</span>
                                               <div>
                                                  <div class="progress">
-                                                    <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['chargeback_percentage'] }}%;"></div>
+                                                    <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="{{ round($ts['success_percentage'],2) }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ts['chargeback_percentage'] }}%;"></div>
                                                  </div>
                                               </div>
                                            </div>

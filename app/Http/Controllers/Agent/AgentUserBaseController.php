@@ -90,10 +90,6 @@ class AgentUserBaseController extends Controller
                         sum(if(t.status = '1' and t.is_flagged = '1' and t.is_flagged_remove= '0', 1, 0)) as suspiciousC,
                         round((100*sum(if(t.status = '1' and t.is_flagged = '1' and t.is_flagged_remove= '0', 1, 0)))/sum(if(t.status = '1', 1, 0)) ,2) as suspiciousP,
 
-                        sum(if(t.status = '1' and t.is_retrieval = '1' and t.is_retrieval_remove = '0', amount, 0)) as retrievalV,
-                        sum(if(t.status = '1' and t.is_retrieval = '1' and t.is_retrieval_remove = '0', 1, 0)) as retrievalC,
-                        round((100*sum(if(t.status = '1' and t.is_retrieval = '1' and t.is_retrieval_remove = '0', 1, 0)))/sum(if(t.status = '1', 1, 0)) ,2) as retrievalP,
-
                         sum(if(t.status = '1' and t.refund = '1' and t.refund_remove='0', amount, 0)) as refundV,
                         sum(if(t.status = '1' and t.refund = '1' and t.refund_remove='0', 1, 0)) as refundC,
                         round((100*sum(if(t.status = '1' and t.refund = '1' and t.refund_remove='0', 1, 0)))/sum(if(t.status = '1', 1, 0)) ,2) as refundP",
@@ -103,7 +99,7 @@ class AgentUserBaseController extends Controller
             ->where('t.deleted_at', NULL)
             ->first();
 
-
+        // dd($transaction);
         $latestMerchants = $this->user->getAgentUsers();
         $latest10Transactions = $this->Transaction->latest10TransactionsForAgent();
 
@@ -139,9 +135,31 @@ class AgentUserBaseController extends Controller
 
         $this->validate($request, [
             'name' => 'required|regex:/^[\pL\s\-0-9]+$/u',
-            'email' => 'required|email|unique:agents,email,' . auth()->guard('agentUser')->user()->id,
-            'password' => 'confirmed',
+            'email' => 'required|email|unique:agents,email,' . auth()->guard('agentUser')->user()->id
         ],['name.regex' => 'Please Enter Only Alphanumeric Characters.']);
+
+        $input = \Arr::except($input, array('_token', 'password_confirmation'));
+        $this->agentUser->updateData(auth()->guard('agentUser')->user()->id, $input);
+
+        notificationMsg('success', 'Profile Updated Successfully!');
+
+        return redirect()->route('profile-rp');
+    }
+
+    public function password()
+    {
+        $data = Agent::where('agents.id', auth()->guard('agentUser')->user()->id)
+            ->first();
+        return view('agent.profile.password', compact('data'));
+    }
+
+    public  function updatepassword(Request $request)
+    {
+        $input = $request->all();
+
+        $this->validate($request, [
+            'password' => 'confirmed',
+        ]);
 
         $input = \Arr::except($input, array('_token', 'password_confirmation'));
         if ($input['password'] != null) {
@@ -155,7 +173,7 @@ class AgentUserBaseController extends Controller
 
         notificationMsg('success', 'Profile Updated Successfully!');
 
-        return redirect()->route('profile-rp');
+        return redirect()->route('rp.dashboard');
     }
 
     public function getUserManagement(Request $request)

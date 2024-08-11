@@ -23,6 +23,8 @@ Route::group(['middleware' => 'notification_read_agent'], function () {
 
 	Route::get('profile', 'Agent\AgentUserBaseController@profile')->name('profile-rp');
 	Route::post('profile-update', 'Agent\AgentUserBaseController@updateProfile')->name('rp-profile-update');
+	Route::get('password', 'Agent\AgentUserBaseController@password')->name('password-rp');
+	Route::post('password-update', 'Agent\AgentUserBaseController@updatepassword')->name('rp-password-update');
 	Route::get('merchants', 'Agent\AgentUserBaseController@getUserManagement')->name('rp.user-management');
 	Route::get('user-management/{id}', 'Agent\AgentUserBaseController@show')->name('user-management-show');
 	Route::post('user-deactive', 'Agent\AgentUserBaseController@userActiveDeactive')->name('user-deactive-for-rp');
@@ -37,7 +39,7 @@ Route::group(['middleware' => 'notification_read_agent'], function () {
 	Route::get('downloadDocumentsUploadeUser', 'Agent\UserManagementController@downloadDocumentsUploade')->name('downloadDocumentsUploadeUser');
 
 	//Merchant Transactions
-	Route::get('merchant/payments', 'Agent\MerchantTransactionController@index')->name('rp-merchant-transactions');
+	Route::get('all/collections', 'Agent\MerchantTransactionController@index')->name('rp-merchant-transactions');
 	// Route::get('merchant-refund-transactions', 'Agent\MerchantTransactionController@refund')->name('rp-merchant-refund-transactions');
 	// Route::get('merchant-marked-transactions', 'Agent\MerchantTransactionController@flagged')->name('rp-merchant-suspicious-transactions');
 	// Route::get('merchant-chargebacks-transactions', 'Agent\MerchantTransactionController@chargebacks')->name('rp-merchant-chargebacks-transactions');
@@ -60,19 +62,19 @@ Route::group(['middleware' => 'notification_read_agent'], function () {
 	Route::get('rp-payment-status-report', 'Agent\ReportController@paymentStatusReport')->name('rp.rp-payment-status-report');
 
 	/************************Transaction Summary Report Route Start ***************************************/
-	Route::get('transaction/report', 'Agent\ReportController@merchantTransactionsReport')->name('rp.merchant-transaction-report');
-	Route::get('rp-merchant-transaction-report-excle', 'Agent\ReportController@merchantTransactionsReportExcle')->name('rp.rp-merchant-transaction-report-excle');
+	Route::get('summary', 'Agent\ReportController@merchantTransactionsReport')->name('rp.merchant-transaction-report');
+	// Route::get('rp-merchant-transaction-report-excle', 'Agent\ReportController@merchantTransactionsReportExcle')->name('rp.rp-merchant-transaction-report-excle');
 	/************************Transaction Summary Report Route End ***************************************/
 
 	/************************Commition Report Route Start ***************************************/
-	Route::get('commision/report', 'Agent\ReportController@commisionReport')->name('rp.commision-report');
-	Route::get('risk-report', 'Agent\ReportController@riskReport')->name('rp.risk-report');
+	Route::get('commisions', 'Agent\ReportController@commisionReport')->name('rp.commision-report');
+	// Route::get('risk-report', 'Agent\ReportController@riskReport')->name('rp.risk-report');
 	/************************Commition Report Route End ***************************************/
 
 	/************************Merchant Payout Report Route Start ***************************************/
-	Route::get('rp-merchant-payout-report', 'Agent\ReportController@getRpMerchantPayoutReport')->name('rp.merchant-payout-report');
-	Route::get('rp-merchant-payout_report/{id}', 'Agent\ReportController@RpMerchantPayoutReportshow')->name('rp.merchant_payout_report.show');
-	Route::get('rp-merchant-payout_report/pdf/{id}', 'Agent\ReportController@RpMerchantPayoutReportgeneratePDF')->name('rp.merchant_payout_report.pdf');
+	// Route::get('rp-merchant-payout-report', 'Agent\ReportController@getRpMerchantPayoutReport')->name('rp.merchant-payout-report');
+	// Route::get('rp-merchant-payout_report/{id}', 'Agent\ReportController@RpMerchantPayoutReportshow')->name('rp.merchant_payout_report.show');
+	// Route::get('rp-merchant-payout_report/pdf/{id}', 'Agent\ReportController@RpMerchantPayoutReportgeneratePDF')->name('rp.merchant_payout_report.pdf');
 	/************************Merchant Payout Report Route End ***************************************/
 
 	// Route::get('bank-details', 'Agent\AgentUserBaseController@showBankDetails')->name('agent.bank.details');
@@ -80,8 +82,8 @@ Route::group(['middleware' => 'notification_read_agent'], function () {
 
 	Route::post('get/transaction-overview', 'Agent\AgentUserBaseController@getTransactionOverview')->name('agent.transaction.overview');
 
-	Route::get('notifications', 'Agent\NotificationController@notifications')->name('notifications');
-	Route::get('read-notifications/{id}', 'Agent\NotificationController@readNotifications')->name('read-notifications');
+	// Route::get('notifications', 'Agent\NotificationController@notifications')->name('notifications');
+	// Route::get('read-notifications/{id}', 'Agent\NotificationController@readNotifications')->name('read-notifications');
 
-	Route::resource('sub-rp', 'Agent\SubRpController');
+	// Route::resource('sub-rp', 'Agent\SubRpController');
 });

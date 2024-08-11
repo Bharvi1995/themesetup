@@ -141,24 +141,12 @@ class MerchantsTransactionExport implements FromCollection, WithHeadings, WithMa
             $data->order_id,
             $data->first_name,
             $data->last_name,
-            $data->address,
             $data->customer_order_id,
-            $data->country,
-            $data->state,
-            $data->city,
-            $data->zip,
             $data->email,
-            $data->phone_no,
-            $data->card_type,
             $data->amount,
             $data->currency,
-            // substr($data->card_no, 0, 6) . 'XXXXXX' . substr($data->card_no, -4, 4),
-            // $data->ccExpiryMonth,
-            // $data->ccExpiryYear,
             $data->status,
             $data->reason,
-            // $data->chargebacks,
-            // $data->refund,
             $data->created_at->format('d-m-Y H:i:s')
         ];
     }
@@ -166,28 +154,16 @@ class MerchantsTransactionExport implements FromCollection, WithHeadings, WithMa
     public function headings(): array
     {
         return [
-            'Transaction Number',
+            'Order No',
             'First Name',
             'Last Name',
-            'Address',
             'Transactions Ref',
-            'Country',
-            'State',
-            'City',
-            'Zip',
             'Email',
-            'Phone No.',
-            'Card Type',
             'Amount',
             'Currency',
-            // 'Card No.',
-            // 'Expiry Month',
-            // 'Expiry Year',
             'Status',
             'Reason',
-            // 'Chargebacks',
-            // 'Refund',
-            'Transaction Date'
+            'Order Date'
         ];
     }
 }

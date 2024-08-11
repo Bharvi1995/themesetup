@@ -3,8 +3,14 @@
     Merchant Create
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('rp.dashboard') }}">Dashboard</a> / <a href="{{ route('rp.user-management') }}">Merchant
-        Management</a> / Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('rp.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('rp.user-management') }}">Refered Merchants</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create Merchants</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create Merchants</h6>
+    </nav>
 @endsection
 
 @section('customStyle')
@@ -23,8 +29,6 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Create Merchant</h4>
                     </div>
-                    <a href="{{ route('rp.user-management') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"
-                            aria-hidden="true"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::open([
@@ -33,7 +37,7 @@
                         'class' => 'form form-horizontal',
                     ]) !!}
                     <div class="row form-dark">
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label for="text">Name</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}"
                                 id="name" placeholder="Enter here...">
@@ -43,7 +47,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label for="text">Email</label>
                             <input type="email" class="form-control" name="email" value="{{ old('email') }}"
                                 id="email" placeholder="Enter here...">
@@ -53,16 +57,12 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label for="">Mobile</label>
                             <div class="row">
                                 <div class="col-lg-5">
-                                    <select class="select2 btn-primary fill_selectbtn_in own_selectbox" name="country_code"
-                                        value="{{ old('country_code') }}">
-                                        <option value="44" {{ old('country_code') == '44' ? 'selected' : '' }}>UK (+44)
-                                        </option>
-                                        <option value="1" {{ old('country_code') == '1' ? 'selected' : '' }}>USA (+1)
-                                        </option>
+                                    <select class="form-select" name="country_code">
+                                        <option value="">-Country Code-</option>                                  
                                         <option data-countryCode="DZ" {{ old('country_code') == '213' ? 'selected' : '' }}
                                             value="213">
                                             Algeria (+213)</option>
@@ -722,6 +722,10 @@
                                         <option data-countryCode="UA"
                                             {{ old('country_code') == '380' ? 'selected' : '' }} value="380">
                                             Ukraine (+380)</option>
+                                        <option value="44" {{ old('country_code') == '44' ? 'selected' : '' }}>UK (+44)
+                                        </option>
+                                        <option value="1" {{ old('country_code') == '1' ? 'selected' : '' }}>USA (+1)
+                                        </option>
                                         <option data-countryCode="AE"
                                             {{ old('country_code') == '971' ? 'selected' : '' }} value="971">
                                             United Arab Emirates (+971)</option>
@@ -788,7 +792,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label for="">Password</label>
                             <input type="password" name="password" id="password" class="form-control"
                                 placeholder="Enter here...">
@@ -798,7 +802,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <label for="">Confirm Password</label>
                             <input type="password" name="password_confirmation" id="password_confirmation"
                                 class="form-control" placeholder="Enter here...">

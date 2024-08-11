@@ -6629,7 +6629,6 @@ SQL;
     public function getTransactionSummaryForRPMerchants($input, $isInternalMerchant = 0)
     {
         $payment_gateway_id = (env('PAYMENT_GATEWAY_ID')) ? explode(",", env('PAYMENT_GATEWAY_ID')) : [1, 2];
-
         if (!isset($input['user_id'])) {
             $user_id = \DB::table('applications')->join('users', 'users.id', 'applications.user_id')->where('agent_id', auth()->guard('agentUser')->user()->id)->pluck('user_id')->toArray();
             if (empty($user_id)) {
@@ -6649,7 +6648,6 @@ SQL;
                 }
             }
         }
-
         $data = static::select(
             'transactions.user_id',
             'currency',
@@ -6697,8 +6695,7 @@ SQL;
             $data = $data->groupBy('transactions.currency');
         }
 
-        $data = $data->orderBy('success_amount', 'desc')->get()->toArray();
-
+        $data = $data->orderBy('success_amount', 'desc')->get()->toArray();//->toSql();//->get()->toArray();
         if (isset($input['by_merchant']) && $input['by_merchant'] == 1) {
             $ArrRetunr = [];
             foreach ($data as $key => $value1) {
@@ -6814,30 +6811,29 @@ SQL;
             }
             $data = $ArrRetunr;
         }
-
-        if ((isset($input['user_id']) && !empty($input['user_id']))) {
-            $data = $this->getTodaysRecordForRpMerchant($input);
-        }
-        if ((isset($input['currency']) && !empty($input['currency']))) {
-            $data = $this->getTodaysRecordForRpMerchant($input);
-        }
-        if ((isset($input['start_date']) && $input['start_date'] != '') && (isset($input['end_date']) && $input['end_date'] != '')) {
-            $data = $this->getTodaysRecordForRpMerchant($input);
-        }
-        // if ((isset($input['transaction_start_date']) && $input['transaction_start_date'] != '') && (isset($input['transaction_end_date']) && $input['transaction_end_date'] != '')) {
-        //     $data = $this->getTodaysRecord($input);
+        // if ((isset($input['user_id']) && !empty($input['user_id']))) {
+        //     $data = $this->getTodaysRecordForRpMerchant($input);
         // }
-        if (((!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily')) && $isInternalMerchant == 0) {
-            $data = $this->getTodaysRecordForRpMerchant($input);
-        }
+        // if ((isset($input['currency']) && !empty($input['currency']))) {
+        //     $data = $this->getTodaysRecordForRpMerchant($input);
+        // }
+        // if ((isset($input['start_date']) && $input['start_date'] != '') && (isset($input['end_date']) && $input['end_date'] != '')) {
+        //     $data = $this->getTodaysRecordForRpMerchant($input);
+        // }
+        // // if ((isset($input['transaction_start_date']) && $input['transaction_start_date'] != '') && (isset($input['transaction_end_date']) && $input['transaction_end_date'] != '')) {
+        // //     $data = $this->getTodaysRecord($input);
+        // // }
+        // if (((!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily')) && $isInternalMerchant == 0) {
+        //     $data = $this->getTodaysRecordForRpMerchant($input);
+        // }
 
-        if (isset($input['for']) && $input['for'] == 'Weekly') {
-            $data = $this->getTodaysRecordForRpMerchant($input);
-        }
+        // if (isset($input['for']) && $input['for'] == 'Weekly') {
+        //     $data = $this->getTodaysRecordForRpMerchant($input);
+        // }
 
-        if (isset($input['for']) && $input['for'] == 'Monthly') {
-            $data = $this->getTodaysRecordForRpMerchant($input);
-        }
+        // if (isset($input['for']) && $input['for'] == 'Monthly') {
+        //     $data = $this->getTodaysRecordForRpMerchant($input);
+        // }
 
         return $data;
     }
