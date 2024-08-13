@@ -3,76 +3,69 @@
     Sub Gateway
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Sub Gateway
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.gateway.index') }}">Gateway List</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Sub Gateway</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Sub Gateway</h6>
+    </nav>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-xl-12 col-lg-12 col-sm-12 mb-2">
-            @if (auth()->guard('admin')->user()->can(['create-sub-gateway']))
-                <a href="{{ route('admin.subgateway.create', ['gateway_id' => $gateway->id]) }}"
-                    class="btn btn-success pull-right">Create {{ $gateway->title }} MID</a>
-            @endif
-        </div>
         <div class="col-lg-12 col-xl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">{{ $gateway->title }} Gateway Details</h4>
                     </div>
-                    <div>
-                        <a href="{{ route('admin.gateway.index') }}" class="btn btn-primary btn-sm"><i
-                                class="fa fa-arrow-left"></i> </a>
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            @if (auth()->guard('admin')->user()->can(['create-sub-gateway']))
+                                <a href="{{ route('admin.subgateway.create', ['gateway_id' => $gateway->id]) }}"
+                                    class="btn btn-primary pull-right">Create {{ $gateway->title }} MID</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                                     @foreach (json_decode($gateway->credential_titles) as $title)
-                                        <th>{{ $title }}</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ $title }}</th>
                                     @endforeach
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($subgateways as $subgateway)
                                     <tr>
-                                        <td>{{ $subgateway->id }}</td>
-                                        <td>{{ $subgateway->name }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $subgateway->id }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $subgateway->name }}</td>
                                         @foreach (json_decode($gateway->credential_titles) as $key => $value)
-                                            <td>{{ $subgateway->$key }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $subgateway->$key }}</td>
                                         @endforeach
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             <div class="dropdown">
-                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                    data-bs-toggle="dropdown">
-                                                    <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                            fill="#B3ADAD" />
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
+                                                <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                     @if (auth()->guard('admin')->user()->can(['update-sub-gateway']))
+                                                    <li>
                                                     <a href="{{ route('subGatway-edit-data', ['gateway_id' => $gateway->id, 'id' => $subgateway->id]) }}" class="dropdown-item">
                                                         Edit
-                                                    </a>
+                                                    </a></li>
                                                     @endif
                                                     @if (auth()->guard('admin')->user()->can(['delete-sub-gateway']))
-                                                    <a href="javascript:void(0);" class="dropdown-item delete_modal"
+                                                    <li><a href="javascript:void(0);" class="dropdown-item delete_modal"
                                                         data-url="{{ route('subGatway-delete-data', ['gateway_id' => $gateway->id, 'id' => $subgateway->id]) }}"
-                                                        data-id="{{ $subgateway->id }}">Delete </a>
+                                                        data-id="{{ $subgateway->id }}">Delete </a></li>
                                                     @endif
                                                 </div>
                                             </div>

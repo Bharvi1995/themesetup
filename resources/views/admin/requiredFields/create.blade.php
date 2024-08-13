@@ -3,8 +3,14 @@
     Required Fields
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('required_fields.index') }}">Required
-        Fields</a> / Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('required_fields.index') }}">Required Fields</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -15,8 +21,6 @@
                     <div class="header-title">
                         <h4 class="card-title">Create Required fields</h4>
                     </div>
-                    <a href="{{ route('required_fields.index') }}" class="btn btn-primary btn-sm"><i
-                            class="fa fa-arrow-left"></i>
                     </a>
                 </div>
                 <div class="card-body">
@@ -67,7 +71,7 @@
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary btn-sm btnMinus"
-                                                        onClick="fnRemoveRow({groupId})"> <i class="fa fa-minus"></i>
+                                                        onClick="fnRemoveRow({groupId})"> Minus
                                                     </button>
                                                 </td>
                                             </tr>
@@ -95,8 +99,7 @@
                                                         name="txtValidation[]" type="text">
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-success btn-sm btnPlus"> <i
-                                                            class="fa fa-plus"></i> </button>
+                                                    <button type="button" class="btn btn-success btn-sm btnPlus"> Plus </button>
                                                 </td>
                                             </tr>
                                         </div>

@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Country Wise Summary Report
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Country-wise Transaction Report</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Country-wise Transaction Report</h6>
+    </nav>
 @endsection
 @section('content')
     <?php
@@ -31,7 +37,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="business_name">Select Merchant</label>
                                     <select name="user_id" id="business_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select Merchant</option>
                                         @foreach ($companyName as $key => $value)
                                             <option value="{{ $key }}"
@@ -44,7 +50,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="country">Select Country</label>
                                     <select name="country" id="country" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select country</option>
                                         @foreach (getCountry() as $key => $country)
                                             <option value="{{ $key }}"
@@ -56,7 +62,7 @@
 
                                 <div class="form-group col-lg-6">
                                     <label for="text">MID</label>
-                                    <select class="form-control select2" name="mid_type" id="mid_type">
+                                    <select class="form-control form-select" name="mid_type" id="mid_type">
                                         <option selected disabled>Select MID</option>
                                         @foreach ($payment_gateway_id as $key => $val)
                                             <option value="{{ $val->id }}"
@@ -116,10 +122,19 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <h4 class="me-50">Country Wise Summary Report</h4>
+        <div class="col-md-4">
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-8 text-right">
+            <a href="{{ route('summary-report-on-country', ['for' => 'All']) }}" type="button"
+                class="btn {{ isset($_GET['for']) && $_GET['for'] == 'All' ? 'btn-secondary' : 'btn-primary' }}">All</a>
+            <a href="{{ route('summary-report-on-country', ['for' => 'Daily']) }}" type="button"
+                class="btn {{ (!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily') ? 'btn-secondary' : 'btn-primary' }}">Daily</a>
+            <a href="{{ route('summary-report-on-country', ['for' => 'Weekly']) }}"
+                type="button"
+                class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Weekly' ? 'btn-secondary' : 'btn-primary' }}">Weekly</a>
+            <a href="{{ route('summary-report-on-country', ['for' => 'Monthly']) }}"
+                type="button"
+                class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Monthly' ? 'btn-secondary' : 'btn-primary' }}">Monthly</a>
             <div class="btn-group btn-shadow">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#searchModal">
                     Advanced
@@ -150,230 +165,7 @@
             <div class="card">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-md-9" style="padding: 30px 30px 30px 45px;">
-                            <div class="header-title" style="overflow: hidden;">
-                                <h5 class="card-title pull-left">Country Wise Summary Report</h5>
-                                <div class="btn-group btn-group-sm pull-right">
-                                    <a href="{{ route('summary-report-on-country', ['for' => 'All']) }}" type="button"
-                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'All' ? 'btn-secondary' : 'btn-primary' }}">All</a>
-                                    <a href="{{ route('summary-report-on-country', ['for' => 'Daily']) }}" type="button"
-                                        class="btn {{ (!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily') ? 'btn-secondary' : 'btn-primary' }}">Daily</a>
-                                    <a href="{{ route('summary-report-on-country', ['for' => 'Weekly']) }}"
-                                        type="button"
-                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Weekly' ? 'btn-secondary' : 'btn-primary' }}">Weekly</a>
-                                    <a href="{{ route('summary-report-on-country', ['for' => 'Monthly']) }}"
-                                        type="button"
-                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Monthly' ? 'btn-secondary' : 'btn-primary' }}">Monthly</a>
-                                </div>
-                            </div>
-
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="SUCCESSFUL">
-                                    <div class="table-responsive custom-table">
-                                        <table class="table mb-0 table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th>Country</th>
-                                                    <th>Count</th>
-                                                    <th>Amount</th>
-                                                    <th>Percentage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (count($transactions_summary) > 0)
-                                                    @foreach ($transactions_summary as $k => $transaction)
-                                                        <tr>
-                                                            <td>{{ getCountryFullName($transaction['country']) }}</td>
-                                                            <td>{{ $transaction['success_count'] }}</td>
-                                                            <td>{{ $transaction['success_amount'] }}
-                                                            </td>
-                                                            <td>
-                                                                {{ round($transaction['success_percentage'], 2) }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td class="text-center text-white" colspan="4">No record found.
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="DECLINED">
-                                    <div class="table-responsive custom-table">
-                                        <table class="table mb-0 table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th>Country</th>
-                                                    <th>Count</th>
-                                                    <th>Amount</th>
-                                                    <th>Percentage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (count($transactions_summary) > 0)
-                                                    @foreach ($transactions_summary as $k => $transaction)
-                                                        <tr>
-                                                            <td>{{ getCountryFullName($transaction['country']) }}</td>
-                                                            <td>{{ $transaction['declined_count'] }}</td>
-                                                            <td>
-                                                                {{ number_format($transaction['declined_amount'], 2, '.', ',') }}
-                                                            </td>
-                                                            <td>
-                                                                {{ round($transaction['declined_percentage'], 2) }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td class="text-center text-white" colspan="4">No record found.
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="CHARGEBACKS">
-                                    <div class="table-responsive custom-table">
-                                        <table class="table mb-0 table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th>Country</th>
-                                                    <th>Count</th>
-                                                    <th>Amount</th>
-                                                    <th>Percentage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (count($transactions_summary) > 0)
-                                                    @foreach ($transactions_summary as $k => $transaction)
-                                                        <tr>
-                                                            <td>{{ getCountryFullName($transaction['country']) }}</td>
-                                                            <td>{{ $transaction['chargebacks_count'] }}</td>
-                                                            <td>
-                                                                {{ number_format($transaction['chargebacks_amount'], 2, '.', ',') }}
-                                                            </td>
-                                                            <td>
-                                                                {{ round($transaction['chargebacks_percentage'], 2) }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td class="text-center text-white" colspan="4">No record found.
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="REFUND">
-                                    <div class="table-responsive custom-table">
-                                        <table class="table mb-0 table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th>Country</th>
-                                                    <th>Count</th>
-                                                    <th>Amount</th>
-                                                    <th>Percentage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (count($transactions_summary) > 0)
-                                                    @foreach ($transactions_summary as $k => $transaction)
-                                                        <tr>
-                                                            <td>{{ getCountryFullName($transaction['country']) }}</td>
-                                                            <td>{{ $transaction['refund_count'] }}</td>
-                                                            <td>
-                                                                {{ number_format($transaction['refund_amount'], 2, '.', ',') }}
-                                                            </td>
-                                                            <td>
-                                                                {{ round($transaction['refund_percentage'], 2) }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td class="text-center text-white" colspan="4">No record found.
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="SUSPICIOUS">
-                                    <div class="table-responsive custom-table">
-                                        <table class="table mb-0 table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th>Country</th>
-                                                    <th>Count</th>
-                                                    <th>Amount</th>
-                                                    <th>Percentage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (count($transactions_summary) > 0)
-                                                    @foreach ($transactions_summary as $k => $transaction)
-                                                        <tr>
-                                                            <td>{{ getCountryFullName($transaction['country']) }}</td>
-                                                            <td>{{ $transaction['flagged_count'] }}</td>
-                                                            <td>
-                                                                {{ number_format($transaction['flagged_amount'], 2, '.', ',') }}
-                                                            </td>
-                                                            <td>
-                                                                {{ round($transaction['flagged_percentage'], 2) }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td class="text-center text-white" colspan="4">No record found.
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="BLOCK">
-                                    <div class="table-responsive custom-table">
-                                        <table class="table mb-0 table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th>Country</th>
-                                                    <th>Count</th>
-                                                    <th>Amount</th>
-                                                    <th>Percentage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (count($transactions_summary) > 0)
-                                                    @foreach ($transactions_summary as $k => $transaction)
-                                                        <tr>
-                                                            <td>{{ getCountryFullName($transaction['country']) }}</td>
-                                                            <td>{{ $transaction['block_count'] }}</td>
-                                                            <td>
-                                                                {{ number_format($transaction['block_amount'], 2, '.', ',') }}
-                                                            </td>
-                                                            <td>
-                                                                {{ round($transaction['block_percentage'], 2) }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td class="text-center text-white" colspan="4">No record found.
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-12" style="padding: 30px 30px 30px 45px;">
                             <ul class="nav nav-tabs mt-2" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#SUCCESSFUL" data-bs-toggle="tab">
@@ -406,6 +198,220 @@
                                     </a>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="col-md-12" style="padding: 30px 30px 30px 45px;">
+                            <div class="header-title" style="overflow: hidden;">
+                                <h5 class="card-title pull-left">Country Wise Summary Report</h5>
+                                <div class="btn-group btn-group-sm pull-right">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="SUCCESSFUL">
+                                    <div class="table-responsive custom-table">
+                                        <table class="table mb-0 table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (count($transactions_summary) > 0)
+                                                    @foreach ($transactions_summary as $k => $transaction)
+                                                        <tr>
+                                                            <td class="align-middle text-center text-sm">{{ getCountryFullName($transaction['country']) }}</td>
+                                                            <td class="align-middle text-center text-sm">{{ $transaction['success_count'] }}</td>
+                                                            <td class="align-middle text-center text-sm">{{ $transaction['success_amount'] }}
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ round($transaction['success_percentage'], 2) }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-center text-white" colspan="4">No record found.
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="DECLINED">
+                                    <div class="table-responsive custom-table">
+                                        <table class="table mb-0 table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (count($transactions_summary) > 0)
+                                                    @foreach ($transactions_summary as $k => $transaction)
+                                                        <tr>
+                                                            <td class="align-middle text-center text-sm">{{ getCountryFullName($transaction['country']) }}</td>
+                                                            <td class="align-middle text-center text-sm">{{ $transaction['declined_count'] }}</td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ number_format($transaction['declined_amount'], 2, '.', ',') }}
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ round($transaction['declined_percentage'], 2) }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-center text-white" colspan="4">No record found.
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="CHARGEBACKS">
+                                    <div class="table-responsive custom-table">
+                                        <table class="table mb-0 table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (count($transactions_summary) > 0)
+                                                    @foreach ($transactions_summary as $k => $transaction)
+                                                        <tr>
+                                                            <td class="align-middle text-center text-sm">{{ getCountryFullName($transaction['country']) }}</td>
+                                                            <td class="align-middle text-center text-sm">{{ $transaction['chargebacks_count'] }}</td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ number_format($transaction['chargebacks_amount'], 2, '.', ',') }}
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ round($transaction['chargebacks_percentage'], 2) }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-center text-white" colspan="4">No record found.
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="REFUND">
+                                    <div class="table-responsive custom-table">
+                                        <table class="table mb-0 table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (count($transactions_summary) > 0)
+                                                    @foreach ($transactions_summary as $k => $transaction)
+                                                        <tr>
+                                                            <td class="align-middle text-center text-sm">{{ getCountryFullName($transaction['country']) }}</td>
+                                                            <td class="align-middle text-center text-sm">{{ $transaction['refund_count'] }}</td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ number_format($transaction['refund_amount'], 2, '.', ',') }}
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ round($transaction['refund_percentage'], 2) }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-center text-white" colspan="4">No record found.
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="SUSPICIOUS">
+                                    <div class="table-responsive custom-table">
+                                        <table class="table mb-0 table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (count($transactions_summary) > 0)
+                                                    @foreach ($transactions_summary as $k => $transaction)
+                                                        <tr>
+                                                            <td class="align-middle text-center text-sm">{{ getCountryFullName($transaction['country']) }}</td>
+                                                            <td class="align-middle text-center text-sm">{{ $transaction['flagged_count'] }}</td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ number_format($transaction['flagged_amount'], 2, '.', ',') }}
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ round($transaction['flagged_percentage'], 2) }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-center text-white" colspan="4">No record found.
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="BLOCK">
+                                    <div class="table-responsive custom-table">
+                                        <table class="table mb-0 table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (count($transactions_summary) > 0)
+                                                    @foreach ($transactions_summary as $k => $transaction)
+                                                        <tr>
+                                                            <td class="align-middle text-center text-sm">{{ getCountryFullName($transaction['country']) }}</td>
+                                                            <td class="align-middle text-center text-sm">{{ $transaction['block_count'] }}</td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ number_format($transaction['block_amount'], 2, '.', ',') }}
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                {{ round($transaction['block_percentage'], 2) }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-center text-white" colspan="4">No record found.
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

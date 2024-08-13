@@ -5,8 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('users-management') }}">Merchant Management</a>
-    / MID
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('users-management') }}">Merchant Management</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Merchant Rules</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Merchant Rules</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -28,7 +34,6 @@
                     <div class="row align-items-center">
                         <div class="col-xl-10 col-xxl-10">
                             <div class="d-sm-flex d-block align-items-center">
-                                <i class="fa fa-key text-primary" style="font-size: 56px;"></i>
                                 <div class="ms-2">
                                     <h4 class="fs-20">API Key</h4>
                                     @if (!isset($data->api_key))
@@ -63,35 +68,29 @@
                     <div class="custom-tab-1">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('personal-info', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Personal Info</a>
+                                <a class="nav-link" href="{{ route('personal-info', $data->id) }}"> Personal Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('assign-mid', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> MID Info</a>
+                                <a class="nav-link" href="{{ route('assign-mid', $data->id) }}"> MID Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('card-email-limit', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Card & Email Limit</a>
+                                <a class="nav-link" href="{{ route('card-email-limit', $data->id) }}"> Card & Email Limit</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('merchant-rate-fee', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Merchant Rate/Fee</a>
+                                <a class="nav-link" href="{{ route('merchant-rate-fee', $data->id) }}"> Merchant Rate/Fee</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('additional-mail', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Additional Mail Info</a>
+                                <a class="nav-link" href="{{ route('additional-mail', $data->id) }}"> Additional Mail Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('merchant-rules', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Create Rules</a>
+                                <a class="nav-link active" href="{{ route('merchant-rules', $data->id) }}"> Create Rules</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade show active">
                                 <div class="pt-4">
                                     <div class="row">
-                                        <div class="col-lg-3">
+                                        <div class="col-lg-4">
                                             <div class="card iq-mb-3 ">
                                                 <div class="card-body  card__shadow">
                                                     <div class="row">
@@ -102,7 +101,7 @@
                                                             <p class="card-text">Total Card Rules - {{ $CardRules }}</p>
                                                         </div>
                                                         <div class="col-md-3 text-right">
-                                                            <i class="fa fa-credit-card" style="font-size: 32px;"></i>
+                                                            <!-- <i class="fa fa-credit-card" style="font-size: 32px;"></i> -->
                                                         </div>
                                                     </div>
                                                     <div class="row mt-3">
@@ -119,7 +118,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3">
+                                        <!-- <div class="col-lg-3">
                                             <div class="card iq-mb-3 ">
                                                 <div class="card-body  card__shadow">
                                                     <div class="row">
@@ -145,9 +144,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
-                                        <div class="col-lg-3">
+                                        <!-- <div class="col-lg-3">
                                             <div class="card iq-mb-3 ">
                                                 <div class="card-body  card__shadow">
                                                     <div class="row">
@@ -174,9 +173,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
-                                        <div class="col-lg-3">
+                                        <!-- <div class="col-lg-3">
                                             <div class="card iq-mb-3 ">
                                                 <div class="card-body  card__shadow">
                                                     <div class="row">
@@ -202,7 +201,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('dashboardPage') }}">Dashboard</a> / Agreement Generate
+    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Agreement Generate
 @endsection
 
 @section('content')

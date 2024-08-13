@@ -3,8 +3,14 @@
     Create Application
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('admin.applications.list') }}">Applications</a>
-    / Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('users-management') }}">Merchant Management</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create Applications</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create Applications</h6>
+    </nav>
 @endsection
 @section('content')
     <div class="row">
@@ -14,7 +20,6 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Create Application</h4>
                     </div>
-                    <a href="{{ route('admin.applications.list') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                 </div>
                 <form action="{{ route('admin.applications.store',$id) }}" method="post" enctype="multipart/form-data" id="application-form" class="form form-dark">
                     @csrf

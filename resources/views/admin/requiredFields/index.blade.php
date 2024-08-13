@@ -3,66 +3,67 @@
     Required Fields
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Required Fields
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Required Fields</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Required Fields</h6>
+    </nav>
 @endsection
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-xl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Required fields</h4>
                     </div>
-                    <a href="{{ route('required_fields.create') }}" class="btn btn-success btn-sm">Create Fields</a>
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <a href="{{ route('required_fields.create') }}" class="btn btn-primary btn-sm">Create Fields</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body p-0">
                     <div class="row">
                         <div class="table-responsive custom-table">
-                            <table class="table table-borderless table-striped">
+                            <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Title</th>
-                                        <th>Fields</th>
-                                        <th>Type</th>
-                                        <th>Validations</th>
-                                        <th>Action</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fields</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Validations</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($RequiredFields as $value)
                                         <tr>
-                                            <th>{{ $loop->index + 1 }}</th>
+                                            <th class="align-middle text-center text-sm">{{ $loop->index + 1 }}</th>
                                             </td>
-                                            <td>{{ $value->field_title }}</td>
-                                            <td>{{ $value->field }}</td>
-                                            <td>{{ $value->field_type }}</td>
-                                            <td>{{ $value->field_validation }}</td>
-                                            <td class="w-15">
-                                                <div class="dropdown ">
-                                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                        data-bs-toggle="dropdown">
-                                                        <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                                fill="#B3ADAD" />
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a href="{!! URL::route('required_fields.edit', $value->id) !!}"
+                                            <td class="align-middle text-center text-sm">{{ $value->field_title }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $value->field }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $value->field_type }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $value->field_validation }}</td>
+                                            <td class="align-middle text-center text-sm w-15">
+                                                <div class="dropdown">
+                                                    <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                                        <li>
+                                                            <a href="{!! URL::route('required_fields.edit', $value->id) !!}"
                                                                 class="dropdown-item">Edit</a>
-                                                        <a href="" class="dropdown-item delete_modal"
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="dropdown-item delete_modal"
                                                             data-bs-toggle="modal" data-bs-target="#delete_modal"
                                                             data-url="{{ URL::route('required_fields.destroy', $value->id) }}"
                                                             data-id="{{ $value->id }}">Delete</a>
-                                                    </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </td>
                                         </tr>

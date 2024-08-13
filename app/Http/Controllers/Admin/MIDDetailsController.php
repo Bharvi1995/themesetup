@@ -44,7 +44,7 @@ class MIDDetailsController extends AdminController
             ->addColumn('Actions', function ($data) {
                 if (auth()->guard('admin')->user()->can(['update-mid', 'list-mid'])) {
                     if (auth()->guard('admin')->user()->can(['update-mid'])) {
-                        $action = '<a
+                        $action = '<li><a
                                 href="' . route('admin.middetails.edit', $data->id) . '"
                                 class="dropdown-item">Edit</a></li>';
                     } else {
@@ -53,7 +53,7 @@ class MIDDetailsController extends AdminController
 
                     if (auth()->guard('admin')->user()->can(['list-mid'])) {
                         $action1 = '
-                            <a href="' . route('admin.middetails.show', $data->id) . '"
+                            <li><a href="' . route('admin.middetails.show', $data->id) . '"
                                 class="dropdown-item">Show
                             </a>
                         </li>';
@@ -62,22 +62,7 @@ class MIDDetailsController extends AdminController
                     }
 
                     return '<div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                data-bs-toggle="dropdown">
-                                <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                        fill="#B3ADAD" />
-                                    <path
-                                        d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                        fill="#B3ADAD" />
-                                    <path
-                                        d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                        fill="#B3ADAD" />
-                                </svg>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2"></a><ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                     ' . $action . ' ' . $action1 . '
                                 </div>
                         </div>';

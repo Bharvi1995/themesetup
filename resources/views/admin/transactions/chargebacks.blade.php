@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Chargeback Transactions
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Chargeback Transactions</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Chargeback Transactions</h6>
+    </nav>
 @endsection
 @section('content')
     @include('requestDate')
@@ -225,7 +231,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 mb-2 text-right">
+        <div class="col-lg-5 mb-2 text-right">
+        </div>
+        <div class="col-lg-7 mb-2 text-right">
             <?php
             $url = Request::fullUrl();
             $parsedUrl = parse_url($url);
@@ -236,26 +244,25 @@
             @if (auth()->guard('admin')->user()->can(['export-all-transaction']))
                 @if (!empty($subQueryString))
                     <a href="{{ route('all-admin-chargeback-transactions-csv-export', [$subQueryString]) }}"
-                        class="btn btn-primary btn-sm"><i class="fa fa-download me-2"></i> Export Excel </a>
+                        class="btn btn-outline-primary btn-sm"> Export Excel </a>
                 @else
-                    <a href="{{ route('all-admin-chargeback-transactions-csv-export') }}" class="btn btn-primary btn-sm"
+                    <a href="{{ route('all-admin-chargeback-transactions-csv-export') }}" class="btn btn-outline-primary btn-sm"
                         id="ExcelLink">
-                        <i class="fa fa-download"></i>
                         Export Excel
                     </a>
                 @endif
             @endif
             @if (auth()->guard('admin')->user()->can(['delete-all-transaction']))
-                <button type="button" class="btn btn-primary btn-sm" id="deleteSelected"
-                    data-link="{{ route('delete-transaction') }}"><i class="fa fa-trash"></i> Delete Selected
+                <button type="button" class="btn btn-outline-danger btn-sm" id="deleteSelected"
+                    data-link="{{ route('delete-transaction') }}"> Delete Selected
                     Record</button>
             @endif
             {{-- @if (auth()->guard('admin')->user()->can(['pre-arbitration-notice-chargeback-transaction']))
-                <a href="javascript:;" class="btn btn-primary bell-link btn-sm" id="preArbitrationNotice">Send
+                <a href="javascript:;" class="btn btn-outline-primary bell-link btn-sm" id="preArbitrationNotice">Send
                     Pre Arbitration Notice</a>
             @endif --}}
             @if (auth()->guard('admin')->user()->can(['send-mail-chargeback-transaction']))
-                <a href="javascript:;" class="btn btn-primary bell-link btn-sm" id="resendChargebacksEMail">
+                <a href="javascript:;" class="btn btn-outline-warning bell-link btn-sm" id="resendChargebacksEMail">
                     Send Chargebacks Email</a>
             @endif
         </div>
@@ -263,23 +270,23 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Chargeback Transactions</h4>
                     </div>
-                    <div>
-                        <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
-                            <select class="form-control form-control-sm" name="noList" id="noList">
-                                <option value="">No of Records</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
+                                <select class="form-control form-control-sm" name="noList" id="noList">
+                                    <option value="">No of Records</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
                             <button class="btn btn-primary btn-sm searchModelOpen" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                                 Advance Search &nbsp;
@@ -297,26 +304,26 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th width="50px">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="50px">
                                         <div class="form-check">
                                             <input type="checkbox" id="selectallcheckbox" name=""
                                                 class="form-check-input">
                                             <label class="form-check-label" for="selectallcheckbox"></label>
                                         </div>
                                     </th>
-                                    <th>Order No</th>
-                                    <th style="min-width: 230px;">Chargeback Date & Time</th>
-                                    <th style="min-width: 165px;">Company Name</th>
-                                    <th>MID</th>
-                                    <th>Email</th>
-                                    <th>Amount</th>
-                                    <th>Currency</th>
-                                    <th style="min-width: 175px;">Document Status</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Order No</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 230px;">Chargeback Date & Time</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 165px;">Company Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Currency</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 175px;">Document Status</th>
                                     @if (auth()->guard('admin')->user())
-                                        <th>Action</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -328,7 +335,7 @@
                                             @else
                                             <tr id="tr_{{ $transaction->id }}">
                                         @endif
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             <div class="form-check">
                                                 <input type="checkbox" id="checkbox-{{ $transaction->id }}"
                                                     name="multiselect[]" class="multiselect multidelete form-check-input"
@@ -338,7 +345,7 @@
                                             </div>
                                         </td>
 
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             @if (auth()->guard('admin')->user()->can(['details-transaction']))
                                                 <a href="javascript:;" data-bs-target="#transactionShowModal"
                                                     data-bs-toggle="modal" class="text-primary showTransaction"
@@ -354,37 +361,37 @@
                                             @endif
 
                                             @if ($transaction->is_pre_arbitration == '1')
-                                                <label class="badge-sm badge badge-danger">Pre Arbitration</label>
+                                                <label class="badge badge-sm bg-gradient-danger">Pre Arbitration</label>
                                             @endif
                                             {{-- The card whitelabled status --}}
                                             @if ($transaction->is_white_label)
-                                                <label class="badge badge-danger badge-sm">WTL</label>
+                                                <label class="badge badge-sm bg-gradient-danger badge-sm">WTL</label>
                                             @else
-                                                <label class="badge badge-danger badge-sm">FT</label>
+                                                <label class="badge badge-sm bg-gradient-danger badge-sm">FT</label>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             {{ $transaction->chargebacks_date }}
                                         </td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             <span>
                                                 <div class="d-flex align-items-center">
                                                     <span class="w-space-no">
                                                         {{ $transaction->userName }}<br>
                                                         <label
-                                                            class="badge-sm badge badge-success">{{ $transaction->request_origin }}</label>
+                                                            class="badge badge-sm bg-gradient-success">{{ $transaction->request_origin }}</label>
                                                         <label
-                                                            class="badge-sm badge badge-primary">{{ $transaction->request_from_ip }}</label>
+                                                            class="badge badge-sm bg-gradient-primary">{{ $transaction->request_from_ip }}</label>
                                                     </span>
                                                 </div>
                                             </span>
                                         </td>
 
 
-                                        <td>{{ $transaction->bank_name }}</td>
-                                        <td>{{ $transaction->email }}</td>
-                                        <td>{{ $transaction->amount }}</td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">{{ $transaction->bank_name }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $transaction->email }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $transaction->amount }}</td>
+                                        <td class="align-middle text-center text-sm">
                                             {{ $transaction->currency }}
                                             @if ($transaction->is_converted == '1')
                                                 @if ($transaction->currency != $transaction->converted_currency)
@@ -393,44 +400,31 @@
                                                 @endif
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             @if (!empty($transaction->transactions_document_upload_files))
-                                                <label class="badge badge-sm badge-success">Uploaded</label>
+                                                <label class="badge badge-sm badge-gradient-success">Uploaded</label>
                                             @else
-                                                <label class="badge badge-sm badge-danger">Pending</label>
+                                                <label class="badge badge-sm badge-gradient-danger">Pending</label>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             <div class="dropdown">
-                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                    data-bs-toggle="dropdown">
-                                                    <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                            fill="#B3ADAD" />
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
+                                                  <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                  </a>
+                                                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                     @if (auth()->guard('admin')->user()->can(['details-transaction']))
-                                                        <a href="{{ route('admin.getsingletransaction', ['id' => $transaction->id]) }}"
+                                                        <li><a href="{{ route('admin.getsingletransaction', ['id' => $transaction->id]) }}"
                                                             class="dropdown-item">
                                                             View
-                                                        </a>
+                                                        </a></li>
                                                     @endif
                                                     @if (auth()->guard('admin')->user()->can(['update-all-transaction']))
-                                                        <a data-bs-toggle="modal" data-bs-target="#transactionShowModal"
+                                                        <li><a data-bs-toggle="modal" data-bs-target="#transactionShowModal"
                                                             href="#showTransaction"
                                                             class="chargebacks-show-document dropdown-item"
                                                             data-id="{{ $transaction->id }}"
                                                             data-link="{{ route('merchant-chargebacks-show-documents') }}">Show
-                                                            Document</a>
+                                                            Document</a></li>
                                                     @endif
                                                 </div>
                                             </div>
@@ -439,7 +433,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="8">
+                                        <td class="align-middle text-center text-sm" colspan="8">
                                             <p class="text-center"><strong>No record found</strong></p>
                                         </td>
                                     </tr>

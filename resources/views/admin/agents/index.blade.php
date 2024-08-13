@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Referral Partners
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Referral Partners</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Referral Partners</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -38,7 +44,7 @@
 
                                 <div class="form-group col-lg-6">
                                     <label for="">Referral Partners</label>
-                                    <select class="select2" name="agent_id" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="agent_id" data-size="7" data-live-search="true"
                                         data-title="Select here" id="agent_id" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($rp as $value)
@@ -83,57 +89,53 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
-            <h4 class="me-50">Referral Partners List</h4>
+        <div class="col-lg-4">
+            <h4 class="me-50"></h4>
         </div>
-        <div class="col-lg-6 text-right">
+        <div class="col-lg-8 text-right">
             @if (auth()->guard('admin')->user()->can(['users-agents-excel-export']))
                 <?php
                 $url = Request::fullUrl();
                 $parsedUrl = parse_url($url);
                 $query = isset($parsedUrl['query']) ? $parsedUrl['query'] : '';
                 $subQueryString = $query != '' ? $query . '&type=xlsx' : '';
-                ?>
-
-                @if (!empty($subQueryString))
-                    <a href="{{ route('agent-user-csv-export', [$subQueryString]) }}" class="btn btn-primary btn-sm"
-                        id="ExcelLink"><i class="fa fa-download"></i> Export Excel
-                    </a>
-                @else
-                    <a href="{{ route('agent-user-csv-export') }}" class="btn btn-primary btn-sm" id="ExcelLink">
-                        <i class="fa fa-download"></i>
-                        Export Excel
-                    </a>
-                @endif
+                ?>            
+                <a href="{{ route('agent-user-csv-export', [$subQueryString]) }}" class="btn btn-outline-primary btn-sm"
+                    id="ExcelLink"> Export Excel
+                </a>
             @endif
             @if (auth()->guard('admin')->user()->can(['delete-agent']))
-                <button type="button" class="btn btn-danger btn-sm" id="deleteSelected"
+                <button type="button" class="btn btn-outline-danger btn-sm" id="deleteSelected"
                     data-link="{{ route('delete.agent.user') }}">
-                    <i class="fa fa-trash"></i> Delete Selected Record
+                     Delete Selected Record
                 </button>
+            @endif
+            @if (auth()->guard('admin')->user()->can(['create-agent']))
+                <a href="{{ url('paylaksa/agents/create') }}" class="btn btn-outline-info btn-sm"> Create Referral
+                    Partner</a>
             @endif
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-xl-12">
             <div class="card  mt-1">
-                <div class="card-header">
-                    <div>
-
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title">Referral Partners List</h4>
                     </div>
-                    <div>
-                        <form style="float:left;" class="me-50 form-dark" id="noListform" method="GET">
-                            <select class="form-control-sm form-control" name="noList" id="noList">
-                                <option value="">--No of Records--</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form style="float:left;" class="me-50 form-dark" id="noListform" method="GET">
+                                <select class="form-control-sm form-control" name="noList" id="noList">
+                                    <option value="">--No of Records--</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
                             <button type="button" class="btn btn-primary  btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                                 Advanced Search &nbsp; <svg width="13" height="10" viewBox="0 0 18 15"
@@ -147,34 +149,31 @@
                                 style="border-radius: 0px 5px 5px 0px !important;">Reset</a>
                         </div>
                         @if (auth()->guard('admin')->user()->can(['users-agents-send-mail']))
-                            <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#Send_email"><i class="fa fa-envelope"></i> Send Mail </a>
+                            <a href="" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#Send_email"> Send Mail </a>
                         @endif
-                        @if (auth()->guard('admin')->user()->can(['create-agent']))
-                            <a href="{{ url('paylaksa/agents/create') }}" class="btn btn-danger btn-sm"> Create Referral
-                                Partner</a>
-                        @endif
+                        
 
                     </div>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         <div class="custom-control custom-checkbox custom-control-inline mr-0">
                                             <input type="checkbox" class="form-check-input" id="selectallcheckbox">
                                             <label class="custom-control-label" for="selectallcheckbox"></label>
                                         </div>
                                     </th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th width="225px">Agreement Status</th>
-                                    {{-- <th width="290px" style="min-width: 290px;">Agreement Document</th> --}}
-                                    <th>Status</th>
-                                    <th>Creation Date</th>
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="225px">Agreement Status</th>
+                                    {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="290px" style="min-width: 290px;">Agreement Document</th> --}}
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Creation Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 
                                 </tr>
                             </thead>
@@ -182,7 +181,7 @@
                                 @if (!empty($data) && $data->count())
                                     @foreach ($data as $key => $value)
                                         <tr>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="form-check custom-checkbox custom-control-inline mr-0">
                                                     <input type="checkbox"
                                                         class="form-check-input multicheckmail multidelete"
@@ -193,82 +192,62 @@
                                                 </div>
                                             </td>
 
-                                            <td>{!! $value->name !!}</td>
-                                            <td>{!! $value->email !!}</td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">{!! $value->name !!}</td>
+                                            <td class="align-middle text-center text-sm">{!! $value->email !!}</td>
+                                            <td class="align-middle text-center text-sm">
                                                 @if ($value->agreement_status == 0)
-                                                    <span class="badge badge-sm badge-danger">Pending</span>
+                                                    <span class="badge badge-sm bg-gradient-danger">Pending</span>
                                                 @elseif($value->agreement_status == 1)
-                                                    <span class="badge badge-sm badge-success">Sent</span>
+                                                    <span class="badge badge-sm bg-gradient-success">Sent</span>
                                                 @elseif($value->agreement_status == 2)
-                                                    <span class="badge badge-sm badge-success">Received</span>
+                                                    <span class="badge badge-sm bg-gradient-success">Received</span>
                                                 @else
-                                                    <span class="badge badge-sm badge-success">Reassign</span>
+                                                    <span class="badge badge-sm bg-gradient-success">Reassign</span>
                                                 @endif
 
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 @if ($value->is_active == 0)
-                                                    <span class="badge badge-sm badge-warning">Inactive</span>
+                                                    <span class="badge badge-sm bg-gradient-warning">Inactive</span>
                                                 @else
-                                                    <span class="badge badge-sm badge-success">Active</span>
+                                                    <span class="badge badge-sm bg-gradient-success">Active</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 {{ convertDateToLocal($value->created_at, 'd-m-Y') }}
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="dropdown">
-                                                    <button type="button"
-                                                        class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                        data-bs-toggle="dropdown">
-                                                        <svg width="5" height="17" viewBox="0 0 5 17"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                                fill="#B3ADAD" />
-                                                        </svg>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                    <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                         @if (auth()->guard('admin')->user()->can(['update-agent']))
-                                                            <a href="{!! URL::route('agents.edit', $value->id) !!}" class="dropdown-item"><i
-                                                                    class="fa fa-edit text-primary me-2"></i>
-                                                                Edit</a>
+                                                            <li><a href="{!! URL::route('agents.edit', $value->id) !!}" class="dropdown-item">
+                                                                Edit</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['delete-agent']))
-                                                            <a href="javascript:void(0)"
+                                                            <li><a href="javascript:void(0)"
                                                                 class="dropdown-item delete_modal"
                                                                 data-url="{!! URL::route('agents.destroy', $value->id) !!}"
-                                                                data-id="{{ $value->id }}"><i
-                                                                    class="fa fa-trash text-danger me-2"></i>
-                                                                Delete</a>
+                                                                data-id="{{ $value->id }}">
+                                                                Delete</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['can-delegate-access-agent']))
-                                                            <a href="{{ URL::to('/') }}/agentLogin?email={{ encrypt($value->email) }}"
-                                                                target="_blank" class="dropdown-item"><i
-                                                                    class="fa fa-sign-in text-secondary me-2"></i>
-                                                                Login</a>
+                                                            <li><a href="{{ URL::to('/') }}/agentLogin?email={{ encrypt($value->email) }}"
+                                                                target="_blank" class="dropdown-item">
+                                                                Login</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['agent-bank-detail-view']))
-                                                            <a href="{{ route('admin.agent.bankDetails', $value->id) }}"
-                                                                class="dropdown-item"><i
-                                                                    class="fa fa-bank text-success me-2"></i>
-                                                                Bank Details</a>
+                                                            <li><a href="{{ route('admin.agent.bankDetails', $value->id) }}"
+                                                                class="dropdown-item">
+                                                                Bank Details</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['update-agent']))
                                                             @if ($value->is_active == 0)
-                                                                <a href="{!! URL::route('agent-status', [$value->id, 'status' => 1]) !!}" class="dropdown-item"><i
-                                                                        class="fa fa-check text-success me-2"></i>
-                                                                    Active</a>
+                                                                <li><a href="{!! URL::route('agent-status', [$value->id, 'status' => 1]) !!}" class="dropdown-item">
+                                                                    Active</a></li>
                                                             @else
-                                                                <a href="{!! URL::route('agent-status', [$value->id, 'status' => 0]) !!}" class="dropdown-item"><i
-                                                                        class="fa fa-times text-warning me-2"></i>
-                                                                    Inactive</a>
+                                                                <li><a href="{!! URL::route('agent-status', [$value->id, 'status' => 0]) !!}" class="dropdown-item">
+                                                                    Inactive</a></li>
                                                             @endif
                                                         @endif
                                                     </ul>

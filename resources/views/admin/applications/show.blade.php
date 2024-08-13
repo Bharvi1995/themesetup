@@ -3,9 +3,14 @@
     Review Application
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">
-        Dashboard</a> / <a href="{{ route('admin.applications.list') }}">Applications</a>
-    / Review
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.applications.list') }}">Applications</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Review</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Review</h6>
+    </nav>
 @endsection
 @section('customeStyle')
     <style type="text/css">
@@ -425,7 +430,7 @@
             <div class="card mt-1">
                 <div class="card-header">
                     <div class="iq-header-title">
-                        <h4 class="card-title"><i class="fa fa-file me-1"></i> Sent agreement</h4>
+                        <h4 class="card-title"> Sent agreement</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -451,7 +456,7 @@
             <div class="card  mt-1 height-auto">
                 <div class="card-header">
                     <div class="iq-header-title">
-                        <h4 class="card-title"><i class="fa fa-file me-1"></i> Signed Agreement</h4>
+                        <h4 class="card-title"> Signed Agreement</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -725,19 +730,19 @@
                                     <div class="col-sm-12 mt-1 d-grid gap-2">
                                         @if (auth()->guard('admin')->user()->can(['pdf-download-application']))
                                             <a href="{{ route('application-pdf', $data->id) }}"
-                                                class="btn btn-success  "><i class="fa fa-file"></i>&nbsp;Download
+                                                class="btn btn-success  "> Download
                                                 Application PDF</a>
                                         @endif
                                         @if (auth()->guard('admin')->user()->can(['doc-download-application']))
                                             <a href="{{ route('application-docs', $data->id) }}"
-                                                class="btn  btn-primary "><i class="fa fa-download"></i>&nbsp;Download
+                                                class="btn  btn-primary ">&nbsp;Download
                                                 Application
                                                 Document</a>
                                         @endif
                                         @if (auth()->guard('admin')->user()->can(['update-application']))
                                             @if ($data->status > '2')
                                                 <a href="{{ route('application-back-inprogress', $data->id) }}"
-                                                    class="btn  btn-danger "><i class="fa fa-arrow-left"></i>&nbsp;Back To
+                                                    class="btn  btn-danger ">&nbsp;Back To
                                                     In Progress</a>
                                             @endif
                                         @endif

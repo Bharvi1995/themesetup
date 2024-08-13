@@ -117,24 +117,24 @@
                     </div>
                     <div class="table-responsive tableFixHead">
                         <table class="table table-bordered">
-                            <thead>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"ead>
                                 <tr>
-                                    <th>&nbsp;</th>
-                                    <th colspan="3" class="text-center text-success">SUCCESSFUL</th>
-                                    <th colspan="3" class="text-center text-danger">DECLINED</th>
-                                    <th colspan="3" class="text-center text-info">BLOCK</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">&nbsp;</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" colspan="3" >SUCCESSFUL</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" colspan="3" >DECLINED</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" colspan="3" >BLOCK</th>
                                 </tr>
                                 <tr>
-                                    <th width="50px">Currency</th>
-                                    <th>Count</th>
-                                    <th>Amount</th>
-                                    <th>Percentage</th>
-                                    <th>Count</th>
-                                    <th>Amount</th>
-                                    <th>Percentage</th>
-                                    <th>Count</th>
-                                    <th>Amount</th>
-                                    <th>Percentage</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="50px">Currency</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -184,12 +184,12 @@
                                         <div class="accordion__body--text p-0">
                                             <div class="table-responsive tableFixHead">
                                                 <table class="table table-bordered">
-                                                    <thead>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"ead>
                                                         <tr>
-                                                            <th width="50px">Currency</th>
-                                                            <th>Count</th>
-                                                            <th>Amount</th>
-                                                            <th>Percentage</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="50px">Currency</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -235,12 +235,12 @@
                                         <div class="accordion__body--text p-0">
                                             <div class="table-responsive tableFixHead">
                                                 <table class="table table-bordered">
-                                                    <thead>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"ead>
                                                         <tr>
-                                                            <th width="50px">Currency</th>
-                                                            <th>Count</th>
-                                                            <th>Amount</th>
-                                                            <th>Percentage</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="50px">Currency</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -286,12 +286,12 @@
                                         <div class="accordion__body--text p-0">
                                             <div class="table-responsive tableFixHead">
                                                 <table class="table table-bordered">
-                                                    <thead>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"ead>
                                                         <tr>
-                                                            <th width="50px">Currency</th>
-                                                            <th>Count</th>
-                                                            <th>Amount</th>
-                                                            <th>Percentage</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="50px">Currency</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Count</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Percentage</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

@@ -5,7 +5,16 @@
     <link rel="stylesheet" href="{{ asset('NewTheme/assets/css/dashforge.css') }}">
     <link rel="stylesheet" href="{{ asset('NewTheme/assets/css/dashforge.demo.css') }}">
 @endsection
-
+@section('breadcrumbTitle')
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('transaction-session') }}">Transaction session</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Restore</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Restore</h6>
+    </nav>
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -13,10 +22,6 @@
                 <div class="card-header">
                     <div class="header-title">
                         <h4 class="card-title">Transaction Session Details</h4>
-                    </div>
-                    <div class="btn-group">
-                        <a href="{{ route('transaction-session') }}" class="btn btn-primary btn-sm"><i
-                                class="fa fa-arrow-left"></i> </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -705,7 +710,7 @@
                                         <input type="hidden" name="gateway_id"
                                             value="{{ $transaction_session['gateway_id'] }}">
                                     </div>
-                                    <button type="submit" class="btn btn-success mt-1">Submit</button>
+                                    <button type="submit" class="btn btn-primary mt-1">Submit</button>
                                 </form>
                             </div>
                         </div>

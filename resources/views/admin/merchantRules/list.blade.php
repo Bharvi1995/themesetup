@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Merchant Rules List
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Merchant Rules List</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Merchant Rules List</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -74,15 +80,15 @@
                         <table id="rules_List" class="table table-borderless table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Merchant Name</th>
-                                    <th>Merchant Email</th>
-                                    <th>Rules Name</th>
-                                    <th style="max-width: 100px !important;">Rules</th>
-                                    <th>MID</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                    <th>Priority</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Merchant Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Merchant Email</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rules Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="max-width: 100px !important;">Rules</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
                                 </tr>
                             </thead>
                             <tbody id="tablecontents">

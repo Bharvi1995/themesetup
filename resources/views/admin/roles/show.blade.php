@@ -5,7 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('paylaksa/roles') }}">Role</a> / Show
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ url('paylaksa/roles') }}">Role</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Show Role</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Show Role</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -19,7 +26,6 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Admin Roles Details</h4>
                     </div>
-                    <a href="{{ url('paylaksa/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -38,7 +44,7 @@
                                             {{ ucfirst($subModule) }}</p>
                                         @foreach ($subModuleList as $v)
                                             <label
-                                                class="badge badge-primary badge-sm mb-1 me-1">{{ $v->name }}</label>
+                                                class="badge badge-sm bg-gradient-primary mb-1 me-1">{{ $v->name }}</label>
                                         @endforeach
                                     @endforeach
                                 @endforeach

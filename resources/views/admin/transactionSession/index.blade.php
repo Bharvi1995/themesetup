@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> /Transaction session
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Transaction session</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Transaction session</h6>
+    </nav>
 @endsection
 @include('requestDate')
 @section('content')
@@ -67,7 +73,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="payment_gateway_id">MID</label>
-                                    <select class="select2" name="payment_gateway_id">
+                                    <select class="form-control" name="payment_gateway_id">
                                         <option disabled selected> -- MID -- </option>
                                         @foreach ($payment_gateway_id as $key => $value)
                                             <option value="{{ $value->id }}"
@@ -118,23 +124,23 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Transaction session</h4>
                     </div>
-                    <div>
-                        <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
-                            <select class="form-control form-control-sm" name="noList" id="noList">
-                                <option value="">No of Records</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
+                                <select class="form-control form-control-sm" name="noList" id="noList">
+                                    <option value="">No of Records</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
                             <button class="btn btn-primary btn-sm searchModelOpen" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                                 Advance Search &nbsp;
@@ -152,19 +158,19 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th style="min-width: 135px;">DATE</th>
-                                    <th>Order Id</th>
-                                    <th>MID</th>
-                                    <th>COMPANY NAME</th>
-                                    <th>STATUS</th>
-                                    <th>EMAIL</th>
-                                    <th>AMOUNT</th>
-                                    <th>CURRENCY</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 135px;">DATE</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Order Id</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">COMPANY NAME</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">STATUS</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">EMAIL</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">AMOUNT</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CURRENCY</th>
                                     @if (auth()->guard('admin')->user())
-                                        <th>ACTION</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACTION</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -174,22 +180,20 @@
                                         $requestData = json_decode($newData->request_data);
                                     @endphp
                                     <tr>
-                                        <td>{{ $newData->created_at->format('d-m-Y H:i:s') }}</td>
-                                        <td>{{ $newData->order_id }}</td>
-                                        <td>{{ @$mids[$newData->payment_gateway_id] }}</td>
-                                        <td>{{ @$companies[$newData->user_id] }}</td>
-                                        <td>{{ $newData->is_completed == 1 ? 'Completed' : 'Pending' }}</td>
-                                        <td>{{ $newData->email }}</td>
-                                        <td>{{ isset($requestData->amount) ? $requestData->amount : 'N/A' }}</td>
-                                        <td>{{ isset($requestData->currency) ? $requestData->currency : 'N/A' }}</td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">{{ $newData->created_at->format('d-m-Y H:i:s') }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $newData->order_id }}</td>
+                                        <td class="align-middle text-center text-sm">{{ @$mids[$newData->payment_gateway_id] }}</td>
+                                        <td class="align-middle text-center text-sm">{{ @$companies[$newData->user_id] }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $newData->is_completed == 1 ? 'Completed' : 'Pending' }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $newData->email }}</td>
+                                        <td class="align-middle text-center text-sm">{{ isset($requestData->amount) ? $requestData->amount : 'N/A' }}</td>
+                                        <td class="align-middle text-center text-sm">{{ isset($requestData->currency) ? $requestData->currency : 'N/A' }}</td>
+                                        <td class="align-middle text-center text-sm">
                                             <a href="{{ route('admin.transaction_session_show', $newData->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="fa fa-eye"
-                                                    aria-hidden="true"></i></a>
+                                                class="btn btn-primary btn-sm">View</a>
                                             @if ($newData->is_completed != 1)
                                                 <a href="{{ route('admin.restoreTransactionSessionForm', $newData->id) }}"
-                                                    class="btn btn-success btn-sm"><i class="fa fa-refresh"
-                                                        aria-hidden="true"></i></a>
+                                                    class="btn btn-success btn-sm">Restore</a>
                                             @endif
                                         </td>
                                     </tr>

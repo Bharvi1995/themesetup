@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / All Transactions
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">All Transactions</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">All Transactions</h6>
+    </nav>
 @endsection
 
 
@@ -275,7 +281,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 mb-2 text-right">
+        <div class="col-lg-7 mb-2 text-right">
+        </div>
+        <div class="col-lg-5 mb-2 text-right">
             <?php
             $url = Request::fullUrl();
             $parsedUrl = parse_url($url);
@@ -286,18 +294,17 @@
             @if (auth()->guard('admin')->user()->can(['export-all-transaction']))
                 @if (!empty($subQueryString))
                     <a href="{{ route('all-admin-transactions-csv-export', [$subQueryString]) }}"
-                        class="btn btn-primary btn-shadow"><i class="fa fa-download"></i> Export Excel </a>
+                        class="btn btn-outline-primary btn-shadow"> Export Excel </a>
                 @else
-                    <a href="{{ route('all-admin-transactions-csv-export') }}" class="btn btn-primary btn-shadow"
+                    <a href="{{ route('all-admin-transactions-csv-export') }}" class="btn btn-outline-primary btn-shadow"
                         id="ExcelLink">
-                        <i class="fa fa-download"></i>
                         Export Excel
                     </a>
                 @endif
             @endif
             @if (auth()->guard('admin')->user()->can(['delete-all-transaction']))
-                <button type="button" class="btn btn-primary" id="deleteSelected"
-                    data-link="{{ route('delete-transaction') }}"><i class="fa fa-trash"></i> Delete Selected
+                <button type="button" class="btn btn-outline-danger" id="deleteSelected"
+                    data-link="{{ route('delete-transaction') }}"> Delete Selected
                     Record</button>
             @endif
         </div>
@@ -305,14 +312,15 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">All Transactions</h4>
                     </div>
-                    <div>
-                        @if (auth()->guard('admin')->user()->can(['update-all-transaction']))
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                        <!-- @if (auth()->guard('admin')->user()->can(['update-all-transaction']))
                             <div class="btn-group form-dark">
-                                <select class="form-control-sm" name="transaction_status" id="transaction_status"
+                                <select class="form-control  form-control-sm" name="transaction_status" id="transaction_status"
                                     style="border-radius: 5px 0px 0px 5px !important;">
                                     <option selected disabled> -- Select Status -- </option>
                                     <option value="chargebacks">Chargebacks</option>
@@ -324,7 +332,7 @@
                                     data-change-transaction-status="{{ route('change-transaction-status') }}"
                                     style="border-radius: 0px 5px 5px 0px !important;">Move To</button>
                             </div>
-                        @endif
+                        @endif -->
 
                         <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
                             <select class="form-control form-control-sm" name="noList" id="noList">
@@ -337,7 +345,6 @@
                                 </option>
                             </select>
                         </form>
-                        <div class="btn-group">
                             <button class="btn btn-primary btn-sm searchModelOpen" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                                 Advance Search &nbsp;
@@ -355,28 +362,28 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th class="width50">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width50" >
                                         <div class="form-check">
                                             <input class="form-check-input" id="checkAll" type="checkbox"
                                                 required="">
                                             <label class="form-check-label" for="checkAll"></label>
                                         </div>
                                     </th>
-                                    <th>Order No</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Order No</th>
                                     @if (auth()->guard('admin')->user()->can(['company-name']))
-                                        <th>Company Name</th>
-                                        <th>MID</th>
-                                        <th>Email</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company Name</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MID</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                                     @endif
-                                    <th>Amount</th>
-                                    <th style="min-width: 150px;">Date & Time</th>
-                                    <th>Currency</th>
-                                    <th>Country</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 150px;">Date & Time</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Currency</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
                                     @if (auth()->guard('admin')->user())
-                                        <th>Action</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -384,7 +391,7 @@
                                 @if (count($data) > 0)
                                     @foreach ($data as $transaction)
                                         <tr id="tr_{{ $transaction->id }}">
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="form-check-input multidelete"
                                                         name="multicheckmail[]"
@@ -394,7 +401,7 @@
                                                         for="customCheckBox_{{ $transaction->id }}"></label>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 @if (auth()->guard('admin')->user()->can(['details-transaction']))
                                                     <a href="javascript:;" data-bs-target="#transactionShowModal"
                                                         data-bs-toggle="modal" class="text-primary showTransaction"
@@ -410,35 +417,35 @@
                                                 @endif
                                                 @if ($transaction->is_request_from_vt)
                                                     <label
-                                                        class="badge badge-sm badge-success">{{ $transaction->is_request_from_vt }}</label>
+                                                        class="badge badge-sm bg-gradient-success">{{ $transaction->is_request_from_vt }}</label>
                                                 @endif
 
                                                 @if ($transaction->payment_type == 'crypto')
-                                                    <label class="badge badge-sm badge-success">Crypto</label>
+                                                    <label class="badge badge-sm bg-gradient-success">Crypto</label>
                                                 @elseif ($transaction->payment_type == 'bank')
-                                                    <label class="badge badge-sm badge-success">Bank</label>
+                                                    <label class="badge badge-sm bg-gradient-success">Bank</label>
                                                 @elseif ($transaction->payment_type == 'upi')
-                                                    <label class="badge badge-sm badge-success">UPI</label>
+                                                    <label class="badge badge-sm bg-gradient-success">UPI</label>
                                                 @elseif ($transaction->card_type == '2')
-                                                    <label class="badge badge-sm badge-success">Visa</label>
+                                                    <label class="badge badge-sm bg-gradient-success">Visa</label>
                                                 @elseif($transaction->card_type == '3')
-                                                    <label class="badge badge-sm badge-danger">Master</label>
+                                                    <label class="badge badge-sm bg-gradient-danger">Master</label>
                                                 @elseif($transaction->card_type == '1')
-                                                    <label class="badge badge-sm badge-primary">Amex</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">Amex</label>
                                                 @elseif($transaction->card_type == '4')
-                                                    <label class="badge badge-sm badge-primary">Discover</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">Discover</label>
                                                 @elseif($transaction->card_type == '5')
-                                                    <label class="badge badge-sm badge-primary">JCB</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">JCB</label>
                                                 @elseif($transaction->card_type == '6')
-                                                    <label class="badge badge-sm badge-primary">Maestro</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">Maestro</label>
                                                 @elseif($transaction->card_type == '7')
-                                                    <label class="badge badge-sm badge-primary">Switch</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">Switch</label>
                                                 @elseif($transaction->card_type == '8')
-                                                    <label class="badge badge-sm badge-primary">Solo</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">Solo</label>
                                                 @elseif($transaction->card_type == '9')
-                                                    <label class="badge badge-sm badge-primary">UnionPay</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">UnionPay</label>
                                                 @elseif($transaction->card_type == '0')
-                                                    <label class="badge badge-sm badge-primary">Unknown</label>
+                                                    <label class="badge badge-sm bg-gradient-primary">Unknown</label>
                                                 @endif
 
                                                 {{-- The card whitelabled status --}}
@@ -449,37 +456,37 @@
                                                 @endif
                                             </td>
                                             @if (auth()->guard('admin')->user()->can(['company-name']))
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <span>
                                                         <div class="d-flex align-items-center">
                                                             <span class="w-space-no">
                                                                 {{ @$Application[$transaction->user_id] }}
                                                                 <br>
                                                                 <label
-                                                                    class="badge badge-sm badge-success">{{ $transaction->request_origin }}</label>
+                                                                    class="badge badge-sm bg-gradient-success">{{ $transaction->request_origin }}</label>
                                                                 <label
-                                                                    class="badge badge-sm badge-warning">{{ $transaction->request_from_ip }}</label>
+                                                                    class="badge badge-sm bg-gradient-warning">{{ $transaction->request_from_ip }}</label>
                                                             </span>
                                                         </div>
                                                     </span>
                                                 </td>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     {{ @$MIDDetail[$transaction->payment_gateway_id] }} <br />
                                                     @if ($transaction->status == '1')
-                                                        <label class="badge badge-sm badge-success">Success</label>
+                                                        <label class="badge badge-sm bg-gradient-success">Success</label>
                                                     @elseif($transaction->status == '2')
-                                                        <label class="badge badge-sm badge-warning">Pending</label>
+                                                        <label class="badge badge-sm bg-gradient-warning">Pending</label>
                                                     @elseif($transaction->status == '5')
-                                                        <label class="badge badge-sm badge-primary">Blocked</label>
+                                                        <label class="badge badge-sm bg-gradient-primary">Blocked</label>
                                                     @elseif($transaction->status == '7')
-                                                        <label class="badge badge-sm badge-primary">3ds Redirect</label>
+                                                        <label class="badge badge-sm bg-gradient-primary">3ds Redirect</label>
                                                     @else
-                                                        <label class="badge badge-sm badge-danger">Declined</label>
+                                                        <label class="badge badge-sm bg-gradient-danger">Declined</label>
                                                     @endif
                                                 </td>
-                                                <td>{{ $transaction->email }}</td>
+                                                <td class="align-middle text-center text-sm">{{ $transaction->email }}</td>
                                             @endif
-                                            <td><span>{{ $transaction->amount }}</span>
+                                            <td class="align-middle text-center text-sm"><span>{{ $transaction->amount }}</span>
                                                 @if ($transaction->is_converted == '1')
                                                     @if ($transaction->amount != $transaction->converted_amount)
                                                         <span class="text-warning"> -
@@ -487,7 +494,7 @@
                                                     @endif
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 @if ($transaction->created_at)
                                                     {{ $transaction->created_at->format('d-m-Y / H:i:s') }}
                                                 @else
@@ -497,7 +504,7 @@
 
                                             </td>
 
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 {{ $transaction->currency }}
                                                 @if ($transaction->is_converted == '1')
                                                     @if ($transaction->currency != $transaction->converted_currency)
@@ -506,46 +513,32 @@
                                                     @endif
                                                 @endif
                                             </td>
-                                            <td>{{ $transaction->country }}</td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">{{ $transaction->country }}</td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="dropdown">
-                                                    <button type="button"
-                                                        class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                        data-bs-toggle="dropdown">
-                                                        <svg width="5" height="17" viewBox="0 0 5 17"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                                fill="#B3ADAD" />
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                      <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                      </a>
+                                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                         @if (auth()->guard('admin')->user()->can(['details-transaction']))
-                                                            <a href="{{ route('admin.getsingletransaction', ['id' => $transaction->id]) }}"
+                                                            <li><a href="{{ route('admin.getsingletransaction', ['id' => $transaction->id]) }}"
                                                                 class="dropdown-item">
                                                                 View
-                                                            </a>
+                                                            </a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['delete-all-transaction']))
-                                                            <a data-id="{{ $transaction->id }}"
+                                                            <li><a data-id="{{ $transaction->id }}"
                                                                 class="dropdown-item deleteTransaction"
                                                                 data-link="{{ route('delete-transaction') }}">Delete
-                                                            </a>
+                                                            </a></li>
                                                         @endif
-                                                    </div>
+                                                    </ul>
                                                 </div>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="8">
+                                        <td class="align-middle text-center text-sm" colspan="8">
                                             <p class="text-center"><strong>No record found</strong></p>
                                         </td>
                                     </tr>

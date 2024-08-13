@@ -5,8 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('dashboardPage') }}">Dashboard</a> / <a href="{{ url('paylaksa/block-system') }}"> Block Card/Email</a> /
-    Add
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ url('paylaksa/block-system') }}">Block Card/Email System</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Add</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Add</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -17,8 +23,6 @@
                     <div class="header-title">
                         <h4 class="card-title">Add Block Card/Email</h4>
                     </div>
-                    <a href="{{ url('paylaksa/block-system') }}" class="btn btn-primary d-none d-md-block btn-sm"><i
-                            class="fa fa-arrow-left"></i></a>
                 </div>
                 {!! Form::open(['route' => 'store.block-system', 'files' => true, 'class'=>'form-dark']) !!}
                 <div class="card-body">

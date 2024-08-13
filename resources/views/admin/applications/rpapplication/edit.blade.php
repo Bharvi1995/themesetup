@@ -5,8 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('rp.dashboard') }}">Dashboard</a> / <a href="{{ route('application-rp.all') }}">RP Applications</a> /
-    Edit
+     <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('application-rp.all') }}">RP Applications</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Edit</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -412,7 +418,7 @@
 
                                     <div class="form-group col-lg-3" style="margin-top: 38px;">
                                         <button type="button" class="btn btn-primary btn-sm" id="btnPlus">
-                                            <i class="fa fa-plus"></i>
+                                            Plus
                                         </button>
                                     </div>
                                 </div>

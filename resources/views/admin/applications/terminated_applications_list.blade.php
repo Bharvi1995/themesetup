@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Terminated Applications
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Terminated Management</li>
+   </ol>
+   <h6 class="font-weight-bolder mb-0">Terminated Management</h6>
+</nav>
 @endsection
 
 @section('content')
@@ -45,7 +51,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="country">Country</label>
                                     <select name="country" id="country" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach (getCountry() as $key => $country)
                                             <option value="{{ $key }}"
@@ -62,7 +68,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="business_name">Business Name</label>
                                     <select name="user_id" id="business_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($businessNames as $key => $value)
                                             <option value="{{ $value->user_id }}"
@@ -107,7 +113,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="agent_name">Referral Partners</label>
                                     <select name="agent_id" id="agent_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         <option value="no-agent"
                                             {{ isset($_GET['agent_id']) && $_GET['agent_id'] == 'no-agent' ? 'selected' : '' }}>
@@ -128,7 +134,7 @@
                                     <label for="technology_partner_id">Technology Partner</label>
                                     <select name="technology_partner_id" id="technology_partner" data-size="7"
                                         data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($technologyPartner as $key => $value)
                                             <option value="{{ $value->id }}"
@@ -157,7 +163,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="categories">Categories</label>
                                     <select name="category_id" id="categories" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         <option value="no-agent"
                                             {{ isset($_GET['category_id']) && $_GET['category_id'] == 'no-agent' ? 'selected' : '' }}>
@@ -178,7 +184,7 @@
                                     <label for="monthly_volume">Monthly Volume</label>
                                     <select name="monthly_volume_condition" id="monthly_volume_condition" data-size="7"
                                         data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
                                         style="position: absolute; bottom: 0; right: 0;">
                                         <option value="e"
                                             {{ isset($_GET['monthly_volume_condition']) && $_GET['monthly_volume_condition'] == 'e' ? 'selected' : '' }}>
@@ -218,15 +224,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 text-right mb-2">
+        <div class="col-lg-6">
+            <!-- <h4 class="me-50">Terminated Applications</h4> -->
+        </div>
+        <div class="col-lg-6 text-right mb-2">
             @if (auth()->guard('admin')->user()->can(['export-application']))
                 <a href="{{ route('admin.applications.exportAllTerminated', request()->all()) }}"
-                    data-filename="Terminated_Application" class="btn btn-primary btn-sm" id="ExcelLink"><i
-                        class="fa fa-download"></i> Export Excel </a>
+                    data-filename="Terminated_Application" class="btn btn-outline-primary btn-sm" id="ExcelLink"> Export Excel </a>
             @endif
             @if (auth()->guard('admin')->user()->can(['delete-application']))
-                <button type="button" class="btn btn-primary btn-sm btn-shadow" id="deleteSelected"
-                    data-link="{{ route('delete-all-application') }}"><i class="fa fa-trash"></i> Delete Selected
+                <button type="button" class="btn btn-outline-primary btn-sm btn-shadow" id="deleteSelected"
+                    data-link="{{ route('delete-all-application') }}"> Delete Selected
                     Record</button>
             @endif
         </div>
@@ -234,34 +242,34 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card  mt-1">
-                <div class="card-header d-flex bg-info justify-content-between">
-                    <div class="iq-header-title">
-                        <h4 class="card-title">Terminated Applications</h4>
+                <div class="card-header d-flex justify-content-between">
+                    <div class="card-title">
+                        <h5 class="card-title">Terminated Applications</h5>
                     </div>
-                    <div>
-                        <form id="noListform" method="GET" style="width: 165px; float: left; margin-right: 5px;">
-                            <select class="form-control-sm form-control" name="noList" id="noList">
-                                <option value="">--No of Records--</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form id="noListform" method="GET" style="width: 165px; float: left; margin-right: 5px;">
+                                <select class="form-control-sm form-control" name="noList" id="noList">
+                                    <option value="">--No of Records--</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
                             <button type="button" class="btn btn-primary bell-link btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#searchModal"> <i class="fa fa-search-plus"></i>
+                                data-bs-target="#searchModal">
                                 Advanced
                                 Search</button>
                             <a href="{{ route('admin.applications.is_terminated') }}"
-                                class="btn btn-primary btn-sm">Reset</a>
+                                class="btn btn-danger btn-sm">Reset</a>
                         </div>
 
                         @if (auth()->guard('admin')->user()->can(['send-email-application']))
-                            <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#Send_email"><i class="fa fa-envelope"></i> Send Mail </a>
+                            <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#Send_email"> Send Mail </a>
                         @endif
                     </div>
                 </div>
@@ -270,21 +278,21 @@
                         <table id="is_completed_applications_list" class="table mb-0 table-borderless">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         <div class="custom-control custom-checkbox custom-control-inline mr-0">
                                             <input type="checkbox" id="selectallcheckbox" name=""
                                                 class="multidelete custom-control-input">
                                             <label class="custom-control-label" for="selectallcheckbox"></label>
                                         </div>
                                     </th>
-                                    <th>Action</th>
-                                    <th>Note</th>
-                                    <th style="min-width: 140px;">Business Name</th>
-                                    <th>Email</th>
-                                    <th style="min-width: 150px;">Merchant Name</th>
-                                    <th style="min-width: 130px;">Business Type</th>
-                                    <th>Website URL</th>
-                                    <th style="min-width: 130px;">Creation Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Note</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 140px;">Business Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 150px;">Merchant Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 130px;">Business Type</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Website URL</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 130px;">Creation Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -292,7 +300,7 @@
                                     @foreach ($applications as $key => $value)
                                         @php $key++; @endphp
                                         <tr>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="custom-control custom-checkbox custom-control-inline mr-0">
                                                     <input type="checkbox" id="checkbox-{{ $value->id }}"
                                                         name="multidelete[]" class="multidelete custom-control-input"
@@ -301,30 +309,11 @@
                                                         for="checkbox-{{ $value->id }}"></label>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div class="dropdown ml-auto">
-                                                    <a href="#" class="btn btn-primary sharp rounded-pill"
-                                                        data-bs-toggle="dropdown" aria-expanded="true"><svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="18px"
-                                                            height="18px" viewBox="0 0 24 24" version="1.1">
-                                                            <g stroke="none" stroke-width="1" fill="none"
-                                                                fill-rule="evenodd">
-                                                                <rect x="0" y="0" width="24"
-                                                                    height="24">
-                                                                </rect>
-                                                                <circle fill="#FFF" cx="5" cy="12"
-                                                                    r="2">
-                                                                </circle>
-                                                                <circle fill="#FFF" cx="12" cy="12"
-                                                                    r="2">
-                                                                </circle>
-                                                                <circle fill="#FFF" cx="19" cy="12"
-                                                                    r="2">
-                                                                </circle>
-                                                            </g>
-                                                        </svg></a>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                            <td class="align-middle text-center text-sm">
+                                                <div class="dropdown">
+                                                    <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                         @if (auth()->guard('admin')->user()->can(['pdf-download-application']))
                                                             <li class="dropdown-item">
                                                                 <a href="{{ \URL::route('application-pdf', $value->id) }}"
@@ -364,7 +353,7 @@
                                                     </ul>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <span data-bs-toggle="modal" data-bs-target="#App_Note"
                                                     data-id="{{ $value->id }}" class="AppNote">
                                                     <a href="javascript:;" data-bs-toggle="tooltip" data-placement="top"
@@ -373,7 +362,7 @@
                                                             class="fa fa-sticky-note"></i></a>
                                                 </span>
                                             </td>
-                                            <td>{{ strlen($value->business_name) > 50 ? substr($value->business_name, 0, 30) . '...' : $value->business_name }}
+                                            <td class="align-middle text-center text-sm">{{ strlen($value->business_name) > 50 ? substr($value->business_name, 0, 30) . '...' : $value->business_name }}
 
                                                 @if (!empty($value->user->agent))
                                                     <br />
@@ -384,19 +373,19 @@
                                                     </label>
                                                 @endif
                                             </td>
-                                            <td>{{ $value->user->email ?? 'No Email' }}</td>
-                                            <td>{{ $value->user->name ?? 'No Name' }}</td>
-                                            <td>{{ $value->business_type }}</td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">{{ $value->user->email ?? 'No Email' }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $value->user->name ?? 'No Name' }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $value->business_type }}</td>
+                                            <td class="align-middle text-center text-sm">
                                                 {{ strlen($value->website_url) > 50 ? substr($value->website_url, 0, 30) . '...' : $value->website_url }}
                                             </td>
-                                            <td>{{ convertDateToLocal($value->created_at, 'd-m-Y') }}</td>
+                                            <td class="align-middle text-center text-sm">{{ convertDateToLocal($value->created_at, 'd-m-Y') }}</td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
                                         @php $colSpan = 10; @endphp
-                                        <td colspan="{{ $colSpan }}">
+                                        <td class="align-middle text-center text-sm" colspan="{{ $colSpan }}">
                                             <p class="text-center"><strong>No applications found.</strong></p>
                                         </td>
                                         @for ($i = 1; $i < $colSpan; $i++)

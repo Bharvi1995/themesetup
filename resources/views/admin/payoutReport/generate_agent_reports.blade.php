@@ -5,7 +5,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Generate Referral Partner's Report
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Generate Referral Partner's Report</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Generate Referral Partner's Report</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -29,7 +35,7 @@
                                 <div class="form-group col-lg-6">
                                     <label>Select Referral Partner Name</label>
                                     <select name="agent_id" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
                                         onchange="getAgentId(this.value , null)">
                                         <option selected disabled> -- Select here -- </option>
                                         @foreach ($agents as $agent)
@@ -42,7 +48,7 @@
                                 <div class="form-group col-lg-6">
                                     <label>Select Company Name</label>
                                     <select name="user_id" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox agnetCompany"
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox agnetCompany"
                                         data-width="100%">
                                         <option selected disabled> -- Select here -- </option>
 
@@ -51,7 +57,7 @@
                                 <div class="form-group col-lg-6">
                                     <label> Select Paid Status</label>
                                     <select name="is_paid" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled> -- Select here -- </option>
                                         <option value="1" {{ request()->get('is_paid') == '1' ? 'selected' : '' }}>Paid
                                         </option>
@@ -76,29 +82,30 @@
         <div class="row">
             <div class="col-xl-12 col-xxl-12">
                 <div class="card  mt-1">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                            <h4 class="card-title">Generate Referral Partner's Report</h4>
+                            <h4 class="card-title">Referral Partner's Report</h4>
                         </div>
-                        <div class="d-flex">
-                            @if (auth()->guard('admin')->user()->can(['export-generated-rp-payout-reports']))
-                                <form method="POST" action="{{ route('rp.generated.report.excel') }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary btn-sm "><i class="fa fa-download"></i>
+                        <div class="card-header-toolbar align-items-center">
+                            <div class="btn-group mr-2">
+                                @if (auth()->guard('admin')->user()->can(['export-generated-rp-payout-reports']))
+                                    <form method="POST" action="{{ route('rp.generated.report.excel') }}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary btn-sm ">
+                                            Download
+                                            all reports in Excel</button>
+                                    </form>
+                                    <a href="{{ route('rp.generated.report.excel', request()->all()) }}"
+                                        data-filename="RP_Report_Excel_" class="btn btn-success btn-sm mx-1" id="ExcelLink">
                                         Download
-                                        all reports in Excel</button>
-                                </form>
-                                <a href="{{ route('rp.generated.report.excel', request()->all()) }}"
-                                    data-filename="RP_Report_Excel_" class="btn btn-success btn-sm mx-1" id="ExcelLink"><i
-                                        class="fa fa-download"></i>
-                                    Download
-                                    Excel </a>
-                            @endif
-                            @if (auth()->guard('admin')->user()->can(['delete-generated-rp-payout-reports']))
-                                <button type="button" class="btn btn-danger btn-sm" id="deleteSelected"
-                                    data-link="{{ route('generate.rp.report.delete') }}"><i class="fa fa-trash"></i>
-                                    Delete Selected Reports</button>
-                            @endif
+                                        Excel </a>
+                                @endif
+                                @if (auth()->guard('admin')->user()->can(['delete-generated-rp-payout-reports']))
+                                    <button type="button" class="btn btn-danger btn-sm" id="deleteSelected"
+                                        data-link="{{ route('generate.rp.report.delete') }}">
+                                        Delete Selected Reports</button>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -109,7 +116,7 @@
                                     <label for="agent">Select Referral Partner <span class="text-danger">*</span>
                                     </label>
                                     <select name="agent" id="agent" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
                                         onchange="getAgentId(this.value , null)">
                                         <option selected disabled> -- Select here -- </option>
                                         @foreach ($agents as $agent)
@@ -129,7 +136,7 @@
                                     <label for="business_name">Select Company Name <span
                                             class="text-danger">*</span></label>
                                     <select name="user_id[]" id="business_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox agnetCompany agentMerchants"
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox agnetCompany agentMerchants"
                                         data-width="100%" multiple>
 
 
@@ -185,12 +192,12 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card  mt-1">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="iq-header-title">
                         <h4 class="card-title">Generated Referral Partner's Report</h4>
                     </div>
-                    <div>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#searchModal"> Advanced
                                 Search &nbsp; <svg width="13" height="10" viewBox="0 0 18 15" fill="none"
@@ -209,32 +216,32 @@
                         <table id="payout_Report" class="table table-striped table-borderless">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         <div class="custom-control custom-checkbox form-check mr-0">
                                             <input type="checkbox" id="selectallcheckbox" name=""
                                                 class="multidelete form-check-input">
                                             <label class="form-check-label" for="selectallcheckbox"></label>
                                         </div>
                                     </th>
-                                    <th>Referral Partner's Name </th>
-                                    <th>Company Name</th>
-                                    <th>Generated Date</th>
-                                    <th>Start Date</th>
-                                    <th>End Date </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Referral Partner's Name </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Generated Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Start Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">End Date </th>
                                     @if (auth()->guard('admin')->user()->can(['update-generated-rp-payout-reports']))
-                                        <th>Make Paid</th>
-                                        <th>Show Referral Partner's Side </th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Make Paid</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Show Referral Partner's Side </th>
                                     @endif
                                     @if (auth()->guard('admin')->user()->can(['show-generated-rp-payout-reports']))
-                                        <th>File</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                     @endif
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($payoutReports as $report)
                                     <tr>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             <div class="custom-control custom-checkbox form-check mr-0">
                                                 <input type="checkbox" class="form-check-input multicheckmail multidelete"
                                                     name="multicheckmail[]" id="customCheckBox_{{ $report->id }}"
@@ -244,13 +251,13 @@
                                             </div>
 
                                         </td>
-                                        <td>{{ $report->agent_name }}</td>
-                                        <td>{{ $report->company_name }}</td>
-                                        <td>{{ $report->date }} </td>
-                                        <td> {{ $report->start_date->format('d-m-Y') }}</td>
-                                        <td>{{ $report->end_date->format('d-m-Y') }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $report->agent_name }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $report->company_name }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $report->date }} </td>
+                                        <td class="align-middle text-center text-sm"> {{ $report->start_date->format('d-m-Y') }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $report->end_date->format('d-m-Y') }}</td>
                                         @if (auth()->guard('admin')->user()->can(['update-generated-rp-payout-reports']))
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="custom-control custom-checkbox form-check mr-0">
                                                     <input type="checkbox" name=""
                                                         id="isPaidStatus_{{ $report->id }}"
@@ -262,7 +269,7 @@
                                                         for="isPaidStatus_{{ $report->id }}"></label>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="custom-control custom-checkbox form-check mr-0">
                                                     <input type="checkbox" name=""
                                                         id="showClientSide_{{ $report->id }}"
@@ -276,7 +283,7 @@
                                             </td>
                                         @endif
 
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             @if (!empty($report->files))
                                                 @php
                                                     $files = json_decode($report->files);
@@ -294,45 +301,29 @@
                                             @endif
                                         </td>
 
-                                        <td>
-                                            <div class="dropdown ml-auto">
-                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                    data-bs-toggle="dropdown">
-                                                    <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                            fill="#B3ADAD" />
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
+                                        <td class="align-middle text-center text-sm">
+                                            <div class="dropdown">
+                                                <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                      </a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                     @if (auth()->guard('admin')->user()->can(['update-generated-rp-payout-reports']))
-                                                        <a href="javascript:void(0)" data-bs-target="#rpGeneratefileModal"
+                                                        <li><a href="javascript:void(0)" data-bs-target="#rpGeneratefileModal"
                                                             data-bs-toggle="modal" data-id="{{ $report->id }}"
-                                                            class="dropdown-item uploadFiles"><i
-                                                                class="fa fa-upload text-success me-2"></i>
+                                                            class="dropdown-item uploadFiles">
                                                             Upload Files
-                                                        </a>
+                                                        </a></li>
                                                     @endif
                                                     @if (auth()->guard('admin')->user()->can(['show-generated-rp-payout-reports']))
-                                                        <a href="{{ route('generate.agent.report.pdf', $report->id) }}"
-                                                            target="_blank" class="dropdown-item"><i
-                                                                class="fa fa-download text-secondary me-2"></i>
+                                                        <li><a href="{{ route('generate.agent.report.pdf', $report->id) }}"
+                                                            target="_blank" class="dropdown-item">
                                                             PDF
-                                                        </a>
+                                                        </a></li>
 
 
-                                                        <a href="{{ route('admin.generate.agent.report.show', $report->id) }}"
-                                                            target="_blank" class="dropdown-item"><i
-                                                                class="fa fa-eye text-primary me-2"></i>
+                                                        <li><a href="{{ route('admin.generate.agent.report.show', $report->id) }}"
+                                                            target="_blank" class="dropdown-item">
                                                             View
-                                                        </a>
+                                                        </a></li>
                                                     @endif
                                                 </div>
                                             </div>

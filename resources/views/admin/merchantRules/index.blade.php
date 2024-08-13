@@ -7,7 +7,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Merchant Rules List
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Merchant Rules List</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Merchant Rules List</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -41,7 +47,7 @@
                             <p class="card-text">Total Merchant Card Rules - {{ $CardRules }}</p>
                         </div>
                         <div class="col-md-3 text-right">
-                            <i class="fa fa-credit-card" style="font-size: 32px;"></i>
+                            <!-- <i class="fa fa-credit-card" style="font-size: 32px;"></i> -->
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -54,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <!-- <div class="col-lg-4">
             <div class="card">
                 <div class="card-body gateway-card">
                     <div class="row">
@@ -124,7 +130,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 @endsection
 @section('customScript')

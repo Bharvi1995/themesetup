@@ -41,7 +41,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Rules List
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Rules List</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Rules List</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -64,21 +70,22 @@
                 </div>
             @endif
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Rules List</h4>
                     </div>
-                    <div>
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
                         @if (auth()->guard('admin')->user()->can(['delete-rule']))
                             <button type="button" class="btn btn-primary btn-sm" id="deleteSelected"
                                 data-link="{{ route('delete-rules') }}">
-                                <i class="fa fa-trash"></i> Delete Selected Record
+                                 Delete Selected Record
                             </button>
                         @endif
                         @if (auth()->guard('admin')->user()->can(['update-rule']))
-                            <button type="button" class="btn btn-primary btn-sm selectedStausChange" id=""
+                            <button type="button" class="btn btn-outline-primary btn-sm selectedStausChange" id=""
                                 data-status="0" data-link="{{ route('change-rules-status', ['status' => 0]) }}">
-                                <i class="fa fa-trash"></i> Deactive Selected Record
+                                 Deactive Selected Record
                             </button>
                         @endif
                         @if (auth()->guard('admin')->user()->can(['create-rule']))
@@ -87,25 +94,26 @@
                         @endif
                     </div>
                 </div>
+                </div>
 
                 <div class="card-body">
                     <div class="table-responsive custom-table">
-                        <table id="rules_List" class="table table-borderless table-striped">
+                        <table id="rules_List" class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th class="width50">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 width50">
                                         <div class="custom-control form-check custom-checkbox custom-control-inline mr-0">
                                             <input class="form-check-input" id="checkAll" type="checkbox" required="">
                                             <label class="form-check-label" for="checkAll"></label>
                                         </div>
                                     </th>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th style="max-width: 100px !important;">Rules</th>
-                                    <th>MID</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                    <th>Priority</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="max-width: 100px !important;">Rules</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
                                 </tr>
                             </thead>
                             <tbody id="tablecontents">

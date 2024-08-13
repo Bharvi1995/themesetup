@@ -5,7 +5,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Merchant Management
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Merchant Management</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Merchant Management</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -32,7 +38,7 @@
                             <div class="row ">
                                 <div class="form-group col-md-6">
                                     <label for="">Email Verification Status</label>
-                                    <select class="select2" name="verify_status" id="verify_status" data-width="100%">
+                                    <select class="form-select" name="verify_status" id="verify_status" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         <option value="1"
                                             {{ isset($_GET['verify_status']) && $_GET['verify_status'] == '1' ? 'selected' : '' }}>
@@ -44,7 +50,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="">Application Status</label>
-                                    <select class="select2" name="application_status" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="application_status" data-size="7" data-live-search="true"
                                         data-title="-- Select here --" id="application_status" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         <option value="0"
@@ -102,7 +108,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Country</label>
-                                    <select class="select2" name="country" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="country" data-size="7" data-live-search="true"
                                         data-title="Select here" id="country" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($countries as $key => $country)
@@ -114,7 +120,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Company</label>
-                                    <select class="select2" name="company" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="company" data-size="7" data-live-search="true"
                                         data-title="Select here" id="company" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($companyName as $company)
@@ -126,7 +132,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Main MID</label>
-                                    <select class="select2" name="payment_gateway_id" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="payment_gateway_id" data-size="7" data-live-search="true"
                                         data-title="Select Main MID" id="payment_gateway_id" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($payment_gateway_id as $key => $value)
@@ -138,7 +144,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Visa MID</label>
-                                    <select class="select2" name="visamid" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="visamid" data-size="7" data-live-search="true"
                                         data-title="Select Main MID" id="visamid" data-width="100%">
                                         <option value="">Select here</option>
                                         @foreach ($payment_gateway_id as $key => $value)
@@ -150,7 +156,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Master MID</label>
-                                    <select class="select2" name="mastercardmid" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="mastercardmid" data-size="7" data-live-search="true"
                                         data-title="Select Main MID" id="mastercardmid" data-width="100%">
                                         <option value="">Select here</option>
                                         @foreach ($payment_gateway_id as $key => $value)
@@ -162,7 +168,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Bank MID</label>
-                                    <select class="select2" name="bank_mid" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="bank_mid" data-size="7" data-live-search="true"
                                         data-title="Select Main MID" id="bank_mid" data-width="100%">
                                         <option value="">Select here</option>
                                         @foreach ($bankMIDData as $key => $value)
@@ -174,7 +180,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Crypto MID</label>
-                                    <select class="select2" name="crypto_mid" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="crypto_mid" data-size="7" data-live-search="true"
                                         data-title="Select Main MID" id="crypto_mid" data-width="100%">
                                         <option value="">Select here</option>
                                         @foreach ($cryptoMIDData as $key => $value)
@@ -186,7 +192,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Referral Partners</label>
-                                    <select class="select2" name="agent_id" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="agent_id" data-size="7" data-live-search="true"
                                         data-title="Select Referral Partners" id="agent_id" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($agents as $agent)
@@ -198,7 +204,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Category</label>
-                                    <select class="select2" name="category" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="category" data-size="7" data-live-search="true"
                                         data-title="Select Category" id="category" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($categories as $category)
@@ -228,7 +234,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="">Mode</label>
-                                    <select class="select2" name="mode" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="mode" data-size="7" data-live-search="true"
                                         data-title="Select Mode" id="mode" data-width="100%">
                                         <option selected disabled>Select here</option>
 
@@ -270,46 +276,38 @@
             $subQueryString = $query != '' ? $query . '&type=xlsx' : '';
             ?>
             @if (auth()->guard('admin')->user()->can(['export-merchant']))
-                @if (!empty($subQueryString))
-                    <a href="{{ route('user-management-csv-export', [$subQueryString]) }}" class="btn btn-primary btn-sm"
-                        id="ExcelLink"><i class="fa fa-download"></i> Export Excel
-                    </a>
-                @else
-                    <a href="{{ route('user-management-csv-export') }}" class="btn btn-danger btn-sm" id="ExcelLink">
-                        <i class="fa fa-download"></i>
-                        Export Excel
-                    </a>
-                @endif
+                <a href="{{ route('user-management-csv-export', [$subQueryString]) }}" class="btn btn-outline-primary btn-sm" id="ExcelLink"> Export Excel</a>
             @endif
             @if (auth()->guard('admin')->user()->can(['delete-merchant']))
-                <button type="button" class="btn btn-primary btn-sm me-2" id="bulk_delete"><i class="fa fa-trash"></i>
+                <button type="button" class="btn btn-outline-primary btn-sm me-2" id="bulk_delete">
                     Delete Selected User</button>
+            @endif
+            @if (auth()->guard('admin')->user()->can(['send-mail-to-merchant']))
+                <a href="" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#Send_email">
+                    Send
+                    Mail </a>
             @endif
         </div>
         <div class="col-lg-12">
             <div class="card  mt-1">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div>
                     </div>
-                    <div>
-                        <form style="float:left;" class="me-50 form-dark" id="noListform" method="GET">
-                            <select class="form-control-sm form-control" name="noList" id="noList">
-                                <option value="">--No of Records--</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        @if (auth()->guard('admin')->user()->can(['send-mail-to-merchant']))
-                            <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#Send_email"><i class="fa fa-envelope"></i>
-                                Send
-                                Mail </a>
-                        @endif
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form style="float:left;" class="me-50 form-dark" id="noListform" method="GET">
+                                <select class="form-control-sm form-control" name="noList" id="noList">
+                                    <option value="">--No of Records--</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
+                            
                             <button type="button" class="btn btn-primary bell-link btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                                 Advanced
@@ -324,12 +322,10 @@
                         </div>
                         @if (auth()->guard('admin')->user()->can(['create-merchant']))
                             <a href="{{ route('merchant-user-create') }}" class="btn btn-primary btn-sm"
-                                id="new_merchant">
-                                <i class="fa fa-plus"></i> Create Account </a>
+                                id="new_merchant"> Create Account </a>
                         @endif
                         @if (auth()->guard('admin')->user()->can(['sub-users-list']))
-                            <a href="{{ route('sub-users-management') }}" class="btn btn-danger btn-sm"> <i
-                                    class="fa fa-user-plus"></i>
+                            <a href="{{ route('sub-users-management') }}" class="btn btn-danger btn-sm">
                                 Sub User
                             </a>
                         @endif
@@ -338,23 +334,23 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         <div class="custom-control form-check custom-control-inline mr-0">
                                             <input class="form-check-input" id="selectallcheckbox" name=""
                                                 type="checkbox">
                                             <label class="form-check-label" for="selectallcheckbox"></label>
                                         </div>
                                     </th>
-                                    <th>Status</th>
-                                    <th>Business Name</th>
-                                    <th>Merchant Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Creation Date</th>
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Business Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Merchant Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mobile</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Creation Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 
                                 </tr>
                             </thead>
@@ -362,7 +358,7 @@
                                 @if (count($dataT) > 0)
                                     @foreach ($dataT as $key => $data)
                                         <tr>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="custom-control form-check custom-control-inline mr-0">
                                                     <input type="checkbox"
                                                         class="form-check-input multicheckmail multidelete"
@@ -373,124 +369,106 @@
                                                 </div>
                                             </td>
 
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 @if ($data->email_verified_at != null)
-                                                    <span class="badge badge-success badge-sm">Email Verification -
+                                                    <span class="badge badge-sm bg-gradient-success badge-sm">Email Verification -
                                                         Verified</span>
                                                 @else
-                                                    <span class="badge badge-danger badge-sm">Email Verification -
+                                                    <span class="badge badge-sm bg-gradient-danger badge-sm">Email Verification -
                                                         Unverified</span>
                                                 @endif
                                                 <br>
                                                 @if ($data->appStatus == '1')
-                                                    <span class="badge badge-primary badge-sm">Application - In
+                                                    <span class="badge badge-sm bg-gradient-primary badge-sm">Application - In
                                                         Progress</span>
                                                 @elseif($data->appStatus == '2')
-                                                    <span class="badge badge-primary badge-sm">Application -
+                                                    <span class="badge badge-sm bg-gradient-primary badge-sm">Application -
                                                         Incomplete</span>
                                                 @elseif($data->appStatus == '3')
-                                                    <span class="badge badge-danger badge-sm">Application - Rejected</span>
+                                                    <span class="badge badge-sm bg-gradient-danger badge-sm">Application - Rejected</span>
                                                 @elseif($data->appStatus == '4')
-                                                    <span class="badge badge-success badge-sm">Application - Pre
+                                                    <span class="badge badge-sm bg-gradient-success badge-sm">Application - Pre
                                                         Approval</span>
                                                 @elseif($data->appStatus == '5')
-                                                    <span class="badge badge-primary badge-sm">Application - Agreement
+                                                    <span class="badge badge-sm bg-gradient-primary badge-sm">Application - Agreement
                                                         Sent</span>
                                                 @elseif($data->appStatus == '6')
-                                                    <span class="badge badge-primary badge-sm">Application - Agreement
+                                                    <span class="badge badge-sm bg-gradient-primary badge-sm">Application - Agreement
                                                         Received</span>
                                                 @elseif($data->appStatus == '7')
-                                                    <span class="badge badge-danger badge-sm">Application - Not
+                                                    <span class="badge badge-sm bg-gradient-danger badge-sm">Application - Not
                                                         Interested</span>
                                                 @elseif($data->appStatus == '8')
-                                                    <span class="badge badge-danger badge-sm">Application -
+                                                    <span class="badge badge-sm bg-gradient-danger badge-sm">Application -
                                                         Terminated</span>
                                                 @elseif($data->appStatus == '9')
-                                                    <span class="badge badge-danger badge-sm">Application - Decline</span>
+                                                    <span class="badge badge-sm bg-gradient-danger badge-sm">Application - Decline</span>
                                                 @elseif($data->appStatus == '10')
-                                                    <span class="badge badge-success badge-sm">Application - Rate
+                                                    <span class="badge badge-sm bg-gradient-success badge-sm">Application - Rate
                                                         Accepted</span>
                                                 @elseif($data->appStatus == '11')
-                                                    <span class="badge badge-success badge-sm">Application - Signed
+                                                    <span class="badge badge-sm bg-gradient-success badge-sm">Application - Signed
                                                         Agreement</span>
                                                 @else
-                                                    <span class="badge badge-danger badge-sm">Application - Pending</span>
+                                                    <span class="badge badge-sm bg-gradient-danger badge-sm">Application - Pending</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 {{ $data->business_name }}
                                                 @if (!empty($data->agent))
                                                     <br />
-                                                    <span class="badge badge-primary badge-sm">{{ $data->agent }} </span>
-                                                    {{-- <span class="badge badge-primary badge-sm">Visa-{{ $data->agent_commission }}% & Master-{{
+                                                    <span class="badge badge-sm bg-gradient-primary badge-sm">{{ $data->agent }} </span>
+                                                    {{-- <span class="badge badge-sm bg-gradient-primary badge-sm">Visa-{{ $data->agent_commission }}% & Master-{{
                                         }
                     $data->agent_commission_master_card }}%</span> --}}
                                                 @endif
                                             </td>
-                                            <td>{{ $data->name }}<br><label
-                                                    class="badge badge-primary badge-sm">{{ $data->bank_name }}</label>
+                                            <td class="align-middle text-center text-sm">{{ $data->name }}<br><label
+                                                    class="badge badge-sm bg-gradient-primary badge-sm">{{ $data->bank_name }}</label>
                                             </td>
-                                            <td>{{ $data->email }}</td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">{{ $data->email }}</td>
+                                            <td class="align-middle text-center text-sm">
                                                 +{{ $data->country_code }} {{ $data->mobile_no }}
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 {{ convertDateToLocal($data->created_at, 'd-m-Y') }}
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="dropdown">
-                                                    <button type="button"
-                                                        class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                        data-bs-toggle="dropdown">
-                                                        <svg width="5" height="17" viewBox="0 0 5 17"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                                fill="#B3ADAD" />
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                    <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                         @if (auth()->guard('admin')->user()->can(['update-merchant']))
-                                                            <a href="{{ \URL::route('merchant-user-edit', $data->id) }}"
-                                                                class="dropdown-item"><i
-                                                                    class="fa fa-edit text-primary me-2"></i>
-                                                                Edit</a>
+                                                            
+                                                            <li><a href="{{ \URL::route('merchant-user-edit', $data->id) }}"
+                                                                class="dropdown-item">
+                                                                Edit</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['sub-users-list']))
-                                                            <a href="{{ \URL::route('sub-user', $data->id) }}"
-                                                                class="dropdown-item"><i
-                                                                    class="fa fa-users text-warning me-2"></i>
-                                                                Sub User</a>
+                                                            <li><a href="{{ \URL::route('sub-user', $data->id) }}"
+                                                                class="dropdown-item">
+                                                                Sub User</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['update-merchant']))
-                                                            <a href="{{ URL::to('/') }}/userLogin?email={{ encrypt($data->email) }}"
-                                                                target="_blank" class="dropdown-item"><i
-                                                                    class="fa fa-sign-in text-secondary me-2"></i>
-                                                                Login</a>
+                                                            <li><a href="{{ URL::to('/') }}/userLogin?email={{ encrypt($data->email) }}"
+                                                                target="_blank" class="dropdown-item">
+                                                                Login</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['view-merchant']))
-                                                            <a href="" class="user-show dropdown-item"
+                                                            <li><a href="" class="user-show dropdown-item"
                                                                 data-bs-toggle="modal" data-id="{{ $data->id }}"
-                                                                data-bs-target="#user_list"><i
-                                                                    class="fa fa-eye text-success me-2"></i>
-                                                                View</a>
+                                                                data-bs-target="#user_list">
+                                                                View</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['assign-reffrel-partner']))
-                                                            <a href="javascript:void(0)"
+                                                            <li><a href="javascript:void(0)"
                                                                 class="dropdown-item btn-editAgentModal"
                                                                 data-user="{{ $data->id }}"
                                                                 data-agent="{{ $data->agent_id }}"
                                                                 data-agent-commission="{{ $data->agent_commission }}"
                                                                 data-agent-commission-master="{{ $data->agent_commission_master_card }}"
-                                                                data-bs-toggle="modal" data-bs-target="#editAgentModal"><i
-                                                                    class="fa fa-user-plus text-secondary me-2"></i>
-                                                                Referral Partners</a>
+                                                                data-bs-toggle="modal" data-bs-target="#editAgentModal">
+                                                                Referral Partners</a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['merchant-assign-mid']))
                                                             @if (
@@ -499,16 +477,14 @@
                                                                     $data->appStatus == 6 ||
                                                                     $data->appStatus == 10 ||
                                                                     $data->appStatus == 11)
-                                                                <a href="{{ \URL::route('assign-mid', $data->id) }}"
-                                                                    title="Assign MID" class="dropdown-item"><i
-                                                                        class="fa fa-cog text-info me-2"></i>
-                                                                    Assign MID</a>
+                                                                <li><a href="{{ \URL::route('assign-mid', $data->id) }}"
+                                                                    title="Assign MID" class="dropdown-item">
+                                                                    Assign MID</a></li>
                                                             @endif
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['update-merchant']))
                                                             
-                                                            <a href="{{ route('application.create',$data->id)}}" class="dropdown-item"><i
-                                                                    class="fa fa-users text-warning me-2"></i>Create Application</a>
+                                                            <li><a href="{{ route('application.create',$data->id)}}" class="dropdown-item">Create Application</a></li>
                                                             
                                                         @endif
                                                     </div>
@@ -623,7 +599,7 @@
                         <div class="row">
                             <div class="col-xl-12 col-sm-12 col-md-12 col-12 mb-4">
                                 <label>Select Referral Partner</label>
-                                <select class="select2" name="agent" id="agentSelect2">
+                                <select class="form-select" name="agent" id="agentSelect2">
                                     <option selected disabled>Select here</option>
                                     @foreach ($agents as $agent)
                                         <option value="{{ $agent->id }}">{{ $agent->name . ' - ' . $agent->email }}

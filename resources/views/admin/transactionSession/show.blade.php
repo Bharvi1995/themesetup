@@ -5,7 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Transaction Session Data
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('transaction-session') }}">Transaction session</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">View</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">View</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -18,10 +25,6 @@
 @endsection
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center my-1">
-        <h3>Transaction Session Details</h3>
-        <a href="{{ route('transaction-session') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> </a>
-    </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="card">

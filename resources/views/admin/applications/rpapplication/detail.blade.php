@@ -1,14 +1,18 @@
 @extends('layouts.admin.default')
 
-
-
 @section('title')
     RP Application Detail
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> /<a href="{{ route('application-rp.all') }}">RP Applications</a>
-    / Detail
+     <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('application-rp.all') }}">RP Applications</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Detail</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Detail</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -395,16 +399,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             @if ($application->status == '0')
-                                <i class="fa fa-circle text-primary mr-1"></i>
                                 Pending
                             @elseif($application->status == '1')
-                                <i class="fa fa-circle text-success mr-1"></i>
                                 Approved
                             @elseif($application->status == '2')
-                                <i class="fa fa-circle text-danger mr-1"></i>
                                 Rejected
                             @elseif($application->status == '3')
-                                <i class="fa fa-circle text-primary mr-1"></i>
                                 Reassigned
                             @endif
                         </div>

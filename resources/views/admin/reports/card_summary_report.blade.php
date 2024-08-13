@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Card Summary Report
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Card Summary Report</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Card Summary Report</h6>
+    </nav>
 @endsection
 @section('content')
     <?php
@@ -31,7 +37,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="business_name">Select Merchant</label>
                                     <select name="user_id" id="business_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled> -- Select Merchant -- </option>
                                         @foreach ($companyName as $key => $value)
                                             <option value="{{ $key }}"
@@ -85,10 +91,18 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <h4 class="me-50">Card Summary Report</h4>
+        <div class="col-md-4">
+            <!-- <h4 class="me-50">Card Summary Report</h4> -->
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-8 text-right">
+            <a href="{{ route('card-summary-report', ['for' => 'All']) }}" type="button"
+                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'All' ? 'btn-secondary' : 'btn-primary' }}">All</a>
+                                    <a href="{{ route('card-summary-report', ['for' => 'Daily']) }}" type="button"
+                                        class="btn {{ (!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily') ? 'btn-secondary' : 'btn-primary' }}">Daily</a>
+                                    <a href="{{ route('card-summary-report', ['for' => 'Weekly']) }}" type="button"
+                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Weekly' ? 'btn-secondary' : 'btn-primary' }}">Weekly</a>
+                                    <a href="{{ route('card-summary-report', ['for' => 'Monthly']) }}" type="button"
+                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Monthly' ? 'btn-secondary' : 'btn-primary' }}">Monthly</a>
             <div class="btn-group btn-shadow">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#searchModal">
                     Advanced
@@ -118,25 +132,50 @@
             <div class="card">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-md-9" style="padding: 30px 30px 30px 45px;">
+                        <div class="col-md-12" style="padding: 30px 30px 30px 45px;">
+                            <ul class="nav nav-tabs mt-2" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#SUCCESSFUL" data-bs-toggle="tab">
+                                        Successful
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#DECLINED" data-bs-toggle="tab">
+                                        Declined
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#CHARGEBACKS" data-bs-toggle="tab">
+                                        Chargebacks
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#REFUND" data-bs-toggle="tab">
+                                        Refund
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#SUSPICIOUS" data-bs-toggle="tab">
+                                        Marked Transactions
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#BLOCK" data-bs-toggle="tab">
+                                        Block
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-md-12" style="padding: 30px 30px 30px 45px;">
                             <div class="header-title" style="overflow: hidden;">
-                                <h5 class="card-title pull-left">MID Summary Report</h5>
-                                <div class="btn-group btn-group-sm pull-right">
-                                    <a href="{{ route('card-summary-report', ['for' => 'All']) }}" type="button"
-                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'All' ? 'btn-secondary' : 'btn-primary' }}">All</a>
-                                    <a href="{{ route('card-summary-report', ['for' => 'Daily']) }}" type="button"
-                                        class="btn {{ (!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily') ? 'btn-secondary' : 'btn-primary' }}">Daily</a>
-                                    <a href="{{ route('card-summary-report', ['for' => 'Weekly']) }}" type="button"
-                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Weekly' ? 'btn-secondary' : 'btn-primary' }}">Weekly</a>
-                                    <a href="{{ route('card-summary-report', ['for' => 'Monthly']) }}" type="button"
-                                        class="btn {{ isset($_GET['for']) && $_GET['for'] == 'Monthly' ? 'btn-secondary' : 'btn-primary' }}">Monthly</a>
-                                </div>
+                                <h5 class="card-title pull-left">Card Summary Report</h5>
                             </div>
 
                             <div class="tab-content">
                                 <div class="tab-pane active" id="SUCCESSFUL">
                                     <div class="table-responsive custom-table">
-                                        <table class="table table-striped table-borderless">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>Card</th>
@@ -170,7 +209,7 @@
                                 </div>
                                 <div class="tab-pane" id="DECLINED">
                                     <div class="table-responsive custom-table">
-                                        <table class="table table-striped table-borderless">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>Card</th>
@@ -205,7 +244,7 @@
                                 </div>
                                 <div class="tab-pane" id="CHARGEBACKS">
                                     <div class="table-responsive custom-table">
-                                        <table class="table table-striped table-borderless">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>Card</th>
@@ -240,7 +279,7 @@
                                 </div>
                                 <div class="tab-pane" id="REFUND">
                                     <div class="table-responsive custom-table">
-                                        <table class="table table-striped table-borderless">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>Card</th>
@@ -275,7 +314,7 @@
                                 </div>
                                 <div class="tab-pane" id="SUSPICIOUS">
                                     <div class="table-responsive custom-table">
-                                        <table class="table table-striped table-borderless">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>Card</th>
@@ -310,7 +349,7 @@
                                 </div>
                                 <div class="tab-pane" id="BLOCK">
                                     <div class="table-responsive custom-table">
-                                        <table class="table table-striped table-borderless">
+                                        <table class="table table-borderless">
                                             <thead>
                                                 <tr>
                                                     <th>Card</th>
@@ -346,40 +385,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <ul class="nav nav-tabs mt-2" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#SUCCESSFUL" data-bs-toggle="tab">
-                                        Successful
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#DECLINED" data-bs-toggle="tab">
-                                        Declined
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#CHARGEBACKS" data-bs-toggle="tab">
-                                        Chargebacks
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#REFUND" data-bs-toggle="tab">
-                                        Refund
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#SUSPICIOUS" data-bs-toggle="tab">
-                                        Marked Transactions
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#BLOCK" data-bs-toggle="tab">
-                                        Block
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -4,91 +4,85 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('admin.technical') }}">Technical &
-        Additional</a> / Mass MID
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Mass MID</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Mass MID</h6>
+    </nav>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-xl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Mass MID</h4>
                     </div>
-                    <div>
-                        <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
-                            <select class="form-control form-control-sm" name="noList" id="noList">
-                                <option value="">No of Records</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        @if (auth()->guard('admin')->user()->can(['role-create']))
-                            <a href="{{ route('mass-mid.create') }}" class="btn btn-success btn-sm"> Change Another Mass MID
-                            </a>
-                        @endif
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
+                                <select class="form-control form-control-sm" name="noList" id="noList">
+                                    <option value="">No of Records</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
+                            @if (auth()->guard('admin')->user()->can(['role-create']))
+                                <a href="{{ route('mass-mid.create') }}" class="btn btn-primary btn-sm"> Change Another Mass MID
+                                </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="card-body p-0">
                     <div id="validation-errors"></div>
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Change Type</th>
-                                    <th>Old MID</th>
-                                    <th>New MID</th>
-                                    <th>Merchants</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Change Type</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Old MID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">New MID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Merchants</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($mass_mid as $key => $mid)
                                     <tr>
-                                        <th>{{ $mid->id }}</th>
-                                        <td>{{ config('midtype.name.' . $mid->change_type) }}</td>
-                                        <td>{{ $mid->old_bank_name }}</td>
-                                        <td>{{ $mid->new_bank_name ?? '--' }}</td>
-                                        <td>{{ count(json_decode($mid->user_id)) }}</td>
-                                        <td>{{ $mid->created_at }}</td>
-                                        <td>
+                                        <th class="align-middle text-center text-sm">{{ $mid->id }}</th>
+                                        <td class="align-middle text-center text-sm">{{ config('midtype.name.' . $mid->change_type) }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $mid->old_bank_name }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $mid->new_bank_name ?? '--' }}</td>
+                                        <td class="align-middle text-center text-sm">{{ count(json_decode($mid->user_id)) }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $mid->created_at }}</td>
+                                        <td class="align-middle text-center text-sm">
                                             <div class="dropdown">
-                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                    data-bs-toggle="dropdown">
-                                                    <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                            fill="#B3ADAD" />
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="#" data-id="{{ $mid->id }}" class="dropdown-item mass-mid-revert">Revert Back to old MID</a>
-                                                    <a href="{{ route('mass-mid.refresh', $mid->id) }}"
-                                                        class="dropdown-item refresh-button">Refresh</a>
-                                                    <a href="javascript:void(0)"
+                                                <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                                    <li><a href="#" data-id="{{ $mid->id }}" class="dropdown-item mass-mid-revert">Revert Back to old MID</a></li>
+                                                    <li><a href="{{ route('mass-mid.refresh', $mid->id) }}"
+                                                        class="dropdown-item refresh-button">Refresh</a></li>
+                                                    <li><a href="javascript:void(0)"
                                                         class="dropdown-item view-model"
-                                                        data-url="{!! URL::route('mass-mid.viewMerchants', $mid->id) !!}">View Merchants</a>
-                                                    <a href="{{ route('mass-mid.edit', $mid->id) }}"
-                                                        class="dropdown-item">Edit</a>
-                                                    <a href="javascript:void(0)"
+                                                        data-url="{!! URL::route('mass-mid.viewMerchants', $mid->id) !!}">View Merchants</a></li>
+                                                    <li><a href="{{ route('mass-mid.edit', $mid->id) }}"
+                                                        class="dropdown-item">Edit</a></li>
+                                                    <li><a href="javascript:void(0)"
                                                         class="dropdown-item delete_modal"
                                                         data-url="{!! URL::route('mass-mid.destroy', $mid->id) !!}"
-                                                        data-id="{{ $mid->id }}">Delete</a>
-                                                </div>
+                                                        data-id="{{ $mid->id }}">Delete</a></li>
+                                                </ul>
                                             </div>
                                         </td>
                                     </tr>

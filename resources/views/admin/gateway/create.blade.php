@@ -3,8 +3,14 @@
     Gateway Create
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('admin.gateway.index') }}">Gateway List</a> /
-    Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.gateway.index') }}">Gateway List</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -15,8 +21,6 @@
                     <div class="header-title">
                         <h4 class="card-title">Create Gateway</h4>
                     </div>
-                    <a href="{{ route('admin.gateway.index') }}" class="btn btn-primary btn-sm"><i
-                            class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::open([
@@ -37,24 +41,24 @@
                         </div>
                         <div class="col-lg-12 form-group">
                             <div class="table-responsive custom-table">
-                                <table class="table table-borderless table-striped">
+                                <table class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Credential Title</th>
-                                            <th>Credential Name</th>
-                                            <th>Credential Type</th>
-                                            <th>Is Required</th>
-                                            <th>Add More</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Credential Title</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Credential Name</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Credential Type</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Is Required</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Add More</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tab_logic">
                                         <div id="countVar" data-count="0"></div>
                                         <tr data-id="1">
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 1
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <input placeholder="Enter here..." class="form-control"
                                                     name="credential_title[0]" type="text"
                                                     value="{{ old('credential_title.0') }}">
@@ -63,14 +67,14 @@
                                                         class="text-danger">{{ $errors->first('credential_title.0') }}</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <input placeholder="Enter here..." class="form-control" name="name[0]"
                                                     type="text" value="{{ old('name.0') }}">
                                                 @if ($errors->has('name.0'))
                                                     <span class="text-danger">{{ $errors->first('name.0') }}</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <select class="form-control" name="type[0]" data-size="7" data-width="100%"
                                                     required>
                                                     <option disabled>Select Type</option>
@@ -86,7 +90,7 @@
                                                     <span class="text-danger">{{ $errors->first('type.0') }}</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <select class="form-control " name="is_required[0]" data-width="100%">
                                                     <option disabled>Is Required</option>
                                                     <option value="0" selected
@@ -99,9 +103,8 @@
                                                     <span class="text-danger">{{ $errors->first('is_required[0]') }}</span>
                                                 @endif
                                             </td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-success btn-sm plus"> <i
-                                                        class="fa fa-plus"></i>
+                                            <td class="align-middle text-center text-sm">
+                                                <button type="button" class="btn btn-success btn-sm plus mt-2"> Plus
                                                 </button>
                                             </td>
                                         </tr>
@@ -174,8 +177,8 @@
                                                         </select>\
                                                     </td>\
                                                     <td class="text-center">\
-                                                        <button type="button" class="btn btn-success btn-sm plus"> <i class="fa fa-plus"></i> </button>\
-                                                        <button type="button" class="btn btn-primary btn-sm minus"> <i class="fa fa-minus"></i> </button>\
+                                                        <button type="button" class="btn btn-success btn-sm plus"> Plus </button>\
+                                                        <button type="button" class="btn btn-primary btn-sm minus"> Minus </button>\
                                                     </td>\
                                                 </tr>');
             // i++;

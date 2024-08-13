@@ -4,9 +4,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('mid-feature-management.index') }}">MID
-        List</a> /
-    Edit
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('mid-feature-management.index') }}">MIDs List</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Edit</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -17,8 +22,6 @@
                     <div class="header-title">
                         <h4 class="card-title">Edit MID</h4>
                     </div>
-                    <a href="{{ route('mid-feature-management.index') }}" class="btn btn-primary btn-sm"><i
-                            class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     {{ Form::model($data, ['route' => ['admin.middetails.update', $data->id], 'method' => 'patch', 'id' => 'mid-form', 'class' => 'form-dark']) }}
@@ -93,7 +96,7 @@
                         <div class="form-group col-lg-6">
                             <label for="text">Select Converted Currency</label>
                             <select name="converted_currency" data-size="7" data-live-search="true"
-                                class="select2 btn-primary fill_selectbtn_in own_selectbox" data-title="Location"
+                                class="form-select btn-primary fill_selectbtn_in own_selectbox" data-title="Location"
                                 data-width="100%">
                                 <option selected disabled> -- Select Converted Currency -- </option>
                                 <option value="USD" {{ $data->converted_currency == 'USD' ? 'selected' : '' }}>USD

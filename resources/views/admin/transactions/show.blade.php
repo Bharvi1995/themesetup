@@ -5,7 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Details of Transaction
+     <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.transactions') }}">All Transactions</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Details of Transactions</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Details of Transactions</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -179,11 +186,11 @@
                         <h4 class="card-title">Order No / {{ $data->order_id }}</h4>
                     </div>
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-md-5">
                             <div class="table-responsive custom-table">
-                                <table class="table table-borderless table-striped">
+                                <table class="table table-borderless">
                                     <tr>
                                         <td style="width: 200px;"><strong>First Name</strong></td>
                                         <td>{{ $data->first_name }}</td>
@@ -330,7 +337,7 @@
                         </div>
                     </div>
                     @if ($data->webhook_url != null && $data->webhook_url != '')
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-md-5 p30">
                             <h4 class="pull-left mt-25 mb-0">Webhook Details</h4>
                             <a href="{{ route('send-transaction-webhook', $data->id) }}"

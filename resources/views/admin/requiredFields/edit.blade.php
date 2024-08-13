@@ -3,8 +3,14 @@
     Required Fields
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('required_fields.index') }}">Required
-        Fields</a> / Edit
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('required_fields.index') }}">Required Fields</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Edit</h6>
+    </nav>
 @endsection
 @section('content')
     <div class="row">
@@ -14,8 +20,6 @@
                     <div class="header-title">
                         <h4 class="card-title">Edit Required fields</h4>
                     </div>
-                    <a href="{{ route('required_fields.index') }}" class="btn btn-primary btn-sm"><i
-                            class="fa fa-arrow-left"></i>
                     </a>
                 </div>
                 <div class="card-body">

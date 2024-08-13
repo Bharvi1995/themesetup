@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Country-wise Transaction Report
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Country-wise Transaction Report</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Country-wise Transaction Report</h6>
+    </nav>
 @endsection
 @section('content')
 
@@ -51,7 +57,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="business_name">Select Merchant</label>
                                     <select name="user_id" id="business_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected value=""> -- Select Merchant -- </option>
                                         @foreach ($businessName as $key => $value)
                                             <option value="{{ $key }}"
@@ -67,7 +73,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label for="status">MID</label>
-                                    <select class="form-control input-rounded select2" name="payment_gateway_id">
+                                    <select class="form-control input-rounded form-select" name="payment_gateway_id">
                                         <option value="" selected> -- MID -- </option>
                                         @foreach ($payment_gateway_id as $key => $value)
                                             <option value="{{ $value->id }}"

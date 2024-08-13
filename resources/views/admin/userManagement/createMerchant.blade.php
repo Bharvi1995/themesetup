@@ -3,8 +3,14 @@
     Merchant Create
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('users-management') }}">Merchant
-        Management</a> / Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('users-management') }}">Merchant Management</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create</h6>
+    </nav>
 @endsection
 @section('content')
     <div class="row">
@@ -14,8 +20,6 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Merchant Create</h4>
                     </div>
-                    <a href="{{ route('users-management') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i>
-                    </a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('merchant-user-store') }}" method="post" class="form-dark">
@@ -75,7 +79,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="">Mobile</label>
                                 <div class="main-select-phone d-flex justify-content-between align-items-center">
-                                    <select class="select2 btn-primary fill_selectbtn_in own_selectbox" name="country_code"
+                                    <select class="form-select btn-primary fill_selectbtn_in own_selectbox" name="country_code"
                                         value="{{ old('country_code') }}">
                                         <option value="44" {{ old('country_code') == '44' ? 'selected' : '' }}>UK (+44)
                                         </option>

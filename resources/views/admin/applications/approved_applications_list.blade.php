@@ -5,6 +5,7 @@
 
 @section('breadcrumbTitle')
     <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Pre Approval Applications
+    
 @endsection
 
 @section('content')

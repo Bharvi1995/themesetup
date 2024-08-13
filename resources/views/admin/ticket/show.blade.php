@@ -4,13 +4,20 @@
 Admin Ticket Show
 @endsection
 @section('breadcrumbTitle')
-<a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('admin.ticket') }}">Ticket</a> / Show
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.ticket') }}">Tickets</a></li>
+      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Show</li>
+   </ol>
+   <h6 class="font-weight-bolder mb-0">Show</h6>
+</nav>
 @endsection
 
 @section('customeStyle')
 <style type="text/css">
     .desc {
-        background-color: #262626;
+        background-color: #eaeaea;
         padding: 10px 15px;
         border-radius: 15px;
         position: relative;
@@ -25,13 +32,13 @@ Admin Ticket Show
         left: -29px;
         content: "";
         border: 15px solid red;
-        border-color: transparent #262626 transparent transparent;
+        border-color: transparent #eaeaea transparent transparent;
         border-width: 15px;
     }
 
     .media-info {
         float: left;
-        background: #262626;
+        background: #eaeaea;
         color: #34383E;
         height: 50px;
         width: 50px;

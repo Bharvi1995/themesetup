@@ -5,28 +5,38 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Integration Preference
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Integration Preference</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Integration Preference</h6>
+    </nav>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-xl-12 col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Integration Preference</h4>
                     </div>
-                    <a href="{{ route('integration-preference.create') }}" class="btn btn-success btn-sm">New
-                        Integration Preference</a>
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <a href="{{ route('integration-preference.create') }}" class="btn btn-primary btn-sm">New Integration Preference</a>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Actions</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,33 +45,24 @@
                                 @endphp
                                 @foreach ($data as $key => $technology)
                                     <tr>
-                                        <th>{{ ++$i }}</th>
-                                        <td>{{ $technology->name }}</td>
-                                        <td class="w-15">
+                                        <th class="align-middle text-center text-sm">{{ ++$i }}</th>
+                                        <td class="align-middle text-center text-sm">{{ $technology->name }}</td>
+                                        <td class="align-middle text-center text-sm w-15">
                                             <div class="dropdown">
-                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                    data-bs-toggle="dropdown">
-                                                    <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                            fill="#B3ADAD" />
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="{!! URL::route('integration-preference.edit', $technology->id) !!}"
-                                                            class="dropdown-item">Edit</a>
-                                                    <a href="javascript:void(0)" class="dropdown-item delete_modal"
+                                                <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                                    <li>
+                                                        <a href="{!! URL::route('integration-preference.edit', $technology->id) !!}"
+                                                            class="dropdown-item">Edit</a>                                                    
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="dropdown-item delete_modal"
                                                             data-bs-toggle="modal" data-bs-target="#delete_modal"
                                                             data-url="{{ URL::route('integration-preference.destroy', $technology->id) }}"
                                                             data-id="{{ $technology->id }}">Delete</a>
-                                                </div>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </td>
                                     </tr>

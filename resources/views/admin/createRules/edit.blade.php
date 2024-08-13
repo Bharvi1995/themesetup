@@ -19,8 +19,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('admin.create_rules.index') }}">Rules</a> /
-    Edit
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.create_rules.index') }}">Rules List</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit Rules</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Edit Rules</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -31,8 +37,6 @@
                     <div class="mr-auto pr-3">
                         <h4 class="card-title">Edit Rule</h4>
                     </div>
-                    <a href="{{ route('admin.create_rules.index') }}" class="btn btn-primary btn-sm"><i
-                            class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::open([
@@ -56,19 +60,19 @@
                             <h4 class="mb-3 mt-3">Edit Rules Details</h4>
                             <div class="table-responsive custom-table">
                                 <input type="hidden" name="type" id="type" value="{{ $rule->rules_type }}">
-                                <table id="tbRules" class="table table-borderless table-striped ">
+                                <table id="tbRules" class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th>Category</th>
-                                            <th>Condition</th>
-                                            <th>Values</th>
-                                            <th>Add More</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Condition</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Values</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Add More</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tab_logic">
                                         <div id="dvTabRules">
                                             <tr style="display:none">
-                                                <td>
+                                                <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     <input type="hidden" name="txHiddenAdd[]" id="txHiddenAdd_{groupId}"
                                                         value="Y">
                                                     <select class="form-control" name="selector[]" id="selector_{groupId}"
@@ -79,7 +83,7 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     <div id="dvAmount_{groupId}" style="display:none">
                                                         <select class="form-control amountoperator"
                                                             name="amountoperator_{groupId}" id="operator_{groupId}">
@@ -163,7 +167,7 @@
                                                         </select>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     <input placeholder="Enter Name" class="form-control"
                                                         name="amount_{groupId}" id="amount_{groupId}" type="text"
                                                         style="display:none">
@@ -225,9 +229,9 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     <button type="button" class="btn btn-primary btn-sm btnMinus"
-                                                        onClick="fnRemoveRow({groupId})"> <i class="fa fa-minus"></i>
+                                                        onClick="fnRemoveRow({groupId})"> Minus
                                                     </button>
                                                 </td>
                                             </tr>
@@ -238,7 +242,7 @@
                                                 // dd(explode(",",trim($temp_condition[2],'[')));
                                                 ?>
                                                 <tr id="trRules_{{ $key }}">
-                                                    <td>
+                                                    <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                         <input type="hidden" name="txHiddenAdd[]"
                                                             id="txHiddenAdd_{{ $key }}" value="Y">
                                                         <select class="form-control" name="selector[]"
@@ -252,7 +256,7 @@
                                                             @endforeach
                                                         </select>
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                         <div id="dvAmount_{{ $key }}"
                                                             style="@if ($temp_condition[0] != 'amount') display: none; @endif">
                                                             <select class="form-control amountoperator"
@@ -417,7 +421,7 @@
                                                             </select>
                                                         </div>
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                         <?php
                                                         if ($temp_condition[1] != '=') {
                                                             $arr = explode(',', $temp_condition[2]);
@@ -531,15 +535,14 @@
                                                             @endforeach
                                                         </select>
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                         @if ($key == 0)
                                                             <button type="button" class="btn btn-success btn-sm btnPlus">
-                                                                <i class="fa fa-plus"></i>
+                                                                Plus
                                                             </button>
                                                         @else
                                                             <button type="button" class="btn btn-primary btn-sm btnMinus"
-                                                                onClick="fnRemoveRow({{ $key }})"> <i
-                                                                    class="fa fa-minus"></i>
+                                                                onClick="fnRemoveRow({{ $key }})"> Minus
                                                             </button>
                                                         @endif
                                                     </td>

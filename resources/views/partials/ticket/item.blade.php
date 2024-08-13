@@ -4,14 +4,6 @@
             <div class="header-title">
                 <h4 class="card-title">View Ticket Details</h4>
             </div>
-            <div>
-                @if($ticket->status == '3')
-                <a href="{!! URL::route('ticket.reopen',[$ticket->id]) !!}" class="btn btn-success btn-sm"><i
-                        class="fa fa-unlock"></i> Reopen</a>
-                @endif
-                <a href="{{ $backUrl }}" class="btn btn-primary btn-icon btn-sm" title="Back"> <i class="fa fa-arrow-left"></i>
-                </a>
-            </div>
         </div>
         <div class="card-body">
             <div class="row">
@@ -24,7 +16,7 @@
                         </div>
                         <div class="col-sm-8 col-xs-8">
                             <div class="media mr-2 media-info">
-                                <img src="{{ storage_asset('NewTheme/images/favicon.ico') }}" width="45px">
+                                <img src="{{ storage_asset('softtheme/img/favicon.ico') }}" width="45px">
                             </div>
                             <div class="desc">
                                 <small class="">Date :
@@ -60,7 +52,7 @@
 </div>
 
 @if(!empty($ticket->replies) && $ticket->replies->count())
-<div class="col-md-12">
+<div class="col-md-12 mt-2">
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
@@ -73,7 +65,7 @@
             <div class="row mb-3">
                 <div class="col-md-8">
                     <div class="media mr-2 media-info">
-                        <img src="{{ storage_asset('NewTheme/images/favicon.ico') }}" width="45px">
+                        <img src="{{ storage_asset('softtheme/img/favicon.ico') }}" width="45px">
                     </div>
                     <div class="desc">
                         <small class="">Date : {{ convertDateToLocal($reply->created_at, 'd-m-Y') }}</small>
@@ -105,7 +97,7 @@
 @endif
 
 @if($ticket->status != '3')
-<div class="col-md-12">
+<div class="col-md-12 mt-2">
     <div class="form-validation">
         <form class="form-valide form-dark"
             action="{{ get_guard() == 'admin'?route('admin.ticket.reply.store'):route('ticket.reply.store') }}"

@@ -272,7 +272,7 @@
                     : '' }}" id="rpAppMenu">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item">
-                            <a class="nav-link {{ $pageActive1 == 'admin.applications.list' ? 'active' : '' }}" href="{{ route('admin.applications.list') }}">
+                            <a class="nav-link {{ $pageActive1 == 'application-rp.all' ? 'active' : '' }}" href="{{ route('application-rp.all') }}">
                                 <span class="sidenav-normal"> All Applications</span>
                             </a>
                         </li>

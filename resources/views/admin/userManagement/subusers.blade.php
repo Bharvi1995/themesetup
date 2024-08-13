@@ -3,7 +3,13 @@
     Sub Users Merchanat
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Sub Users Management
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Sub Users Management</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Sub Users Management</h6>
+    </nav>
 @endsection
 @section('content')
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -26,7 +32,7 @@
                             <div class="row ">
                                 <div class="form-group col-md-6">
                                     <label>Company</label>
-                                    <select class="select2" name="company_name" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="company_name" data-size="7" data-live-search="true"
                                         data-title="Location" id="company_name" data-width="100%">
                                         <option selected disabled> -- Select Company -- </option>
                                         @foreach ($companyName as $key => $value)
@@ -56,12 +62,12 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card  mt-1">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="iq-header-title">
                         <h4 class="card-title">Sub Users Management</h4>
                     </div>
-                    <div>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
                             <button type="button" class="btn btn-primary  btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#searchModal"> Advanced
                                 Search &nbsp; <svg width="13" height="10" viewBox="0 0 18 15" fill="none"
@@ -73,12 +79,10 @@
                             <a href="{{ url('paylaksa/sub-users-management') }}" class="btn btn-danger btn-sm"
                                 style="border-radius: 0px 5px 5px 0px !important;">Reset</a>
                         </div>
-                        <a href="javascript:void(0);" id="bulk_delete" class="btn btn-primary btn-sm"><i
-                                class="fa fa-trash text-danger"></i>
+                        <a href="javascript:void(0);" id="bulk_delete" class="btn btn-primary btn-sm">
                             Delete Selected
                             User</a>
-                        <a href="{{ route('users-management') }}" class="btn btn-danger btn-sm rounded"><i
-                                class="fa fa-arrow-left"></i></a>
+                        <a href="{{ route('users-management') }}" class="btn btn-danger btn-sm rounded"></a>
                     </div>
                 </div>
                 <div class="card-body p-0">

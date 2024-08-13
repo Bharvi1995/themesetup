@@ -4,8 +4,14 @@
     Create Admin User
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> /<a href="{{ route('admin-user.index') }}">Admin Users</a> /
-    Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin-user.index') }}">Admin Users</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create</h6>
+    </nav>
 @endsection
 @section('content')
     <div class="row">
@@ -15,8 +21,6 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Create Admin User</h4>
                     </div>
-                    <a href="{{ route('admin-user.index') }}" class="btn btn-primary btn-sm rounded"> <i
-                            class="fa fa-arrow-left" aria-hidden="true"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::open([
@@ -77,7 +81,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">Select Role</label>
-                                <select class="select2" name="roles" data-size="7" data-live-search="true"
+                                <select class="form-select" name="roles" data-size="7" data-live-search="true"
                                     data-title="--Roles--" id="state_list" data-width="100%">
                                     @if (sizeof($roles) > 0)
                                         <option value="" selected>-- Select Role --</option>
@@ -115,7 +119,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">OTP required for Login</label>
-                                <div class="form-group mb-0">
+                                <div class="form-group mb-0 ">
                                     <label class="radio-inline mr-3"><input type="radio" id="rdo-3"
                                             name="is_otp_required" class="checkradio form-check-input" value="1"
                                             @if (old('is_otp_required') == '1' || old('is_otp_required') == null) checked @endif> Yes</label>

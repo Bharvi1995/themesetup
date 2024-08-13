@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> /Payment API
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Payment API</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Payment API</h6>
+    </nav>
 @endsection
 @include('requestDate')
 @section('content')
@@ -86,23 +92,23 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Payment API</h4>
                     </div>
-                    <div>
-                        <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
-                            <select class="form-control form-control-sm" name="noList" id="noList">
-                                <option value="">No of Records</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
+                                <select class="form-control form-control-sm" name="noList" id="noList">
+                                    <option value="">No of Records</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
                             <button class="btn btn-primary btn-sm searchModelOpen" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                                 Advance Search &nbsp;
@@ -120,27 +126,25 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>COMPANY NAME</th>
-                                    <th>ORDER ID</th>
-                                    <th>SESSION ID</th>
-                                    <th style="min-width: 135px;">DATE</th>
-                                    <th>ACTION</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">COMPANY NAME</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ORDER ID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SESSION ID</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 135px;">DATE</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $newData)
                                     <tr>
-                                        <td>{{ @$businessData[$newData->user_id] }}</td>
-                                        <td>{{ $newData->order_id }}</td>
-                                        <td>{{ $newData->session_id }}</td>
-                                        <td>{{ $newData->created_at->format('d-m-Y H:i:s') }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.paymentApi.show', $newData->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="fa fa-eye"
-                                                    aria-hidden="true"></i></a>
+                                        <td class="align-middle text-center text-sm">{{ @$businessData[$newData->user_id] }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $newData->order_id }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $newData->session_id }}</td>
+                                        <td class="align-middle text-center text-sm">{{ $newData->created_at->format('d-m-Y H:i:s') }}</td>
+                                        <td class="align-middle text-center text-sm">
+                                            <a href="{{ route('admin.paymentApi.show', $newData->id) }}" class="btn btn-primary btn-sm">View</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -3,7 +3,13 @@
     Sub User Management
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Sub User Management
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Sub Users Management</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Sub Users Management</h6>
+    </nav>
 @endsection
 @section('content')
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -26,7 +32,7 @@
                             <div class="row ">
                                 <div class="form-group col-md-6">
                                     <label>Select Main MID</label>
-                                    <select class="select2" name="payment_gateway_id" data-size="7" data-live-search="true"
+                                    <select class="form-select" name="payment_gateway_id" data-size="7" data-live-search="true"
                                         data-title="Select Main MID" id="payment_gateway_id" data-width="100%">
                                         <option selected disabled> -- Select Main MID -- </option>
                                         @foreach ($payment_gateway_id as $key => $value)
@@ -60,12 +66,12 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mt-1">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="iq-header-title">
                         <h4 class="card-title">Sub User Management</h4>
                     </div>
-                    <div>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
                             <button type="button" class="btn btn-primary  btn-sm" data-bs-target="#searchModal"
                                 data-bs-toggle="modal"> Advanced
                                 Search &nbsp; <svg width="13" height="10" viewBox="0 0 18 15" fill="none"
@@ -77,36 +83,36 @@
                             <a href="{{ route('sub-user', $id) }}" class="btn btn-danger btn-sm"
                                 style="border-radius: 0px 5px 5px 0px !important;">Reset</a>
                         </div>
-                        <a href="#" class="btn btn-primary btn-sm" id="SendMail" data-bs-toggle="modal"
-                            data-bs-target="#Send_email"><i class="fa fa-envelope"></i> Send Mail</a>
+                        <a href="#" class="btn btn-outline-primary btn-sm" id="SendMail" data-bs-toggle="modal"
+                            data-bs-target="#Send_email"> Send Mail</a>
                         <a href="{{ route('sub-user', ['id' => $id, 'type' => 'xlsx', 'ids' => $id] + request()->all()) }}"
-                            class="btn btn-primary btn-sm" id="ExcelLink"><i class="fa fa-download"></i> Export
+                            class="btn btn-warning btn-sm" id="ExcelLink"> Export
                             Excel</a>
                     </div>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <div class="custom-control form-check custom-control-inline mr-0">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <div class="custom-control form-check form-check-input custom-control-inline mr-0">
                                             <input type="checkbox" class="form-check-input multicheckmail"
                                                 id="selectallcheckbox">
                                             <label class="form-check-label" for="selectallcheckbox"></label>
                                         </div>
                                     </th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Created AT</th>
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created AT</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (!empty($dataT) && $dataT->count())
                                     @foreach ($dataT as $key => $data)
                                         <tr>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="custom-control form-check custom-control-inline mr-0">
                                                     <input type="checkbox" class="form-check-input multicheckmail"
                                                         id="checkbox{{ $data->id }}" name="multicheckmail[]"
@@ -115,44 +121,27 @@
                                                         for="checkbox{{ $data->id }}"></label>
                                                 </div>
                                             </td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ $data->email }}</td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">{{ $data->name }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $data->email }}</td>
+                                            <td class="align-middle text-center text-sm">
                                                 {{ convertDateToLocal($data->created_at, 'Y-m-d') }}
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <div class="dropdown">
-                                                    <button type="button"
-                                                        class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                        data-bs-toggle="dropdown">
-                                                        <svg width="5" height="17" viewBox="0 0 5 17"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                                fill="#B3ADAD" />
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a href="{{ \URL::route('sub-users-edit', $data->id) }}"
-                                                            class="dropdown-item"><i
-                                                                class="fa fa-edit text-primary me-2"></i>
-                                                            Edit</a>
-                                                        <a href="{{ URL::to('/') }}/userLogin?email={{ $data->email }}"
-                                                            target="_blank" class="dropdown-item"><i
-                                                                class="fa fa-sign-in text-secondary me-2"></i>
-                                                            Login</a>
+                                                    <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                                        <li><a href="{{ \URL::route('sub-users-edit', $data->id) }}"
+                                                            class="dropdown-item">
+                                                            Edit</a></li>
+                                                        <li><a href="{{ URL::to('/') }}/userLogin?email={{ $data->email }}"
+                                                            target="_blank" class="dropdown-item">
+                                                            Login</a></li>
 
-                                                        <a href="javascript:void(0)" class="dropdown-item delete_modal"
+                                                        <li><a href="javascript:void(0)" class="dropdown-item delete_modal"
                                                             data-url="{{ \URL::route('sub-users-delete', $data->id) }}"
-                                                            data-id="{{ $data->id }}"><i
-                                                                class="fa fa-trash text-danger me-2"></i>
-                                                            Delete</a>
+                                                            data-id="{{ $data->id }}">
+                                                            Delete</a></li>
 
                                                     </div>
                                                 </div>
@@ -162,7 +151,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="6">
+                                        <td class="align-middle text-center text-sm" colspan="6">
                                             <p class="text-center"><strong>No record found.</strong></p>
                                         </td>
                                     </tr>

@@ -5,7 +5,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Generated Payout Reports
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Generated Payout Reports</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Generated Payout Reports</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -29,7 +35,7 @@
                                 <div class="form-group col-lg-6">
                                     <label>Select Company Name</label>
                                     <select name="user_id" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled> -- Select here -- </option>
                                         @foreach ($companyName as $company)
                                             <option value="{{ $company->user_id }}"
@@ -41,7 +47,7 @@
                                 <div class="form-group col-lg-6">
                                     <label> Select Paid Status</label>
                                     <select name="status" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled> -- Select here -- </option>
                                         <option value="1"
                                             {{ isset($_GET['status']) && $_GET['status'] == '1' ? 'selected' : '' }}>
@@ -85,10 +91,11 @@
         <div class="row">
             <div class="col-xl-12 col-xxl-12">
                 <div class="card  mt-1">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
 
                         <h4 class="card-title">Generate Report</h4>
-                        <div>
+                        <div class="card-header-toolbar align-items-center">
+                            <div class="btn-group mr-2">
                             @php
                                 $url = Request::fullUrl();
                                 $parsedUrl = parse_url($url);
@@ -100,19 +107,19 @@
                             @if (auth()->guard('admin')->user()->can(['export-generated-payout-reports']))
                                 @if (!empty($subQueryString))
                                     <a href="{{ route('admin.generate_report.export', [$subQueryString]) }}"
-                                        class="btn btn-primary btn-sm" data-filename="GenerateReport_Excel_"><i
-                                            class="fa fa-download"></i>
+                                        class="btn btn-outline-primary btn-sm" data-filename="GenerateReport_Excel_">
                                         Download Excel</a>
                                 @else
-                                    <a href="{{ route('admin.generate_report.export') }}" class="btn btn-primary btn-sm"
-                                        data-filename="GenerateReport_Excel_"><i class="fa fa-download"></i>
+                                    <a href="{{ route('admin.generate_report.export') }}" class="btn btn-outline-primary btn-sm"
+                                        data-filename="GenerateReport_Excel_">
                                         Download Excel</a>
                                 @endif
                             @endif
                             @if (auth()->guard('admin')->user()->can(['update-generated-payout-reports']))
-                                <a id="bulk_delete" class="btn btn-danger btn-shadow btn-sm"><i class="fa fa-trash"></i>
+                                <a id="bulk_delete" class="btn btn-outline-danger btn-shadow btn-sm">
                                     Delete Selected Reports </a>
                             @endif
+                        </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -123,7 +130,7 @@
                                     <label for="business_name">Select Company Name <span class="text-danger">*</span>
                                     </label>
                                     <select name="user_id[]" id="business_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%"
                                         data-placeholder="Select here" multiple>
                                         @foreach ($companyName as $company)
                                             <option value="{{ $company->user_id }}"
@@ -180,24 +187,24 @@
 
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
-            <div class="card  mt-1">
-                <div class="card-header">
+            <div class="card  mt-2">
+                <div class="card-header d-flex justify-content-between">
                     <div class="iq-header-title">
                         <h4 class="card-title">Generated Payout Reports</h4>
                     </div>
-                    <div>
-                        <form id="noListform" method="GET" style="float: left;" class="form-dark">
-                            <select class="form-control-sm form-control" name="noList" id="noList">
-                                <option value="">--No of Records--</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form id="noListform" method="GET" style="float: left;" class="form-dark">
+                                <select class="form-control-sm form-control" name="noList" id="noList">
+                                    <option value="">--No of Records--</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
                             <button type="button" class="btn btn-primary btn-sm ms-1" data-bs-toggle="modal"
                                 data-bs-target="#searchModal"> Advanced
                                 Search &nbsp; <svg width="13" height="10" viewBox="0 0 18 15" fill="none"
@@ -219,7 +226,7 @@
                         <table id="payout_Report" class="table table-striped table-borderless">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         <div class="custom-control custom-checkbox form-check mr-0">
                                             <input type="checkbox" id="selectallcheckbox" name=""
                                                 class="multidelete form-check-input">
@@ -228,28 +235,28 @@
                                                 value="{{ $getids }}">
                                         </div>
                                     </th>
-                                    <th style="min-width: 165px;">Company Name</th>
-                                    <th class="text-center">Date</th>
-                                    <th class="text-center">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 165px;">Company Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >
                                         Payout <br> From - To
                                     </th>
-                                    <th class="text-center">Chargeback <br> From - To </th>
-                                    <th class="text-center">Remaining Payout</th>
-                                    <th class="text-center">Last Transaction Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Chargeback <br> From - To </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Remaining Payout</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Last Transaction Date</th>
                                     @if (auth()->guard('admin')->user()->can(['update-generated-payout-reports']))
-                                        <th class="text-center">Paid</th>
-                                        <th class="text-center" style="min-width: 170px;">Show Client Side </th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >Paid</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"  style="min-width: 170px;">Show Client Side </th>
                                     @endif
                                     @if (auth()->guard('admin')->user()->can(['show-generated-payout-reports']))
-                                        <th class="text-center">File</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >File</th>
                                     @endif
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($dataT as $key => $value)
                                     <tr>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             <div class="custom-control custom-checkbox form-check mr-0">
                                                 <input type="checkbox" class="form-check-input multicheckmail multidelete"
                                                     name="multicheckmail[]" id="checkbox-{{ $value->id }}"
@@ -258,19 +265,19 @@
                                                     for="checkbox-{{ $value->id }}"></label>
                                             </div>
                                         </td>
-                                        <td>{{ $value->company_name }}</td>
-                                        <td class="text-center">{{ $value->date }}</td>
-                                        <td class="text-center">
+                                        <td class="align-middle text-center text-sm">{{ $value->company_name }}</td>
+                                        <td class="align-middle text-center text-sm" >{{ $value->date }}</td>
+                                        <td class="align-middle text-center text-sm" >
                                             {{ date('d-m-Y', strtotime($value->start_date)) }}
                                             <br>-<br>
                                             {{ date('d-m-Y', strtotime($value->end_date)) }}
                                         </td>
-                                        <td class="text-center">
+                                        <td class="align-middle text-center text-sm" >
                                             {{ date('d-m-Y', strtotime($value->chargebacks_start_date)) }}
                                             <br>-<br>
                                             {{ date('d-m-Y', strtotime($value->chargebacks_end_date)) }}
                                         </td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             @php
                                                 $remainingPayoutAmount = '';
                                                 if (in_array($value->id, $dataNew)) {
@@ -281,7 +288,7 @@
                                             @endphp
                                             {{ $remainingPayoutAmount }}
                                         </td>
-                                        <td>
+                                        <td class="align-middle text-center text-sm">
                                             @php
                                                 if (in_array($value->id, $dataNew)) {
                                                     $lastTransaction = checkLastTransactionDateForMerchant($value->user_id);
@@ -292,7 +299,7 @@
                                             {{ $lastTransaction }}
                                         </td>
                                         @if (auth()->guard('admin')->user()->can(['update-generated-payout-reports']))
-                                            <td class="text-center">
+                                            <td class="align-middle text-center text-sm" >
                                                 <div class="custom-control custom-checkbox form-check mr-0">
                                                     <input type="checkbox" name=""
                                                         id="paidstatus_{{ $value->id }}"
@@ -302,7 +309,7 @@
                                                         for="paidstatus_{{ $value->id }}"></label>
                                                 </div>
                                             </td>
-                                            <td class="text-center">
+                                            <td class="align-middle text-center text-sm" >
                                                 <div class="custom-control custom-checkbox form-check mr-0">
                                                     <input type="checkbox" name=""
                                                         id="showClientSide_{{ $value->id }}"
@@ -318,7 +325,7 @@
                                             </td>
                                         @endif
                                         @if (auth()->guard('admin')->user()->can(['show-generated-payout-reports']))
-                                            <td class="text-center">
+                                            <td class="align-middle text-center text-sm" >
                                                 <?php
                                     if(!empty($value->files)){
                                         $files = json_decode($value->files);
@@ -327,8 +334,7 @@
                                             for($i=0;$i<$count;$i++){
                                                 ?>
                                                 <li style="list-style: none;"><a target="_blank"
-                                                        href="{{ getS3Url($files[$i]) }}"> <i
-                                                            class="fa fa-file text-info"></i></a></li>
+                                                        href="{{ getS3Url($files[$i]) }}"> </a></li>
                                                 <?php
                                             }
                                         }
@@ -341,42 +347,26 @@
                                     ?>
                                             </td>
                                         @endif
-                                        <td>
-                                            <div class="dropdown ml-auto">
-                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                    data-bs-toggle="dropdown">
-                                                    <svg width="5" height="17" viewBox="0 0 5 17" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                            fill="#B3ADAD" />
-                                                        <path
-                                                            d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                            fill="#B3ADAD" />
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
+                                        <td class="align-middle text-center text-sm">
+                                            <div class="dropdown">
+                                                      <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                      </a>
+                                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                     @if (auth()->guard('admin')->user()->can(['update-generated-payout-reports']))
-                                                        <a data-bs-target="#fileModal" data-bs-toggle="modal"
+                                                        <li><a data-bs-target="#fileModal" data-bs-toggle="modal"
                                                             data-id="{{ $value->id }}"
-                                                            class="dropdown-item uploadFiles"><i
-                                                                class="fa fa-upload text-success me-2"></i> Upload
-                                                            Files</a>
+                                                            class="dropdown-item uploadFiles"> Upload
+                                                            Files</a></li>
                                                     @endif
                                                     @if (auth()->guard('admin')->user()->can(['show-generated-payout-reports']))
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('generate_report.pdf', $value->id) }}"><i
-                                                                class="fa fa-download text-secondary me-2"></i>PDF</a>
+                                                        <li><a class="dropdown-item"
+                                                            href="{{ route('generate_report.pdf', $value->id) }}">PDF</a></li>
 
 
-                                                        <a href="{{ route('generate_report.show', $value->id) }}"
+                                                        <li><a href="{{ route('generate_report.show', $value->id) }}"
                                                             class="dropdown-item" target="_blank">
-                                                            <i class="fa fa-eye text-primary me-2"></i>
                                                             View
-                                                        </a>
+                                                        </a></li>
                                                     @endif
                                                 </div>
                                             </div>

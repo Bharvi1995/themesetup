@@ -18,8 +18,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('admin.create_rules.index') }}">Rules</a> /
-    Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.create_rules.index') }}">Rules List</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create Rules</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create Rules</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -30,8 +36,6 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Create Rules</h4>
                     </div>
-                    <a href="{{ route('admin.create_rules.index') }}" class="btn btn-primary btn-sm"><i
-                            class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::open([
@@ -58,16 +62,16 @@
                                 <table id="tbRules" class="table table-borderless table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Category</th>
-                                            <th>Condition</th>
-                                            <th>Values</th>
-                                            <th>Add More</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Condition</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Values</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Add More</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tab_logic">
                                         <div id="dvTabRules">
                                             <tr style="display:none">
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <input type="hidden" name="txHiddenAdd[]" id="txHiddenAdd_{groupId}"
                                                         value="Y">
                                                     <select class="form-control" name="selector[]" id="selector_{groupId}"
@@ -78,7 +82,7 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <div id="dvAmount_{groupId}" style="display:none">
                                                         <select class="form-control amountoperator"
                                                             name="amountoperator_{groupId}" id="operator_{groupId}">
@@ -162,7 +166,7 @@
                                                         </select>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <input placeholder="Enter amount" class="form-control"
                                                         name="amount_{groupId}" id="amount_{groupId}" type="text"
                                                         style="display:none">
@@ -225,14 +229,14 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <button type="button" class="btn btn-primary btn-sm btnMinus"
-                                                        onClick="fnRemoveRow({groupId})"> <i class="fa fa-minus"></i>
+                                                        onClick="fnRemoveRow({groupId})"> Minus
                                                     </button>
                                                 </td>
                                             </tr>
                                             <tr id="trRules_0">
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <input type="hidden" name="txHiddenAdd[]" id="txHiddenAdd_0"
                                                         value="Y">
                                                     <select class="form-control" name="selector[]" id="selector_0"
@@ -244,7 +248,7 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <div id="dvAmount_0" style="display:none">
                                                         <select class="form-control amountoperator"
                                                             name="amountoperator_0" id="operator_0">
@@ -328,7 +332,7 @@
                                                         </select>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <input placeholder="Enter Values" class="form-control"
                                                         name="amount_0" id="amount_0" type="text"
                                                         style="display:none">
@@ -391,9 +395,9 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <button type="button" class="btn btn-success btn-sm btnPlus">
-                                                        <i class="fa fa-plus"></i>
+                                                        Plus
                                                     </button>
                                                 </td>
                                             </tr>

@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Deleted Applications
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Deleted Applications</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Deleted Applications</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -45,7 +51,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="country">Country</label>
                                     <select name="country" id="country" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach (getCountry() as $key => $country)
                                             <option value="{{ $key }}"
@@ -62,7 +68,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="business_name">Business Name</label>
                                     <select name="user_id" id="business_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($businessNames as $key => $value)
                                             <option value="{{ $value->user_id }}"
@@ -107,7 +113,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="agent_name">Referral Partners</label>
                                     <select name="agent_id" id="agent_name" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         <option value="no-agent"
                                             {{ isset($_GET['agent_id']) && $_GET['agent_id'] == 'no-agent' ? 'selected' : '' }}>
@@ -128,7 +134,7 @@
                                     <label for="technology_partner_id">Technology Partner</label>
                                     <select name="technology_partner_id" id="technology_partner" data-size="7"
                                         data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         @foreach ($technologyPartner as $key => $value)
                                             <option value="{{ $value->id }}"
@@ -157,7 +163,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="categories">Categories</label>
                                     <select name="category_id" id="categories" data-size="7" data-live-search="true"
-                                        class="select2 btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
+                                        class="form-select btn-primary fill_selectbtn_in own_selectbox" data-width="100%">
                                         <option selected disabled>Select here</option>
                                         <option value="no-agent"
                                             {{ isset($_GET['category_id']) && $_GET['category_id'] == 'no-agent' ? 'selected' : '' }}>
@@ -180,7 +186,7 @@
                                         <div class="col-lg-4">
                                             <select name="monthly_volume_condition" id="monthly_volume_condition"
                                                 data-size="7" data-live-search="true"
-                                                class="select2 btn-primary fill_selectbtn_in own_selectbox"
+                                                class="form-select btn-primary fill_selectbtn_in own_selectbox"
                                                 data-width="100%" style="position: absolute; bottom: 0; right: 0;">
                                                 <option value="e"
                                                     {{ isset($_GET['monthly_volume_condition']) && $_GET['monthly_volume_condition'] == 'e' ? 'selected' : '' }}>
@@ -226,23 +232,23 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card mt-1">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="iq-header-title">
                         <h4 class="card-title">Deleted Applications</h4>
                     </div>
-                    <div>
-                        <form id="noListform" method="GET" style="float: left;" class="form-dark me-50">
-                            <select class="form-control-sm form-control" name="noList" id="noList">
-                                <option value="">--No of Records--</option>
-                                <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
-                                </option>
-                                <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
-                                </option>
-                                <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
-                                </option>
-                            </select>
-                        </form>
-                        <div class="btn-group">
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            <form id="noListform" method="GET" style="float: left;" class="form-dark me-50">
+                                <select class="form-control-sm form-control" name="noList" id="noList">
+                                    <option value="">--No of Records--</option>
+                                    <option value="30" {{ request()->get('noList') == '30' ? 'selected' : '' }}>30
+                                    </option>
+                                    <option value="50" {{ request()->get('noList') == '50' ? 'selected' : '' }}>50
+                                    </option>
+                                    <option value="100" {{ request()->get('noList') == '100' ? 'selected' : '' }}>100
+                                    </option>
+                                </select>
+                            </form>
                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#searchModal"> Advanced Search &nbsp;
                                 <svg width="13" height="10" viewBox="0 0 18 15" fill="none"
@@ -257,17 +263,16 @@
                         </div>
                         @if (auth()->guard('admin')->user()->can(['export-application']))
                             <a href="{{ route('admin.applications.exportAllDeleted', request()->all()) }}"
-                                data-filename="Deleted_Application" class="btn btn-primary btn-sm" id="ExcelLink"><i
-                                    class="fa fa-download me-2"></i> Export Excel </a>
+                                data-filename="Deleted_Application" class="btn btn-outline-primary btn-sm" id="ExcelLink">Export Excel </a>
                         @endif
                     </div>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table id="is_completed_applications_list" class="table table-striped table-borderless">
+                        <table id="is_completed_applications_list" class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th width="50px">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" width="50px">
                                         <label class="custom-control form-check-label">
                                             <input type="checkbox" id="selectallcheckbox" name=""
                                                 class="multidelete form-check-input">
@@ -275,13 +280,13 @@
                                             <span class="overflow-control-description"></span>
                                         </label>
                                     </th>
-                                    <th>Business Name</th>
-                                    <th>Email</th>
-                                    <th>Merchant Name</th>
-                                    <th>Business Type</th>
-                                    <th>Website URL</th>
-                                    <th>Creation Date</th>
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Business Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Merchant Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Business Type</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Website URL</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Creation Date</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 
                                 </tr>
                             </thead>
@@ -290,7 +295,7 @@
                                     @foreach ($applications as $key => $value)
                                         @php $key++; @endphp
                                         <tr>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">
                                                 <label class="custom-control form-check-label">
                                                     <input type="checkbox" id="checkbox-{{ $value->id }}"
                                                         name="multidelete[]" class="multidelete form-check-input"
@@ -300,50 +305,34 @@
                                                 </label>
                                             </td>
 
-                                            <td>{{ strlen($value->business_name) > 50 ? substr($value->business_name, 0, 30) . '...' : $value->business_name }}
+                                            <td class="align-middle text-center text-sm">{{ strlen($value->business_name) > 50 ? substr($value->business_name, 0, 30) . '...' : $value->business_name }}
                                             </td>
-                                            <td>{{ $value->user->email ?? 'No Email' }}</td>
-                                            <td>{{ $value->user->name ?? 'No Name' }}</td>
-                                            <td>{{ $value->business_type }}</td>
-                                            <td>
+                                            <td class="align-middle text-center text-sm">{{ $value->user->email ?? 'No Email' }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $value->user->name ?? 'No Name' }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $value->business_type }}</td>
+                                            <td class="align-middle text-center text-sm">
                                                 {{ strlen($value->website_url) > 50 ? substr($value->website_url, 0, 30) . '...' : $value->website_url }}
                                             </td>
-                                            <td>{{ convertDateToLocal($value->created_at, 'd-m-Y') }}</td>
-                                            <td>
-                                                <div class="dropdown ml-auto">
-                                                    <button type="button"
-                                                        class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                                        data-bs-toggle="dropdown">
-                                                        <svg width="5" height="17" viewBox="0 0 5 17"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2.36328 4.69507C1.25871 4.69507 0.363281 3.79964 0.363281 2.69507C0.363281 1.5905 1.25871 0.695068 2.36328 0.695068C3.46785 0.695068 4.36328 1.5905 4.36328 2.69507C4.36328 3.79964 3.46785 4.69507 2.36328 4.69507Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 10.6951C1.25871 10.6951 0.363281 9.79964 0.363281 8.69507C0.363281 7.5905 1.25871 6.69507 2.36328 6.69507C3.46785 6.69507 4.36328 7.5905 4.36328 8.69507C4.36328 9.79964 3.46785 10.6951 2.36328 10.6951Z"
-                                                                fill="#B3ADAD" />
-                                                            <path
-                                                                d="M2.36328 16.6951C1.25871 16.6951 0.363281 15.7996 0.363281 14.6951C0.363281 13.5905 1.25871 12.6951 2.36328 12.6951C3.46785 12.6951 4.36328 13.5905 4.36328 14.6951C4.36328 15.7996 3.46785 16.6951 2.36328 16.6951Z"
-                                                                fill="#B3ADAD" />
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end">
+                                            <td class="align-middle text-center text-sm">{{ convertDateToLocal($value->created_at, 'd-m-Y') }}</td>
+                                            <td class="align-middle text-center text-sm">
+                                                <div class="dropdown">
+                                                    <a href="javascript:;" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink2">
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                                         @if (auth()->guard('admin')->user()->can(['view-application']))
-                                                            <a href="{{ route('application.view') }}/{{ $value->id }}"
-                                                                class="dropdown-item"><i
-                                                                    class="fa fa-eye text-secondary me-2"></i>
+                                                            <li><a href="{{ route('application.view') }}/{{ $value->id }}"
+                                                                class="dropdown-item">
                                                                 View
-                                                            </a>
+                                                            </a></li>
                                                         @endif
                                                         @if (auth()->guard('admin')->user()->can(['update-application']))
-                                                            <a class="dropdown-item restore_modal" data-bs-toggle="modal"
+                                                            <li><a class="dropdown-item restore_modal" data-bs-toggle="modal"
                                                                 data-bs-target="#restore_modal"
                                                                 data-url="{{ \URL::route('admin.applications.restore', $value->id) }}"
-                                                                data-id="{{ $value->id }}"><i
-                                                                    class="fa fa-undo text-danger me-2"></i>
-                                                                Restore</a>
+                                                                data-id="{{ $value->id }}">
+                                                                Restore</a></li>
                                                         @endif
-                                                    </div>
+                                                    </ul>
                                                 </div>
                                             </td>
                                         </tr>

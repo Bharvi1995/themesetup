@@ -5,7 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Agent Bank Details
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ url('paylaksa/agents') }}">Referral Partners</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Agent Bank Details</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Agent Bank Details</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -17,11 +24,7 @@
                         <h4 class="card-title">Agent Bank Details</h4>
                     </div>
                     <div class="btn-group me-2">
-                        <a href="{{ route('agents.index') }}" class="me-2 btn btn-primary btn-sm"><i
-                                class="fa fa-arrow-left"></i> </a>
                     </div>
-
-
                 </div>
                 <div class="card-body p-0">
                     @if ($bankDetails)

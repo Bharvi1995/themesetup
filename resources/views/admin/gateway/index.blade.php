@@ -3,14 +3,20 @@
     Gateway
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> /Gateway List
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Gateway List</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Gateway List</h6>
+    </nav>
 @endsection
 
 @section('content')
     <div class="row">
         @if (auth()->guard('admin')->user()->can(['create-gateway']))
             <div class="col-xl-12 col-lg-12 col-sm-12 mb-2">
-                <a href="{{ route('admin.gateway.create') }}" class="btn btn-success pull-right">
+                <a href="{{ route('admin.gateway.create') }}" class="btn btn-primary pull-right">
                     Create Gateway</a>
             </div>
         @endif
@@ -29,11 +35,11 @@
 
                                     @if (auth()->guard('admin')->user()->can(['create-sub-gateway']))
                                         <a href="{{ route('admin.subgateway.index', ['gateway_id' => $gateway->id]) }}"
-                                            class="btn btn-primary btn-sm mt-1"><i class="fa fa-plus"></i> Add Sub Gateways</a>
+                                            class="btn btn-outline-primary btn-sm mt-1"> Add Sub Gateways</a>
                                     @endif
                                     @if (auth()->guard('admin')->user()->can(['update-gateway']))
                                         <a href="{{ route('admin.gateway.edit', $gateway->id) }}"
-                                            class="btn btn-primary btn-sm mt-1"><i class="fa fa-edit"></i> Edit</a>
+                                            class="btn btn-outline-warning btn-sm mt-1"> Edit</a>
                                     @endif
                                 </div>
                                 <div class="col-md-3 text-right">

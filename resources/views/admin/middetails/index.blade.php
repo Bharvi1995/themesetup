@@ -5,7 +5,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / MIDs List
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">MIDs List</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">MIDs List</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -49,25 +55,29 @@
     <div class="row">
         <div class="col-lg-12 col-xl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">MIDs List</h4>
                     </div>
-                    @if (auth()->guard('admin')->user()->can(['create-mid']))
-                        <a href="{{ url('paylaksa/mid-feature-management/create') }}" class="btn btn-success">Create MID
-                        </a>
-                    @endif
+                    <div class="card-header-toolbar align-items-center">
+                        <div class="btn-group mr-2">
+                            @if (auth()->guard('admin')->user()->can(['create-mid']))
+                                <a href="{{ url('paylaksa/mid-feature-management/create') }}" class="btn btn-primary">Create MID
+                                </a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped datatable">
+                        <table class="table table-borderless datatable">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Bank Name</th>
-                                    <th>Default Currency</th>
-                                    <th>MID Type</th>
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bank Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Default Currency</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MID Type</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 </tr>
                             </thead>
                         </table>

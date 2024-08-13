@@ -5,7 +5,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('dashboardPage') }}">Dashboard</a> / Agreement Upload
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Agreement Upload</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Agreement Upload</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -28,7 +34,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Business Name</label>
-                            <select class="select2" name="business_name" data-size="7" data-live-search="true"
+                            <select class="form-select" name="business_name" data-size="7" data-live-search="true"
                                 data-title="Select here" data-width="100%">
                                 <option selected disabled>Select here</option>
                                 @foreach ($companyName as $company)

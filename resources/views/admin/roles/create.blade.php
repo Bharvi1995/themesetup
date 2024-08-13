@@ -5,7 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ url('paylaksa/roles') }}">Role</a> / Create
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ url('paylaksa/roles') }}">Role</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create Role</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Create Role</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -24,7 +31,6 @@
                     <div class="iq-header-title">
                         <h4 class="card-title">Admin Roles</h4>
                     </div>
-                    <a href="{{ url('paylaksa/roles') }}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body">
                     {!! Form::open(['route' => 'roles.store', 'method' => 'POST', 'class' => 'form-dark', 'id' => 'role-form']) !!}
@@ -68,6 +74,7 @@
                                                             $mainname = strtolower(str_replace(' ', '-', trim($key)));
                                                             ?>
                                                             <strong>
+                                                                <div class="form-check form-check-info text-left">
                                                                 <input type="checkbox" name="main_name[]"
                                                                     class="form-check-input" id="chk{{ $mainname }}"
                                                                     onclick="chkGroupElememts(this, '{{ $mainname }}');">
@@ -76,13 +83,14 @@
                                                                 @else
                                                                     {{ ucfirst($key) }}
                                                                 @endif
+                                                            </div>
                                                             </strong>
                                                         </p>
                                                     </div>
                                                     @foreach ($subModule as $value)
                                                         <div class="col-md-3">
                                                             <div
-                                                                class="custom-control custom-checkbox custom-control-inline mr-0">
+                                                                class="form-check form-check-info text-left mr-0">
                                                                 {{ Form::checkbox('permission[]', $value->id, false, ['class' => 'form-check-input ' . $mainname, 'id' => $value->id]) }}
                                                                 <label class="custom-control-label"
                                                                     for="{{ $value->id }}">

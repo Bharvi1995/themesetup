@@ -5,8 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / <a href="{{ route('users-management') }}">Merchant Management</a>
-    / MID
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('users-management') }}">Merchant Management</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Personal Info</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Personal Info</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -17,7 +23,6 @@
                     <div class="row align-items-center">
                         <div class="col-xl-10 col-xxl-10 mr-auto">
                             <div class="d-sm-flex d-block align-items-center">
-                                <i class="fa fa-key text-primary" style="font-size: 56px;"></i>
                                 <div class="ms-2">
                                     <h4 class="fs-20">API Key</h4>
                                     @if (!isset($data->api_key))
@@ -28,11 +33,6 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-2 col-xxl-2 text-right">
-                            {{-- <a href="{{ route('sendmailforlivemid', $data->id) }}" class="blue-btn me-2"><i class="fas fa-envelope me-2"></i>Send Mail For Live MID</a> --}}
-                            <a href="{{ route('users-management') }}" class="btn btn-primary btn-sm"><i
-                                    class="fa fa-arrow-left" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -53,28 +53,22 @@
                     <div class="custom-tab-1">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('personal-info', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Personal Info</a>
+                                <a class="nav-link active" href="{{ route('personal-info', $data->id) }}"> Personal Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('assign-mid', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> MID Info</a>
+                                <a class="nav-link" href="{{ route('assign-mid', $data->id) }}"> MID Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('card-email-limit', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Card & Email Limit</a>
+                                <a class="nav-link" href="{{ route('card-email-limit', $data->id) }}"> Card & Email Limit</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('merchant-rate-fee', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Merchant Rate/Fee</a>
+                                <a class="nav-link" href="{{ route('merchant-rate-fee', $data->id) }}"> Merchant Rate/Fee</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('additional-mail', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Additional Mail Info</a>
+                                <a class="nav-link" href="{{ route('additional-mail', $data->id) }}"> Additional Mail Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('merchant-rules', $data->id) }}"><i
-                                        class="fa fa-hand-o-right me-2"></i> Create Rules</a>
+                                <a class="nav-link" href="{{ route('merchant-rules', $data->id) }}"> Create Rules</a>
                             </li>
                         </ul>
                         <div class="tab-content">

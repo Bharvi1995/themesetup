@@ -3,7 +3,14 @@
     Edit Admin User
 @endsection
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> /<a href="{{ route('admin-user.index') }}">Admin Users</a> / Edit
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin-user.index') }}">Admin Users</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Edit</h6>
+    </nav>
 @endsection
 
 @section('content')
@@ -12,8 +19,6 @@
             <div class="card  mt-1">
                 <div class="card-header">
                     <h4 class="card-title">Edit Admin User</h4>
-                    <a href="{{ route('admin-user.index') }}" class="btn btn-primary btn-sm rounded"> <i
-                            class="fa fa-arrow-left" aria-hidden="true"></i></a>
                 </div>
                 <div class="card-body">
                     {{ Form::model($data, ['route' => ['admin-user.update', $data->id], 'method' => 'patch', 'id' => 'admin-form', 'class' => 'form-dark']) }}
@@ -71,7 +76,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">Select Role</label>
-                                <select data-size="7" data-live-search="true" class="select2 form-control" name="roles"
+                                <select data-size="7" data-live-search="true" class="form-control" name="roles"
                                     data-title="roles" id="state_list" data-width="100%">
                                     @if (sizeof($roles) > 0)
                                         @foreach ($roles as $role)

@@ -4,7 +4,13 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Admin Logs
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Admin Logs</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">Admin Logs</h6>
+    </nav>
 @endsection
 @section('content')
     @include('requestDate')
@@ -75,11 +81,11 @@
     <div class="row">
         <div class="col-xl-12 col-xxl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Admin Logs</h4>
                     </div>
-                    <div>
+                    <div class="card-header-toolbar align-items-center">
                         <form id="noListform" method="GET" style="float:left;" class="me-50 form-dark">
                             <select class="form-control form-control-sm" name="noList" id="noList">
                                 <option value="">No of Records</option>
@@ -109,38 +115,36 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive custom-table">
-                        <table class="table table-borderless table-striped">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>Admin Name</th>
-                                    <th>Action</th>
-                                    <th>Action Value</th>
-                                    <th>IP</th>
-                                    <th>Remark</th>
-                                    <th>Date & Time</th>
-                                    <th>Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Admin Name</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action Value</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">IP</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Remark</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date & Time</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (!empty($data) && $data->count())
                                     @foreach ($data as $logs)
                                         <tr id="tr_{{ $logs->id }}">
-                                            <td>{{ $logs->admin_name }}</td>
-                                            <td>{{ $logs->action_name }}</td>
-                                            <td>{{ $logs->actionvalue ? $logs->actionvalue : '---' }}</td>
-                                            <td>{{ $logs->ip }}</td>
-                                            <td>{{ $logs->remark }}</td>
-                                            <td>{{ $logs->created_at->format('d-m-Y / H:i:s') }}</td>
-                                            <td>
-                                                <a href="{{ route('admin-logs.show', $logs->id) }}"
-                                                    class="btn btn-primary btn-sm"><i class="fa fa-eye"
-                                                        aria-hidden="true"></i></a>
+                                            <td class="align-middle text-center text-sm">{{ $logs->admin_name }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $logs->action_name }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $logs->actionvalue ? $logs->actionvalue : '---' }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $logs->ip }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $logs->remark }}</td>
+                                            <td class="align-middle text-center text-sm">{{ $logs->created_at->format('d-m-Y / H:i:s') }}</td>
+                                            <td class="align-middle text-center text-sm">
+                                                <a href="{{ route('admin-logs.show', $logs->id) }}" class="text-secondary font-weight-bold text-xs" > View</a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="7">
+                                        <td class="align-middle text-center text-sm" colspan="7">
                                             <p class="text-center"><strong>No data found.</strong></p>
                                         </td>
                                     </tr>

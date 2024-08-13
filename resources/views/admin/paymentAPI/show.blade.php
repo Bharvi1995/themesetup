@@ -5,7 +5,14 @@
 @endsection
 
 @section('breadcrumbTitle')
-    <a href="{{ route('admin.dashboard') }}">Dashboard</a> / Payment API
+    <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('admin.paymentApi') }}">Payment API</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">View</li>
+       </ol>
+       <h6 class="font-weight-bolder mb-0">View</h6>
+    </nav>
 @endsection
 
 @section('customeStyle')
@@ -13,14 +20,7 @@
 @endsection
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center my-1">
-        <h3>Payment API</h3>
-        <div>
-            <a href="{{ route('admin.paymentApi') }}" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> </a>
-        </div>
-    </div>
     <div class="row">
-
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">

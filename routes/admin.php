@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return redirect('admin/dashboard');
+  return redirect('paylaksa/dashboard');
 })->name('admin.dashboard');
 
 Route::group(['middleware' => 'notification_read'], function () {
