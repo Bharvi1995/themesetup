@@ -593,7 +593,6 @@ class ApplicationController extends AdminController
         }
 
         if ($request->hasFile('company_incorporation_certificate')) {
-            Storage::disk('s3')->delete($application->company_incorporation_certificate);
             $imageNameCertificate = time() . rand(0, 10000000000000) . pathinfo(rand(111111111111, 999999999999), PATHINFO_FILENAME);
             $imageNameCertificate = $imageNameCertificate . '.' . $request->file('company_incorporation_certificate')->getClientOriginalExtension();
             $filePath = 'uploads/application-' . $user->id . '/' . $imageNameCertificate;
