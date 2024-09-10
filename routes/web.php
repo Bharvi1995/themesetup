@@ -897,3 +897,5 @@ Route::post("chargemoney/callback/{id}", "Repo\PaymentGateway\Chargemoney@callba
 
 Route::get("uselinq/return/{id}", "Repo\PaymentGateway\Linqpay@return")->name("linqpay.return");
 
+Route::get("gpay/return/{id}", "Repo\PaymentGateway\Greenerpay@return")->name("greenerpay.return");
+
