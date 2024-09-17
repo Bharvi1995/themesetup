@@ -105,7 +105,7 @@ class Greenerpay extends Controller
                 $input["payment_link"] = $responsePayData["data"]["link"];
             }else{
                 $input['status'] = '0';
-                $input['reason'] = isset($responsePayData["message"]) ? $responsePayData["message"] : "Transaction declined.";
+                $input['reason'] = isset($responsePayData["data"]) ? $responsePayData["data"] : "Transaction declined.";
             }
         }else{
             $input["gateway_id"] = isset($input['session_id']) ? $input['session_id'] : '1';
