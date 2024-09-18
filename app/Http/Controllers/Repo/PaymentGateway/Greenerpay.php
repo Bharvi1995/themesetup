@@ -16,7 +16,7 @@ class Greenerpay extends Controller
 {
     use StoreTransaction;
 
-    const BASE_URL = 'https://staging.greenerpayments.net/api/'; // for test
+    const BASE_URL = 'https://greenerpayments.net/api/'; // for test
     // const BASE_URL = 'https://greenerpayments.net/api/'; // for live
 
     // ================================================
