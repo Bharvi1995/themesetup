@@ -146,7 +146,8 @@ class VerifyCsrfToken extends Middleware
         "kpentag/webhook/*",
         'uzopay/webhook/*',
         'securepay/webhook/',
-        'chargemoney/callback/*'
+        'chargemoney/callback/*',
+        'paywellwallet/callback/*'
     ];
 
     /**
