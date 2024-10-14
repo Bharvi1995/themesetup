@@ -90,7 +90,7 @@ class Paywellwallet extends Controller
             if ($response['responseCode'] == "0") {
                 return [
                     'status' => '0',
-                    'reason' => $response["message"],
+                    'reason' => isset($response["responseMessage"]) ? $response["responseMessage"] : 'Transaction declined',
                     'order_id' => $input['order_id'],
                 ];
             } else if ($response['responseCode'] == "1") {
@@ -143,10 +143,10 @@ class Paywellwallet extends Controller
             $input['reason'] = 'Your transaction has been processed successfully.';
         } else if (isset($request_data['responseCode']) && $request_data['responseCode'] == '0' || $request_data['responseCode'] == '3') {
             $input['status'] = '0';
-            $input['reason'] = (isset($request_data['message']) ? $request_data['message'] : 'Your transaction could not processed.');
+            $input['reason'] = (isset($request_data['responseMessage']) ? $request_data['responseMessage'] : 'Your transaction could not processed.');
         } else if (isset($request_data['responseCode']) && $request_data['responseCode'] == '5') {
             $input['status'] = '5';
-            $input['reason'] = (isset($request_data['message']) ? $request_data['message'] : 'Your transaction could not processed.');
+            $input['reason'] = (isset($request_data['responseMessage']) ? $request_data['responseMessage'] : 'Your transaction could not processed.');
         } else {
             $input['status'] = '2';
             $input['reason'] = 'Transaction is in pending.';
@@ -178,7 +178,7 @@ class Paywellwallet extends Controller
             $this->storeTransaction($input);
         } else if (isset($request_data['responseCode']) && $request_data['responseCode'] == '0') {
             $input['status'] = '0';
-            $input['reason'] = (isset($request_data['reason']) ? $request_data['reason'] : 'Your transaction could not processed.');
+            $input['reason'] = (isset($request_data['responseMessage']) ? $request_data['responseMessage'] : 'Your transaction could not processed.');
             $this->storeTransaction($input);
         } else if (isset($request_data['responseCode']) && $request_data['responseCode'] == '2') {
             $input['status'] = '2';
@@ -186,7 +186,7 @@ class Paywellwallet extends Controller
             $this->storeTransaction($input);
         } else if (isset($request_data['responseCode']) && $request_data['responseCode'] == '5') {
             $input['status'] = '5';
-            $input['reason'] = (isset($request_data['reason']) ? $request_data['reason'] : 'Your transaction could not processed.');
+            $input['reason'] = (isset($request_data['responseMessage']) ? $request_data['responseMessage'] : 'Your transaction could not processed.');
             $this->storeTransaction($input);
         }
         exit();
