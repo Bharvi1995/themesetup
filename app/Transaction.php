@@ -6348,30 +6348,147 @@ SQL;
         }
 
         $data = $data->orderBy('success_amount', 'desc')->get()->toArray();
+        
+        if (isset($input['by_merchant']) && $input['by_merchant'] == 1) {
+            $ArrRetunr = [];
+            foreach ($data as $key => $value1) {
+                $user_id = $value1['user_id'];
+                $currency = $value1['currency'];
+                $ArrRetunr[$user_id][$currency]['currency'] = $currency;
+                $ArrRetunr[$user_id][$currency]['user_id'] = $user_id;
+                if (isset($ArrRetunr[$user_id][$currency]['success_count'])) {
+                    $ArrRetunr[$user_id][$currency]['success_count'] += $value1['success_count'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['success_count'] = $value1['success_count'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['success_amount'])) {
+                    $ArrRetunr[$user_id][$currency]['success_amount'] += $value1['success_amount'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['success_amount'] = $value1['success_amount'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['success_percentage'])) {
+                    $ArrRetunr[$user_id][$currency]['success_percentage'] += $value1['success_percentage'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['success_percentage'] = $value1['success_percentage'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['declined_count'])) {
+                    $ArrRetunr[$user_id][$currency]['declined_count'] += $value1['declined_count'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['declined_count'] = $value1['declined_count'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['declined_amount'])) {
+                    $ArrRetunr[$user_id][$currency]['declined_amount'] += $value1['declined_amount'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['declined_amount'] = $value1['declined_amount'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['declined_percentage'])) {
+                    $ArrRetunr[$user_id][$currency]['declined_percentage'] += $value1['declined_percentage'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['declined_percentage'] = $value1['declined_percentage'];
+                }
 
-        // if ((isset($input['user_id']) && !empty($input['user_id']))) {
-        //     $data = $this->getTodaysRecord($input);
-        // }
-        // if ((isset($input['currency']) && !empty($input['currency']))) {
-        //     $data = $this->getTodaysRecord($input);
-        // }
-        // if ((isset($input['start_date']) && $input['start_date'] != '') && (isset($input['end_date']) && $input['end_date'] != '')) {
-        //     $data = $this->getTodaysRecord($input);
-        // }
+                if (isset($ArrRetunr[$user_id][$currency]['chargebacks_count'])) {
+                    $ArrRetunr[$user_id][$currency]['chargebacks_count'] += $value1['chargebacks_count'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['chargebacks_count'] = $value1['chargebacks_count'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['chargebacks_amount'])) {
+                    $ArrRetunr[$user_id][$currency]['chargebacks_amount'] += $value1['chargebacks_amount'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['chargebacks_amount'] = $value1['chargebacks_amount'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['chargebacks_percentage'])) {
+                    $ArrRetunr[$user_id][$currency]['chargebacks_percentage'] += $value1['chargebacks_percentage'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['chargebacks_percentage'] = $value1['chargebacks_percentage'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['refund_count'])) {
+                    $ArrRetunr[$user_id][$currency]['refund_count'] += $value1['refund_count'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['refund_count'] = $value1['refund_count'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['refund_amount'])) {
+                    $ArrRetunr[$user_id][$currency]['refund_amount'] += $value1['refund_amount'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['refund_amount'] = $value1['refund_amount'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['refund_percentage'])) {
+                    $ArrRetunr[$user_id][$currency]['refund_percentage'] += $value1['refund_percentage'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['refund_percentage'] = $value1['refund_percentage'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['flagged_count'])) {
+                    $ArrRetunr[$user_id][$currency]['flagged_count'] += $value1['flagged_count'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['flagged_count'] = $value1['flagged_count'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['flagged_amount'])) {
+                    $ArrRetunr[$user_id][$currency]['flagged_amount'] += $value1['flagged_amount'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['flagged_amount'] = $value1['flagged_amount'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['flagged_percentage'])) {
+                    $ArrRetunr[$user_id][$currency]['flagged_percentage'] += $value1['flagged_percentage'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['flagged_percentage'] = $value1['flagged_percentage'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['retrieval_count'])) {
+                    $ArrRetunr[$user_id][$currency]['retrieval_count'] += $value1['retrieval_count'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['retrieval_count'] = $value1['retrieval_count'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['retrieval_amount'])) {
+                    $ArrRetunr[$user_id][$currency]['retrieval_amount'] += $value1['retrieval_amount'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['retrieval_amount'] = $value1['retrieval_amount'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['retrieval_percentage'])) {
+                    $ArrRetunr[$user_id][$currency]['retrieval_percentage'] += $value1['retrieval_percentage'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['retrieval_percentage'] = $value1['retrieval_percentage'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['block_count'])) {
+                    $ArrRetunr[$user_id][$currency]['block_count'] += $value1['block_count'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['block_count'] = $value1['block_count'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['block_amount'])) {
+                    $ArrRetunr[$user_id][$currency]['block_amount'] += $value1['block_amount'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['block_amount'] = $value1['block_amount'];
+                }
+                if (isset($ArrRetunr[$user_id][$currency]['block_percentage'])) {
+                    $ArrRetunr[$user_id][$currency]['block_percentage'] += $value1['block_percentage'];
+                } else {
+                    $ArrRetunr[$user_id][$currency]['block_percentage'] = $value1['block_percentage'];
+                }
+            }
+            $data = $ArrRetunr;
+        }
+
+        if ((isset($input['user_id']) && !empty($input['user_id']))) {
+            $data = $this->getTodaysRecord($input);
+        }
+        if ((isset($input['currency']) && !empty($input['currency']))) {
+            $data = $this->getTodaysRecord($input);
+        }
+        if ((isset($input['start_date']) && $input['start_date'] != '') && (isset($input['end_date']) && $input['end_date'] != '')) {
+            $data = $this->getTodaysRecord($input);
+        }
         // if ((isset($input['transaction_start_date']) && $input['transaction_start_date'] != '') && (isset($input['transaction_end_date']) && $input['transaction_end_date'] != '')) {
         //     $data = $this->getTodaysRecord($input);
         // }
-        // if (((!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily')) && $isInternalMerchant == 0) {
-        //     $data = $this->getTodaysRecord($input);
-        // }
+        if (((!isset($_GET['for']) && !isset($_GET['end_date'])) || (isset($_GET['for']) && $_GET['for'] == 'Daily')) && $isInternalMerchant == 0) {
+            $data = $this->getTodaysRecord($input);
+        }
 
-        // if (isset($input['for']) && $input['for'] == 'Weekly') {
-        //     $data = $this->getTodaysRecord($input);
-        // }
+        if (isset($input['for']) && $input['for'] == 'Weekly') {
+            $data = $this->getTodaysRecord($input);
+        }
 
-        // if (isset($input['for']) && $input['for'] == 'Monthly') {
-        //     $data = $this->getTodaysRecord($input);
-        // }
+        if (isset($input['for']) && $input['for'] == 'Monthly') {
+            $data = $this->getTodaysRecord($input);
+        }
 
         return $data;
     }
@@ -8515,6 +8632,7 @@ SQL;
                 foreach ($value as $key1 => $value1) {
                     $user_id = $value1['user_id'];
                     $currency = $value1['currency'];
+                    $ArrRetunr[$user_id][$currency]['user_id'] = $user_id;
                     $ArrRetunr[$user_id][$currency]['currency'] = $currency;
                     if (isset($ArrRetunr[$user_id][$currency]['success_count'])) {
                         $ArrRetunr[$user_id][$currency]['success_count'] += $value1['success_count'];

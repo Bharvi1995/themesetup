@@ -174,9 +174,7 @@
             @if (auth()->guard('admin')->user()->can(['export-merchant-transaction-report']))
                 <a class="btn btn-primary btn-sm btn-shadow"
                     href="{{ route('merchant-transaction-report-excle', request()->all()) }}"
-                    data-filename="Merchant_Transaction_Report_Excel_" id="ExcelLink">
-                    <i class="fa fa-download"></i> Export
-                    Excel</a>
+                    data-filename="Merchant_Transaction_Report_Excel_" id="ExcelLink"> Export Excel</a>
             @endif
         </div>
     </div>
