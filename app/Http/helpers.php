@@ -3034,14 +3034,13 @@ function kebabToHumanString($str)
 
 function convertDateToLocal($date, $format = 'Y-m-d H:i:s')
 {
-    if (!empty(\Session::get('localtimezone'))) {
-        $date = new DateTime($date);
-        $date->setTimezone(new DateTimeZone(\Session::get('localtimezone')));
+    // if (!empty(\Session::get('localtimezone'))) {
+    $date = new DateTime($date);
+    $date->setTimezone(new DateTimeZone("Asia/Kolkata"));
+    return $date->format($format);
+    // }
 
-        return $date->format($format);
-    }
-
-    return date($format, strtotime($date));
+    // return date($format, strtotime($date));
 }
 
 if (!function_exists('storage_asset')) {

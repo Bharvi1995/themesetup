@@ -576,6 +576,12 @@
                                     </div>
                                 </div>
                             @endif
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                Current IST Time: {{ convertDateToLocal(now(), 'd-m-Y H:i:s') }}
+                            </div>
                         </div>
                     @endif
                 </div>
