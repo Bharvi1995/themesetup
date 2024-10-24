@@ -147,7 +147,8 @@ class VerifyCsrfToken extends Middleware
         'uzopay/webhook/*',
         'securepay/webhook/',
         'chargemoney/callback/*',
-        'paywellwallet/callback/*'
+        'paywellwallet/callback/*',
+        'everpayltd/webhook/*'
     ];
 
     /**

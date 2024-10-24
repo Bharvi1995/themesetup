@@ -899,6 +899,11 @@ Route::get("uselinq/return/{id}", "Repo\PaymentGateway\Linqpay@return")->name("l
 
 Route::get("gpay/return/{id}", "Repo\PaymentGateway\Greenerpay@return")->name("greenerpay.return");
 
-// * Chargemoney MID urls
+// * Paywellwallet MID urls
 Route::get("paywellwallet/redirect/{id}", "Repo\PaymentGateway\Paywellwallet@redirect")->name("paywellwallet.redirect");
 Route::post("paywellwallet/callback/{id}", "Repo\PaymentGateway\Paywellwallet@callback")->name("paywellwallet.callback");
+
+//EverpayLTD
+
+Route::get("everpayltd/callback/{id}", "Repo\PaymentGateway\Everpayltd@callback")->name("everpayltd.callback");
+Route::post("everpayltd/webhook/{id}", "Repo\PaymentGateway\Everpayltd@webhook")->name("everpayltd.webhook");
