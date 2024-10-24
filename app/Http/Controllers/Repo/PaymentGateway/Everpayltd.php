@@ -14,8 +14,8 @@ class Everpayltd extends Controller
 {
 	use StoreTransaction;
 
-	// const BASE_URL = 'https://everpayltd.com/api/charge';
-	const BASE_URL = 'https://staging.everpayltd.com/api/charge';
+	const BASE_URL = 'https://everpayltd.com/api/charge';
+	// const BASE_URL = 'https://staging.everpayltd.com/api/charge';
 
 	// ================================================
 	/* method : __construct
