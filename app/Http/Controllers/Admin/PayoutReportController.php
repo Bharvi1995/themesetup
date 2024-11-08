@@ -98,6 +98,7 @@ class PayoutReportController extends AdminController
             \Log::info(["rates" => $rates]);
             \Log::info(["input" => $input]);
             foreach ($input['user_id'] as $user_id) {
+                \Log::info(["user_id" => $user_id]);
                 $old_payout_report = PayoutReports::where('user_id', $user_id)->orderBy('id', 'desc')->first();
                 if ($old_payout_report == null) {
                     $transaction = Transaction::select('created_at')->where('user_id', $user_id)->first();
