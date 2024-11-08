@@ -13,7 +13,7 @@
     <link id="pagestyle" href="{{ storage_asset('softtheme/css/soft-ui-dashboard.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ storage_asset('softtheme/css/toastr.min.css') }}">
-    <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <!-- <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,7 +127,7 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <script src="{{ storage_asset('themesetup/assets/vendor/js/moment.min.js')}}"></script>
     <!-- <script src="{{ storage_asset('themesetup/assets/vendor/js/daterangepicker.js')}}"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> -->
 
    <!--  <script src="{{ storage_asset('setup/vendors/js/vendors.min.js') }}"></script>
     <script src="{{ storage_asset('setup/js/app-menu.js') }}"></script>
@@ -141,9 +141,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script> -->
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     <script type="text/javascript">
-        
-        $( "#datepicker" ).datepicker();
-
+        $( ".datepicker" ).datepicker();
         var DATE = "{{ date('d-m-Y') }}";
         var current_page_url = "<?php echo URL::current(); ?>";
         var current_page_fullurl = "<?php echo URL::full(); ?>";

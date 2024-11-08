@@ -147,7 +147,7 @@
                                 <div class="col-xl-3 col-sm-3 col-12 col-md-6 mt-1">
                                     <label for="end_date">End Date <span class="text-danger">*</span></label>
                                     <div class="date-input">
-                                        <input type="text" id="end_date" class="form-control"
+                                        <input type="text" id="end_date" class="form-control datepicker"
                                             placeholder="Enter here..." name="end_date" value="{{ old('end_date') }}"
                                             autocomplete="off">
 
