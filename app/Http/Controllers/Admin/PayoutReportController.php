@@ -118,7 +118,6 @@ class PayoutReportController extends AdminController
                     ->where('users.id', $user_id)
                     ->first();
                     \Log::info(["userData" => $userData]);
-                \Log::info(["input" => $input]);
                 $currencyArray = \DB::table('transactions')
                     ->where('user_id', $user_id)
                     ->where(function ($q) use ($input) {
@@ -137,6 +136,7 @@ class PayoutReportController extends AdminController
                     ->groupBy('transactions.currency')
                     ->pluck('currency')
                     ->toArray();
+                \Log::info(["currencyArray" => $currencyArray]);
                 if (empty($currencyArray)) {
                     continue;
                 }
