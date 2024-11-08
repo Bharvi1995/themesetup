@@ -112,6 +112,7 @@ class PayoutReportController extends AdminController
                     $input['chargebacks_start_date'] = date('Y-m-d', strtotime($old_payout_report->chargebacks_end_date . ' + 1 days'));
                 }
                 $input['chargebacks_end_date'] = date('Y-m-d', strtotime('-1 days'));
+                \Log::info(["input" => $input]);
                 $userData = \DB::table('users')
                     ->select('applications.*', 'users.*')
                     ->join('applications', 'applications.user_id', '=', 'users.id')
