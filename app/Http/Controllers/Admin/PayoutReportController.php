@@ -95,6 +95,8 @@ class PayoutReportController extends AdminController
         // try {
             // * Fetch All rates
             $rates = getAllCurrenciesRates();
+            \Log::info(["rates" => $rates]);
+            \Log::info(["input" => $input]);
             foreach ($input['user_id'] as $user_id) {
                 $old_payout_report = PayoutReports::where('user_id', $user_id)->orderBy('id', 'desc')->first();
                 if ($old_payout_report == null) {
@@ -115,6 +117,7 @@ class PayoutReportController extends AdminController
                     ->join('applications', 'applications.user_id', '=', 'users.id')
                     ->where('users.id', $user_id)
                     ->first();
+                    \Log::info(["userData" => $userData]);
                 $currencyArray = \DB::table('transactions')
                     ->where('user_id', $user_id)
                     ->where(function ($q) use ($input) {
